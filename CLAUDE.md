@@ -6,7 +6,10 @@
 
 - **배포: GitHub Pages** — 공개 저장소 `elf03190123-glitch/weekly-travel-brief`. 공개 범위는 사용자가 알고 정한 것이다.
 - **수집: GitHub Actions** (`.github/workflows/collect.yml`, 6시간마다).
-- **작성: GitHub Actions 안의 Claude** (`.github/workflows/weekly.yml`, 매주 월 10:00 KST). 저장소 Secret `CLAUDE_CODE_OAUTH_TOKEN`(Claude 구독 토큰, `claude setup-token`으로 발급) 또는 `ANTHROPIC_API_KEY`(선불 API 크레딧)가 있어야 돈다. 둘 다 있으면 구독 토큰을 쓴다. 모델은 저장소 변수 `BRIEF_MODEL`(없으면 `claude-sonnet-5-5`).
+- **작성: GitHub Actions 안의 Claude Agent SDK** (`.github/workflows/weekly.yml` → `scripts/write_edition.py`, 매주 월 10:00 KST). 저장소 Secret `ANTHROPIC_API_KEY`를 쓴다. 이 키의 Console 조직에 Max 요금제 월 API 크레딧($100)이 연결돼 있다. 모델은 저장소 변수 `BRIEF_MODEL`(없으면 `claude-opus-5-5`).
+  - **claude-code-action(=Claude Code)을 쓰지 않는다.** Max 요금제 API 크레딧은 Claude Code에는 적용되지 않아 "Credit balance is too low"로 실패한다(2026-11-15 확인). Agent SDK는 크레딧 대상이다(같은 날 시험 실행 성공).
+  - 크레딧이 바닥나면 다음 결제 주기까지 API가 멈춘다. 월 사용액은 `runs/<라벨>/agent-result.json`의 `total_cost_usd`(추정치)로 본다.
+  - 수동 실행: Actions → weekly → Run workflow. `smoke`를 켜면 짧은 확인만 한다.
 - **게재: GitHub Actions** (`.github/workflows/pages.yml`) — `data/`·`src/`가 바뀌어 push되거나 weekly 실행이 끝나면 `build.py`로 빌드해 Pages에 올린다.
 - **아티팩트로 배포하지 않는다.** 미리보기로 만든 V2 아티팩트(https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb)와 V1 아티팩트(9qyt3S…)는 건드리지 않는다. 기존 스킬의 「산출물」「5단계 · 발행」(아티팩트 재발행) 절은 V2에 적용하지 않는다.
 
@@ -27,6 +30,7 @@
 | `runs/<YYYY-Www>/` | 주차별 작업 폴더: `candidates.md/json`, `fx.json`, `edition.json`, `report.md` | 작업 중 |
 | `dist/` | 빌드 결과(저장소에 올리지 않음) | 하지 않음 |
 | `scripts/collect.py` | RSS 수집 + 기간 후보 목록 | |
+| `scripts/write_edition.py` | Actions에서 Agent SDK로 주간 실행 3~8단계를 맡기는 스크립트(대화 내용은 로그에 남기지 않음) | |
 | `scripts/add_edition.py` | 판본 JSON을 데이터에 추가하고 검사 | |
 | `scripts/build.py` | 검사 + 개인 메일 검사 + `dist/index.html` 빌드 + 스크립트 문법 검사 | |
 | `scripts/make_template.py` | V1 → V2 1회성 이관 도구. 로컬 전용 원본(`src/v1-live.html`, 저장소 제외)이 있어야 돈다. **다시 실행하지 않는다** | |
