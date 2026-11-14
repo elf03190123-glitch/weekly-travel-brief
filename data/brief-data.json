@@ -10217,6 +10217,12 @@
        "https://www.traveldaily.co.kr/news/articleView.html?idxno=72672",
        "대한항공, 인천~뉴어크 내년 5월 취항"
       ]
+     ],
+     "cl": [
+      {
+       "c": "new-york",
+       "s": "B"
+      }
      ]
     },
     {
@@ -10253,6 +10259,20 @@
        "https://www.yna.co.kr/view/AKR20261114026351003",
        "미국, 항공기 이륙 중단 해제…대한항공·아시아나 결항 취소(종합)"
       ]
+     ],
+     "cl": [
+      {
+       "c": "new-york",
+       "s": "B"
+      },
+      {
+       "c": "san-francisco",
+       "s": "B"
+      },
+      {
+       "c": "las-vegas",
+       "s": "B"
+      }
      ]
     },
     {
@@ -10305,6 +10325,20 @@
        "https://www.traveldaily.co.kr/news/articleView.html?idxno=72673",
        "‘진에어-에어서울-에어부산’ 합병 인가"
       ]
+     ],
+     "cl": [
+      {
+       "c": "regal-hk",
+       "s": "B"
+      },
+      {
+       "c": "ascott-vietnam",
+       "s": "B"
+      },
+      {
+       "c": "halekulani-okinawa",
+       "s": "B"
+      }
      ]
     },
     {
@@ -10358,7 +10392,17 @@
        "클럽로뎀 UP 놀유니버스 DOWN, 실적 두배 희비"
       ]
      ],
-     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다."
+     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다.",
+     "cl": [
+      {
+       "c": "airlink",
+       "s": "C"
+      },
+      {
+       "c": "azul",
+       "s": "C"
+      }
+     ]
     },
     {
      "code": "TT-02",
@@ -10389,7 +10433,21 @@
        "제로마진에도 여전히 불타오르는 홈쇼핑"
       ]
      ],
-     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다."
+     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다.",
+     "cl": [
+      {
+       "c": "regal-hk",
+       "s": "C"
+      },
+      {
+       "c": "ascott-vietnam",
+       "s": "C"
+      },
+      {
+       "c": "ascott-indonesia",
+       "s": "C"
+      }
+     ]
     },
     {
      "code": "PL-01",
@@ -10415,6 +10473,16 @@
        "https://www.traveltimes.co.kr/news/articleView.html?idxno=500700",
        "발권 장벽 허물어진 GDS 시장…무한 경쟁 시대 진입"
       ]
+     ],
+     "cl": [
+      {
+       "c": "airlink",
+       "s": "C"
+      },
+      {
+       "c": "azul",
+       "s": "C"
+      }
      ]
     },
     {
@@ -10508,7 +10576,13 @@
        "한진트래블, 타히티·쿡제도 크루즈 12일 여행 출시"
       ]
      ],
-     "note": "한진트래블을 Section 07 대상사 한진관광의 브랜드로 보고 편성했습니다. 사명 관계는 사람 확인이 필요합니다."
+     "note": "한진트래블을 Section 07 대상사 한진관광의 브랜드로 보고 편성했습니다. 사명 관계는 사람 확인이 필요합니다.",
+     "cl": [
+      {
+       "c": "tahiti",
+       "s": "C"
+      }
+     ]
     },
     {
      "code": "PK-03",
@@ -10570,6 +10644,12 @@
        "https://www.traveldaily.co.kr/news/articleView.html?idxno=72648",
        "美 동부 히든카드 ‘필라델피아’ 상품 개발 본격화"
       ]
+     ],
+     "cl": [
+      {
+       "c": "new-york",
+       "s": "D"
+      }
      ]
     },
     {
@@ -10596,6 +10676,12 @@
        "https://www.traveltimes.co.kr/news/articleView.html?idxno=500689",
        "더 오래 머물고 다시 찾게…말레이시아, 한국 시장 공략"
       ]
+     ],
+     "cl": [
+      {
+       "c": "ascott-indonesia",
+       "s": "D"
+      }
      ]
     },
     {
@@ -10632,6 +10718,16 @@
        "https://www.discoverynews.kr/news/articleView.html?idxno=1106769",
        "한진트래블, 동계 시즌 맞이 괌 체류형 여행 기획전 운영.. \"괌심집중\""
       ]
+     ],
+     "cl": [
+      {
+       "c": "hawaii",
+       "s": "D"
+      },
+      {
+       "c": "halekulani-okinawa",
+       "s": "D"
+      }
      ]
     },
     {
@@ -10692,6 +10788,20 @@
        "https://www.traveldaily.co.kr/news/articleView.html?idxno=72629",
        "'에어프레미아-톈진항공' 첫 인터라인 협력"
       ]
+     ],
+     "cl": [
+      {
+       "c": "new-york",
+       "s": "B"
+      },
+      {
+       "c": "san-francisco",
+       "s": "B"
+      },
+      {
+       "c": "hawaii",
+       "s": "B"
+      }
      ]
     },
     {
@@ -10731,7 +10841,21 @@
        "[주말판] 연말연시 빛낼 미국 홀리데이 축제"
       ]
      ],
-     "note": "후보 단계에서 '축제' 제외 후보로 표시됐으나 Brand USA 발표이자 세 계정 직결 콘텐츠여서 채택했습니다. 샌프란시스코 관련 내용은 기사에 없습니다."
+     "note": "후보 단계에서 '축제' 제외 후보로 표시됐으나 Brand USA 발표이자 세 계정 직결 콘텐츠여서 채택했습니다. 샌프란시스코 관련 내용은 기사에 없습니다.",
+     "cl": [
+      {
+       "c": "new-york",
+       "s": "E"
+      },
+      {
+       "c": "las-vegas",
+       "s": "E"
+      },
+      {
+       "c": "hawaii",
+       "s": "E"
+      }
+     ]
     },
     {
      "code": "AS-01",
@@ -10758,7 +10882,13 @@
        "Routes & Networks Latest: Rolling Daily Updates (W/C Nov. 9, 2026)"
       ]
      ],
-     "note": "특정 노선의 운항 개시일·편수·기재는 원 업데이트에 명시되지 않았습니다."
+     "note": "특정 노선의 운항 개시일·편수·기재는 원 업데이트에 명시되지 않았습니다.",
+     "cl": [
+      {
+       "c": "azul",
+       "s": "D"
+      }
+     ]
     },
     {
      "code": "AS-02",
@@ -10784,6 +10914,12 @@
        "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-nov-9-2026",
        "Routes & Networks Latest: Rolling Daily Updates (W/C Nov. 9, 2026)"
       ]
+     ],
+     "cl": [
+      {
+       "c": "azul",
+       "s": "D"
+      }
      ]
     },
     {
@@ -10811,7 +10947,13 @@
        "Africa’s tourism opportunity in a changing global travel market"
       ]
      ],
-     "note": "수치가 없는 분석 기고입니다. 이번 주 Aviation Week 업데이트에서 아프리카 항공 건은 플라이두바이 벵가지 취항 언급(세부 없음) 1건뿐이어서 이 기사로 아프리카를 보완했습니다."
+     "note": "수치가 없는 분석 기고입니다. 이번 주 Aviation Week 업데이트에서 아프리카 항공 건은 플라이두바이 벵가지 취항 언급(세부 없음) 1건뿐이어서 이 기사로 아프리카를 보완했습니다.",
+     "cl": [
+      {
+       "c": "airlink",
+       "s": "A"
+      }
+     ]
     }
    ],
    "gap": {
@@ -10840,7 +10982,25 @@
      ]
     ]
    },
-   "foot": "이번 호는 2026년 11월 9일 10:00부터 11월 16일 10:00 KST까지를 수집 구간으로 삼았습니다. 직전 발행 호(2026-W42) 이후 W43–W46 공백은 소급하지 않기로 한 결정(2026-11-15)에 따라 이번 호부터 다시 발행합니다. 수집은 V2 scripts/collect.py가 RSS를 직접 받는 방식으로 11월 14일부터 돌기 시작해, 하루치만 보여 주는 디스커버리뉴스·TTL뉴스·인사이트코리아·연합뉴스·뉴시스는 11월 13일 이후분만 확보했고 11월 15일 01시 이후 게재분은 이번 판에 반영되지 않았습니다. 환율은 open.er-api.com 시장 중간환율(11월 14일 1,336.2원)을 썼고, 소비자심리지수는 수집 기사에 한국은행 신규 발표가 없어 9월 값 106.6을 유지했습니다. 유류할증료표는 달이 바뀌어 유류할증료 탭의 11월 대한항공(KE) 값으로 갱신했으며, 아시아나(OZ) 11월 표는 아직 반영되지 않아 10월 값을 이어 썼습니다. Section 05는 BSP 10월 발매 실적(하나투어·마이리얼트립·놀유니버스·트립닷컴코리아·클럽로뎀)으로 BSP 상위사 기준을 충족했고, Section 07은 모두투어 2건과 한진트래블 타히티 크루즈로 편성했습니다. Section 10은 Aviation Week W/C Nov. 9 업데이트에서 남미 2건, Further Africa에서 아프리카 1건을 확보했습니다. 시사점(So-What)은 자동 생성하지 않으며 사람이 확정합니다."
+   "foot": "이번 호는 2026년 11월 9일 10:00부터 11월 16일 10:00 KST까지를 수집 구간으로 삼았습니다. 직전 발행 호(2026-W42) 이후 W43–W46 공백은 소급하지 않기로 한 결정(2026-11-15)에 따라 이번 호부터 다시 발행합니다. 수집은 V2 scripts/collect.py가 RSS를 직접 받는 방식으로 11월 14일부터 돌기 시작해, 하루치만 보여 주는 디스커버리뉴스·TTL뉴스·인사이트코리아·연합뉴스·뉴시스는 11월 13일 이후분만 확보했고 11월 15일 01시 이후 게재분은 이번 판에 반영되지 않았습니다. 환율은 open.er-api.com 시장 중간환율(11월 14일 1,336.2원)을 썼고, 소비자심리지수는 수집 기사에 한국은행 신규 발표가 없어 9월 값 106.6을 유지했습니다. 유류할증료표는 달이 바뀌어 유류할증료 탭의 11월 대한항공(KE) 값으로 갱신했으며, 아시아나(OZ) 11월 표는 아직 반영되지 않아 10월 값을 이어 썼습니다. Section 05는 BSP 10월 발매 실적(하나투어·마이리얼트립·놀유니버스·트립닷컴코리아·클럽로뎀)으로 BSP 상위사 기준을 충족했고, Section 07은 모두투어 2건과 한진트래블 타히티 크루즈로 편성했습니다. Section 10은 Aviation Week W/C Nov. 9 업데이트에서 남미 2건, Further Africa에서 아프리카 1건을 확보했습니다. 시사점(So-What)은 자동 생성하지 않으며 사람이 확정합니다.",
+   "clientNotes": {
+    "renaissance-honolulu": {
+     "watch": [
+      [
+       "RENAISSANCE",
+       "르네상스 호놀룰루·와이키키 호텔 업계 — 이번 호 신규 없음 (호텔 매체 수집은 W47부터)"
+      ]
+     ]
+    },
+    "mandarin-oriental": {
+     "watch": [
+      [
+       "MANDARIN ORIENTAL",
+       "만다린 오리엔탈 신규 오픈·한국 시장 활동, 럭셔리 호텔 업계 — 이번 호 신규 없음 (호텔 매체 수집은 W47부터)"
+      ]
+     ]
+    }
+   }
   }
  ],
  "urls": [
@@ -12082,5 +12242,437 @@
  "tagenx": {
   "필라델피아 관광청": "Philadelphia Tourism",
   "카자흐스탄 관광공사": "Kazakh Tourism"
- }
+ },
+ "clients": [
+  {
+   "id": "hawaii",
+   "ko": "하와이",
+   "full": "하와이관광청",
+   "en": "Hawaii Tourism Authority",
+   "type": "board",
+   "role": "관광청 한국사무소 대행",
+   "acc": "하와이",
+   "fuel": "하와이",
+   "gap": "HAWAII",
+   "dest": [
+    "하와이",
+    "호놀룰루",
+    "와이키키",
+    "마우이",
+    "빅아일랜드",
+    "카우아이"
+   ],
+   "kw": [
+    "HTA",
+    "하와이관광청"
+   ],
+   "comp": [
+    "괌",
+    "사이판",
+    "오키나와",
+    "발리",
+    "몰디브"
+   ]
+  },
+  {
+   "id": "new-york",
+   "ko": "뉴욕",
+   "full": "뉴욕관광청",
+   "en": "NYC Tourism + Conventions",
+   "type": "board",
+   "role": "관광청 한국 대행",
+   "acc": "뉴욕",
+   "fuel": "뉴욕",
+   "gap": "\\bNY\\b|NEW YORK",
+   "dest": [
+    "뉴욕",
+    "뉴어크",
+    "맨해튼"
+   ],
+   "kw": [
+    "NYC Tourism",
+    "뉴욕관광청"
+   ],
+   "comp": [
+    "LA",
+    "시카고",
+    "보스턴",
+    "워싱턴DC",
+    "토론토",
+    "런던",
+    "파리"
+   ]
+  },
+  {
+   "id": "san-francisco",
+   "ko": "샌프란시스코",
+   "full": "샌프란시스코관광청",
+   "en": "San Francisco Travel",
+   "type": "board",
+   "role": "관광청 한국 대행",
+   "acc": "샌프란시스코",
+   "fuel": "샌프란시스코",
+   "gap": "\\bSF\\b|SAN FRANCISCO",
+   "dest": [
+    "샌프란시스코",
+    "SFO",
+    "실리콘밸리",
+    "나파"
+   ],
+   "kw": [
+    "San Francisco Travel"
+   ],
+   "comp": [
+    "LA",
+    "시애틀",
+    "밴쿠버",
+    "캘리포니아"
+   ]
+  },
+  {
+   "id": "las-vegas",
+   "ko": "라스베가스",
+   "full": "라스베가스관광청",
+   "en": "LVCVA",
+   "type": "board",
+   "role": "관광청 한국 대행",
+   "acc": "라스베가스",
+   "fuel": "라스베가스",
+   "gap": "\\bLAS\\b|LAS VEGAS",
+   "dest": [
+    "라스베가스",
+    "라스베이거스",
+    "그랜드캐니언"
+   ],
+   "kw": [
+    "LVCVA"
+   ],
+   "comp": [
+    "LA",
+    "미서부",
+    "마카오",
+    "두바이"
+   ]
+  },
+  {
+   "id": "spain",
+   "ko": "스페인",
+   "full": "스페인관광청",
+   "en": "Turespaña",
+   "type": "board",
+   "role": "관광청 한국 대행",
+   "acc": "스페인",
+   "fuel": "스페인",
+   "gap": "SPAIN",
+   "dest": [
+    "스페인",
+    "마드리드",
+    "바르셀로나",
+    "세비야",
+    "그라나다"
+   ],
+   "kw": [
+    "Turespaña",
+    "스페인관광청",
+    "이베리아항공"
+   ],
+   "comp": [
+    "포르투갈",
+    "이탈리아",
+    "프랑스",
+    "튀르키예",
+    "크로아티아"
+   ]
+  },
+  {
+   "id": "tahiti",
+   "ko": "타히티",
+   "full": "타히티관광청",
+   "en": "Tahiti Tourisme",
+   "type": "board",
+   "role": "관광청 한국 대행",
+   "acc": "타히티",
+   "fuel": "타히티",
+   "gap": "TAHITI",
+   "dest": [
+    "타히티",
+    "프렌치폴리네시아",
+    "보라보라",
+    "모레아"
+   ],
+   "kw": [
+    "Tahiti Tourisme",
+    "에어타히티누이"
+   ],
+   "comp": [
+    "몰디브",
+    "피지",
+    "뉴칼레도니아",
+    "모리셔스",
+    "발리"
+   ]
+  },
+  {
+   "id": "regal-hk",
+   "ko": "리갈 홍콩",
+   "full": "리갈 호텔 (홍콩)",
+   "en": "Regal Hotels Hong Kong",
+   "type": "hotel",
+   "role": "한국 총판 — 홍콩 내 리갈 호텔 전체",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "홍콩"
+   ],
+   "kw": [
+    "리갈",
+    "Regal"
+   ],
+   "comp": [
+    "마카오",
+    "싱가포르",
+    "대만",
+    "홍콩 내 글로벌 체인 호텔"
+   ]
+  },
+  {
+   "id": "ascott-vietnam",
+   "ko": "어스콧 베트남",
+   "full": "어스콧 베트남",
+   "en": "Ascott Vietnam",
+   "type": "hotel",
+   "role": "한국 영업 총판 — 베트남 내 어스콧 계열 전체",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "베트남",
+    "다낭",
+    "나트랑",
+    "푸꾸옥",
+    "호치민",
+    "하노이",
+    "하롱",
+    "달랏",
+    "푸꾸옥"
+   ],
+   "kw": [
+    "어스콧",
+    "Ascott",
+    "서머셋",
+    "Somerset",
+    "시타딘",
+    "Citadines",
+    "오크우드",
+    "Oakwood",
+    "라이프",
+    "lyf"
+   ],
+   "comp": [
+    "태국",
+    "빈펄",
+    "메리어트",
+    "아코르"
+   ]
+  },
+  {
+   "id": "ascott-indonesia",
+   "ko": "어스콧 인도네시아",
+   "full": "어스콧 인도네시아",
+   "en": "Ascott Indonesia",
+   "type": "hotel",
+   "role": "한국 영업 총판 — 인도네시아 내 어스콧 계열 전체",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "인도네시아",
+    "발리",
+    "자카르타",
+    "롬복",
+    "족자카르타"
+   ],
+   "kw": [
+    "어스콧",
+    "Ascott",
+    "서머셋",
+    "Somerset",
+    "시타딘",
+    "Citadines",
+    "오크우드",
+    "Oakwood"
+   ],
+   "comp": [
+    "푸껫",
+    "베트남",
+    "말레이시아",
+    "아코르",
+    "메리어트",
+    "하얏트"
+   ]
+  },
+  {
+   "id": "renaissance-honolulu",
+   "ko": "르네상스 호놀룰루",
+   "full": "르네상스 호놀룰루 호텔 & 스파",
+   "en": "Renaissance Honolulu Hotel & Spa",
+   "type": "hotel",
+   "role": "한국 PR·SNS 마케팅 대행",
+   "acc": null,
+   "fuel": "하와이",
+   "gap": null,
+   "dest": [
+    "호놀룰루",
+    "와이키키",
+    "하와이"
+   ],
+   "kw": [
+    "르네상스",
+    "Renaissance"
+   ],
+   "comp": [
+    "와이키키·호놀룰루 내 경쟁 호텔"
+   ]
+  },
+  {
+   "id": "halekulani-okinawa",
+   "ko": "할레쿨라니 오키나와",
+   "full": "할레쿨라니 오키나와",
+   "en": "Halekulani Okinawa",
+   "type": "hotel",
+   "role": "한국 홍보·마케팅 대행",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "오키나와"
+   ],
+   "kw": [
+    "할레쿨라니",
+    "Halekulani"
+   ],
+   "comp": [
+    "괌",
+    "하와이",
+    "발리",
+    "오키나와 럭셔리 리조트"
+   ]
+  },
+  {
+   "id": "mandarin-oriental",
+   "ko": "만다린 오리엔탈",
+   "full": "만다린 오리엔탈 호텔 그룹",
+   "en": "Mandarin Oriental Hotel Group",
+   "type": "hotel",
+   "role": "한국 홍보·마케팅 대행 (글로벌)",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [],
+   "kw": [
+    "만다린 오리엔탈",
+    "Mandarin Oriental"
+   ],
+   "comp": [
+    "페닌슐라",
+    "포시즌스",
+    "아만",
+    "로즈우드",
+    "리츠칼튼"
+   ]
+  },
+  {
+   "id": "airlink",
+   "ko": "Airlink",
+   "full": "에어링크 (남아공)",
+   "en": "Airlink",
+   "type": "airline",
+   "role": "한국 GSA",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "남아공",
+    "남아프리카",
+    "요하네스버그",
+    "케이프타운",
+    "아프리카",
+    "짐바브웨",
+    "나미비아",
+    "보츠와나",
+    "모잠비크"
+   ],
+   "kw": [
+    "에어링크",
+    "Airlink"
+   ],
+   "comp": [
+    "에미레이트",
+    "카타르항공",
+    "에티오피아항공",
+    "싱가포르항공",
+    "캐세이퍼시픽"
+   ]
+  },
+  {
+   "id": "azul",
+   "ko": "Azul",
+   "full": "아줄 브라질 항공",
+   "en": "Azul Brazilian Airlines",
+   "type": "airline",
+   "role": "한국 GSA",
+   "acc": null,
+   "fuel": null,
+   "gap": null,
+   "dest": [
+    "브라질",
+    "상파울루",
+    "리우데자네이루",
+    "남미",
+    "아르헨티나",
+    "칠레",
+    "페루"
+   ],
+   "kw": [
+    "아줄",
+    "Azul"
+   ],
+   "comp": [
+    "LATAM",
+    "아메리칸항공",
+    "유나이티드",
+    "델타",
+    "에미레이트",
+    "카타르항공"
+   ]
+  }
+ ],
+ "clientSlots": [
+  {
+   "id": "A",
+   "ko": "목적지 수요",
+   "en": "Destination Demand"
+  },
+  {
+   "id": "B",
+   "ko": "항공·접근성",
+   "en": "Air Access"
+  },
+  {
+   "id": "C",
+   "ko": "판매 채널",
+   "en": "Sales Channels"
+  },
+  {
+   "id": "D",
+   "ko": "경쟁 동향",
+   "en": "Competitive Landscape"
+  },
+  {
+   "id": "E",
+   "ko": "고객사 소식",
+   "en": "Client News"
+  }
+ ]
 }

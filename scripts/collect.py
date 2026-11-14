@@ -41,9 +41,17 @@ SOURCES = [
     ('세계여행신문', 'https://www.gtn.co.kr/home/news/news.asp', 'gtn', 'RSS 없음 · 목록(날짜 없음)'),
     ('Rio Times Online', 'https://riotimesonline.com/feed/', 'rss', '남미'),
     ('Further Africa', 'https://furtherafrica.com/feed/', 'rss', '아프리카'),
+    ('호텔앤레스토랑', 'https://www.hotelrestaurant.co.kr/rss/allArticle.xml', 'rss', '호텔 업계 (2026-11-15 추가)'),
+    ('Hospitality Net', 'https://www.hospitalitynet.org/news/global.xml', 'rss', '글로벌 호텔 업계 · 고객사 관련만'),
+    ('Skift', 'https://skift.com/feed/', 'rss', '글로벌 여행 업계 · 고객사 관련만'),
 ]
 # 종합지(연합·뉴시스·이데일리)는 여행·항공 관련 키워드가 제목에 있을 때만 보관
 GENERAL = {'연합뉴스', '뉴시스', '이데일리', 'Rio Times Online', 'Further Africa'}
+# 글로벌 업계지는 고객사·고객사 목적지·한국 관련 제목만 보관
+STRICT = {'Hospitality Net', 'Skift'}
+EN_DEST = ['Hong Kong', 'Vietnam', 'Indonesia', 'Bali', 'Jakarta', 'Okinawa', 'Honolulu', 'Waikiki', 'Hawaii', 'New York',
+           'San Francisco', 'Las Vegas', 'Spain', 'Madrid', 'Barcelona', 'Tahiti', 'French Polynesia', 'South Africa',
+           'Johannesburg', 'Cape Town', 'Brazil', 'Sao Paulo', 'São Paulo', 'Korea', 'Korean']
 TRAVEL_KW = ['여행', '관광', '항공', '공항', '출국', '해외', '면세', '호텔', '크루즈', '환율', '유가', '유류할증료', '비자', '여권',
              '노선', '취항', '증편', '운항', '소비자심리', 'CCSI', '소비자동향', 'OTA', '숙박', '패키지', '하나투어', '모두투어',
              'airline', 'airport', 'tourism', 'travel', 'route', 'flight', 'Airways', 'Air ', 'LATAM', 'Azul', 'Gol', 'Avianca',
@@ -63,6 +71,14 @@ MUST = {
     '지표': ['소비자심리지수', 'CCSI', '소비자동향조사', '환율', '원·달러', '원/달러'],
 }
 DROP_KW = ['인사', '승진', '부고', '수상', '시상', '채용', '봉사', '기부', '축제']  # 표시만, 지우지 않음
+
+# 고객사(호텔·항공 포함) 브랜드·목적지 키워드는 data/brief-data.json 의 clients 에서 읽는다 (고객사 목록과 항상 일치)
+try:
+    _D = json.load(open(os.path.join(ROOT, 'data', 'brief-data.json'), encoding='utf-8'))
+    CLIENT_KW = sorted({k for c in _D.get('clients', []) for k in (c.get('kw') or []) + (c.get('dest') or [])})
+except Exception:
+    CLIENT_KW = []
+MUST['고객사'] = CLIENT_KW
 
 
 def fetch(url, timeout=25):
@@ -145,7 +161,10 @@ def collect():
             for x in got:
                 if not x['link'] or not x['title']:
                     continue
-                if name in GENERAL and not any(k.lower() in x['title'].lower() for k in TRAVEL_KW):
+                tl = x['title'].lower()
+                if name in GENERAL and not any(k.lower() in tl for k in TRAVEL_KW + CLIENT_KW):
+                    continue
+                if name in STRICT and not any(k.lower() in tl for k in CLIENT_KW + EN_DEST):
                     continue
                 kept += 1
                 if x['link'] in items:
@@ -194,6 +213,8 @@ def window(items, start, end, label):
                 undated.append(x)
         elif s <= d < e:
             sel.append(x)
+    for x in sel + undated:  # 키워드 목록(고객사 등)이 바뀌어도 후보 목록은 항상 최신 기준으로 표시
+        x['flags'] = flags(x['title'])
     sel.sort(key=lambda x: (x['source'], x['date']))
     out = os.path.join(ROOT, 'runs', label)
     os.makedirs(out, exist_ok=True)

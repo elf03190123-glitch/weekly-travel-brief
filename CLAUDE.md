@@ -57,6 +57,8 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
    - `fuel`: 새 유류할증료 자료가 없으면 직전 판본 값을 복사. `fuelTab`은 주간 실행에서 건드리지 않는다.
    - `board`: 6개 계정 모두. 수는 그 계정 `acc` 태그 기사 수.
    - 새 매체·태그는 최상위 `"outenx"`·`"tagenx"`에 영문명을 넣는다.
+   - **고객사 배치 `cl`** (아래 「고객사별 보고서」): 01–03(s1·s4·s2)이 아닌 기사마다, 관련 고객사와 칸을 `"cl":[{"c":"hawaii","s":"B"}, …]`로 넣는다. 한 기사가 여러 고객사에 들어갈 수 있다. 관련 고객사가 없으면 `cl`을 빼고 내부 전체판에만 둔다.
+   - **고객사 메모 `clientNotes`**: 이번 호에 기사가 0건인 고객사는 `"clientNotes":{"<id>":{"watch":[["<영문 대문자 키>","<상시 모니터링 대상 — 이번 호 신규 없음>"]]}}`를 넣는다. `so`(시사점)는 **쓰지 않는다** — 사람이 확정한다. 시사점 초안은 report.md에만 쓴다.
    - 시사점(So-What)은 쓰지 않는다.
 6. **추가·검사**: `python3 -I scripts/add_edition.py runs/<라벨>/edition.json` — 오류 0건이 될 때까지 고친다.
 7. **빌드 확인**: `python3 -I scripts/build.py`.
@@ -71,12 +73,28 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 
 후보가 30건 미만이면 판본을 만들지 말고 `runs/<라벨>/report.md`에 원인(수집 실행 날짜, 실패 소스)을 적고 끝낸다.
 
-## 관광청 필터 (V2 화면)
+## 고객사별 보고서 (2026-11-15 EJ 결정)
 
-- 상단 `관광청` 줄: 전체 · 하와이 · 뉴욕 · 샌프란시스코 · 라스베가스 · 스페인 · 타히티. 기준은 기사의 `acc` 태그. `장거리 공통 기사 포함`(기본 켬)이면 `장거리 전 계정` 태그 기사도 보인다.
-- 필터를 고르면 본문·스코어보드·유류할증료 카드·워치리스트와 `문서 만들기`(뉴스레터 복사·PDF·Word·HTML)가 그 계정 기준으로 바뀌고, 제목이 「하와이 계정 주간 브리프」처럼 바뀐다.
-- 계정별 링크: 주소 끝에 `#hawaii` `#new-york` `#san-francisco` `#las-vegas` `#spain` `#tahiti`.
-- 계정 태그가 정확해야 계정별 보고서가 맞게 나온다.
+고객사 14곳 — 목록과 역할은 워크스페이스 `_shared/clients.md`, 화면·작성용 정의는 `data/brief-data.json`의 `clients`(id·이름·유형·목적지 `dest`·브랜드 `kw`·경쟁 목록 `comp`).
+
+- **구조**: 공통 01 정치·경제 · 02 소비자 심리 · 03 아웃바운드 동향(모든 고객사 같은 내용) + 고객사별 A–F.
+- **고객사 칸** (`clientSlots`):
+  - **A 목적지 수요** — 그 고객사 목적지(`dest`)의 검색·예약·출국 데이터, 목적지 수요 기사
+  - **B 항공·접근성** — 그 목적지 노선·좌석·운임·항공사 제휴. 항공 고객사(Airlink·Azul)는 자사·연결 항공 동향
+  - **C 판매 채널** — 여행사·OTA·홈쇼핑 상품과 판매, 기업 출장·MICE, BSP·GDS(항공 GSA 고객사)
+  - **D 경쟁 동향** — 고객사의 `comp` 목록(경쟁 목적지·호텔·항공사)에 해당하는 기사
+  - **E 고객사 소식** — 고객사 본사·브랜드·현지 파트너 발표, 고객사 목적지 홍보 콘텐츠
+  - **F 시사점·액션** — 사람이 `clientNotes.<id>.so`에 확정. Claude는 쓰지 않는다
+- **찾는 범위**: `candidates.md`의 `고객사` 플래그 기사, 그리고 매주 WebSearch로 고객사 브랜드 소식(예: Regal Hotels Hong Kong, Ascott Vietnam/Indonesia(Somerset·Citadines·Oakwood·lyf), Renaissance Honolulu, Halekulani Okinawa, Mandarin Oriental 신규 오픈·한국 활동, Airlink, Azul)을 확인한다. 고객사마다 1건 이상이 목표지만, 억지로 채우지 않고 0건이면 `clientNotes` 워치리스트를 남긴다.
+- **겹치는 고객사**: 하와이 = 하와이관광청 + 르네상스 호놀룰루. 오키나와 = 할레쿨라니 오키나와의 목적지이면서 하와이의 경쟁 목적지. 같은 기사를 각 고객사 칸에 따로 배치하고, 다른 고객사를 낮추는 표현은 쓰지 않는다.
+- **건수**: 공통 01–03은 기존 기준. 전체 기사 수는 30건 안팎(최대 36건)까지 허용한다.
+
+## 화면 (V2)
+
+- 상단 `고객사` 줄: 전체(내부용) · 관광청 6 · 호텔 6 · 항공 2. 고객사를 고르면 공통 01–03 + 그 고객사 A–F 보고서가 되고, 유류할증료 카드·워치리스트·`문서 만들기`(뉴스레터 복사·PDF·Word·HTML)도 그 형태로 나간다.
+- 링크: 주소 끝에 고객사 id — `#hawaii` `#new-york` `#san-francisco` `#las-vegas` `#spain` `#tahiti` `#regal-hk` `#ascott-vietnam` `#ascott-indonesia` `#renaissance-honolulu` `#halekulani-okinawa` `#mandarin-oriental` `#airlink` `#azul`.
+- `cl`이 없는 예전 판본(W35–W42)은 관광청 `acc` 태그와 섹션으로 칸을 추정해 보여 준다(호텔 고객사는 비어 있다).
+- 전체(내부용)는 기존 10개 섹션 그대로다.
 
 ## 아직 정하지 않은 것
 

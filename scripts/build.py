@@ -23,6 +23,8 @@ def js_map(name):
 TAGEN = js_map('TAGEN') | set(D.get('tagenx', {}))
 OUTEN = js_map('OUTEN') | set(D.get('outenx', {}))
 SECS = {s['id'] for s in D['sections']}
+CLIENTS = {c['id'] for c in D.get('clients', [])}
+SLOTS = {s['id'] for s in D.get('clientSlots', [])}
 
 def check_edition(E):
     errs = []
@@ -54,6 +56,11 @@ def check_edition(E):
             if len(t) != 2 or t[1] not in ('acc', 'mkt', 'fn'): e(f'{c}: 태그 형식 오류 {t}')
             elif t[0] not in TAGEN and HANGUL.search(t[0]): e(f'{c}: TAGEN 에 없는 태그 "{t[0]}" (템플릿 TAGEN 에 영문명 추가 필요)')
             if t[1] == 'acc' and t[0] not in ACCS: e(f'{c}: acc 태그는 6개 계정만 가능 "{t[0]}"')
+        for x in it.get('cl', []) or []:
+            if x.get('c') not in CLIENTS: e(f"{c}: 알 수 없는 고객사 id {x.get('c')} (data.clients 에 있는 id 만 가능)")
+            if x.get('s') not in SLOTS: e(f"{c}: 고객사 칸은 A–E 만 가능: {x.get('s')}")
+        if it.get('cl') and it.get('sec') in ('s1', 's4', 's2'):
+            e(f'{c}: 공통 섹션(01–03) 기사에는 cl 을 붙이지 않는다')
         for s in it.get('src', []):
             if len(s) != 4: e(f'{c}: 출처는 [매체, 날짜, URL, 제목] 4개여야 함'); continue
             out = s[0]
@@ -62,6 +69,8 @@ def check_edition(E):
                 e(f'{c}: OUTEN 에 없는 매체 "{out}" (템플릿 OUTEN 에 영문명 추가 필요)')
             if not str(s[2]).startswith('http'): e(f'{c}: 출처 URL 형식 오류')
             if not re.match(r'^\d{4}\.\d{2}\.\d{2}$', str(s[1])): e(f'{c}: 출처 날짜 형식(YYYY.MM.DD) 오류 {s[1]}')
+    for k in (E.get('clientNotes') or {}):
+        if k not in CLIENTS: e(f'clientNotes: 알 수 없는 고객사 id {k}')
     if E.get('issue', {}).get('count') not in (None, len(E.get('items', []))):
         e(f"issue.count({E['issue']['count']}) ≠ 기사 수({len(E.get('items', []))})")
     return errs

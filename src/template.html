@@ -529,6 +529,9 @@ button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
 .acc.sel{box-shadow:inset 3px 0 0 var(--accent);background:var(--accent-soft)}
 .acc.dim{opacity:.45}
 .accnone{font-size:12.5px;color:var(--ink-3);background:var(--surface);border:1px dashed var(--rule);padding:12px 16px;margin:0}
+.accf-groups{display:flex;flex-direction:column;gap:8px;flex:1 1 420px;min-width:0}
+.accf-g{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px}
+.accf-gl{font-size:11px;color:var(--ink-3);min-width:44px}
 .accview{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);
   border:1px solid var(--accent);border-radius:999px;padding:2px 10px;margin:0 0 10px}
 @media (max-width:640px){.accf-opt{margin-left:0}}
@@ -537,7 +540,7 @@ button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
 <div class="tabs" id="tabs" role="group" aria-label="화면 선택"><button type="button" data-tab="rep" aria-pressed="true">주간 브리프</button><button type="button" data-tab="fuel" aria-pressed="false">유류할증료</button></div>
 <header class="mast" id="mast"></header>
 <div class="edsw" id="edsw" role="group" aria-label="리포트 판본 선택"></div>
-<div class="accf" id="accf" role="group" aria-label="관광청 필터"></div>
+<div class="accf" id="accf" role="group" aria-label="고객사 필터"></div>
 <div id="app"></div>
 <div id="fueltab"></div>
 <div id="pv" hidden></div>
@@ -548,44 +551,82 @@ button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
 var D=JSON.parse(document.getElementById('brief-data').textContent);
 var cur=0;
 
-/* ================= V2 · 관광청 필터 ================= */
-var ACCS=[
- {ko:'하와이',en:'Hawaii',h:'hawaii',gap:/HAWAII/},
- {ko:'뉴욕',en:'New York',h:'new-york',gap:/\bNY\b|NEW YORK/},
- {ko:'샌프란시스코',en:'San Francisco',h:'san-francisco',gap:/\bSF\b|SAN FRANCISCO/},
- {ko:'라스베가스',en:'Las Vegas',h:'las-vegas',gap:/\bLAS\b|LAS VEGAS/},
- {ko:'스페인',en:'Spain',h:'spain',gap:/SPAIN/},
- {ko:'타히티',en:'Tahiti',h:'tahiti',gap:/TAHITI/}
-];
+/* ================= V2 · 고객사별 보고서 (2026-11-15) =================
+   공통: 01 정치·경제(s1) · 02 소비자 심리(s4) · 03 아웃바운드(s2)
+   고객사별: A 목적지 수요 · B 항공·접근성 · C 판매 채널 · D 경쟁 동향 · E 고객사 소식 · F 시사점(사람 확정)
+   기사의 cl:[{c:고객사id, s:'A'..'E'}] 로 배치. cl 이 없는 예전 판본은 계정 태그·섹션으로 추정. */
+var COMMONSEC={s1:1,s4:1,s2:1};
+var SLOTS=D.clientSlots||[];
+var ACCS=(D.clients||[]).map(function(c){return {h:c.id,ko:c.ko,full:c.full,en:c.en,type:c.type,acc:c.acc,fuel:c.fuel,
+ gap:c.gap?new RegExp(c.gap):null,comp:c.comp||[]};});
+var TYPEN={board:'관광청',hotel:'호텔',airline:'항공'};
 var COMMONTAG='장거리 전 계정';
 var ACC=null, COMMON=true;
 try{var _c=localStorage.getItem('v2-common');if(_c==='0')COMMON=false;}catch(e){}
+var OLDMAP={s5:'B',s3:'C',s6:'C',s9:'C',s7:'D',s8:'E',s10:'B'};
 function hasAcc(i,ko){return i.tags.some(function(t){return t[1]==='acc'&&t[0]===ko;});}
 function isCommon(i){return i.tags.some(function(t){return t[0]===COMMONTAG;});}
-function accMatch(i){if(!ACC)return true;return hasAcc(i,ACC.ko)||(COMMON&&isCommon(i));}
-function visItems(E){return E.items.filter(accMatch);}
-function accCount(E,a){return E.items.filter(function(i){return hasAcc(i,a.ko)||(COMMON&&isCommon(i));}).length;}
-function fuelVis(E){if(!E.fuel||!E.fuel.rows)return [];return E.fuel.rows.filter(function(r){return !ACC||r.acc===ACC.ko;});}
-function gapRows(E){
- if(!ACC)return E.gap.rows;
- return E.gap.rows.filter(function(r){
-  var k=String(r[0]).toUpperCase();
-  if(ACC.gap.test(k))return true;
-  return !ACCS.some(function(a){return a.gap.test(k);});
- });
+function edHasCl(E){return E.items.some(function(i){return i.cl&&i.cl.length;});}
+function slotOf(E,i,a){
+ if(COMMONSEC[i.sec])return null;
+ if(i.cl&&i.cl.length){for(var k=0;k<i.cl.length;k++)if(i.cl[k].c===a.h)return i.cl[k].s;return null;}
+ if(edHasCl(E))return null;
+ if(a.acc&&(hasAcc(i,a.acc)||(COMMON&&isCommon(i))))return OLDMAP[i.sec]||'C';
+ if(i.sec==='s10'){var t=i.tags.map(function(x){return x[0];});
+  if(a.h==='airlink'&&t.indexOf('아프리카')>=0)return 'B';
+  if(a.h==='azul'&&t.indexOf('남미')>=0)return 'B';}
+ return null;
 }
-function docTK(){return ACC?ACC.ko+' 계정 주간 브리프':'한국 아웃바운드 주간 브리프';}
-function docTE(){return ACC?ACC.en+' Account Weekly Brief':'Korea Outbound Weekly Brief';}
-function accBar(E){
+function clientItems(E,a){var out=[];E.items.forEach(function(i){var s=slotOf(E,i,a);
+ if(s){var c={};for(var k in i)c[k]=i[k];c.sec='c'+s;out.push(c);}});return out;}
+var EVC={};
+function EV(i){
+ var E=D.editions[i];if(!ACC)return E;
+ var key=i+'|'+ACC.h+'|'+COMMON;if(EVC[key])return EVC[key];
+ var common=E.items.filter(function(x){return COMMONSEC[x.sec];}),mine=clientItems(E,ACC),V={},k;
+ for(k in E)V[k]=E[k];
+ V.items=common.concat(mine);V.clientCount=mine.length;V.board=[];
+ if(E.fuel){V.fuel={};for(k in E.fuel)V.fuel[k]=E.fuel[k];
+  V.fuel.rows=(E.fuel.rows||[]).filter(function(r){return ACC.fuel&&r.acc===ACC.fuel;});}
+ var cn=(E.clientNotes||{})[ACC.h]||{},rows=[];
+ if(cn.watch&&cn.watch.length)rows=cn.watch;
+ else if(E.gap&&E.gap.rows&&ACC.gap)rows=E.gap.rows.filter(function(r){return ACC.gap.test(String(r[0]).toUpperCase());});
+ V.gap=rows.length?{h:'이번 호 신규 없음 — 상시 모니터링 대상',p:'',rows:rows}:null;
+ V.note=cn.so||'';
+ V.issue={};for(k in E.issue)V.issue[k]=E.issue[k];V.issue.count=V.items.length;
+ return EVC[key]=V;
+}
+function SECS(){
+ if(!ACC)return D.sections;
+ return D.sections.filter(function(s){return COMMONSEC[s.id];}).concat(SLOTS.map(function(s){
+  return {id:'c'+s.id,n:s.id,ko:s.ko,en:s.en,why:(s.id==='D'&&ACC.comp.length)?'경쟁 기준: '+ACC.comp.join(' · '):''};}));
+}
+function accMatch(i){return true;}
+function visItems(E){return E.items;}
+function accCount(E,a){var n=0;E.items.forEach(function(i){if(slotOf(E,i,a))n++;});return n;}
+function fuelVis(E){return (E.fuel&&E.fuel.rows)?E.fuel.rows:[];}
+function gapRows(E){return (E.gap&&E.gap.rows)?E.gap.rows:[];}
+function docTK(){return ACC?ACC.full+' 주간 브리프':'한국 아웃바운드 주간 브리프';}
+function docTE(){return ACC?ACC.en+' Weekly Brief':'Korea Outbound Weekly Brief';}
+function fBox(E){
+ return '<section id="cF"><p class="tagline">'+ACC.full+' · F</p><div class="shead"><h2>시사점·액션</h2><span class="en-h">Implications &amp; Actions</span></div>'+
+  (E.note?'<article class="item"><p>'+E.note+'</p></article>':'<p class="accnone">담당자가 확정합니다. 자동으로 작성하지 않습니다.</p>')+'</section>';
+}
+function accBar(){
  var el=document.getElementById('accf');if(!el)return;
- var chips=['<button type="button" data-acc="" aria-pressed="'+(!ACC)+'">전체<span class="n">'+E.items.length+'</span></button>'];
- ACCS.forEach(function(a){
-  var n=accCount(E,a);
-  chips.push('<button type="button" data-acc="'+a.h+'" aria-pressed="'+(ACC===a)+'"'+(n?'':' class="zero"')+'>'+a.ko+'<span class="n">'+n+'</span></button>');
+ var F=D.editions[cur];
+ var h=['<span class="accf-l">고객사</span><div class="accf-groups"><div class="accf-chips"><button type="button" data-acc="" aria-pressed="'+(!ACC)+'">전체 (내부용)<span class="n">'+F.items.length+'</span></button></div>'];
+ ['board','hotel','airline'].forEach(function(t){
+  var g=ACCS.filter(function(a){return a.type===t;});if(!g.length)return;
+  h.push('<div class="accf-g"><span class="accf-gl">'+TYPEN[t]+'</span><div class="accf-chips">'+g.map(function(a){
+   var n=accCount(F,a);
+   return '<button type="button" data-acc="'+a.h+'" aria-pressed="'+(ACC===a)+'"'+(n?'':' class="zero"')+'>'+a.ko+'<span class="n">'+n+'</span></button>';}).join('')+'</div></div>');
  });
- el.innerHTML='<span class="accf-l">관광청</span><div class="accf-chips">'+chips.join('')+'</div>'+
-  '<label class="accf-opt"><input type="checkbox" id="accf-common"'+(COMMON?' checked':'')+'> 장거리 공통 기사 포함</label>'+
-  (ACC?'<p class="accf-note">'+ACC.ko+' 태그 기사'+(COMMON?'와 장거리 전 계정 공통 기사':'')+'만 보여 줍니다. 문서 만들기도 이 기준으로 만들어집니다.</p>':'');
+ h.push('</div>');
+ if(!ACC||ACC.type==='board')h.push('<label class="accf-opt"><input type="checkbox" id="accf-common"'+(COMMON?' checked':'')+'> 장거리 공통 기사 포함(관광청)</label>');
+ h.push(ACC?'<p class="accf-note">'+ACC.full+' 보고서: 공통 01–03 + 고객사별 A–F. 문서 만들기도 이 형태로 만들어집니다.</p>'
+   :'<p class="accf-note">전체는 내부 검토용입니다. 고객사를 고르면 그 고객사 보고서가 됩니다.</p>');
+ el.innerHTML=h.join('');
 }
 function accByHash(){var h=String(location.hash||'').replace(/^#/,'');for(var k=0;k<ACCS.length;k++)if(ACCS[k].h===h)return ACCS[k];return undefined;}
 function setAcc(a,push){
@@ -614,8 +655,8 @@ document.getElementById('edsw').innerHTML=
 function mast(E){
  return '<div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div>'+
  '<div class="issue">ISSUE '+E.issue.no+' · '+E.issue.range+'</div></div>'+
- (ACC?'<p class="accview">'+ACC.ko+' · '+ACC.en+' 관점 · 전체 '+E.items.length+'건 중 '+visItems(E).length+'건</p>':'')+
- '<h1>'+(ACC?ACC.ko+' 계정 주간 브리프':'한국 아웃바운드 주간 브리프')+'</h1>'+
+ (ACC?'<p class="accview">'+ACC.full+' · '+ACC.en+' · 고객사 기사 '+E.clientCount+'건</p>':'')+
+ '<h1>'+(ACC?ACC.full+' 주간 브리프':'한국 아웃바운드 주간 브리프')+'</h1>'+
  '<p class="sub">뉴욕 · 샌프란시스코 · 하와이 · 라스베가스 · 스페인 · 타히티 6개 관광청 계정 관점으로 정리한 한국 여행시장 주간 동향. 한국어 요약을 기준으로 하고 영문을 나란히 병기합니다.</p>'+
  '<div class="meta">'+E.meta.filter(function(m){return m[0]!=='작성';})
    .map(function(m){return '<span><b>'+m[0]+'</b> '+m[1]+'</span>';}).join('')+'</div>'+
@@ -670,21 +711,21 @@ if(E.fuel&&E.fuel.rows&&E.fuel.rows.length){
   (E.fuel.src?'<p class="fuel-src">'+E.fuel.src[0]+' · '+E.fuel.src[1]+'</p>':'')+
   '</div>');
 }
-h.push('<div class="board"><h2>Account Scoreboard</h2><p class="note">이번 주 '+E.issue.count+'건 중 각 계정에 연결되는 기사 수. 0~1건 계정은 다음 주 소싱 우선순위입니다.</p><div class="acc-grid">');
+if(E.board&&E.board.length){h.push('<div class="board"><h2>Account Scoreboard</h2><p class="note">이번 주 '+E.issue.count+'건 중 각 계정에 연결되는 기사 수. 0~1건 계정은 다음 주 소싱 우선순위입니다.</p><div class="acc-grid">');
 E.board.forEach(function(a){h.push('<div class="acc'+(a.hot?' hot':'')+(a.cold?' cold':'')+(ACC?(a.nm===ACC.ko?' sel':' dim'):'')+'"><div class="n'+(a.cold?' zero':'')+'">'+a.n+'</div><div class="nm">'+a.nm+'</div><div class="ds">'+a.ds+'</div></div>');});
-h.push('</div></div>');
+h.push('</div></div>');}
 
 h.push('<nav class="bar"><div class="navlinks">');
-D.sections.forEach(function(s){h.push('<a href="#'+s.id+'"'+(s.aug?' class="new"':'')+'>'+s.n+' '+s.ko.replace(/ · /g,'·')+'</a>');});
+SECS().forEach(function(s){h.push('<a href="#'+s.id+'"'+(s.aug?' class="new"':'')+'>'+s.n+' '+s.ko.replace(/ · /g,'·')+'</a>');});
 h.push('<a href="#std">편성 기준</a></div><span class="barsep"></span>'+
  '<button type="button" class="expbtn" id="expbtn" aria-expanded="false" aria-controls="exp">'+
  '문서 만들기<span class="car" id="expcar">▾</span></button></nav>');
 h.push(expPanel(E));
 
-D.sections.forEach(function(s){
+SECS().forEach(function(s){
  var its=visItems(E).filter(function(i){return i.sec===s.id;});
  h.push('<section id="'+s.id+'"'+(s.aug?' class="aug"':'')+'>');
- h.push('<p class="tagline">Section '+s.n+' · '+(s.aug?'신규 보완 영역':'기존 영역')+'</p>');
+ h.push('<p class="tagline">'+((ACC&&/^c[A-E]$/.test(s.id))?ACC.full+' · '+s.n:'Section '+s.n+' · '+(s.aug?'신규 보완 영역':'기존 영역'))+'</p>');
  h.push('<div class="shead"><h2>'+s.ko+'</h2><span class="en-h">'+s.en+'</span></div>');
  if(s.why)h.push('<p class="why">'+s.why+'</p>');
  its.forEach(function(i){
@@ -697,7 +738,7 @@ D.sections.forEach(function(s){
    srcHtml(i,'en')+'</div></div></article>');
  });
  if(ACC&&!its.length)h.push('<p class="accnone">이번 호 이 섹션에는 '+ACC.ko+' 관련 기사가 없습니다.</p>');
- if(s.id==='s8'&&E.gap){
+ if((s.id==='s8'||s.id==='cE')&&E.gap&&E.gap.rows&&E.gap.rows.length){
   h.push('<div class="gap"><h3>'+E.gap.h+'</h3><p>'+E.gap.p+'</p><div class="watch">');
   gapRows(E).forEach(function(r){h.push('<div class="watch-row"><div class="w-k">'+r[0]+'</div><div class="w-v">'+r[1]+'</div></div>');});
   h.push('</div></div>');
@@ -706,6 +747,7 @@ D.sections.forEach(function(s){
 });
 
 
+if(ACC)h.push(fBox(E));
 h.push('<section id="std" class="std-sec"><h2>편성 기준</h2><p class="lead">2026년 8월 29일 확정 · 8월 31일 목차 개편(Section 07 패키지·럭셔리 신설). 두 판본 모두 동일 기준으로 편성합니다.</p><div class="std-grid">');
 D.std.forEach(function(c){h.push('<div class="std-card"><h4>'+c.h+'</h4><ul>'+c.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>');});
 h.push('</div><div class="std-src"><h4>확정 소스 로스터</h4><p>'+D.roster+'</p></div>');
@@ -738,14 +780,14 @@ function indFiltered(E){
   return true;
  });
 }
-function fuelInit(E){FSEL={};if(E.fuel&&E.fuel.rows)E.fuel.rows.forEach(function(r){FSEL[r.acc]=!ACC||r.acc===ACC.ko;});}
+function fuelInit(E){FSEL={};if(E.fuel&&E.fuel.rows)E.fuel.rows.forEach(function(r){FSEL[r.acc]=true;});}
 function fuelRows(E){if(!E.fuel||!E.fuel.rows)return [];return E.fuel.rows.filter(function(r){return !!FSEL[r.acc];});}
 
 function tagsOf(i){
  return i.tags.filter(function(t){return t[1]==='fn'?OPT.fn:OPT.acc;})
   .map(function(t){return tagLabel(t[0]);});
 }
-function secTitle(s){return (OPT.secno?s.n+' ':'')+(LANG==='en'?s.en:s.ko);}
+function secTitle(s){return ((OPT.secno||/^c[A-E]$/.test(s.id))?s.n+'. ':'')+(LANG==='en'?s.en:s.ko);}
 function footNote(){
  if(!OPT.note)return '';
  if(OPT.acc||OPT.fn)return LB('계정 태그와 섹션 구분은 AVIAREPS Korea 편집 기준이며 원문 기사의 표현이 아닙니다.',
@@ -784,7 +826,7 @@ function expPanel(E){
   '<button type="button" class="lnk" data-all="1">전체 선택</button>'+
   '<button type="button" class="lnk" data-all="0">전체 해제</button></div>');
  h.push('<div class="pickwrap" id="pickwrap" hidden><div class="pick">');
- D.sections.forEach(function(s){
+ SECS().forEach(function(s){
   var its=visItems(E).filter(function(i){return i.sec===s.id;});
   h.push('<div class="pick-s"><label><input type="checkbox" class="sbox" data-sec="'+s.id+'"'+(its.length?'':' disabled')+
    '><span class="sn">'+s.n+'</span><span>'+esc(s.ko)+'</span></label>');
@@ -829,7 +871,7 @@ function expPanel(E){
 }
 
 function syncPanel(){
- var E=D.editions[cur], n=selCodes(E).length;
+ var E=EV(cur), n=selCodes(E).length;
  Array.prototype.forEach.call(document.querySelectorAll('.ibox'),function(b){b.checked=!!SEL[b.dataset.code];});
  Array.prototype.forEach.call(document.querySelectorAll('.sbox'),function(b){
   var its=visItems(E).filter(function(i){return i.sec===b.dataset.sec;});
@@ -967,7 +1009,7 @@ function buildDoc(E){
    }).join('')+'</div>'+
    (E.fuel.note?'<div class="dfuelnote">'+esc(LB(E.fuel.note,E.fuel.noteen))+(docFx?esc(LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.')):'')+'</div>':'')+
    '</div>');}
- D.sections.forEach(function(s){
+ SECS().forEach(function(s){
   var si=its.filter(function(i){return i.sec===s.id;});
   if(!si.length)return;
   h.push('<div class="ds"><div class="ds-h"><b>'+esc(secTitle(s))+'</b>'+
@@ -1079,7 +1121,7 @@ function buildMail(E){
    (E.fuel.note?'<br>'+msp(esc(LB(E.fuel.note,E.fuel.noteen))+(mailFx?esc(LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.')):''),'font-size:7.5pt;color:'+CFAINT+';'):'')+
    '</td></tr></table>','10px 0 0 0'));}
 
- D.sections.forEach(function(s){
+ SECS().forEach(function(s){
   var si=its.filter(function(i){return i.sec===s.id;});
   if(!si.length)return;
   h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse"><tr>'+
@@ -1206,7 +1248,7 @@ function buildDocx(E){
    body.push(dxP(dxRun(nm+': ',{b:1,sz:18})+dxRun('KE '+ke+'   OZ '+oz,{sz:18,color:'5A6A76'}),{after:20}));});
   if(E.fuel.note)body.push(dxP(dxRun(LB(E.fuel.note,E.fuel.noteen)+(dxFx?LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.'):''),{sz:16,color:'8494A0'}),{after:20}));
   body.push(dxP('',{after:120}));}
- D.sections.forEach(function(s){
+ SECS().forEach(function(s){
   var si=its.filter(function(i){return i.sec===s.id;});
   if(!si.length)return;
   body.push(dxP(dxRun(secTitle(s),{b:1,sz:28})+
@@ -1415,7 +1457,7 @@ if(window.claude&&typeof claude.use==='function'){
  setTimeout(function(){URL.revokeObjectURL(u);a.remove();},4000);return Promise.resolve();}catch(e){return Promise.reject(e);}}};}
 
 document.addEventListener('click',function(ev){
- var E=D.editions[cur],t=ev.target;
+ var E=EV(cur),t=ev.target;
  var b=t.closest?t.closest('button'):null;
  if(!b)return;
  if(b.id==='expbtn'){var p=document.getElementById('exp');p.hidden=!p.hidden;
@@ -1440,7 +1482,7 @@ document.addEventListener('click',function(ev){
 });
 
 document.addEventListener('change',function(ev){
- var E=D.editions[cur],t=ev.target;
+ var E=EV(cur),t=ev.target;
  if(t.classList&&t.classList.contains('obox')){OPT[t.dataset.opt]=t.checked;syncPanel();
   var v=document.getElementById('pv');if(v&&!v.hidden)doPreview(E);return;}
  if(t.classList&&t.classList.contains('ibox')){SEL[t.dataset.code]=t.checked;syncPanel();return;}
@@ -2157,12 +2199,12 @@ document.addEventListener('focusout',function(ev){if(ev.target&&ev.target.classL
 })();
 
 function show(i){
- cur=i;var E=D.editions[i];
+ cur=i;var E=EV(i);
  selInit(E);
  fuelInit(E);
  document.getElementById('mast').innerHTML=mast(E);
  document.getElementById('app').innerHTML=render(E);
- accBar(E);
+ accBar();
  var pv=document.getElementById('pv');pv.hidden=true;pv.innerHTML='';
  Array.prototype.forEach.call(document.querySelectorAll('.edsw button'),function(b){
   b.setAttribute('aria-pressed',String(+b.dataset.i===i));});
