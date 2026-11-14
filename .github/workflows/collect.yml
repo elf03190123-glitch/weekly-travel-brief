@@ -1,0 +1,34 @@
+name: collect
+# 6시간마다 RSS를 모아 data/inbox 에 쌓는다 (대부분의 RSS가 1~4일치만 보여 주므로 자주 돌린다)
+on:
+  schedule:
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Collect RSS
+        run: python3 -I scripts/collect.py
+      - name: Commit inbox
+        run: |
+          git config user.name "weekly-brief-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/inbox
+          if git diff --cached --quiet; then echo "변경 없음"; exit 0; fi
+          git commit -m "collect: $(TZ=Asia/Seoul date '+%Y-%m-%d %H:%M KST')"
+          git pull --rebase --autostash
+          git push

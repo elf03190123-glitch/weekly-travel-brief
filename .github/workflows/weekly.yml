@@ -1,0 +1,89 @@
+name: weekly
+# 매주 월요일 10:00 KST: 수집 → Claude가 선별·작성 → 커밋 → Pages 배포
+# 필요: 저장소 Secret ANTHROPIC_API_KEY. 선택: 저장소 변수 BRIEF_MODEL (기본 claude-sonnet-5-5)
+on:
+  schedule:
+    - cron: '0 1 * * 1'   # 01:00 UTC = 10:00 KST
+  workflow_dispatch:
+    inputs:
+      end:
+        description: '기간 끝 (KST, 예: 2026-11-16T10:00). 비우면 이번 월요일 10:00'
+        required: false
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    outputs:
+      published: ${{ steps.commit.outputs.published }}
+    steps:
+      - name: Check API key
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then
+            echo "::error::저장소 Secret ANTHROPIC_API_KEY 가 없습니다. Settings → Secrets and variables → Actions 에서 추가하세요."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Window
+        id: win
+        run: |
+          export TZ=Asia/Seoul
+          if [ -n "${{ github.event.inputs.end }}" ]; then END="${{ github.event.inputs.end }}"; else
+            END="$(date -d "$(date +%Y-%m-%d) -$(( ($(date +%u) + 6) % 7 )) days" +%Y-%m-%d)T10:00"; fi
+          START="$(date -d "${END%T*} -7 days" +%Y-%m-%d)T10:00"
+          LABEL="$(date -d "${START%T*}" +%G-W%V)"
+          echo "start=$START" >> "$GITHUB_OUTPUT"; echo "end=$END" >> "$GITHUB_OUTPUT"; echo "label=$LABEL" >> "$GITHUB_OUTPUT"
+          echo "기간 $START ~ $END · 라벨 $LABEL"
+      - name: Collect + candidates
+        run: python3 -I scripts/collect.py --window "${{ steps.win.outputs.start }}" "${{ steps.win.outputs.end }}" --label "${{ steps.win.outputs.label }}"
+      - name: Claude writes the edition
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            저장소 루트의 CLAUDE.md 「주간 실행」 절차를 따라 이번 호를 작성하라.
+            - 기간: ${{ steps.win.outputs.start }} ~ ${{ steps.win.outputs.end }} (KST), 라벨: ${{ steps.win.outputs.label }}
+            - 1~2단계(기간 계산, 후보 목록)는 이미 끝났다: runs/${{ steps.win.outputs.label }}/candidates.md, fx.json
+            - 편집 기준은 .claude/skills/korea-weekly-travel-report/SKILL.md 의 2~4단계와 고정 표기를 따른다. 산출물·발행 절은 무시한다.
+            - runs/${{ steps.win.outputs.label }}/edition.json 을 쓰고, python3 -I scripts/add_edition.py 로 오류 0건까지 고친 뒤 python3 -I scripts/build.py 가 통과하는지 확인한다.
+            - runs/${{ steps.win.outputs.label }}/report.md 에 보고를 남긴다.
+            - git commit·push 는 하지 않는다(워크플로가 한다). 개인 메일은 어디에도 쓰지 않는다.
+          claude_args: |
+            --model ${{ vars.BRIEF_MODEL || 'claude-sonnet-5-5' }}
+            --max-turns 200
+            --permission-mode acceptEdits
+            --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(python3:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(grep:*),Bash(wc:*)"
+      - name: Commit
+        id: commit
+        run: |
+          git config user.name "weekly-brief-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data runs
+          if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; echo "변경 없음"; exit 0; fi
+          git commit -m "weekly: ${{ steps.win.outputs.label }}"
+          git pull --rebase --autostash
+          git push
+          echo "published=true" >> "$GITHUB_OUTPUT"
+  deploy:
+    needs: write
+    if: needs.write.outputs.published == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

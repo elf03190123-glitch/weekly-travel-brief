@@ -1,0 +1,2638 @@
+<title>한국 주간 트래블 브리프 V2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Serif:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#eef1f4; --surface:#ffffff; --surface-2:#f7f9fb;
+  --ink:#0d151c; --ink-2:#54646f; --ink-3:#8494a0;
+  --rule:#d3dae0; --rule-soft:#e4e9ed;
+  --accent:#b3122b; --accent-soft:#fae8eb;
+  --steel:#25607f; --steel-soft:#e5eff5;
+  --amber:#96600a; --amber-soft:#faf0dc;
+  --shadow:0 1px 2px rgba(13,21,28,.06),0 8px 24px -16px rgba(13,21,28,.28);
+  --ko:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --en:"IBM Plex Serif",Georgia,"Times New Roman",serif;
+  --disp:"Noto Serif KR","Nanum Myeongjo",Georgia,serif;
+  --mono:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0b1116; --surface:#131b21; --surface-2:#0f171d;
+    --ink:#e3eaf0; --ink-2:#8d9daa; --ink-3:#6b7c88;
+    --rule:#222e37; --rule-soft:#1a242c;
+    --accent:#ff6076; --accent-soft:#2b1219;
+    --steel:#78b2d6; --steel-soft:#122430;
+    --amber:#e0a34a; --amber-soft:#2a2114;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0b1116; --surface:#131b21; --surface-2:#0f171d;
+  --ink:#e3eaf0; --ink-2:#8d9daa; --ink-3:#6b7c88;
+  --rule:#222e37; --rule-soft:#1a242c;
+  --accent:#ff6076; --accent-soft:#2b1219;
+  --steel:#78b2d6; --steel-soft:#122430;
+  --amber:#e0a34a; --amber-soft:#2a2114;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -16px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--ko);
+  font-size:15px;line-height:1.72;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px 96px}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:2px solid var(--ink);padding:44px 0 18px;margin-bottom:0}
+.mast-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px}
+.brandline{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.issue{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3)}
+h1{font-family:var(--disp);font-weight:700;font-size:clamp(30px,4.6vw,46px);line-height:1.18;
+  margin:14px 0 6px;letter-spacing:-.02em;text-wrap:balance}
+.sub{font-size:14px;color:var(--ink-2);margin:0 0 18px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:11.5px;color:var(--ink-3)}
+.byline{font-family:var(--mono);font-size:11.5px;color:var(--ink-3);margin-top:8px;padding-bottom:6px;text-align:left}
+.byline b{color:var(--ink-2);font-weight:500}
+.meta b{color:var(--ink-2);font-weight:500}
+
+/* ---------- indicator strip ---------- */
+.ind{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;
+  background:var(--rule-soft);border:1px solid var(--rule);margin:26px 0 0}
+.ind-c{background:var(--surface);padding:14px 18px 15px;min-width:0}
+.ind-k{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.ind-v{font-family:var(--mono);font-size:30px;font-weight:500;line-height:1.1;margin-top:6px;
+  font-variant-numeric:tabular-nums;color:var(--ink)}
+.ind-u{font-size:12px;color:var(--ink-3);margin-left:5px;letter-spacing:.04em}
+.ind-s{font-size:11.5px;color:var(--ink-2);margin-top:5px}
+.ind-src{margin-top:6px}
+.ind-src a{font-family:var(--mono);font-size:9.5px;color:var(--steel);text-decoration:none;
+  display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.85}
+.ind-src a:hover,.ind-src a:focus-visible{text-decoration:underline;opacity:1}
+
+/* ---------- scoreboard ---------- */
+.board{background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  margin:14px 0 8px;padding:20px 22px;box-shadow:var(--shadow)}
+.board h2{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 4px;font-weight:500}
+.board .note{font-size:12.5px;color:var(--ink-2);margin:0 0 16px}
+.acc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+.acc{background:var(--surface);padding:12px 14px 13px}
+.acc .n{font-family:var(--mono);font-size:26px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums;color:var(--ink)}
+.acc .n.zero{color:var(--ink-3)}
+.acc .nm{font-size:13px;font-weight:600;margin-top:7px}
+.acc .ds{font-size:11.5px;color:var(--ink-2);margin-top:3px;line-height:1.5}
+.acc.hot{box-shadow:inset 3px 0 0 var(--accent)}
+.acc.cold{box-shadow:inset 3px 0 0 var(--rule)}
+
+/* ---------- fuel surcharge table ---------- */
+.fuel{background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  margin:14px 0 8px;padding:20px 22px;box-shadow:var(--shadow)}
+.fuel h2{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 4px;font-weight:500}
+.fuel .note{font-size:12.5px;color:var(--ink-2);margin:0 0 16px}
+.fuel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft)}
+.fuel-c{background:var(--surface);padding:12px 14px 13px}
+.fuel-nm{font-size:13px;font-weight:600}
+.fuel-en{font-family:var(--en);font-size:11px;font-weight:400;color:var(--ink-3)}
+.fuel-rows{margin-top:8px;display:flex;flex-direction:column;gap:4px}
+.fuel-r{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+.fuel-l{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--steel)}
+.fuel-v{font-family:var(--mono);font-size:15px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.fuel-v i{font-style:normal;font-size:10.5px;color:var(--ink-3);margin-left:3px}
+.fuel-v.na{font-family:var(--ko);font-size:12px;color:var(--ink-3)}
+.fuel-foot{font-size:11.5px;color:var(--ink-2);margin:12px 0 0}
+.fuel-src{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:6px 0 0}
+
+/* ---------- controls ---------- */
+.bar{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule);
+  padding:10px 0;margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.navlinks{display:flex;flex-wrap:wrap;gap:2px}
+.navlinks a{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink-2);
+  text-decoration:none;padding:5px 9px;border-radius:2px;white-space:nowrap}
+.navlinks a:hover,.navlinks a:focus-visible{background:var(--surface);color:var(--ink);outline:none}
+.navlinks a.new{color:var(--amber)}
+
+/* ---------- sections ---------- */
+section{margin-top:44px;scroll-margin-top:64px}
+.shead{display:flex;align-items:flex-end;gap:12px;justify-content:space-between;
+  border-bottom:1px solid var(--ink);padding-bottom:8px;margin-bottom:2px}
+.shead h2{font-family:var(--disp);font-size:21px;font-weight:700;margin:0;letter-spacing:-.01em}
+.shead .en-h{font-family:var(--en);font-size:12.5px;color:var(--ink-3);font-style:normal}
+.tagline{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;font-weight:500}
+section.aug .tagline{color:var(--amber)}
+section.aug .shead{border-bottom-color:var(--amber)}
+.why{font-size:12.5px;color:var(--ink-2);background:var(--amber-soft);border-left:2px solid var(--amber);
+  padding:9px 13px;margin:12px 0 0;border-radius:0 2px 2px 0}
+
+/* ---------- item ---------- */
+.item{background:var(--surface);border:1px solid var(--rule);border-top:0;padding:20px 22px 22px}
+.item:first-of-type{border-top:1px solid var(--rule)}
+section.aug .item{box-shadow:inset 3px 0 0 var(--amber-soft)}
+.ihead{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-bottom:12px}
+.code{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);letter-spacing:.06em}
+section.aug .code{color:var(--amber)}
+.chip{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:2px 8px;border-radius:999px;
+  border:1px solid var(--steel);color:var(--steel);background:var(--steel-soft)}
+.chip.mkt{border-color:var(--rule);color:var(--ink-3);background:var(--surface-2)}
+.chip.fn{border-color:var(--rule);color:var(--ink-2);background:transparent}
+.cols{display:grid;grid-template-columns:1.1fr 1fr;gap:0 30px}
+.cols>*{min-width:0}
+.ko-col{padding-right:30px;border-right:1px solid var(--rule-soft);min-width:0}
+.en-col{color:var(--ink-2);min-width:0}
+.ko-col h3{font-family:var(--disp);font-size:17.5px;font-weight:700;line-height:1.42;margin:0 0 9px;
+  letter-spacing:-.01em;text-wrap:balance}
+.ko-col p{margin:0;font-size:14.5px;line-height:1.78}
+.en-col h3{font-family:var(--en);font-size:14px;font-weight:600;line-height:1.45;margin:0 0 9px;color:var(--ink-2)}
+.en-col p{font-family:var(--en);font-size:13.5px;line-height:1.7;margin:0}
+
+/* ---------- gap card ---------- */
+.gap{background:var(--surface);border:1px dashed var(--rule);padding:20px 22px;border-radius:2px}
+.gap h3{font-family:var(--disp);font-size:16px;margin:0 0 8px}
+.gap p{font-size:13.5px;color:var(--ink-2);margin:0 0 14px;max-width:70ch}
+.watch{display:grid;gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+.watch-row{background:var(--surface);display:grid;grid-template-columns:150px 1fr;gap:14px;padding:9px 13px;font-size:13px}
+.watch-row .w-k{font-family:var(--mono);font-size:11px;color:var(--steel);letter-spacing:.04em;padding-top:3px}
+.watch-row .w-v{color:var(--ink-2)}
+.watch-row .w-v em{font-style:normal;color:var(--ink);font-weight:500}
+
+/* ---------- sources ---------- */
+.src-sec{margin-top:56px;border-top:2px solid var(--ink);padding-top:22px}
+.src-sec h2{font-family:var(--disp);font-size:22px;margin:0 0 4px}
+.src-sec .lead{font-size:13px;color:var(--ink-2);margin:0 0 22px}
+.src-grp{margin-bottom:26px}
+.src-grp h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 8px;padding-bottom:6px;border-bottom:1px solid var(--rule);font-weight:500}
+.src{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:9px 0;border-bottom:1px solid var(--rule-soft);font-size:13px}
+.src .sc{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.06em;padding-top:2px}
+.src-grp.aug .sc{color:var(--amber)}
+.src .st{font-weight:500;margin-bottom:2px;line-height:1.5}
+.src a{font-family:var(--mono);font-size:11.5px;color:var(--steel);word-break:break-all;text-decoration:none;line-height:1.6}
+.src a:hover,.src a:focus-visible{text-decoration:underline}
+.outlet{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em}
+
+footer{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);
+  font-family:var(--mono);font-size:11px;color:var(--ink-3);line-height:1.9}
+footer b{color:var(--ink-2);font-weight:500}
+
+@media (max-width:820px){
+  .cols{grid-template-columns:1fr;gap:16px}
+  .ko-col{border-right:0;padding-right:0;padding-bottom:16px;border-bottom:1px solid var(--rule-soft)}
+  .watch-row{grid-template-columns:1fr;gap:2px}
+  .src{grid-template-columns:1fr;gap:2px}
+  .bar{position:static}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.std-sec{margin-top:52px;border-top:2px solid var(--ink);padding-top:22px}
+.std-sec h2{font-family:var(--disp);font-size:22px;margin:0 0 4px}
+.std-sec .lead{font-size:13px;color:var(--ink-2);margin:0 0 20px}
+.std-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:1px;background:var(--rule-soft);border:1px solid var(--rule-soft)}
+.std-card{background:var(--surface);padding:16px 18px 18px}
+.std-card h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 10px;font-weight:500}
+.std-card ul{margin:0;padding-left:16px;font-size:13px;line-height:1.7;color:var(--ink-2)}
+.std-card li{margin-bottom:4px}
+.std-card em{font-style:normal;color:var(--ink);font-weight:600}
+.std-src{margin-top:16px;background:var(--surface-2);border:1px solid var(--rule);padding:14px 18px}
+.std-src h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px;font-weight:500}
+.std-src p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.7}
+
+.src-in{margin-top:12px;padding-top:8px;border-top:1px solid var(--rule-soft)}
+.src-1{font-size:11.5px;line-height:1.5;margin-bottom:3px}
+.src-1:last-child{margin-bottom:0}
+.s-out{font-family:var(--mono);font-size:10px;letter-spacing:.03em;color:var(--steel);margin-right:6px;white-space:nowrap}
+.s-date{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-right:6px;font-variant-numeric:tabular-nums}
+a.s-tit{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}
+a.s-tit:hover,a.s-tit:focus-visible{color:var(--ink);border-bottom-color:var(--ink-3)}
+.s-url{display:block;max-width:100%;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);opacity:.75;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.en-col .src-1{font-family:var(--en);font-size:11.5px}
+.en-col .s-out,.en-col .s-date,.en-col .s-url{font-family:var(--mono)}
+</style>
+<style>
+.edsw{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--rule);border-radius:2px;overflow:hidden;
+  background:var(--surface);margin:22px 0 0}
+.ed-quick{display:flex;flex:1 1 340px;min-width:0}
+.ed-more{display:flex;align-items:center;gap:9px;padding:9px 14px;flex:0 1 auto;
+  border-left:1px solid var(--rule);background:var(--surface-2)}
+.ed-more label{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);white-space:nowrap}
+.ed-more select{font-family:var(--ko);font-size:12.5px;color:var(--ink);background:var(--surface);
+  border:1px solid var(--rule);border-radius:2px;padding:6px 9px;max-width:260px;cursor:pointer}
+.ed-more select:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+@media (max-width:640px){
+  .ed-quick{flex:1 1 100%}
+  .ed-more{flex:1 1 100%;border-left:0;border-top:1px solid var(--rule)}
+  .ed-more select{flex:1;max-width:none}
+}
+.edsw button{flex:1;text-align:left;font-family:var(--ko);padding:11px 16px;border:0;cursor:pointer;
+  background:transparent;color:var(--ink-2);border-left:1px solid var(--rule)}
+.edsw button:first-child{border-left:0}
+.edsw button b{display:block;font-size:13.5px;font-weight:600;color:var(--ink)}
+.edsw button span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;margin-top:3px;color:var(--ink-3)}
+.edsw button[aria-pressed="true"]{background:var(--ink)}
+.edsw button[aria-pressed="true"] b,.edsw button[aria-pressed="true"] span{color:var(--surface)}
+.edsw button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+
+/* ---------- export panel ---------- */
+.expbtn{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--surface);background:var(--ink);
+  border:0;border-radius:2px;padding:6px 12px;cursor:pointer;margin-left:12px;white-space:nowrap}
+.expbtn:hover{opacity:.88}
+.expbtn .car{display:inline-block;margin-left:5px;font-size:9px;vertical-align:1px}
+.barsep{width:1px;height:18px;background:var(--rule);margin-left:auto}
+.exp{background:var(--surface);border:1px solid var(--rule);border-radius:3px;margin-top:22px;
+  padding:20px 22px;box-shadow:var(--shadow);scroll-margin-top:64px}
+.exp[hidden]{display:none}
+.exp h2{font-family:var(--disp);font-size:19px;margin:0 0 4px}
+.exp .lead{font-size:12.5px;color:var(--ink-2);margin:0 0 14px}
+.exp-row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 0;border-top:1px solid var(--rule-soft)}
+.exp-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);min-width:74px}
+.seg{display:flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.seg button{font-family:var(--ko);font-size:12.5px;padding:6px 14px;border:0;border-left:1px solid var(--rule);
+  background:transparent;color:var(--ink-2);cursor:pointer}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.opts{display:flex;flex-wrap:wrap;gap:4px 14px}
+.optsep{width:1px;height:16px;background:var(--rule-soft)}
+.sumbtn{font-family:var(--ko);font-size:13px;font-weight:600;color:var(--ink);background:var(--surface-2);
+  border:1px solid var(--rule);border-radius:2px;padding:6px 12px;cursor:pointer}
+.sumbtn:hover{border-color:var(--ink-3)}
+.sumbtn .car{font-size:9px;margin-left:6px;color:var(--ink-3);display:inline-block}
+.pickwrap[hidden]{display:none}
+.og{display:flex;align-items:center;gap:8px;padding-right:16px;border-right:1px solid var(--rule-soft);margin-right:8px}
+.og:last-of-type{border-right:0}
+.og-l{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.lnk2{font-family:var(--ko);font-size:13px;color:var(--steel);background:none;border:0;cursor:pointer;
+  padding:6px 4px;text-decoration:underline;text-underline-offset:3px}
+.lnk2:hover{color:var(--ink)}
+.lnk2:disabled{opacity:.35;cursor:not-allowed;text-decoration:none}
+.opt{display:flex;gap:5px;align-items:center;font-size:12.5px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.lnk{font-family:var(--mono);font-size:11px;color:var(--steel);background:none;border:0;cursor:pointer;padding:4px 4px}
+.lnk:hover{text-decoration:underline}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft);margin-top:2px}
+.pick-s{background:var(--surface);padding:11px 13px 12px}
+.pick-s>label{display:flex;gap:7px;align-items:baseline;font-size:12.5px;font-weight:600;cursor:pointer}
+.pick-s .sn{font-family:var(--mono);font-size:10.5px;color:var(--ink-3)}
+.pick-i{display:flex;gap:6px;align-items:baseline;margin:6px 0 0 20px;font-size:12px;color:var(--ink-2);line-height:1.5;cursor:pointer}
+.pick-i .ic{font-family:var(--mono);font-size:10px;color:var(--ink-3);flex:none}
+.pick-e{margin:6px 0 0 20px;font-size:11.5px;color:var(--ink-3)}
+.exp-go{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px;padding-top:14px;border-top:1px solid var(--rule)}
+.btn{font-family:var(--ko);font-size:13px;font-weight:600;padding:9px 16px;border-radius:2px;cursor:pointer;border:1px solid var(--ink)}
+.btn.p{background:var(--ink);color:var(--surface)}
+.btn.s{background:transparent;color:var(--ink)}
+.btn:disabled{opacity:.35;cursor:not-allowed}
+.exp-note{font-size:11.5px;color:var(--ink-3)}
+.exp-msg{font-size:12.5px;margin-top:10px;padding:9px 12px;border-radius:2px;line-height:1.6}
+.exp-msg[hidden]{display:none}
+.exp-msg.ok{background:var(--steel-soft);color:var(--steel);border-left:2px solid var(--steel)}
+.exp-msg.err{background:var(--accent-soft);color:var(--accent);border-left:2px solid var(--accent)}
+
+/* ---------- preview ---------- */
+#pv{margin-top:22px;background:var(--surface);border:1px solid var(--rule);padding:26px 28px;box-shadow:var(--shadow)}
+#pv[hidden]{display:none}
+.pv-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid var(--rule)}
+.pv-bar .t{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-right:auto}
+</style>
+<style id="trend-css">
+/* ---------- Section 11 · KE 유류할증료 월별 추이 (2026-10-19) ---------- */
+:root{--t1:#2a78d6;--t2:#eb6834;--t3:#1baf7a;--t4:#eda100;--t5:#e87ba4;--t6:#8a63d2;--t7:#9a6a3a}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--t1:#3987e5;--t2:#d95926;--t3:#199e70;--t4:#c98500;--t5:#d55181;--t6:#a48ae6;--t7:#c39a6b}
+}
+:root[data-theme="dark"]{--t1:#3987e5;--t2:#d95926;--t3:#199e70;--t4:#c98500;--t5:#d55181;--t6:#a48ae6;--t7:#c39a6b}
+
+/* 화면 선택 탭 (주간 브리프 / 유류할증료) */
+.tabs{display:flex;flex-wrap:wrap;gap:6px;padding-top:20px}
+.tabs button{font-family:var(--ko);font-size:13px;font-weight:600;padding:8px 16px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--surface);color:var(--ink-2);cursor:pointer}
+.tabs button:hover{border-color:var(--ink-3);color:var(--ink)}
+.tabs button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.tabs button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.tabs+.mast{padding-top:28px}
+#fueltab{display:none}
+.wrap.on-fuel #fueltab{display:block}
+.wrap.on-fuel #mast,.wrap.on-fuel #edsw,.wrap.on-fuel #app,.wrap.on-fuel #pv{display:none!important}
+#fueltab .mast{padding-top:28px}
+#fueltab footer{margin-top:40px}
+.t-pk{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-left:4px}
+.tt-n{flex:1;min-width:0;font-size:12px;color:var(--ink-2)}
+.tc-lg{font-family:var(--ko);font-size:12px;fill:var(--ink-2)}
+.t-tbl.tr.multi th.chg,.t-tbl.tr.multi td.chg{min-width:100px}
+.zbox{margin-top:22px}
+.zh{font-family:var(--disp);font-size:17px;font-weight:700;margin:0 0 4px}
+.zlg{font-size:12px;color:var(--ink-3);margin:0 0 12px}
+.zlg i{font-style:normal;font-weight:700}.zlg i.zi-a{color:var(--accent)}.zlg i.zi-d{color:var(--ink)}
+.zt-wrap{margin-top:8px}
+.zt th:first-child{min-width:120px}
+.zgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.zcard{background:var(--surface);border:1px solid var(--rule);border-radius:3px;padding:14px 16px;min-width:0}
+.zcard h4{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin:0;font-family:var(--disp);font-size:16px;font-weight:700}
+.zcard h4 small{font-family:var(--ko);font-size:11px;font-weight:400;color:var(--ink-3);margin-left:4px}
+.zamt{font-family:var(--mono);font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.zcard ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.zcard li{font-size:12.5px;padding:2px 9px;border:1px solid var(--rule-soft);border-radius:999px;color:var(--ink-3)}
+.zcard li.dash{color:var(--ink);font-weight:600;border-color:var(--ink-3)}
+.zcard li.acc{color:var(--accent);font-weight:700;border-color:var(--accent)}
+.cur-sw{display:inline-flex;margin-left:0;padding-left:0;border-left:0}
+.cur-sw button{font-family:var(--ko);font-size:13px;font-weight:600;padding:8px 14px;border:1px solid var(--rule);background:var(--surface);color:var(--ink-3);cursor:pointer}
+.cur-sw button+button{margin-left:-1px}
+.cur-sw button:first-child{border-radius:2px 0 0 2px}.cur-sw button:last-child{border-radius:0 2px 2px 0}
+.cur-sw button:hover{color:var(--ink);border-color:var(--ink-3)}
+.cur-sw button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface);position:relative}
+.cur-sw button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+@media (max-width:620px){.cur-sw{margin-left:0;padding-left:0;border-left:0}}
+.subtabs{display:flex;flex-wrap:wrap;gap:0;margin-top:20px;border-bottom:1px solid var(--rule)}
+.subtabs button{font-family:var(--ko);font-size:13.5px;font-weight:600;padding:9px 18px 10px;border:0;border-bottom:2px solid transparent;margin-bottom:-1px;background:transparent;color:var(--ink-3);cursor:pointer}
+.subtabs button:hover{color:var(--ink)}
+.subtabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.subtabs button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+#fueltab .mast{border-top:0}
+.upl-btn{display:inline-block;margin-top:14px;font-family:var(--ko);font-size:13px;font-weight:600;padding:9px 16px;border:1px solid var(--ink);border-radius:2px;background:var(--ink);color:var(--surface);text-decoration:none}
+.upl-btn:hover{opacity:.88}
+.upl-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.upl-hint{font-size:11.5px;color:var(--ink-3);margin-left:10px}
+#fueltab .fuel-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+#fueltab .fuel-v i{white-space:nowrap}
+
+.hdr-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-top:14px}
+.hdr-actions .upl-btn{margin-top:0}
+.hdr-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 0;margin-top:14px}
+.hb-dl{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-right:20px}
+.hb-fin{margin-left:auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 10px;padding-left:20px;border-left:1px solid var(--rule)}
+.hb-fin.nodiv{border-left:0;padding-left:0}
+.hb-fin .upl-btn{margin-top:0}
+.hb-fin .upl-hint{margin-left:0;flex-basis:100%;text-align:right}
+@media(max-width:760px){.hdr-bar{display:block}.hb-dl{padding-right:0}.hb-fin{margin-top:12px;padding:12px 0 0;border-left:0;border-top:1px solid var(--rule);justify-content:flex-start}.hb-fin.nodiv{border-top:0;padding-top:0;margin-top:0}.hb-fin .upl-hint{text-align:left}}
+button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
+.upl-btn.s{background:var(--surface);color:var(--ink)}
+.upl-btn[disabled]{opacity:.4;cursor:default}
+.hdr-actions .upl-hint{margin-left:0}
+.fin-slot{margin-top:12px}
+.car-sw{display:inline-flex;margin:14px 0 16px;border:1px solid var(--rule);border-radius:2px;background:var(--surface)}
+.car-sw button{font-family:var(--ko);display:flex;flex-direction:column;align-items:flex-start;gap:1px;padding:8px 18px;border:0;background:transparent;color:var(--ink-3);cursor:pointer;text-align:left}
+.car-sw button+button{border-left:1px solid var(--rule)}
+.car-sw button b{font-size:14px;font-weight:700}.car-sw button small{font-size:10.5px;letter-spacing:.04em}
+.car-sw button[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+.car-sw button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.fin{border:1px solid var(--rule);background:var(--surface-2);padding:14px 16px;margin-top:2px;font-family:var(--ko);color:var(--ink);min-width:0}
+.fin[hidden]{display:none}
+.fin h3{margin:0;font-size:15px}
+.fin h4{margin:18px 0 8px;font-size:12.5px;letter-spacing:.02em;color:var(--ink-2)}
+.fn-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.fn-steps{display:flex;flex-wrap:wrap;gap:6px 18px;list-style:none;margin:8px 0 0;padding:0;font-size:12px;color:var(--ink-2);counter-reset:s}
+.fn-steps li{counter-increment:s}.fn-steps li:before{content:counter(s);display:inline-block;width:18px;height:18px;line-height:18px;text-align:center;border-radius:50%;background:var(--ink);color:var(--surface);font-size:11px;margin-right:6px}
+.fn-up{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 12px}
+.fn-up label,.fn-cfh label,.fn-cff label{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--ink-2)}
+.fin input[type=text],.fin input[type=month],.fin select{font-family:var(--ko);font-size:13px;padding:7px 8px;border:1px solid var(--rule);border-radius:2px;background:var(--surface);color:var(--ink);min-width:0}
+.fin input:focus-visible,.fin select:focus-visible,.fn-b:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.fn-hintp{margin-top:8px;font-size:11.5px;color:var(--ink-2)}
+.fn-fmt{font-size:11.5px;color:var(--ink-3)}
+.fn-b{font-family:var(--ko);font-size:12.5px;font-weight:600;padding:7px 12px;border:1px solid var(--rule);border-radius:2px;background:var(--surface);color:var(--ink);cursor:pointer}
+.fn-b.p{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.fn-b.d{background:var(--accent);color:var(--surface);border-color:var(--accent)}
+.fn-b[disabled]{opacity:.45;cursor:default}
+.fn-list{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.fn-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.fn-main{flex:1 1 260px;min-width:0}
+.fn-nm{font-size:13px;font-weight:600;overflow-wrap:anywhere}
+.fn-meta{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center;margin-top:4px;font-size:11.5px;color:var(--ink-2)}
+.fn-chip{display:inline-block;padding:1px 7px;border:1px solid var(--rule);border-radius:10px;font-size:11px;color:var(--ink-2);background:var(--surface)}
+.fn-chip.ok,.fn-chip.done{color:var(--steel);border-color:var(--steel)}
+.fn-chip.warn,.fn-chip.wait{color:var(--accent);border-color:var(--accent)}
+.fn-parts{margin-top:4px;font-size:11.5px;overflow-wrap:anywhere}.fn-parts a{color:var(--steel)}
+.fn-sz{color:var(--ink-3)}
+.fn-acts{display:flex;flex-wrap:wrap;align-items:center;gap:6px;align-self:flex-start}
+.fn-q{font-size:12px;color:var(--accent)}
+.fn-empty{font-size:12px;color:var(--ink-3);padding:8px 0}
+.fn-cf{margin-top:10px;padding:12px;border:1px solid var(--rule);background:var(--surface)}
+.fn-cfh{display:flex;flex-wrap:wrap;align-items:flex-end;gap:8px 12px}
+.fn-cfb{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.fn-thumb{flex:0 1 240px;min-width:0;border:1px solid var(--rule);display:block;max-height:260px;overflow:auto}
+.fn-thumb img{display:block;width:100%;height:auto}
+.fn-cff{flex:1 1 280px;min-width:0}
+.fn-bands{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:10px}
+.fn-bands small{color:var(--ink-3);margin-left:3px}
+.fn-cfa{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.fn-note{font-size:11.5px;color:var(--ink-2)}
+.fn-msgs{margin-top:12px;display:flex;flex-direction:column;gap:4px}
+.fn-msg{font-size:12px;padding:6px 10px;border-left:3px solid var(--rule);background:var(--surface)}
+.fn-msg.ok{border-left-color:var(--steel)}.fn-msg.err{border-left-color:var(--accent);color:var(--accent)}
+.exp-row{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:12px}
+.exp-l{font-size:12px;color:var(--ink-2);margin-right:2px}
+.btn-x{font-family:var(--ko);font-size:13px;font-weight:600;padding:8px 14px;border:1px solid var(--rule);border-radius:2px;background:var(--surface);color:var(--ink);cursor:pointer}
+.btn-x:hover{border-color:var(--ink-3)}
+.btn-x:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.exp-m{font-size:12.5px;color:var(--ink-2);flex:1 1 220px;min-width:0}
+.exp-m.err{color:var(--accent)}
+.t-tbl.tr{min-width:900px}
+.t-tbl.tr th,.t-tbl.tr td{padding:7px 6px}
+.t-tbl.tr th,.t-tbl.tr td{text-align:right}
+.t-tbl.tr th:first-child{text-align:left;position:sticky;left:0;z-index:1;min-width:128px;white-space:normal;background:var(--surface)}
+.t-tbl.tr thead th:first-child{background:var(--surface-2)}
+.t-tbl.tr tbody th{font-weight:600;font-size:12.5px;color:var(--ink);border-bottom:1px solid var(--rule-soft)}
+.t-tbl.tr tbody th small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;color:var(--ink-3);margin-top:1px}
+.t-tbl.tr tr.mrow th,.t-tbl.tr tr.mrow td{background:var(--surface-2);color:var(--ink-2);font-weight:400}
+.t-tbl.tr tr.mrow th{font-size:12px}
+.t-tbl.tr th.cur,.t-tbl.tr td.cur,.t-tbl.tr tr.mrow td.cur{background:var(--steel-soft)}
+.t-tbl.tr tbody tr:last-child th{border-bottom:0}
+.t-tbl.tr .t-key{display:inline-block;width:12px;margin-right:6px;vertical-align:middle}
+.tc-pv{font-family:var(--mono);font-size:11px;fill:var(--ink-2);paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.t-filter{display:flex;flex-wrap:wrap;align-items:center;gap:8px 8px;margin:0 0 16px}
+.t-filter .t-fl{font-size:12px;color:var(--ink-2);margin-right:2px}
+.t-filter button{display:inline-flex;align-items:center;gap:7px;font-family:var(--ko);font-size:12.5px;font-weight:600;padding:6px 12px;border:1px solid var(--rule);border-radius:999px;background:var(--surface);color:var(--ink-3);cursor:pointer}
+.t-filter button .t-key{width:12px;opacity:.35}
+.t-filter button:hover{border-color:var(--ink-3);color:var(--ink)}
+.t-filter button[aria-pressed="true"]{color:var(--ink);border-color:var(--ink-3);background:var(--surface-2)}
+.t-filter button[aria-pressed="true"] .t-key{opacity:1}
+.t-filter button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.t-filter .t-quick{border-radius:2px;border-style:dashed;font-weight:500;color:var(--ink-2)}
+.trend{background:var(--surface);border:1px solid var(--rule);border-radius:3px;margin:14px 0 8px;padding:20px 22px 22px;box-shadow:var(--shadow)}
+.trend-h{font-family:var(--disp);font-size:17.5px;font-weight:700;line-height:1.42;margin:0 0 3px;letter-spacing:-.01em;text-wrap:balance}
+.trend-sub{font-size:12.5px;color:var(--ink-2);margin:0 0 16px}
+.t-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--rule-soft);
+  border:1px solid var(--rule-soft);margin-bottom:18px}
+.t-tile{background:var(--surface);padding:12px 14px 13px;min-width:0}
+.t-nm{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;line-height:1.35}
+.t-key{flex:none;width:16px;height:3px;border-radius:2px}
+.t-band{font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;color:var(--ink-3);margin-top:3px}
+.t-tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;color:var(--steel);margin-top:3px}
+.t-num{font-family:var(--mono);font-size:21px;font-weight:500;line-height:1.1;margin-top:9px;font-variant-numeric:tabular-nums;color:var(--ink)}
+.t-num i{font-style:normal;font-size:11px;color:var(--ink-3);margin-left:4px}
+.t-row{display:flex;flex-wrap:wrap;gap:2px 10px;font-size:11.5px;color:var(--ink-2);margin-top:5px}
+.t-d{font-family:var(--mono);font-size:11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.t-d.up{color:var(--accent)}
+.t-d.dn{color:var(--steel)}
+.t-d.flat{color:var(--ink-3)}
+
+.t-ctitle{text-align:center;font-size:clamp(22px,4.2vw,32px);line-height:1.25;margin:2px 0 6px}
+.t-csub{text-align:center;margin-bottom:14px}
+.t-cards{display:flex;flex-direction:column;gap:22px;margin-top:6px}
+.t-cards .trend{margin:0}
+.t-notes{padding:16px 22px}
+.t-tbl.tr th.chg,.t-tbl.tr td.chg{border-left:1px solid var(--rule);background:var(--surface-2);white-space:nowrap;text-align:center;min-width:92px}
+.t-tbl.tr thead th.chg{white-space:normal;line-height:1.3}
+.t-tbl.tr th.chg+th.chg,.t-tbl.tr td.chg+td.chg{border-left:1px solid var(--rule-soft)}
+.trend-scroll{overflow-x:auto}
+.trend-inner{position:relative;min-width:640px}
+.trend-inner svg{display:block;width:100%;height:auto}
+.tc-grid{stroke:var(--rule-soft);stroke-width:1;fill:none}
+.tc-base{stroke:var(--rule);stroke-width:1;fill:none}
+.tc-ax{font-family:var(--mono);font-size:11px;fill:var(--ink-3)}
+.tc-line{fill:none;stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.tc-lead{stroke:var(--ink-3);stroke-width:1;fill:none}
+.tc-lab{font-family:var(--ko);font-size:11.5px;font-weight:500;fill:var(--ink-2)}
+.tc-v{font-family:var(--mono);font-size:11.5px;fill:var(--ink)}
+.tc-xh{stroke:var(--ink-3);stroke-width:1;fill:none;opacity:0}
+.tc-hit{fill:transparent;cursor:crosshair}
+.tc-hit:focus-visible{outline:none;fill:var(--steel-soft);opacity:.7}
+.trend-tip{position:absolute;top:6px;z-index:3;pointer-events:none;background:var(--surface);
+  border:1px solid var(--rule);box-shadow:var(--shadow);border-radius:3px;padding:9px 12px 10px;min-width:176px}
+.tt-h{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--ink-3);margin-bottom:6px}
+.tt-r{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.7}
+.tt-k{flex:none;width:12px;height:3px;border-radius:2px}
+.tt-r b{font-family:var(--mono);font-weight:500;font-size:12.5px;color:var(--ink);font-variant-numeric:tabular-nums;min-width:62px}
+.tt-r span:last-child{color:var(--ink-2)}
+
+.t-tblwrap{overflow-x:auto;margin-top:18px;border:1px solid var(--rule-soft)}
+.t-tbl{border-collapse:collapse;width:100%;min-width:640px;font-size:12.5px}
+.t-tbl th,.t-tbl td{padding:7px 12px;text-align:right;border-bottom:1px solid var(--rule-soft);white-space:nowrap;vertical-align:top}
+.t-tbl tr:last-child td{border-bottom:0}
+.t-tbl th:first-child,.t-tbl td:first-child{text-align:left}
+.t-tbl thead th{font-size:12px;font-weight:600;color:var(--ink-2);background:var(--surface-2);vertical-align:bottom}
+.t-tbl thead small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;color:var(--ink-3);margin-top:1px}
+.t-tbl .t-key{display:inline-block;width:12px;margin-right:6px;vertical-align:middle}
+.t-tbl td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.t-tbl td.n .t-d{display:block;margin-top:1px;font-size:10.5px}
+.t-tbl td.lv{font-family:var(--mono);color:var(--ink-3)}
+.t-tbl tr.cur td{background:var(--steel-soft)}
+.t-tbl tfoot td{background:var(--surface-2);font-size:12px;color:var(--ink-2)}
+.t-tbl tfoot td.n{color:var(--ink)}
+@media (max-width:820px){.trend{padding:16px 16px 18px}}
+</style>
+<style id="v2-css">
+/* V2 · 관광청 필터 */
+.accf{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin:14px 0 0;padding:12px 14px;
+  background:var(--surface);border:1px solid var(--rule);border-radius:2px}
+.accf-l{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-right:4px}
+.accf-chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.accf button{font-family:var(--ko);font-size:12.5px;font-weight:600;padding:6px 12px;border:1px solid var(--rule);
+  border-radius:999px;background:var(--surface);color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.accf button .n{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink-3);margin-left:6px;font-variant-numeric:tabular-nums}
+.accf button:hover{border-color:var(--ink-3);color:var(--ink)}
+.accf button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.accf button[aria-pressed="true"] .n{color:var(--surface);opacity:.75}
+.accf button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.accf button.zero{color:var(--ink-3)}
+.accf-opt{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2);cursor:pointer;margin-left:auto}
+.accf-note{flex-basis:100%;font-size:11.5px;color:var(--ink-3);margin:0}
+.wrap.on-fuel #accf{display:none!important}
+.acc.sel{box-shadow:inset 3px 0 0 var(--accent);background:var(--accent-soft)}
+.acc.dim{opacity:.45}
+.accnone{font-size:12.5px;color:var(--ink-3);background:var(--surface);border:1px dashed var(--rule);padding:12px 16px;margin:0}
+.accview{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);
+  border:1px solid var(--accent);border-radius:999px;padding:2px 10px;margin:0 0 10px}
+@media (max-width:640px){.accf-opt{margin-left:0}}
+</style>
+<div class="wrap">
+<div class="tabs" id="tabs" role="group" aria-label="화면 선택"><button type="button" data-tab="rep" aria-pressed="true">주간 브리프</button><button type="button" data-tab="fuel" aria-pressed="false">유류할증료</button></div>
+<header class="mast" id="mast"></header>
+<div class="edsw" id="edsw" role="group" aria-label="리포트 판본 선택"></div>
+<div class="accf" id="accf" role="group" aria-label="관광청 필터"></div>
+<div id="app"></div>
+<div id="fueltab"></div>
+<div id="pv" hidden></div>
+</div>
+<script type="application/json" id="brief-data">__BRIEF_DATA__</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById('brief-data').textContent);
+var cur=0;
+
+/* ================= V2 · 관광청 필터 ================= */
+var ACCS=[
+ {ko:'하와이',en:'Hawaii',h:'hawaii',gap:/HAWAII/},
+ {ko:'뉴욕',en:'New York',h:'new-york',gap:/\bNY\b|NEW YORK/},
+ {ko:'샌프란시스코',en:'San Francisco',h:'san-francisco',gap:/\bSF\b|SAN FRANCISCO/},
+ {ko:'라스베가스',en:'Las Vegas',h:'las-vegas',gap:/\bLAS\b|LAS VEGAS/},
+ {ko:'스페인',en:'Spain',h:'spain',gap:/SPAIN/},
+ {ko:'타히티',en:'Tahiti',h:'tahiti',gap:/TAHITI/}
+];
+var COMMONTAG='장거리 전 계정';
+var ACC=null, COMMON=true;
+try{var _c=localStorage.getItem('v2-common');if(_c==='0')COMMON=false;}catch(e){}
+function hasAcc(i,ko){return i.tags.some(function(t){return t[1]==='acc'&&t[0]===ko;});}
+function isCommon(i){return i.tags.some(function(t){return t[0]===COMMONTAG;});}
+function accMatch(i){if(!ACC)return true;return hasAcc(i,ACC.ko)||(COMMON&&isCommon(i));}
+function visItems(E){return E.items.filter(accMatch);}
+function accCount(E,a){return E.items.filter(function(i){return hasAcc(i,a.ko)||(COMMON&&isCommon(i));}).length;}
+function fuelVis(E){if(!E.fuel||!E.fuel.rows)return [];return E.fuel.rows.filter(function(r){return !ACC||r.acc===ACC.ko;});}
+function gapRows(E){
+ if(!ACC)return E.gap.rows;
+ return E.gap.rows.filter(function(r){
+  var k=String(r[0]).toUpperCase();
+  if(ACC.gap.test(k))return true;
+  return !ACCS.some(function(a){return a.gap.test(k);});
+ });
+}
+function docTK(){return ACC?ACC.ko+' 계정 주간 브리프':'한국 아웃바운드 주간 브리프';}
+function docTE(){return ACC?ACC.en+' Account Weekly Brief':'Korea Outbound Weekly Brief';}
+function accBar(E){
+ var el=document.getElementById('accf');if(!el)return;
+ var chips=['<button type="button" data-acc="" aria-pressed="'+(!ACC)+'">전체<span class="n">'+E.items.length+'</span></button>'];
+ ACCS.forEach(function(a){
+  var n=accCount(E,a);
+  chips.push('<button type="button" data-acc="'+a.h+'" aria-pressed="'+(ACC===a)+'"'+(n?'':' class="zero"')+'>'+a.ko+'<span class="n">'+n+'</span></button>');
+ });
+ el.innerHTML='<span class="accf-l">관광청</span><div class="accf-chips">'+chips.join('')+'</div>'+
+  '<label class="accf-opt"><input type="checkbox" id="accf-common"'+(COMMON?' checked':'')+'> 장거리 공통 기사 포함</label>'+
+  (ACC?'<p class="accf-note">'+ACC.ko+' 태그 기사'+(COMMON?'와 장거리 전 계정 공통 기사':'')+'만 보여 줍니다. 문서 만들기도 이 기준으로 만들어집니다.</p>':'');
+}
+function accByHash(){var h=String(location.hash||'').replace(/^#/,'');for(var k=0;k<ACCS.length;k++)if(ACCS[k].h===h)return ACCS[k];return undefined;}
+function setAcc(a,push){
+ ACC=a||null;
+ if(push){
+  try{
+   if(ACC)history.replaceState(null,'','#'+ACC.h);
+   else if(accByHash())history.replaceState(null,'',location.pathname+location.search);
+  }catch(e){}
+ }
+ show(cur);
+}
+
+/* 판본 순서: 최신 → 과거 (팀 수집본은 맨 뒤). 최신 2개는 버튼, 전체는 날짜 드롭다운 */
+var ORDER=D.editions.map(function(e,i){return i;}).reverse();
+var QUICK=ORDER.slice(0,2);
+function edLabel(e){return e.label+' · '+e.sublabel;}
+document.getElementById('edsw').innerHTML=
+ '<div class="ed-quick">'+QUICK.map(function(i){var e=D.editions[i];
+   return '<button type="button" data-i="'+i+'" aria-pressed="false"><b>'+e.label+'</b><span>'+e.sublabel+'</span></button>';
+  }).join('')+'</div>'+
+ '<div class="ed-more"><label for="edsel">지난 호</label>'+
+ '<select id="edsel" aria-label="발행 주차 선택">'+ORDER.map(function(i){var e=D.editions[i];
+   return '<option value="'+i+'">'+edLabel(D.editions[i])+'</option>';}).join('')+'</select></div>';
+
+function mast(E){
+ return '<div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div>'+
+ '<div class="issue">ISSUE '+E.issue.no+' · '+E.issue.range+'</div></div>'+
+ (ACC?'<p class="accview">'+ACC.ko+' · '+ACC.en+' 관점 · 전체 '+E.items.length+'건 중 '+visItems(E).length+'건</p>':'')+
+ '<h1>'+(ACC?ACC.ko+' 계정 주간 브리프':'한국 아웃바운드 주간 브리프')+'</h1>'+
+ '<p class="sub">뉴욕 · 샌프란시스코 · 하와이 · 라스베가스 · 스페인 · 타히티 6개 관광청 계정 관점으로 정리한 한국 여행시장 주간 동향. 한국어 요약을 기준으로 하고 영문을 나란히 병기합니다.</p>'+
+ '<div class="meta">'+E.meta.filter(function(m){return m[0]!=='작성';})
+   .map(function(m){return '<span><b>'+m[0]+'</b> '+m[1]+'</span>';}).join('')+'</div>'+
+ '<div class="byline"><b>작성</b> AVIAREPS Korea</div>';
+}
+
+function srcHtml(i,lang){
+ var rows=i.src.filter(function(x){var ko=/[가-힣]/.test(x[0]);return lang==='ko'?ko:!ko;});
+ if(!rows.length&&lang==='ko'&&!i.src.some(function(x){return /[가-힣]/.test(x[0]);}))return '';
+ if(!rows.length)return '';
+ return '<div class="src-in">'+rows.map(function(x){
+  return '<div class="src-1"><span class="s-out">'+x[0]+'</span><span class="s-date">'+x[1]+'</span>'+
+   '<a class="s-tit" href="'+x[2]+'" target="_blank" rel="noopener">'+x[3]+'</a>'+
+   '<span class="s-url">'+x[2]+'</span></div>';}).join('')+'</div>';
+}
+
+function fuelFxRate(E){
+ if(!E.ind)return null;
+ var it=null;
+ for(var n=0;n<E.ind.length;n++){if(/환율/.test(E.ind[n].k)||/Exchange/i.test(E.ind[n].ken||'')){it=E.ind[n];break;}}
+ if(!it)return null;
+ var v=parseFloat(String(it.v).replace(/,/g,''));
+ return isNaN(v)?null:v;
+}
+function fuelUsd(krw,rate){
+ if(!krw||!rate)return '';
+ var n=parseFloat(String(krw).replace(/,/g,''));
+ if(isNaN(n))return '';
+ return '$'+Math.round(n/rate).toLocaleString('en-US');
+}
+
+function render(E){
+var h=[];
+if(E.ind&&E.ind.length){
+ h.push('<div class="ind">'+E.ind.map(function(x){
+  return '<div class="ind-c"><div class="ind-k">'+x.k+'</div><div class="ind-v">'+x.v+
+   (x.u?'<span class="ind-u">'+x.u+'</span>':'')+'</div><div class="ind-s">'+x.sub+'</div>'+
+   '<div class="ind-src"><a href="'+x.src[2]+'" target="_blank" rel="noopener">'+x.src[0]+' · '+x.src[1]+'</a></div></div>';
+ }).join('')+'</div>');
+}
+if(E.fuel&&E.fuel.rows&&E.fuel.rows.length){
+ var fxr=fuelFxRate(E);
+ h.push('<div class="fuel"><h2>유류할증료 · 관광청 계정별</h2><p class="note">'+E.fuel.month+' 기준 국적사 국제선 편도 유류할증료(KRW'+(fxr?' · USD 환산 병기':'')+') · '+E.fuel.sub+'</p><div class="fuel-grid">'+
+  fuelVis(E).map(function(r){
+   var keU=fuelUsd(r.ke,fxr),ozU=fuelUsd(r.oz,fxr);
+   return '<div class="fuel-c"><div class="fuel-nm">'+r.acc+' <span class="fuel-en">'+r.accen+'</span></div><div class="fuel-rows">'+
+    '<div class="fuel-r"><span class="fuel-l">KE</span><span class="fuel-v'+(r.ke?'':' na')+'">'+(r.ke?r.ke+'<i> KRW'+(keU?' · '+keU:'')+'</i>':'해당없음')+'</span></div>'+
+    '<div class="fuel-r"><span class="fuel-l">OZ</span><span class="fuel-v'+(r.oz?'':' na')+'">'+(r.oz?r.oz+'<i> KRW'+(ozU?' · '+ozU:'')+'</i>':'해당없음')+'</span></div>'+
+    '</div></div>';
+  }).join('')+'</div>'+
+  (E.fuel.note?'<p class="fuel-foot">'+E.fuel.note+(fxr?' USD 환산은 상단 원/달러 환율 기준 근사치입니다.':'')+'</p>':'')+
+  (E.fuel.src?'<p class="fuel-src">'+E.fuel.src[0]+' · '+E.fuel.src[1]+'</p>':'')+
+  '</div>');
+}
+h.push('<div class="board"><h2>Account Scoreboard</h2><p class="note">이번 주 '+E.issue.count+'건 중 각 계정에 연결되는 기사 수. 0~1건 계정은 다음 주 소싱 우선순위입니다.</p><div class="acc-grid">');
+E.board.forEach(function(a){h.push('<div class="acc'+(a.hot?' hot':'')+(a.cold?' cold':'')+(ACC?(a.nm===ACC.ko?' sel':' dim'):'')+'"><div class="n'+(a.cold?' zero':'')+'">'+a.n+'</div><div class="nm">'+a.nm+'</div><div class="ds">'+a.ds+'</div></div>');});
+h.push('</div></div>');
+
+h.push('<nav class="bar"><div class="navlinks">');
+D.sections.forEach(function(s){h.push('<a href="#'+s.id+'"'+(s.aug?' class="new"':'')+'>'+s.n+' '+s.ko.replace(/ · /g,'·')+'</a>');});
+h.push('<a href="#std">편성 기준</a></div><span class="barsep"></span>'+
+ '<button type="button" class="expbtn" id="expbtn" aria-expanded="false" aria-controls="exp">'+
+ '문서 만들기<span class="car" id="expcar">▾</span></button></nav>');
+h.push(expPanel(E));
+
+D.sections.forEach(function(s){
+ var its=visItems(E).filter(function(i){return i.sec===s.id;});
+ h.push('<section id="'+s.id+'"'+(s.aug?' class="aug"':'')+'>');
+ h.push('<p class="tagline">Section '+s.n+' · '+(s.aug?'신규 보완 영역':'기존 영역')+'</p>');
+ h.push('<div class="shead"><h2>'+s.ko+'</h2><span class="en-h">'+s.en+'</span></div>');
+ if(s.why)h.push('<p class="why">'+s.why+'</p>');
+ its.forEach(function(i){
+  h.push('<article class="item"><div class="ihead"><span class="code">'+i.code+'</span>');
+  i.tags.forEach(function(t){h.push('<span class="chip'+(t[1]==='acc'?'':' '+t[1])+'">'+t[0]+'</span>');});
+  h.push('</div><div class="cols"><div class="ko-col"><h3>'+i.koh+'</h3><p>'+i.kop+'</p>'+
+   (i.note?'<div class="editnote">'+i.note+'</div>':'')+
+   (i.primary?'<div class="editnote">'+i.primary+'</div>':'')+
+   srcHtml(i,'ko')+'</div><div class="en-col"><h3>'+i.enh+'</h3><p>'+i.enp+'</p>'+
+   srcHtml(i,'en')+'</div></div></article>');
+ });
+ if(ACC&&!its.length)h.push('<p class="accnone">이번 호 이 섹션에는 '+ACC.ko+' 관련 기사가 없습니다.</p>');
+ if(s.id==='s8'&&E.gap){
+  h.push('<div class="gap"><h3>'+E.gap.h+'</h3><p>'+E.gap.p+'</p><div class="watch">');
+  gapRows(E).forEach(function(r){h.push('<div class="watch-row"><div class="w-k">'+r[0]+'</div><div class="w-v">'+r[1]+'</div></div>');});
+  h.push('</div></div>');
+ }
+ h.push('</section>');
+});
+
+
+h.push('<section id="std" class="std-sec"><h2>편성 기준</h2><p class="lead">2026년 8월 29일 확정 · 8월 31일 목차 개편(Section 07 패키지·럭셔리 신설). 두 판본 모두 동일 기준으로 편성합니다.</p><div class="std-grid">');
+D.std.forEach(function(c){h.push('<div class="std-card"><h4>'+c.h+'</h4><ul>'+c.li.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul></div>');});
+h.push('</div><div class="std-src"><h4>확정 소스 로스터</h4><p>'+D.roster+'</p></div>');
+h.push('<div class="std-src"><h4>'+D.bsp.title+'</h4><p style="margin-bottom:12px">'+D.bsp.note+'</p>'+
+ '<div class="bsp"><div class="bsp-h"><span>순위</span><span>여행사</span><span>발권액(억원)</span><span>비중</span><span>유형</span></div>'+
+ D.bsp.rows.map(function(r){return '<div class="bsp-r"><span>'+r[0]+'</span><span class="bsp-n">'+r[1]+'</span><span>'+r[2]+'</span><span>'+r[3]+'</span><span class="bsp-t">'+r[4]+'</span></div>';}).join('')+
+ '</div></div>');
+h.push('<div class="std-src"><h4>확인된 작동 URL</h4><div class="watch">'+D.urls.map(function(u){
+ return '<div class="watch-row"><div class="w-k">'+u[0]+'</div><div class="w-v">'+u[1]+'</div></div>';}).join('')+'</div></div></section>');
+
+h.push('<footer><b>Korea Weekly Travel Report</b> · Issue '+E.issue.no+' · '+E.label+'<br>'+
+ E.foot+'<br>계정 태그와 섹션 구분은 AVIAREPS Korea 편집 기준이며 원문 기사의 표현이 아닙니다.</footer>');
+return h.join('');
+}
+
+/* ================= 문서 내보내기 ================= */
+var LANG='both', SEL={}, DL=null, DLASKED=false;
+/* fn·code·secno·url·gen 은 B2B 독자에게 불필요해 항상 끔 (2026-08-31 확정) */
+/* 원/달러 환율(fx)·CCSI(ccsi)는 문서 만들기에서 개별 선택 가능 (2026-09-12 확정) */
+/* 유류할증료는 관광청 계정 단위로 개별 선택 (FSEL, 2026-09-12 확정) */
+var OPT={acc:true,note:true,fn:false,code:false,secno:false,url:false,gen:false,fx:true,ccsi:true};
+var OPTS=[['acc','계정·시장 태그'],['note','편집 기준 안내문'],['fx','원/달러 환율'],['ccsi','소비자심리지수(CCSI)']];
+var FSEL={};
+
+function indFiltered(E){
+ if(!E.ind)return [];
+ return E.ind.filter(function(x){
+  if(/CCSI|소비자심리/.test(x.k))return OPT.ccsi;
+  if(/환율/.test(x.k))return OPT.fx;
+  return true;
+ });
+}
+function fuelInit(E){FSEL={};if(E.fuel&&E.fuel.rows)E.fuel.rows.forEach(function(r){FSEL[r.acc]=!ACC||r.acc===ACC.ko;});}
+function fuelRows(E){if(!E.fuel||!E.fuel.rows)return [];return E.fuel.rows.filter(function(r){return !!FSEL[r.acc];});}
+
+function tagsOf(i){
+ return i.tags.filter(function(t){return t[1]==='fn'?OPT.fn:OPT.acc;})
+  .map(function(t){return tagLabel(t[0]);});
+}
+function secTitle(s){return (OPT.secno?s.n+' ':'')+(LANG==='en'?s.en:s.ko);}
+function footNote(){
+ if(!OPT.note)return '';
+ if(OPT.acc||OPT.fn)return LB('계정 태그와 섹션 구분은 AVIAREPS Korea 편집 기준이며 원문 기사의 표현이 아닙니다.',
+  'Account tags and section assignments are the editor’s framing, not the wording of the source articles.');
+ return LB('섹션 구분은 AVIAREPS Korea 편집 기준이며 원문 기사의 표현이 아닙니다.',
+  'Section assignments are the editor’s framing, not the wording of the source articles.');
+}
+function srcParts(i,x){
+ var k=isKo(x[3]),out=x[0],txt=x[3];
+ if(LANG==='en'){out=outletEn(x[0]);txt=k?(i.enh+' — article in Korean'):x[3];}
+ else if(LANG==='ko'){txt=k?x[3]:(i.koh+' — 영문 기사');}
+ return {out:out,date:x[1],txt:txt,url:x[2]};
+}
+function srcLabel(){return LANG==='en'?'Source':'출처';}
+
+function esc(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function isKo(t){return /[가-힣]/.test(t);}
+function LB(ko,en){return LANG==='en'?en:ko;}
+
+function selInit(E){SEL={};visItems(E).forEach(function(i){SEL[i.code]=true;});}
+function selCodes(E){return E.items.filter(function(i){return SEL[i.code];});}
+
+function fileName(E){
+ var no=String(E.issue.no).replace(/[^0-9A-Za-z-]/g,'-').replace(/-+/g,'-');
+ return 'korea-weekly-brief_'+no+'_'+E.key+(ACC?'_'+ACC.h:'')+'_'+LANG+'.html';
+}
+
+function expPanel(E){
+ var h=['<section class="exp" id="exp" hidden aria-label="문서 만들기">'];
+ h.push('<h2>문서 만들기</h2><p class="lead">담을 항목과 언어를 골라 메일 본문으로 복사하거나 문서 파일로 내려받습니다.</p>');
+
+ /* 1) 항목 — 요약 줄 + 접히는 그리드 */
+ h.push('<div class="exp-row"><span class="exp-lab">항목</span>'+
+  '<button type="button" class="sumbtn" id="pickbtn" aria-expanded="false" aria-controls="pickwrap">'+
+  '<span id="selcount"></span><span class="car" id="pickcar">▾</span></button>'+
+  '<button type="button" class="lnk" data-all="1">전체 선택</button>'+
+  '<button type="button" class="lnk" data-all="0">전체 해제</button></div>');
+ h.push('<div class="pickwrap" id="pickwrap" hidden><div class="pick">');
+ D.sections.forEach(function(s){
+  var its=visItems(E).filter(function(i){return i.sec===s.id;});
+  h.push('<div class="pick-s"><label><input type="checkbox" class="sbox" data-sec="'+s.id+'"'+(its.length?'':' disabled')+
+   '><span class="sn">'+s.n+'</span><span>'+esc(s.ko)+'</span></label>');
+  if(!its.length)h.push('<div class="pick-e">이번 호 수록 없음</div>');
+  its.forEach(function(i){
+   h.push('<label class="pick-i"><input type="checkbox" class="ibox" data-code="'+esc(i.code)+'" data-sec="'+s.id+
+    '"><span class="ic">'+esc(i.code)+'</span><span>'+esc(i.koh)+'</span></label>');});
+  h.push('</div>');
+ });
+ h.push('</div></div>');
+
+ /* 2) 언어 · 표시 옵션 */
+ h.push('<div class="exp-row"><span class="exp-lab">언어</span><div class="seg" id="langseg">'+
+  [['ko','한국어 전문'],['en','English only'],['both','한·영 병기']].map(function(x){
+   return '<button type="button" data-lang="'+x[0]+'" aria-pressed="'+(LANG===x[0])+'">'+x[1]+'</button>';}).join('')+
+  '</div><span class="optsep"></span><div class="opts">'+
+  OPTS.map(function(o){return '<label class="opt"><input type="checkbox" class="obox" data-opt="'+o[0]+'"><span>'+
+   o[1]+'</span></label>';}).join('')+'</div></div>');
+
+ /* 2b) 유류할증료 — 표시할 관광청 계정 선택 */
+ if(E.fuel&&E.fuel.rows&&E.fuel.rows.length){
+  h.push('<div class="exp-row"><span class="exp-lab">유류할증료</span><div class="opts">'+
+   E.fuel.rows.map(function(r){
+    return '<label class="opt"><input type="checkbox" class="fbox" data-acc="'+esc(r.acc)+'"><span>'+esc(r.acc)+'</span></label>';
+   }).join('')+'</div>'+
+   '<button type="button" class="lnk" data-fuelall="1">전체 선택</button>'+
+   '<button type="button" class="lnk" data-fuelall="0">전체 해제</button></div>');
+ }
+
+ /* 3) 출력 */
+ h.push('<div class="exp-go">'+
+  '<div class="og"><span class="og-l">보내기</span>'+
+  '<button type="button" class="btn p" id="cpbtn">뉴스레터용 복사</button></div>'+
+  '<div class="og"><span class="og-l">저장</span>'+
+  '<button type="button" class="btn s" id="pdbtn">PDF</button>'+
+  '<button type="button" class="btn s" id="dxbtn">Word (.docx)</button>'+
+  '<button type="button" class="btn s" id="dlbtn">HTML</button></div>'+
+  '<button type="button" class="lnk2" id="pvbtn">미리보기</button></div>');
+ h.push('<div class="exp-note" id="dlhint" style="margin-top:8px"></div>');
+ h.push('<div class="exp-msg" id="expmsg" hidden></div></section>');
+ return h.join('');
+}
+
+function syncPanel(){
+ var E=D.editions[cur], n=selCodes(E).length;
+ Array.prototype.forEach.call(document.querySelectorAll('.ibox'),function(b){b.checked=!!SEL[b.dataset.code];});
+ Array.prototype.forEach.call(document.querySelectorAll('.sbox'),function(b){
+  var its=visItems(E).filter(function(i){return i.sec===b.dataset.sec;});
+  var on=its.filter(function(i){return SEL[i.code];}).length;
+  b.checked=its.length>0&&on===its.length;
+  b.indeterminate=on>0&&on<its.length;});
+ Array.prototype.forEach.call(document.querySelectorAll('#langseg button'),function(b){
+  b.setAttribute('aria-pressed',String(b.dataset.lang===LANG));});
+ Array.prototype.forEach.call(document.querySelectorAll('.obox'),function(b){b.checked=!!OPT[b.dataset.opt];});
+ Array.prototype.forEach.call(document.querySelectorAll('.fbox'),function(b){b.checked=!!FSEL[b.dataset.acc];});
+ var t=visItems(E).length;
+ var c=document.getElementById('selcount');
+ if(c)c.textContent=(n===t?'전체 '+t+'건 선택됨':(n===0?'선택 없음 · 전체 '+t+'건':t+'건 중 '+n+'건 선택됨'));
+ var cp=document.getElementById('cpbtn');if(cp)cp.disabled=!n;
+ var p=document.getElementById('pvbtn');
+ if(p){p.disabled=!n;p.textContent=DL?'미리보기':'미리보기 · 인쇄로 PDF';}
+ ['dlbtn','dxbtn','pdbtn'].forEach(function(id){
+  var b=document.getElementById(id);if(!b)return;
+  b.disabled=!n||!DL||PDFBUSY;
+  b.title=DL?'':'공개 공유가 켜져 있어 파일 저장을 쓸 수 없습니다';});
+ var d=document.getElementById('dlbtn');
+ if(d)d.textContent=DL?'HTML':(DLASKED?'HTML (사용 불가)':'확인 중…');
+ var x=document.getElementById('dxbtn');
+ if(x)x.textContent=DL?'Word (.docx)':(DLASKED?'Word (사용 불가)':'확인 중…');
+ var pf=document.getElementById('pdbtn');
+ if(pf)pf.textContent=PDFBUSY?'PDF 만드는 중…':(DL?'PDF':(DLASKED?'PDF (사용 불가)':'확인 중…'));
+ var hint=document.getElementById('dlhint');
+ if(hint)hint.textContent=DL?'':(DLASKED?'파일 저장(HTML·Word)은 공개 공유가 켜진 아티팩트에서 쓸 수 없습니다. 공개 공유를 끄면 활성화됩니다. 그전까지는 뉴스레터용 복사 또는 미리보기 → 인쇄로 PDF 저장을 쓰세요.':'');
+}
+
+var DOCCSS=[
+'.kwdoc{max-width:900px;margin:0 auto;font-family:Aptos,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;',
+' font-size:12px;line-height:1.62;color:#12191f}',
+'.kwdoc .dh{border-bottom:2px solid #12191f;padding-bottom:10px;margin-bottom:14px}',
+'.kwdoc .dh-b{font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:#b3122b;font-weight:700}',
+'.kwdoc .dh h1{font-size:20px;margin:6px 0 4px;letter-spacing:-.01em}',
+'.kwdoc .dh-m{font-size:10px;color:#5a6a76;letter-spacing:.02em}',
+'.kwdoc .dind{display:flex;gap:22px;flex-wrap:wrap;border:1px solid #d3dae0;padding:8px 12px;margin-bottom:14px}',
+'.kwdoc .dind div{font-size:10px;color:#5a6a76}',
+'.kwdoc .dind b{display:block;font-size:15px;color:#12191f;font-weight:600}',
+'.kwdoc .ds{margin-top:14px;break-inside:auto}',
+'.kwdoc .ds-h{display:flex;align-items:baseline;gap:8px;border-bottom:1px solid #12191f;padding-bottom:3px;margin-bottom:6px}',
+'.kwdoc .ds-h b{font-size:13px}',
+'.kwdoc .ds-h span{font-size:9.5px;color:#8494a0;letter-spacing:.06em}',
+'.kwdoc .di{padding:7px 0;border-bottom:1px solid #e9edf0;break-inside:avoid}',
+'.kwdoc .di:last-child{border-bottom:0}',
+'.kwdoc .dimeta{margin-bottom:1px}',
+'.kwdoc .dic{font-size:9px;color:#b3122b;letter-spacing:.06em;font-weight:700;margin-right:6px}',
+'.kwdoc .dig{font-size:9px;color:#5a6a76}',
+'.kwdoc .di h3{font-size:12.5px;margin:3px 0 3px;line-height:1.4}',
+'.kwdoc .di h4{font-size:11px;margin:6px 0 2px;line-height:1.4;color:#3d4c57;font-weight:600}',
+'.kwdoc .di p{margin:0;font-size:11px;line-height:1.6}',
+'.kwdoc .di p.en{color:#3d4c57;font-size:10.5px}',
+'.kwdoc .dsrc{margin-top:5px;padding-top:3px;border-top:1px dotted #d3dae0;font-size:9px;color:#5a6a76;line-height:1.5}',
+'.kwdoc .dsrc a{color:#25607f;text-decoration:none;word-break:break-all}',
+'.kwdoc .dsl{font-size:8.5px;letter-spacing:.06em;color:#8494a0;margin-right:3px}',
+'.kwdoc .dsrc-1{margin-top:2px}',
+'.kwdoc .dsrc-1 b{font-weight:600;color:#3d4c57}',
+'.kwdoc .du{display:block;font-size:7.5px;color:#98a6b0;word-break:break-all;line-height:1.35}',
+'.kwdoc .dnote{margin-top:3px;font-size:9.5px;color:#96600a}',
+'.kwdoc .dfoot{margin-top:16px;padding-top:8px;border-top:1px solid #12191f;font-size:9px;color:#8494a0;line-height:1.6}',
+'.kwdoc .dfuel{border:1px solid #d3dae0;padding:8px 12px;margin-bottom:14px;font-size:10.5px;color:#5a6a76}',
+'.kwdoc .dfuel b{display:block;font-size:11px;color:#12191f;margin-bottom:2px}',
+'.kwdoc .dfuel-g{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}',
+'.kwdoc .dfuel-g div{font-size:10px;color:#12191f;font-weight:600}',
+'.kwdoc .dfuel-g div span{display:block;font-weight:400;color:#5a6a76;margin-top:2px}',
+'.kwdoc .dfuelnote{margin-top:6px;font-size:9px;color:#8494a0}'
+].join('\n');
+
+var OUTEN={'트래블데일리':'Travel Daily Korea','뉴시안':'Newsian','조선비즈':'ChosunBiz','인사이트코리아':'Insight Korea','스포츠서울':'Sports Seoul','Pulse by Maeil Business News':'Pulse by Maeil Business News','산업통상부 보도자료 (1차 출처)':'Ministry of Trade, Industry and Resources press release (primary source)','머니투데이':'Money Today','경향신문':'The Kyunghyang Shinmun','exchangerate-api':'exchangerate-api','여행신문':'Travel Times','트래비':'Travie',
+ '디스커버리뉴스':'Discovery News','세계여행신문':'Global Travel News (GTN)','이데일리':'Edaily','연합뉴스':'Yonhap News',
+ '뉴시스':'Newsis','뉴스1':'News1','한국경제':'Korea Economic Daily','매일경제':'Maeil Business Newspaper',
+ '코리아데일리':'Korea Daily','네이버뉴스':'Naver News','TTL뉴스':'TTL News','헤럴드경제':'Herald Business',
+ '한국은행 소비자동향조사 (헤럴드경제 보도)':'Bank of Korea Consumer Survey (via Herald Business)',
+ '한국은행 소비자동향조사 (머니투데이 보도)':'Bank of Korea Consumer Survey (via Money Today)','파이낸셜뉴스':'Financial News','뉴스핌':'Newspim','스페셜경제':'Special Economy','아주경제':'Aju Business Daily','딜사이트':'Dealsite','한경비즈니스':'Hankyung Business','코리아중앙데일리':'Korea JoongAng Daily','Further Africa':'Further Africa','Rio Times Online':'Rio Times Online','Aviation Week':'Aviation Week',
+ 'LVCVA 보도자료 (1차 출처)':'LVCVA press release (primary source)',
+ 'NYC Tourism + Conventions 보도자료 (1차 출처)':'NYC Tourism + Conventions press release (primary source)',
+ 'San Francisco Travel 보도자료 (1차 출처)':'San Francisco Travel press release (primary source)','포씨유신문':'4cu News','철강금속신문':'Steel & Metal News','뉴데일리경제':'Newdaily Economy','이투데이':'Etoday','Seoul Economic Daily':'Seoul Economic Daily'};
+
+var TAGEN={'시장 전반':'Market-wide','호주 관광청':'Tourism Australia','괌 관광청':'Guam Visitors Bureau','오리건 관광청':'Travel Oregon','미국 관광청':'Brand USA','장거리 전 계정':'All long-haul accounts',
+ '뉴욕':'New York','샌프란시스코':'San Francisco','하와이':'Hawaii','라스베가스':'Las Vegas',
+ '스페인':'Spain','타히티':'Tahiti','럭셔리':'Luxury','아프리카':'Africa','남미':'South America',
+ '일본 관광청':'JNTO (Japan)','대만 관광청':'Taiwan Tourism Administration','대만 관광서':'Taiwan Tourism Administration',
+ '태국 관광청':'TAT (Thailand)','캘리포니아 관광청':'Visit California','말레이시아 경쟁':'Malaysia (competing destination)','일본 경쟁':'Japan (competing destination)',
+ '포르투갈 경쟁':'Portugal (competing destination)','모로코 관광청':'Moroccan National Tourist Office',
+ '베트남 경쟁':'Vietnam (competing destination)','중국 경쟁':'China (competing destination)','태국 경쟁':'Thailand (competing destination)',
+ '이탈리아 관광청':'Italian National Tourist Board','필리핀 관광부':'Philippine Department of Tourism','마리아나 관광청':'Marianas Visitors Authority','홍콩 관광청':'Hong Kong Tourism Board','이탈리아 경쟁':'Italy (competing destination)','스웨덴 관광청':'Visit Sweden','Consumer / SNS':'Consumer / SNS','B2B Trade':'B2B Trade','PR':'PR','All':'All'};
+
+(function(){var k;if(D.tagenx)for(k in D.tagenx)TAGEN[k]=D.tagenx[k];if(D.outenx)for(k in D.outenx)OUTEN[k]=D.outenx[k];})();
+function tagLabel(t){return LANG==='en'?(TAGEN[t]||t):t;}
+
+function outletEn(n){
+ if(OUTEN[n])return OUTEN[n];
+ var m=String(n).match(/^(.+?)\s*보도자료\s*\(1차 출처\)$/);
+ if(m)return (OUTEN[m[1]]||m[1])+' press release (primary source)';
+ return n;
+}
+
+function srcRows(i){
+ var rows=i.src.map(function(x,n){
+  var s=srcParts(i,x);
+  return '<div class="dsrc-1">'+(n===0?'<span class="dsl">'+srcLabel()+'</span> ':'')+
+   '<b>'+esc(s.out)+'</b> · '+esc(s.date)+' · <a href="'+esc(s.url)+'">'+esc(s.txt)+'</a>'+
+   (OPT.url?'<span class="du">'+esc(s.url)+'</span>':'')+'</div>';});
+ return '<div class="dsrc">'+rows.join('')+'</div>';
+}
+
+function buildDoc(E){
+ var its=selCodes(E);
+ var now=new Date(),pad=function(n){return(n<10?'0':'')+n;};
+ var stamp=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+ var title=LB(docTK(),docTE())+' · '+E.issue.no;
+ var h=['<div class="kwdoc">'];
+ h.push('<div class="dh"><div class="dh-b">Korea Weekly Travel Report</div><h1>'+
+  LB(docTK(),docTE())+'</h1><div class="dh-m">ISSUE '+esc(E.issue.no)+
+  ' · '+esc(E.issue.range)+
+  (OPT.gen?' · '+LB('수록 ','')+its.length+LB('건',' items')+' · '+LB('생성 ','generated ')+stamp:'')+
+  ' · AVIAREPS Korea</div></div>');
+ var docInd=indFiltered(E);
+ if(docInd.length){
+  h.push('<div class="dind">'+docInd.map(function(x){
+   return '<div>'+esc(LANG==='en'?(x.ken||x.k):x.k)+'<b>'+esc(x.v)+(x.u?' '+esc(x.u):'')+'</b>'+
+    esc(LANG==='en'?(x.suben||x.sub):x.sub)+'</div>';}).join('')+'</div>');}
+ var docFuel=fuelRows(E);
+ if(docFuel.length){
+  var docFx=fuelFxRate(E);
+  h.push('<div class="dfuel"><b>'+esc(LB('유류할증료 · 관광청 계정별','Fuel Surcharge by Key Destination, One-way'))+'</b> '+
+   esc(LANG==='en'?(E.fuel.monthen||E.fuel.month):E.fuel.month)+
+   '<div class="dfuel-g">'+docFuel.map(function(r){
+    var nm=esc(LANG==='en'?r.accen:r.acc);
+    var keU=fuelUsd(r.ke,docFx),ozU=fuelUsd(r.oz,docFx);
+    var ke=r.ke?esc(r.ke)+' KRW'+(keU?' ('+keU+')':''):esc(LB('해당없음','N/A'));
+    var oz=r.oz?esc(r.oz)+' KRW'+(ozU?' ('+ozU+')':''):esc(LB('해당없음','N/A'));
+    return '<div>'+nm+'<span>KE '+ke+' &middot; OZ '+oz+'</span></div>';
+   }).join('')+'</div>'+
+   (E.fuel.note?'<div class="dfuelnote">'+esc(LB(E.fuel.note,E.fuel.noteen))+(docFx?esc(LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.')):'')+'</div>':'')+
+   '</div>');}
+ D.sections.forEach(function(s){
+  var si=its.filter(function(i){return i.sec===s.id;});
+  if(!si.length)return;
+  h.push('<div class="ds"><div class="ds-h"><b>'+esc(secTitle(s))+'</b>'+
+   (LANG==='both'?'<span>'+esc(s.en)+'</span>':'')+'</div>');
+  si.forEach(function(i){
+   var tg=tagsOf(i);
+   h.push('<div class="di">'+((OPT.code||tg.length)?'<div class="dimeta">'+
+    (OPT.code?'<span class="dic">'+esc(i.code)+'</span>':'')+
+    (tg.length?'<span class="dig">'+esc(tg.join(' · '))+'</span>':'')+'</div>':''));
+   if(LANG!=='en')h.push('<h3>'+esc(i.koh)+'</h3><p>'+esc(i.kop)+'</p>');
+   if(LANG!=='ko')h.push((LANG==='both'?'<h4>':'<h3>')+esc(i.enh)+(LANG==='both'?'</h4>':'</h3>')+
+    '<p class="en">'+esc(i.enp)+'</p>');
+   h.push(srcRows(i)+'</div>');});
+  h.push('</div>');});
+ var fn=footNote();
+ h.push('<div class="dfoot">Korea Weekly Travel Report · Issue '+esc(E.issue.no)+
+  (fn?'<br>'+fn:'')+'</div></div>');
+ return {title:title,body:h.join('')};
+}
+
+function subCtaHtml(){
+ var subj=LB('Korea Weekly Travel Report 구독 신청','Korea Weekly Travel Report Subscription Request');
+ var body=LB('안녕하세요,\n\nKorea Weekly Travel Report를 매주 이메일로 받아보고 싶습니다.\n\n이름:\n소속:\n이메일:',
+  'Hello,\n\nI would like to subscribe to the Korea Weekly Travel Report.\n\nName:\nOrganization:\nEmail:');
+ if(!D.subscribeTo)return '';
+ var href='mailto:'+D.subscribeTo+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
+ return '<div class="sub-cta"><p>'+esc(LB('이 리포트를 이메일로 정기 구독하고 싶다면 아래 버튼을 눌러 신청해 주세요.',
+   'Want to receive this report by email each week? Click below to subscribe.'))+'</p>'+
+  '<a class="sub-btn" href="'+href+'">'+esc(LB('뉴스레터 신청','Subscribe to Newsletter'))+'</a></div>';
+}
+
+function docFile(E){
+ var d=buildDoc(E);
+ return '<!doctype html>\n<html lang="'+(LANG==='en'?'en':'ko')+'">\n<head>\n<meta charset="utf-8">\n'+
+  '<meta name="viewport" content="width=device-width,initial-scale=1">\n<title>'+esc(d.title)+'</title>\n<style>\n'+
+  'body{margin:0;padding:22px 20px 40px;background:#fff}\n'+DOCCSS+'\n'+
+  '.pbar{max-width:900px;margin:0 auto 14px;text-align:right}\n'+
+  '.pbar button{font:600 13px/1 inherit;padding:9px 16px;border:1px solid #12191f;background:#12191f;color:#fff;border-radius:2px;cursor:pointer}\n'+
+  '.sub-cta{max-width:900px;margin:26px auto 0;padding:18px 20px;border:1px solid #d3dae0;border-radius:3px;background:#f7f9fb;text-align:center}\n'+
+  '.sub-cta p{margin:0 0 12px;font-size:12.5px;color:#54646f}\n'+
+  '.sub-btn{display:inline-block;font:600 13px/1 Aptos,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding:10px 22px;background:#b3122b;color:#fff;text-decoration:none;border-radius:2px}\n'+
+  '.sub-btn:hover{opacity:.88}\n'+
+  '@page{size:A4;margin:12mm}\n'+
+  '@media print{body{padding:0}.pbar,.sub-cta{display:none}}\n</style>\n</head>\n<body>\n'+
+  '<div class="pbar"><button type="button" onclick="window.print()">'+LB('인쇄 / PDF로 저장','Print / Save as PDF')+
+  '</button></div>\n'+d.body+'\n'+subCtaHtml()+'\n</body>\n</html>\n';
+}
+
+/* ---- 뉴스레터용 인라인 스타일 HTML ---- */
+var MFB="font-family:Aptos,'Malgun Gothic','Apple SD Gothic Neo',Arial,sans-serif;";
+
+
+/* Outlook(Word 엔진) 안전 규칙:
+   - 얇은 선은 bgcolor 행이 아니라 td의 border 로 그린다 (bgcolor 행은 통짜 띠가 된다)
+   - 글자 크기는 pt, 줄간격은 %, 텍스트를 직접 감싼 span 에 지정한다
+   - 여백은 margin 이 아니라 td padding 으로 준다 */
+var CINK='#23303A', CHEAD='#14222D', CMUT='#66787F', CFAINT='#93A3AE',
+    CRED='#B3122B', CSTEEL='#2A6E93', CTINT='#EEF4F8', CBOX='#F7F9FB',
+    CLINE='#DCE3E9', CSOFT='#EDF1F4';
+
+function mrow(inner,pad,extra){return '<tr><td style="padding:'+(pad||'0')+';'+(extra||'')+'">'+inner+'</td></tr>';}
+function msp(t,st){return '<span style="'+MFB+st+'">'+t+'</span>';}
+
+function mailSrc(i){
+ return i.src.map(function(x,n){
+  var s=srcParts(i,x);
+  return (n?'<br>':'')+(n===0?msp(srcLabel()+'&nbsp;','font-size:8pt;color:'+CFAINT+';'):'')+
+   msp('<b style="color:'+CMUT+'">'+esc(s.out)+'</b> &middot; '+esc(s.date)+' &middot; ','font-size:8.5pt;color:'+CMUT+';')+
+   '<a href="'+esc(s.url)+'" style="'+MFB+'font-size:8.5pt;color:'+CSTEEL+';text-decoration:underline">'+esc(s.txt)+'</a>';
+ }).join('');
+}
+
+function buildMail(E){
+ var its=selCodes(E),now=new Date(),pad=function(n){return(n<10?'0':'')+n;};
+ var stamp=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+ var h=['<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="680" style="width:680px;max-width:680px;border-collapse:collapse;'+MFB+'">'];
+
+ h.push(mrow(msp('KOREA WEEKLY TRAVEL REPORT','font-size:8pt;font-weight:bold;color:'+CRED+';letter-spacing:1.5px;'),'0 0 6px 0'));
+ h.push(mrow(msp(LB(docTK(),docTE()),
+  'font-size:18pt;font-weight:bold;color:'+CHEAD+';'),'0 0 6px 0'));
+ h.push(mrow(msp('ISSUE '+esc(E.issue.no)+' &middot; '+esc(E.issue.range)+
+  (OPT.gen?' &middot; '+LB('수록 ','')+its.length+LB('건',' items')+' &middot; '+LB('생성 ','generated ')+stamp:'')+
+  ' &middot; AVIAREPS Korea','font-size:8.5pt;color:'+CMUT+';'),'0 0 12px 0','border-bottom:2px solid '+CRED));
+
+ var mailInd=indFiltered(E);
+ if(mailInd.length){
+  h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse"><tr>'+
+   mailInd.map(function(x,n){
+    return '<td width="50%" bgcolor="'+CBOX+'" style="padding:11px 15px;vertical-align:top;border:1px solid '+CLINE+
+     (n?';border-left:0':'')+'">'+
+     msp(esc(LANG==='en'?(x.ken||x.k):x.k),'font-size:8.5pt;color:'+CMUT+';')+'<br>'+
+     msp(esc(x.v)+(x.u?' '+esc(x.u):''),'font-size:15pt;font-weight:bold;color:'+CHEAD+';')+'<br>'+
+     msp(esc(LANG==='en'?(x.suben||x.sub):x.sub),'font-size:8pt;color:'+CMUT+';')+'</td>';}).join('')+
+   '</tr></table>','16px 0 0 0'));}
+ var mailFuel=fuelRows(E);
+ if(mailFuel.length){
+  var mailFx=fuelFxRate(E);
+  h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse">'+
+   '<tr><td bgcolor="'+CBOX+'" style="padding:10px 14px;border:1px solid '+CLINE+'">'+
+   msp(esc(LB('유류할증료 · 관광청 계정별','Fuel Surcharge by Key Destination, One-way'))+' &middot; '+
+    esc(LANG==='en'?(E.fuel.monthen||E.fuel.month):E.fuel.month),'font-size:9pt;font-weight:bold;color:'+CHEAD+';')+
+   '<br>'+mailFuel.map(function(r){
+    var nm=esc(LANG==='en'?r.accen:r.acc);
+    var keU=fuelUsd(r.ke,mailFx),ozU=fuelUsd(r.oz,mailFx);
+    var ke=r.ke?esc(r.ke)+' KRW'+(keU?' ('+keU+')':''):esc(LB('해당없음','N/A'));
+    var oz=r.oz?esc(r.oz)+' KRW'+(ozU?' ('+ozU+')':''):esc(LB('해당없음','N/A'));
+    return msp(nm+': KE '+ke+' &middot; OZ '+oz,'font-size:8.5pt;color:'+CMUT+';');
+   }).join('<br>')+
+   (E.fuel.note?'<br>'+msp(esc(LB(E.fuel.note,E.fuel.noteen))+(mailFx?esc(LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.')):''),'font-size:7.5pt;color:'+CFAINT+';'):'')+
+   '</td></tr></table>','10px 0 0 0'));}
+
+ D.sections.forEach(function(s){
+  var si=its.filter(function(i){return i.sec===s.id;});
+  if(!si.length)return;
+  h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse"><tr>'+
+   '<td bgcolor="'+CTINT+'" style="padding:9px 14px;border-left:4px solid '+CSTEEL+'">'+
+   msp(esc(secTitle(s)),'font-size:12pt;font-weight:bold;color:'+CSTEEL+';')+
+   (LANG==='both'?'&nbsp;&nbsp;'+msp(esc(s.en),'font-size:8.5pt;color:'+CMUT+';'):'')+
+   '</td></tr></table>','24px 0 0 0'));
+  si.forEach(function(i,n){
+   var tg=tagsOf(i),first=(n===0),sep=first?'':'border-top:1px solid '+CSOFT+';';
+   if(tg.length)h.push(mrow(msp(tg.map(esc).join('&nbsp;&nbsp;·&nbsp;&nbsp;'),'font-size:8pt;color:'+CFAINT+';letter-spacing:.3px;'),
+    (first?'14px':'16px')+' 0 0 0',sep));
+   if(LANG!=='en'){
+    h.push(mrow(msp(esc(i.koh),'font-size:12pt;font-weight:bold;color:'+CHEAD+';line-height:135%;'),
+     tg.length?'4px 0 0 0':((first?'14px':'16px')+' 0 0 0'),tg.length?'':sep));
+    h.push(mrow(msp(esc(i.kop),'font-size:10.5pt;color:'+CINK+';line-height:160%;'),'6px 0 0 0'));}
+   if(LANG!=='ko'){
+    var enFirst=(LANG==='en'&&!tg.length);
+    h.push(mrow(msp(esc(i.enh),'font-size:'+(LANG==='both'?'10.5pt':'12pt')+';font-weight:bold;color:'+
+     (LANG==='both'?CSTEEL:CHEAD)+';line-height:135%;'),
+     LANG==='both'?'11px 0 0 0':(tg.length?'4px 0 0 0':((first?'14px':'16px')+' 0 0 0')),
+     (enFirst?sep:'')));
+    h.push(mrow(msp(esc(i.enp),'font-size:'+(LANG==='both'?'9.5pt':'10.5pt')+';color:'+
+     (LANG==='both'?CMUT:CINK)+';line-height:160%;'),'6px 0 0 0'));}
+   h.push(mrow(mailSrc(i),'8px 0 0 0'));
+  });
+ });
+
+ var fnote=footNote();
+ h.push(mrow(msp('Korea Weekly Travel Report &middot; Issue '+esc(E.issue.no),'font-size:8pt;color:'+CFAINT+';')+
+  (fnote?'<br>'+msp(fnote,'font-size:8pt;color:'+CFAINT+';line-height:150%;'):''),
+  '10px 0 0 0','border-top:1px solid '+CLINE));
+
+ var subSubj=LB('Korea Weekly Travel Report 구독 신청','Korea Weekly Travel Report Subscription Request');
+ var subBody=LB('안녕하세요,\n\nKorea Weekly Travel Report를 매주 이메일로 받아보고 싶습니다.\n\n이름:\n소속:\n이메일 주소:',
+  'Hello,\n\nI would like to subscribe to the Korea Weekly Travel Report.\n\nName:\nOrganization:\nEmail address:');
+ var subHref='mailto:'+(D.subscribeTo||'')+'?subject='+encodeURIComponent(subSubj)+'&body='+encodeURIComponent(subBody);
+ if(D.subscribeTo)h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse">'+
+  '<tr><td bgcolor="'+CBOX+'" style="padding:16px 16px;border:1px solid '+CLINE+';text-align:center">'+
+  msp(esc(LB('이 뉴스레터를 매주 이메일로 받아보고 싶다면 아래 버튼을 눌러 신청해 주세요.',
+   'Want to receive this newsletter by email each week? Click below to subscribe.')),'font-size:9pt;color:'+CMUT+';')+
+  '<br><br><a href="'+subHref+'" style="'+MFB+'display:inline-block;font-size:10.5pt;font-weight:bold;color:#ffffff;background-color:'+CRED+';padding:9px 22px;text-decoration:none;border-radius:2px">'+
+  esc(LB('뉴스레터 신청','Subscribe to Newsletter'))+'</a>'+
+  '</td></tr></table>','18px 0 0 0'));
+
+ h.push('</table>');
+ return h.join('');
+}
+
+function legacyCopy(html,ok,fail){
+ var d=document.createElement('div');
+ d.setAttribute('contenteditable','true');
+ d.style.cssText='position:fixed;left:-10000px;top:0;width:700px;white-space:normal';
+ d.innerHTML=html;document.body.appendChild(d);
+ var r=document.createRange();r.selectNodeContents(d);
+ var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+ var done=false;try{done=document.execCommand('copy');}catch(e){}
+ s.removeAllRanges();document.body.removeChild(d);
+ done?ok():fail();
+}
+
+function doCopy(E){
+ var n=selCodes(E).length;
+ if(!n){expMsg('err','담을 항목을 하나 이상 골라주세요.');return;}
+ var html=buildMail(E);
+ var tmp=document.createElement('div');tmp.innerHTML=html;
+ var plain=tmp.innerText||tmp.textContent||'';
+ var ok=function(){expMsg('ok','뉴스레터용 서식이 복사됐습니다 ('+n+'건, '+
+  ({ko:'한국어 전문',en:'English only',both:'한·영 병기'}[LANG])+
+  '). 메일 작성창에 그대로 붙여넣으면 서식이 유지됩니다.');};
+ var fail=function(){expMsg('err','클립보드 복사가 차단됐습니다. 미리보기를 연 뒤 문서 영역을 드래그해 직접 복사해 주세요.');};
+ if(navigator.clipboard&&window.ClipboardItem){
+  try{
+   navigator.clipboard.write([new window.ClipboardItem({
+    'text/html':new Blob([html],{type:'text/html'}),
+    'text/plain':new Blob([plain],{type:'text/plain'})})]).then(ok,function(){legacyCopy(html,ok,fail);});
+   return;
+  }catch(e){}
+ }
+ legacyCopy(html,ok,fail);
+}
+
+/* ---- Word(.docx) ---- */
+function xe(t){return String(t==null?'':t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function dxRun(t,o){o=o||{};
+ return '<w:r><w:rPr><w:rFonts w:ascii="Aptos" w:hAnsi="Aptos" w:cs="Aptos" w:eastAsia="Malgun Gothic"/>'+
+  (o.b?'<w:b/>':'')+(o.i?'<w:i/>':'')+(o.u?'<w:u w:val="single"/>':'')+
+  (o.color?'<w:color w:val="'+o.color+'"/>':'')+
+  '<w:sz w:val="'+(o.sz||24)+'"/><w:szCs w:val="'+(o.sz||24)+'"/></w:rPr>'+
+  '<w:t xml:space="preserve">'+xe(t)+'</w:t></w:r>';}
+function dxP(runs,o){o=o||{};
+ return '<w:p><w:pPr><w:spacing w:before="'+(o.before||0)+'" w:after="'+(o.after||60)+'"/>'+
+  (o.bdr?'<w:pBdr><w:bottom w:val="single" w:sz="'+o.bdr+'" w:space="2" w:color="12191F"/></w:pBdr>':'')+
+  '</w:pPr>'+runs+'</w:p>';}
+
+function buildDocx(E){
+ var its=selCodes(E),rels=[],body=[];
+ var now=new Date(),pad=function(n){return(n<10?'0':'')+n;};
+ var stamp=now.getFullYear()+'-'+pad(now.getMonth()+1)+'-'+pad(now.getDate());
+ function link(text,url){
+  var id='rId'+(100+rels.length);rels.push([id,url]);
+  return '<w:hyperlink r:id="'+id+'">'+dxRun(text,{sz:18,color:'25607F',u:1})+'</w:hyperlink>';}
+ body.push(dxP(dxRun('KOREA WEEKLY TRAVEL REPORT',{b:1,sz:18,color:'B3122B'}),{after:40}));
+ body.push(dxP(dxRun(LB(docTK(),docTE()),{b:1,sz:36}),{after:40}));
+ body.push(dxP(dxRun('ISSUE '+E.issue.no+' · '+E.issue.range+
+  (OPT.gen?' · '+LB('수록 ','')+its.length+LB('건',' items')+' · '+LB('생성 ','generated ')+stamp:'')+
+  ' · AVIAREPS Korea',{sz:18,color:'5A6A76'}),{after:160,bdr:12}));
+ var dxInd=indFiltered(E);
+ if(dxInd.length){
+  dxInd.forEach(function(x){
+   body.push(dxP(dxRun((LANG==='en'?(x.ken||x.k):x.k)+': ',{b:1,sz:20})+
+    dxRun(x.v+(x.u?' '+x.u:'')+'  ',{b:1,sz:20})+
+    dxRun('('+(LANG==='en'?(x.suben||x.sub):x.sub)+')',{sz:18,color:'5A6A76'}),{after:40}));});
+  body.push(dxP('',{after:120}));}
+ var dxFuel=fuelRows(E);
+ if(dxFuel.length){
+  var dxFx=fuelFxRate(E);
+  body.push(dxP(dxRun(LB('유류할증료 · 관광청 계정별','Fuel Surcharge by Key Destination, One-way')+' — '+
+   (LANG==='en'?(E.fuel.monthen||E.fuel.month):E.fuel.month),{b:1,sz:20}),{after:40}));
+  dxFuel.forEach(function(r){
+   var nm=LANG==='en'?r.accen:r.acc;
+   var keU=fuelUsd(r.ke,dxFx),ozU=fuelUsd(r.oz,dxFx);
+   var ke=r.ke?r.ke+' KRW'+(keU?' ('+keU+')':''):LB('해당없음','N/A');
+   var oz=r.oz?r.oz+' KRW'+(ozU?' ('+ozU+')':''):LB('해당없음','N/A');
+   body.push(dxP(dxRun(nm+': ',{b:1,sz:18})+dxRun('KE '+ke+'   OZ '+oz,{sz:18,color:'5A6A76'}),{after:20}));});
+  if(E.fuel.note)body.push(dxP(dxRun(LB(E.fuel.note,E.fuel.noteen)+(dxFx?LB(' USD 환산은 원/달러 환율 기준 근사치입니다.',' USD figures are approximate, based on the KRW/USD rate above.'):''),{sz:16,color:'8494A0'}),{after:20}));
+  body.push(dxP('',{after:120}));}
+ D.sections.forEach(function(s){
+  var si=its.filter(function(i){return i.sec===s.id;});
+  if(!si.length)return;
+  body.push(dxP(dxRun(secTitle(s),{b:1,sz:28})+
+   (LANG==='both'?dxRun('  '+s.en,{sz:18,color:'8494A0'}):''),{before:220,after:80,bdr:8}));
+  si.forEach(function(i){
+   var tg=tagsOf(i);
+   if(OPT.code||tg.length)
+    body.push(dxP((OPT.code?dxRun(i.code+'  ',{b:1,sz:18,color:'B3122B'}):'')+
+     (tg.length?dxRun(tg.join(' · '),{sz:18,color:'8494A0'}):''),{before:120,after:30}));
+   if(LANG!=='en'){
+    body.push(dxP(dxRun(i.koh,{b:1,sz:26}),{after:40}));
+    body.push(dxP(dxRun(i.kop,{sz:24}),{after:60}));}
+   if(LANG!=='ko'){
+    body.push(dxP(dxRun(i.enh,{b:1,sz:LANG==='both'?24:26,color:LANG==='both'?'3D4C57':undefined}),{before:LANG==='both'?60:0,after:40}));
+    body.push(dxP(dxRun(i.enp,{sz:LANG==='both'?22:24,color:LANG==='both'?'3D4C57':undefined}),{after:60}));}
+   i.src.forEach(function(x,n){
+    var s2=srcParts(i,x);
+    body.push(dxP((n===0?dxRun(srcLabel()+'  ',{sz:16,color:'8494A0'}):'')+
+     dxRun(s2.out+' · '+s2.date+' · ',{sz:18,color:'5A6A76'})+link(s2.txt,s2.url),{after:OPT.url?10:40}));
+    if(OPT.url)body.push(dxP(dxRun(s2.url,{sz:14,color:'98A6B0'}),{after:60}));});});
+ });
+ body.push(dxP(dxRun('Korea Weekly Travel Report · Issue '+E.issue.no,{sz:16,color:'8494A0'}),{before:220,after:20,bdr:8}));
+ var fn2=footNote();
+ if(fn2)body.push(dxP(dxRun(fn2,{sz:16,color:'8494A0'}),{after:0}));
+ var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+  '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"'+
+  ' xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><w:body>'+
+  body.join('')+
+  '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/>'+
+  '<w:pgMar w:top="794" w:right="794" w:bottom="794" w:left="794" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr>'+
+  '</w:body></w:document>';
+ var docRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+  '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+  rels.map(function(r){return '<Relationship Id="'+r[0]+
+   '" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="'+
+   xe(r[1])+'" TargetMode="External"/>';}).join('')+'</Relationships>';
+ return {doc:doc,rels:docRels};
+}
+
+/* ---- PDF ---- */
+var PDFBUSY=false;
+var CDN={jszip:'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js',
+ h2c:'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',
+ jspdf:'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'};
+
+function loadScript(src,test,cb,err){
+ if(test())return cb();
+ var s=document.createElement('script');s.src=src;
+ s.onload=function(){test()?cb():err();};s.onerror=err;
+ document.head.appendChild(s);
+}
+
+function doPdf(E){
+ if(!DL){expMsg('err','이 화면에서는 파일 저장을 쓸 수 없습니다.');return;}
+ var n=selCodes(E).length;
+ if(!n){expMsg('err','담을 항목을 하나 이상 골라주세요.');return;}
+ if(PDFBUSY)return;
+ var fail=function(m){PDFBUSY=false;syncPanel();expMsg('err',m||'PDF를 만들지 못했습니다. Word나 HTML로 저장해 주세요.');};
+ PDFBUSY=true;syncPanel();
+ expMsg('ok','PDF를 만드는 중입니다… 항목이 많으면 10초 정도 걸립니다.');
+ loadScript(CDN.h2c,function(){return !!window.html2canvas;},function(){
+  loadScript(CDN.jspdf,function(){return !!(window.jspdf&&window.jspdf.jsPDF);},function(){
+   renderPdf(E,fail);
+  },function(){fail('PDF 변환 모듈(jsPDF)을 불러오지 못했습니다.');});
+ },function(){fail('PDF 변환 모듈(html2canvas)을 불러오지 못했습니다.');});
+}
+
+function renderPdf(E,fail){
+ var W=760; /* 렌더 폭(css px) */
+ var host=document.createElement('div');
+ host.style.cssText='position:fixed;left:-20000px;top:0;width:'+W+'px;background:#ffffff;padding:0;z-index:-1';
+ host.innerHTML='<style>'+DOCCSS+'</style><div style="width:'+W+'px;background:#fff">'+buildDoc(E).body+'</div>';
+ document.body.appendChild(host);
+ var doc=host.querySelector('.kwdoc');
+ doc.style.maxWidth=W+'px';
+ /* 페이지가 잘리지 않도록 블록 경계를 미리 수집 */
+ var blocks=[],base=doc.getBoundingClientRect().top;
+ Array.prototype.forEach.call(doc.querySelectorAll('.dh,.dind,.ds-h,.di,.dfoot'),function(el){
+  var r=el.getBoundingClientRect();
+  blocks.push({top:r.top-base,bottom:r.bottom-base});});
+ var total=doc.getBoundingClientRect().height;
+ window.html2canvas(doc,{scale:2,backgroundColor:'#ffffff',logging:false,windowWidth:W,width:W})
+  .then(function(canvas){
+   try{
+    var jsPDF=window.jspdf.jsPDF,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'p'});
+    var pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight(),M=30;
+    var iw=pw-M*2, k=iw/W;                 /* css px → pt */
+    var pageCss=(ph-M*2)/k;                /* 한 페이지에 담기는 css px */
+    var cuts=[0],cur=0;
+    blocks.forEach(function(b){
+     if(b.bottom-cur>pageCss){
+      var start=(b.top-cur>2)?b.top:b.bottom;   /* 블록 자체가 한 페이지보다 크면 그 끝에서 자름 */
+      if(start-cur<=0)start=cur+pageCss;
+      cuts.push(start);cur=start;}});
+    cuts.push(total);
+    var sc=canvas.height/total;            /* css px → canvas px */
+    var pages=0;
+    for(var i=0;i<cuts.length-1;i++){
+     var y0=Math.round(cuts[i]*sc),y1=Math.round(cuts[i+1]*sc);
+     if(y1-y0<4)continue;
+     var c=document.createElement('canvas');
+     c.width=canvas.width;c.height=y1-y0;
+     var cx=c.getContext('2d');
+     cx.fillStyle='#ffffff';cx.fillRect(0,0,c.width,c.height);
+     cx.drawImage(canvas,0,y0,canvas.width,y1-y0,0,0,canvas.width,y1-y0);
+     if(pages)pdf.addPage();
+     pdf.addImage(c.toDataURL('image/jpeg',0.9),'JPEG',M,M,iw,(y1-y0)/sc*k);
+     pages++;}
+    var blob=pdf.output('blob');
+    host.parentNode.removeChild(host);
+    var fn=fileName(E).replace(/\.html$/,'.pdf');
+    DL.save({filename:fn,data:blob}).then(function(){
+     PDFBUSY=false;syncPanel();
+     expMsg('ok','PDF를 저장했습니다 — '+fn+' ('+pages+'쪽, '+selCodes(E).length+
+      '건). PDF는 페이지 이미지로 만들어져 글자 선택·검색은 되지 않습니다. 편집이나 검색이 필요하면 Word나 HTML을 쓰세요.');
+    }).catch(function(e){
+     var c2=e&&e.code;
+     fail(c2==='declined'?'저장을 취소하셨습니다.':(c2==='too_large'?'PDF가 16MB를 넘습니다. 항목을 줄여주세요.':null));});
+   }catch(err){if(host.parentNode)host.parentNode.removeChild(host);fail();}
+  }).catch(function(){if(host.parentNode)host.parentNode.removeChild(host);fail();});
+}
+
+function withJSZip(cb){
+ if(window.JSZip)return cb();
+ var s=document.createElement('script');
+ s.src='https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+ s.onload=function(){window.JSZip?cb():expMsg('err','Word 변환 모듈을 불러오지 못했습니다.');};
+ s.onerror=function(){expMsg('err','Word 변환 모듈을 불러오지 못했습니다. 네트워크를 확인해 주세요.');};
+ document.head.appendChild(s);
+}
+
+function doDocx(E){
+ if(!DL){expMsg('err','이 화면에서는 파일 저장을 쓸 수 없습니다. 공개 공유를 끄면 활성화됩니다.');return;}
+ var n=selCodes(E).length;
+ if(!n){expMsg('err','담을 항목을 하나 이상 골라주세요.');return;}
+ expMsg('ok','Word 문서를 만드는 중…');
+ withJSZip(function(){
+  try{
+   var d=buildDocx(E),zip=new window.JSZip();
+   zip.file('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+    '<Default Extension="xml" ContentType="application/xml"/>'+
+    '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+
+    '</Types>');
+   zip.folder('_rels').file('.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'+
+    '</Relationships>');
+   var w=zip.folder('word');
+   w.file('document.xml',d.doc);
+   w.folder('_rels').file('document.xml.rels',d.rels);
+   zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'})
+    .then(function(blob){
+     return DL.save({filename:fileName(E).replace(/\.html$/,'.docx'),data:blob});})
+    .then(function(){expMsg('ok','Word 문서를 저장했습니다 — '+fileName(E).replace(/\.html$/,'.docx')+' ('+n+'건).');})
+    .catch(function(e){
+     var c=e&&e.code;
+     expMsg('err',({declined:'저장을 취소하셨습니다.',rate_limited:'저장 요청이 몰렸습니다. 잠시 후 다시 눌러주세요.',
+      too_large:'문서가 16MB를 넘습니다. 항목을 줄여주세요.',
+      rejected_extension:'docx 형식을 저장할 수 없습니다.',
+      extension_not_enabled:'이 화면에서는 Word 저장이 꺼져 있습니다.'}[c])||'Word 문서 저장에 실패했습니다.');});
+  }catch(err){expMsg('err','Word 문서를 만들지 못했습니다.');}
+ });
+}
+
+function expMsg(kind,text){
+ var m=document.getElementById('expmsg');if(!m)return;
+ m.className='exp-msg '+kind;m.innerHTML=text;m.hidden=false;
+}
+
+function doPreview(E){
+ var pv=document.getElementById('pv');
+ pv.innerHTML='<div class="pv-bar"><span class="t">미리보기 · '+LANG.toUpperCase()+' · '+selCodes(E).length+
+  '건</span><button type="button" class="btn s" id="pvclose">닫기</button></div>'+
+  '<style>'+DOCCSS+'</style>'+buildDoc(E).body;
+ pv.hidden=false;
+ pv.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function doDownload(E){
+ if(!DL){expMsg('err','이 화면에서는 파일 저장을 쓸 수 없습니다. 미리보기 후 인쇄해 주세요.');return;}
+ var n=selCodes(E).length;
+ if(!n){expMsg('err','담을 항목을 하나 이상 골라주세요.');return;}
+ expMsg('ok','저장 확인 창을 띄웠습니다…');
+ DL.save({filename:fileName(E),data:docFile(E)}).then(function(){
+  expMsg('ok','저장했습니다 — '+fileName(E)+' ('+n+'건, '+
+   ({ko:'한국어 전문',en:'English only',both:'한·영 병기'}[LANG])+'). 파일을 열어 인쇄하면 PDF로 저장됩니다.');
+ }).catch(function(e){
+  var c=e&&e.code;
+  var m={declined:'저장을 취소하셨습니다.',
+   rate_limited:'저장 요청이 몰렸습니다. 잠시 후 다시 눌러주세요.',
+   too_large:'문서가 16MB를 넘습니다. 항목을 줄여주세요.',
+   rejected_extension:'HTML 형식을 저장할 수 없습니다.',
+   extension_not_enabled:'이 화면에서는 HTML 저장이 꺼져 있습니다. 미리보기 후 인쇄해 주세요.',
+   bad_request:'문서를 만드는 데 문제가 있었습니다. 항목을 다시 골라주세요.'}[c];
+  expMsg('err',m||'저장에 실패했습니다. 미리보기 후 인쇄해 주세요.');});
+}
+
+if(window.claude&&typeof claude.use==='function'){
+ claude.use('downloads').then(function(d){DL=d;DLASKED=true;syncPanel();})
+  .catch(function(){DLASKED=true;syncPanel();});
+}else{DLASKED=true;DL={save:function(o){try{
+ var b=(o.data instanceof Blob)?o.data:new Blob([o.data],{type:/\.html?$/i.test(o.filename)?'text/html;charset=utf-8':'application/octet-stream'});
+ var u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=o.filename;document.body.appendChild(a);a.click();
+ setTimeout(function(){URL.revokeObjectURL(u);a.remove();},4000);return Promise.resolve();}catch(e){return Promise.reject(e);}}};}
+
+document.addEventListener('click',function(ev){
+ var E=D.editions[cur],t=ev.target;
+ var b=t.closest?t.closest('button'):null;
+ if(!b)return;
+ if(b.id==='expbtn'){var p=document.getElementById('exp');p.hidden=!p.hidden;
+  b.setAttribute('aria-expanded',String(!p.hidden));
+  var ec=document.getElementById('expcar');if(ec)ec.textContent=p.hidden?'▾':'▴';
+  if(!p.hidden)p.scrollIntoView({behavior:'smooth',block:'start'});return;}
+ if(b.id==='pickbtn'){var w=document.getElementById('pickwrap');w.hidden=!w.hidden;
+  b.setAttribute('aria-expanded',String(!w.hidden));
+  var pc=document.getElementById('pickcar');if(pc)pc.textContent=w.hidden?'▾':'▴';return;}
+ if(b.dataset.lang){LANG=b.dataset.lang;syncPanel();
+  var pv=document.getElementById('pv');if(pv&&!pv.hidden)doPreview(E);return;}
+ if(b.dataset.all){var on=b.dataset.all==='1';visItems(E).forEach(function(i){SEL[i.code]=on;});syncPanel();return;}
+ if(b.dataset.fuelall){var fon=b.dataset.fuelall==='1';if(E.fuel&&E.fuel.rows)E.fuel.rows.forEach(function(r){FSEL[r.acc]=fon;});syncPanel();
+  var fpv=document.getElementById('pv');if(fpv&&!fpv.hidden)doPreview(E);return;}
+ if(b.id==='dlbtn'){doDownload(E);return;}
+ if(b.id==='dxbtn'){doDocx(E);return;}
+ if(b.id==='pdbtn'){doPdf(E);return;}
+ if(b.id==='cpbtn'){doCopy(E);return;}
+ if(b.id==='pvbtn'){doPreview(E);return;}
+ if(b.id==='pvclose'){var v=document.getElementById('pv');v.hidden=true;v.innerHTML='';
+  document.getElementById('exp').scrollIntoView({behavior:'smooth',block:'start'});return;}
+});
+
+document.addEventListener('change',function(ev){
+ var E=D.editions[cur],t=ev.target;
+ if(t.classList&&t.classList.contains('obox')){OPT[t.dataset.opt]=t.checked;syncPanel();
+  var v=document.getElementById('pv');if(v&&!v.hidden)doPreview(E);return;}
+ if(t.classList&&t.classList.contains('ibox')){SEL[t.dataset.code]=t.checked;syncPanel();return;}
+ if(t.classList&&t.classList.contains('sbox')){
+  visItems(E).forEach(function(i){if(i.sec===t.dataset.sec)SEL[i.code]=t.checked;});syncPanel();return;}
+ if(t.classList&&t.classList.contains('fbox')){FSEL[t.dataset.acc]=t.checked;syncPanel();
+  var v=document.getElementById('pv');if(v&&!v.hidden)doPreview(E);return;}
+});
+
+/* ---------- 대한항공(KE) 유류할증료 월별 추이 · 원(KRW) / 미화(USD) ---------- */
+var TRSHOWN=false,TRGS={},TS={},CS={},TRON={};
+try{var _tr=JSON.parse(localStorage.getItem('fuelOn')||'null');if(_tr&&typeof _tr==='object')TRON=_tr;}catch(e){}
+function trOn(s){return TRON[s.id]!==false;}
+function trSave(){try{localStorage.setItem('fuelOn',JSON.stringify(TRON));}catch(e){}}
+function trFmt(n){return n==null?'—':Number(n).toLocaleString('en-US');}
+function trMan(n){return (n/10000).toFixed(1)+'만';}
+function trPct(a,b){return (a==null||b==null||!b)?null:(a-b)/b*100;}
+function trD(p){
+ if(p==null)return '<span class="t-d flat">—</span>';
+ var r=Math.round(p*10)/10;
+ if(r>0)return '<span class="t-d up">▲ +'+r.toFixed(1)+'%</span>';
+ if(r<0)return '<span class="t-d dn">▼ −'+Math.abs(r).toFixed(1)+'%</span>';
+ return '<span class="t-d flat">■ 0.0%</span>';
+}
+function trCol(n){return 'var(--t'+(n%7+1)+')';}
+function trLast(vals){for(var k=vals.length-1;k>=0;k--){if(vals[k]!=null)return k;}return -1;}
+function trPeak(vals){var b=-1;vals.forEach(function(v,k){if(v!=null&&(b<0||v>vals[b]))b=k;});return b;}
+
+var EMON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var TRP=['#2a78d6','#eb6834','#1baf7a','#eda100','#e87ba4','#8a63d2','#9a6a3a'];
+var TRUSDNOTE="USD figures are the KRW zone-table values divided by each month's applied ROE (KRW/USD) and rounded to the nearest dollar, so they may differ by about $1 from the dollar amounts published by the carrier. Because the ROE changes every month, month-over-month changes differ from the KRW basis.";
+function trS(s,C,f){return (C.en&&s.en&&s.en[f]!=null)?s.en[f]:s[f];}
+function trM(T,i,C){var m=T.months[i].m;if(!C.en)return m;var n=parseInt(m,10);return EMON[n-1]||m;}
+function trLvT(T,i,C){var l=T.months[i].lvl;if(l==null)return '';return C.en?'Level '+l:l+'단계';}
+
+var TRC_KRW={key:'krw',usd:false,en:false,pts:true,pv:true,tr:true,
+ fmt:trFmt,lab:trFmt,unit:'KRW',tipUnit:'KRW',aria:function(v){return trFmt(v)+'원';},
+ ax:function(t){return t===0?'0':(t/10000)+'만';},
+ step:function(max){return max>600000?200000:100000;},
+ h1:'유류할증료',tab:'유류할증료 (원) 탭',
+ title:'대한항공(KE) 구간별 월별 추이',
+ sub:function(T){return '국제선 편도 · 원(KRW) · '+esc(T.year)+'년 '+esc(T.months[0].m)+'~'+esc(T.months[T.months.length-1].m)+' · 대권거리(마일) 구간 기준';},
+ steps:[10000,20000,50000,100000,200000],
+ csub:function(T,s){return '국제선 편도 · 원(KRW) · '+esc(T.year)+'년 '+esc(T.months[0].m)+'~'+esc(T.months[T.months.length-1].m)+' · '+esc(trS(s,TRC_KRW,'band'))+' · '+esc(trS(s,TRC_KRW,'tag'));},
+ cap:'대한항공 구간별 월별 편도 유류할증료(원)와 전월 대비 증감',
+ chart:'대한항공 국제선 편도 유류할증료 월별 추이 꺾은선 차트(원). 아래 표에 같은 값이 있습니다.'};
+var TRC_USD={key:'usd',usd:true,en:true,pts:true,pv:true,tr:true,
+ fmt:function(v){return v==null?'—':'$'+trFmt(v);},lab:function(v){return '$'+trFmt(v);},unit:'',tipUnit:'USD',
+ aria:function(v){return '$'+trFmt(v);},
+ ax:function(t){return t===0?'$0':'$'+t;},
+ step:function(max){return max>600?200:100;},
+ h1:'Fuel Surcharge (USD)',tab:'Fuel Surcharge (USD) tab',
+ title:'Korean Air (KE) Fuel Surcharge by Zone — Monthly Trend (USD)',
+ sub:function(T){var a=parseInt(T.months[0].m,10),b=parseInt(T.months[T.months.length-1].m,10);return 'One-way international · USD · '+EMON[a-1]+'–'+EMON[b-1]+' '+T.year+" · converted at each month's applied ROE, rounded to the nearest dollar";},
+ steps:[10,20,50,100,200],
+ csub:function(T,s){var a=parseInt(T.months[0].m,10),b=parseInt(T.months[T.months.length-1].m,10);return 'One-way international · USD · '+EMON[a-1]+'–'+EMON[b-1]+' '+esc(T.year)+' · '+esc(trS(s,TRC_USD,'band'))+' · '+esc(trS(s,TRC_USD,'tag'));},
+ cap:'Korean Air one-way fuel surcharge by zone and month, in US dollars',
+ chart:'Line chart with markers: Korean Air one-way international fuel surcharge by month, in US dollars. The same values appear in the table below.'};
+var TRC_TKRW=Object.assign({},TRC_KRW,{key:'trn-krw',car:'trn',tab:'트리니티항공 유류할증료 (원) 탭',title:'트리니티항공 부과군별 월별 추이',
+ cap:'트리니티항공 부과군별 월별 편도 유류할증료(원)와 전월 대비 증감',chart:'트리니티항공 국제선 편도 유류할증료 월별 추이 꺾은선 차트(원). 아래 표에 같은 값이 있습니다.'});
+var TRC_TUSD=Object.assign({},TRC_USD,{key:'trn-usd',car:'trn',tab:'Trinity Air Fuel Surcharge (USD) tab',title:'Trinity Air Fuel Surcharge by Group — Monthly Trend (USD)',
+ cap:'Trinity Air one-way fuel surcharge by distance group and month, in US dollars',chart:'Line chart with markers: Trinity Air one-way international fuel surcharge by month, in US dollars. The same values appear in the table below.'});
+/* 원화 값을 각 월 구간표의 적용환율(ROE)로 나눠 달러로 환산한 사본을 만든다 */
+function trUsd(T){
+ var o=JSON.parse(JSON.stringify(T));
+ o.series.forEach(function(s){s.vals=s.vals.map(function(v,i){var r=T.months[i].roe;return (v==null||!r)?null:Math.round(v/r);});});
+ return o;
+}
+
+function trNice(max,c){for(var i=0;i<c.length;i++){if(Math.ceil(max/c[i])<=6)return c[i];}return c[c.length-1];}
+function trPctTxt(p){if(p==null)return '—';var r=Math.round(p*10)/10;return (r>0?'+':'')+r.toFixed(1)+'%';}
+function trZones(T){var z=[];T.series.forEach(function(s){var q=s.zone||s.id;if(z.indexOf(q)<0)z.push(q);});return z;}
+function trZk(T,s){return trZones(T).indexOf(s.zone||s.id);}
+function trSel(T){return T.series.filter(trOn);}
+/* 선택한 도시를 구간별 선으로 묶는다 (같은 구간 도시는 값이 같아 한 줄로 겹친다) */
+function trGroups(T,C){
+ var g=[],map={};
+ trSel(T).forEach(function(s){
+  var q=s.zone||s.id;
+  if(!map[q]){map[q]={z:q,k:trZk(T,s),vals:s.vals,names:[]};g.push(map[q]);}
+  map[q].names.push(trS(s,C,'long'));
+ });
+ g.forEach(function(x){x.name=x.names.join(' · ');});
+ return g;
+}
+function trTw(s){var w=0;for(var i=0;i<s.length;i++)w+=s.charCodeAt(i)>255?12:6.6;return w;}
+var TRPD={W:780,H:340};
+
+/* 선택한 도시를 한 그래프에 — 도시(구간)마다 선 하나, 점마다 값 표시 */
+function trendChart(T,C,P){
+ var G=trGroups(T,C);if(!G.length)return '';
+ var multi=G.length>1,W=780,L=54,R=40,Bt=34,ph=G.length>=4?400:(G.length>1?320:280),n=T.months.length,pw=W-L-R,max=0,lg=[],Tp=26;
+ if(multi){
+  var lx=L,row=0;
+  G.forEach(function(x){
+   var w=16+6+trTw(x.name)+24;
+   if(lx>L&&lx+w>W-R){lx=L;row++;}
+   lg.push({x:lx,y:16+row*19,g:x});lx+=w;
+  });
+  Tp=22+(row+1)*19+6;
+ }
+ var H=Tp+ph+Bt;
+ G.forEach(function(x){x.vals.forEach(function(v){if(v!=null&&v>max)max=v;});});
+ var step=trNice(max,C.steps),top=Math.max(step,Math.ceil(max/step)*step);
+ function X(i){return L+(n>1?30+(pw-60)*i/(n-1):pw/2);}
+ function Y(v){return Tp+ph*(1-v/top);}
+ var sf=P?'#ffffff':'var(--surface)';
+ function colOf(x){return P?TRP[x.k%7]:trCol(x.k);}
+ if(P)TRPD={W:W,H:H};else TRGS[C.key]={W:W,L:L,Tp:Tp,ph:ph,n:n,X:X,Y:Y,G:G};
+ var g=[];
+ if(P)g.push('<rect width="'+W+'" height="'+H+'" fill="#ffffff"/>');
+ lg.forEach(function(q){
+  g.push('<line x1="'+q.x+'" x2="'+(q.x+16)+'" y1="'+q.y+'" y2="'+q.y+'" style="stroke:'+colOf(q.g)+';stroke-width:3;stroke-linecap:round"/>'+
+   '<text class="tc-lg" x="'+(q.x+22)+'" y="'+(q.y+4)+'">'+esc(q.g.name)+'</text>');
+ });
+ for(var t=0;t<=top;t+=step){
+  var y=Y(t);
+  g.push('<line class="'+(t===0?'tc-base':'tc-grid')+'" x1="'+L+'" x2="'+(W-R)+'" y1="'+y+'" y2="'+y+'"/>'+
+   '<text class="tc-ax" x="'+(L-8)+'" y="'+(y+4)+'" text-anchor="end">'+C.ax(t)+'</text>');
+ }
+ T.months.forEach(function(m,i){
+  g.push('<text class="tc-ax" x="'+X(i)+'" y="'+(H-12)+'" text-anchor="middle">'+esc(trM(T,i,C))+'</text>');
+ });
+ G.forEach(function(x){
+  var d='',pen=false;
+  x.vals.forEach(function(v,i){
+   if(v==null){pen=false;return;}
+   d+=(pen?'L':'M')+X(i).toFixed(1)+' '+Y(v).toFixed(1)+' ';pen=true;
+  });
+  g.push('<path class="tc-line" d="'+d+'" style="stroke:'+colOf(x)+'"/>');
+ });
+ G.forEach(function(x){
+  x.vals.forEach(function(v,i){
+   if(v==null)return;
+   g.push('<circle cx="'+X(i).toFixed(1)+'" cy="'+Y(v).toFixed(1)+'" r="4" style="fill:'+colOf(x)+';stroke:'+sf+';stroke-width:1.5"/>');
+  });
+ });
+ /* 값 표시: 같은 달의 라벨이 겹치지 않도록 위에서 아래로 12px 이상 띄운다 */
+ T.months.forEach(function(m,i){
+  var it=[];
+  G.forEach(function(x){var v=x.vals[i];if(v!=null)it.push({y:Y(v),v:v});});
+  it.sort(function(a,b){return a.y-b.y;});
+  var prev=-1e9,bot=Tp+ph-5;
+  it.forEach(function(q){q.ly=Math.max(q.y-10,prev+12);prev=q.ly;});
+  if(it.length&&it[it.length-1].ly>bot){it[it.length-1].ly=bot;for(var z=it.length-2;z>=0;z--)it[z].ly=Math.min(it[z].ly,it[z+1].ly-12);}
+  it.forEach(function(q){
+   g.push('<text class="tc-pv" x="'+X(i).toFixed(1)+'" y="'+q.ly.toFixed(1)+'" text-anchor="middle">'+C.fmt(q.v)+'</text>');
+  });
+ });
+ if(P){
+  var st='<style>.tc-grid{stroke:#e3e8ec;stroke-width:1;fill:none}.tc-base{stroke:#c4ccd3;stroke-width:1;fill:none}.tc-ax{font:11px Arial,Helvetica,\'Malgun Gothic\',\'Apple SD Gothic Neo\',sans-serif;fill:#6b7a86}.tc-lg{font:12px Arial,Helvetica,\'Malgun Gothic\',\'Apple SD Gothic Neo\',sans-serif;fill:#12191f}.tc-line{fill:none;stroke-width:2.2;stroke-linejoin:round;stroke-linecap:round}.tc-pv{font:11px \'Courier New\',monospace;fill:#12191f;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}</style>';
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+W+' '+H+'" width="'+W+'" height="'+H+'">'+st+g.join('')+'</svg>';
+ }
+ g.push('<line class="tc-xh" x1="0" x2="0" y1="'+Tp+'" y2="'+(Tp+ph)+'"/><g class="tc-hd"></g>');
+ var bw=n>1?pw/(n-1):pw;
+ T.months.forEach(function(m,i){
+  var lv=trLvT(T,i,C);
+  var lab=trM(T,i,C)+(lv?' · '+lv:'')+' — '+G.map(function(x){return (multi?x.name+' ':'')+C.aria(x.vals[i]);}).join('; ');
+  g.push('<rect class="tc-hit" data-i="'+i+'" tabindex="0" x="'+(X(i)-bw/2).toFixed(1)+'" y="'+Tp+'" width="'+bw.toFixed(1)+'" height="'+(ph+Bt)+'" aria-label="'+esc(lab)+'"/>');
+ });
+ return '<svg viewBox="0 0 '+W+' '+H+'" role="group" aria-label="'+esc(G.map(function(x){return x.name;}).join(', ')+' — '+C.chart)+'">'+g.join('')+'</svg>';
+}
+
+/* 표 모델: 선택한 도시마다 한 줄. 화면 표와 저장 파일이 같이 쓴다 */
+function trRowsModel(T,C){
+ var EN=!!C.en,S=trSel(T),mn=function(i){return trM(T,i,C);};
+ var rows=S.map(function(s){
+  var i=trLast(s.vals),pk=trPeak(s.vals);
+  return {s:s,k:trZk(T,s),label:trS(s,C,'long'),vals:s.vals,i:i,pk:pk,atPk:(pk===i),
+   pPrev:i>0?trPct(s.vals[i],s.vals[i-1]):null,pPeak:(pk===i)?null:trPct(s.vals[i],s.vals[pk])};
+ });
+ var r0=rows[0],sameI=rows.every(function(r){return r.i===r0.i;}),samePk=sameI&&rows.every(function(r){return r.pk===r0.pk;});
+ var allPk=samePk&&r0.atPk;
+ var m={rows:rows,sameI:sameI,samePk:samePk,multi:rows.length>1};
+ m.h1Prev=EN?'vs prev. month':'전월 대비';
+ m.h1Peak=EN?'vs peak':'Peak 대비';
+ m.s1Prev=sameI?mn(r0.i)+' vs '+(r0.i>0?mn(r0.i-1):''):'';
+ m.s1Peak=samePk?(allPk?(EN?'year high':'연중 최고'):mn(r0.i)+' vs '+mn(r0.pk)):(EN?'vs peak month':'정점 월 대비');
+ m.hPrev=sameI?(EN?mn(r0.i)+' vs '+(r0.i>0?mn(r0.i-1):''):mn(r0.i)+' · '+(r0.i>0?mn(r0.i-1):'')+' 대비'):m.h1Prev;
+ m.hPeak=samePk?(EN?mn(r0.i)+' vs peak'+(allPk?'':' ('+mn(r0.pk)+')'):mn(r0.i)+' · 정점'+(allPk?'':'('+mn(r0.pk)+')')+' 대비'):m.h1Peak;
+ /* 정점 월이 도시마다 다르면 칸 안에 월을 붙인다 */
+ m.pkTag=function(r){return (!samePk&&!r.atPk)?' ('+mn(r.pk)+')':'';};
+ m.yh=EN?'Year high':'연중 최고';
+ return m;
+}
+function trTitleSub(T,C){
+ var S=trSel(T),EN=!!C.en;
+ if(S.length===1)return {title:trS(S[0],C,'long')+' Fuel Surcharge',sub:C.csub(T,S[0])};
+ var nm=S.map(function(s){return trS(s,C,'long');}).join(' · ');
+ var a=parseInt(T.months[0].m,10),b=parseInt(T.months[T.months.length-1].m,10);
+ var sub=EN?'One-way international · USD · '+EMON[a-1]+'–'+EMON[b-1]+' '+T.year+' · '+S.length+' cities'
+  :'국제선 편도 · 원(KRW) · '+T.year+'년 '+T.months[0].m+'~'+T.months[T.months.length-1].m+' · 도시 '+S.length+'개';
+ return {title:(nm.length<=44?nm+' ':'')+'Fuel Surcharge',sub:sub};
+}
+
+/* 표: 가로=월, 세로=단계·도시별 유류할증료, 마지막 두 칸=최신월의 전월 대비·정점 대비 */
+function trTable(T,C){
+ var M=trRowsModel(T,C),EN=!!C.en,n=T.months.length,cur=n-1;
+ var h=['<div class="t-tblwrap"><table class="t-tbl tr'+(M.multi?' multi':'')+'"><caption style="position:absolute;left:-9999px">'+esc(C.cap)+'</caption><thead><tr><th scope="col">'+(EN?'Item':'항목')+'</th>'];
+ T.months.forEach(function(m,j){h.push('<th scope="col"'+(j===cur?' class="cur"':'')+'>'+esc(trM(T,j,C))+'</th>');});
+ h.push('<th scope="col" class="chg">'+M.h1Prev+'<small>'+esc(M.s1Prev)+'</small></th><th scope="col" class="chg">'+M.h1Peak+'<small>'+esc(M.s1Peak)+'</small></th></tr></thead><tbody>');
+ if(T.months.some(function(m){return m.lvl!=null;}))h.push('<tr class="mrow"><th scope="row">'+(EN?'Fuel level':'유류할증료 단계')+'</th>'+T.months.map(function(m,j){return '<td class="lv'+(j===cur?' cur':'')+'">'+(m.lvl!=null?m.lvl:'—')+'</td>';}).join('')+'<td class="chg"></td><td class="chg"></td></tr>');
+ M.rows.forEach(function(r){
+  var vp=r.i>0?trD(r.pPrev):'<span class="t-d flat">—</span>';
+  var vk=r.atPk?'<span class="t-d flat">'+M.yh+'</span>':trD(r.pPeak)+(M.pkTag(r)?'<span class="t-pk">'+esc(M.pkTag(r))+'</span>':'');
+  h.push('<tr><th scope="row"><span class="t-key" style="background:'+trCol(r.k)+'"></span>'+esc(M.multi?r.label:(EN?'Fuel surcharge (USD)':'유류할증료 (원)'))+'</th>'+
+   r.vals.map(function(v,j){return '<td class="n'+(j===cur?' cur':'')+'">'+C.fmt(v)+'</td>';}).join('')+'<td class="n chg">'+vp+'</td><td class="n chg">'+vk+'</td></tr>');
+ });
+ if(!M.multi){
+  var s=M.rows[0].vals;
+  h.push('<tr class="mrow"><th scope="row">'+(EN?'MoM change':'전월 대비 증감')+'</th>'+
+   s.map(function(v,j){return '<td class="n'+(j===cur?' cur':'')+'">'+((j>0&&v!=null&&s[j-1]!=null)?trD(trPct(v,s[j-1])):'<span class="t-d flat">—</span>')+'</td>';}).join('')+'<td class="chg"></td><td class="chg"></td></tr>');
+ }
+ h.push('</tbody></table></div>');
+ return h.join('');
+}
+function trCard(T,C){
+ var ts=trTitleSub(T,C);
+ return '<section class="trend t-city"><h3 class="trend-h t-ctitle">'+esc(ts.title)+'</h3><p class="trend-sub t-csub">'+esc(ts.sub)+'</p>'+
+  '<div class="trend-scroll"><div class="trend-inner" data-cur="'+C.key+'">'+trendChart(T,C,false)+'<div class="trend-tip" hidden></div></div></div>'+
+  trTable(T,C)+'</section>';
+}
+function trCities(T,C){return trSel(T).length?trCard(T,C):'';}
+function trFilterBar(T,C){
+ var EN=!!C.en;
+ return '<div class="t-filter t-fbar" role="group" aria-label="'+(EN?'Cities to display':'표시할 도시·구간')+'"><span class="t-fl">'+(EN?'Show':'표시')+'</span>'+
+  T.series.map(function(s){return '<button type="button" data-id="'+esc(s.id)+'" aria-pressed="'+trOn(s)+'"><span class="t-key" style="background:'+trCol(trZk(T,s))+'"></span>'+esc(trS(s,C,'long'))+'</button>';}).join('')+
+  '<button type="button" class="t-quick" data-q="all">'+(EN?'All':'전체')+'</button><button type="button" class="t-quick" data-q="acc">'+(EN?'Account zones only':'계정 구간만')+'</button></div>';
+}
+function trNotes(T,C){
+ var EN=!!C.en,E=T.en||{},h=['<div class="trend t-notes">'];
+ if(EN){
+  if(E.note)h.push('<p class="fuel-foot">'+esc(E.note)+'</p>');
+  h.push('<p class="fuel-foot">'+esc(TRUSDNOTE)+'</p>');
+  if(E.src)h.push('<p class="fuel-src">'+esc(E.src[0])+' · '+esc(E.src[1])+'</p>');
+ }else{
+  if(T.note)h.push('<p class="fuel-foot">'+esc(T.note)+'</p>');
+  if(T.src)h.push('<p class="fuel-src">'+esc(T.src[0])+' · '+esc(T.src[1])+'</p>');
+ }
+ h.push('</div>');return h.join('');
+}
+
+/* 한 구간에 묶인 도시를 각각의 도시로 나눈다 (값은 같은 구간 값을 그대로 쓴다) */
+var TRCITY={
+ tg1:[['fuk','후쿠오카','Fukuoka'],['osa','오사카','Osaka'],['tao','칭다오','Qingdao']],
+ tg2:[['tok2','도쿄','Tokyo'],['sap2','삿포로','Sapporo'],['tpe2','타이베이','Taipei']],
+ tg3:[['hkg3','홍콩','Hong Kong'],['han','하노이','Hanoi']],
+ tg4:[['bkk4','방콕','Bangkok'],['ceb4','세부','Cebu'],['gum','괌','Guam'],['dad','다낭','Da Nang']],
+ tg5:[['sin','싱가포르','Singapore'],['hkt','푸켓','Phuket'],['bal','발리','Bali']],
+ tg7:[['bcn','바르셀로나','Barcelona'],['rom','로마','Rome'],['par','파리','Paris'],['syd','시드니','Sydney']],
+ sfo:[['sf','샌프란시스코','San Francisco'],['las','라스베가스','Las Vegas'],['esp','스페인','Spain']],
+ tyo:[['tok','도쿄','Tokyo'],['sap','삿포로','Sapporo'],['tpe','타이베이','Taipei'],['bei','베이징','Beijing']]
+};
+function trSplit(T){
+ var o=JSON.parse(JSON.stringify(T)),out=[];
+ o.series.forEach(function(s){
+  var L=TRCITY[s.id];
+  if(!L){out.push(s);return;}
+  L.forEach(function(c){
+   var x=JSON.parse(JSON.stringify(s));
+   x.id=s.id+'-'+c[0];x.zone=s.id;x.short=c[1];x.long=c[1];
+   x.en=x.en||{};x.en.short=c[2];x.en.long=c[2];
+   x.accs=s.accs&&s.accs.indexOf(c[1])>=0?[c[1]]:(s.accs||[]);
+   out.push(x);
+  });
+ });
+ o.series=out;return o;
+}
+/* KE 대권거리별 도시·유류할증료 표 (원) */
+var ZACC=['뉴욕','샌프란시스코','라스베가스','마드리드','바르셀로나','호놀룰루'];
+var ZDASH=['베이징','홍콩','세부','방콕','도쿄','삿포로','타이베이'];
+function zHit(list,name){return list.some(function(x){return name.indexOf(x)===0;});}
+function curSw(key,EN){
+ key=String(key).replace(/^trn-/,'');
+ var lb=EN?['KRW (₩)','USD ($)','Zone table']:['원 (KRW)','달러 (USD)','구간·도시표'];
+ return '<span class="cur-sw" role="group" aria-label="'+(EN?'View':'보기')+'">'+['krw','usd','zone'].map(function(k,i){
+  return '<button type="button" data-sub="'+k+'" aria-pressed="'+(key===k)+'">'+lb[i]+'</button>';}).join('')+'</span>';
+}
+var ZACC_T=['바르셀로나'];
+var ZDASH_T=['후쿠오카','오사카','칭다오','도쿄','삿포로','타이베이','홍콩','하노이','방콕','세부','괌','다낭','싱가포르','푸켓','발리','로마','파리','시드니'];
+function zoneTabHtml(car){
+ var TR=(car==='trn'),F=TR?FTT():FT();if(!F||!F.zones||!F.zones.length)return '';
+ var ZA=TR?ZACC_T:ZACC,ZD=TR?ZDASH_T:ZDASH;
+ var C=TRC_KRW,n=F.months.length,cur=n-1,mc=F.months[n-1];
+ var hd='<header class="mast"><div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div><div class="issue">UPDATED '+esc(F.updated)+'</div></div>'+
+  '<h1>'+(TR?'트리니티항공 부과군별 도시표':'KE 대권거리별 도시표')+'</h1><p class="sub">'+(TR?'트리니티항공 부과군(운항 거리 마일 기준)별 취항 도시와 월별 편도 유류할증료(원)입니다. 부과군표를 새로 받을 때만 갱신합니다.':'대한항공 대권거리(마일) 구간별 취항 도시와 월별 편도 유류할증료(원)입니다. 구간표를 새로 받을 때만 갱신합니다.')+'</p>'+
+  '<div class="meta"><span><b>반영 월</b> '+esc(F.year)+'년 '+esc(mc.m)+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')+'</span><span><b>기준</b> 한국 출발 · 편도 · 원(KRW)</span><span><b>원자료</b> '+esc(F.srcName)+'</span></div>'+
+  '<div class="byline"><b>작성</b> AVIAREPS Korea</div>'+
+  '<div class="hdr-bar"><div class="hb-fin nodiv">'+finActionsHtml(false)+'</div></div><div class="fin-slot"></div>'+
+  '<div class="exp-row" role="group" aria-label="보기 선택"><span class="exp-l">보기</span>'+curSw('zone',false)+'</div></header>';
+ var h=['<div class="t-tblwrap zt-wrap"><table class="t-tbl tr zt"><caption style="position:absolute;left:-9999px">'+(TR?'트리니티항공 부과군별':'대한항공 대권거리 구간별')+' 월별 편도 유류할증료(원)</caption><thead><tr><th scope="col">'+(TR?'부과군 · 거리(마일)':'대권거리(마일)')+'</th>'];
+ F.months.forEach(function(m,j){h.push('<th scope="col"'+(j===cur?' class="cur"':'')+'>'+esc(m.m)+'</th>');});
+ h.push('<th scope="col" class="chg">전월 대비<small>'+esc(F.months[cur].m)+' vs '+esc(F.months[cur-1].m)+'</small></th><th scope="col" class="chg">Peak 대비<small>'+esc(F.months[cur].m)+' vs '+esc(F.months[trPeak(F.zones[0].vals)].m)+'</small></th></tr></thead><tbody>');
+ F.zones.forEach(function(z){
+  var i=trLast(z.vals),pk=trPeak(z.vals),atCur=(i===cur);
+  var vp=(atCur&&i>0&&z.vals[i-1]!=null)?trD(trPct(z.vals[i],z.vals[i-1])):'<span class="t-d flat">—</span>';
+  var vk=(atCur&&pk!==i)?trD(trPct(z.vals[i],z.vals[pk])):(atCur?'<span class="t-d flat">연중 최고</span>':'<span class="t-d flat">—</span>');
+  h.push('<tr><th scope="row">'+esc(z.band)+'</th>'+z.vals.map(function(v,j){return '<td class="n'+(j===cur?' cur':'')+'">'+C.fmt(v)+'</td>';}).join('')+'<td class="n chg">'+vp+'</td><td class="n chg">'+vk+'</td></tr>');
+ });
+ h.push('</tbody></table></div>');
+ var cards=F.zones.map(function(z){
+  var i=trLast(z.vals),amt=(i===cur)?C.fmt(z.vals[i])+'원':'금액 미기재';
+  return '<section class="zcard"><h4><span>'+esc(z.band)+'<small>마일</small></span><span class="zamt">'+esc(amt)+'</span></h4><ul>'+
+   z.cities.map(function(c){var k=zHit(ZA,c)?' class="acc"':(zHit(ZD,c)?' class="dash"':'');return '<li'+k+'>'+esc(c)+'</li>';}).join('')+'</ul></section>';
+ }).join('');
+ return hd+'<div class="zbox"><h3 class="zh">월별 유류할증료 (원, 편도)</h3>'+h.join('')+'</div>'+
+  '<div class="zbox"><h3 class="zh">'+(TR?'부과군별 도시':'구간별 도시')+'</h3><p class="zlg"><i class="zi-a">빨강</i> 계정 도시 · <i class="zi-d">굵게</i> 이 탭에서 추이를 보는 도시 · 금액은 '+esc(mc.m)+' 기준</p><div class="zgrid">'+cards+'</div></div>'+
+  '<div class="trend t-notes"><p class="fuel-foot">'+esc(F.zoneNote||'')+'</p><p class="fuel-src">'+esc(F.src[0])+' · '+esc(F.src[1])+'</p></div>'+
+  '<footer><b>Korea Weekly Travel Report</b> · '+(TR?'트리니티항공 부과군별 도시표':'KE 대권거리별 도시표')+' 탭<br>이 탭은 주간 브리프와 별개로, 새 '+(TR?'부과군표':'구간표')+'를 받을 때만 갱신합니다.</footer>';
+}
+function fuelTabHtml(C){
+ var T0=(C.car==='trn')?FTT():FT();if(!T0||!T0.series||!T0.series.length)return '';
+ var T=trSplit(C.usd?trUsd(T0):T0);TS[C.key]=T;CS[C.key]=C;
+ var n=T.months.length,mc=T.months[n-1],E=T.en||{};
+ var hd;
+ if(C.en){
+  hd='<header class="mast"><div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div>'+
+   '<div class="issue">UPDATED '+esc(T.updated)+'</div></div><h1>'+C.h1+'</h1><p class="sub">'+esc(E.sub||T.sub)+'</p>'+
+   '<div class="meta"><span><b>Airline</b> '+(C.car==='trn'?'Trinity Air':'Korean Air')+'</span><span><b>Latest month</b> '+esc(trM(T,n-1,C))+' '+esc(T.year)+(mc.lvl!=null?' (Level '+mc.lvl+')':'')+'</span>'+
+   '<span><b>Applied ROE</b> '+Number(mc.roe).toFixed(2)+' KRW/USD</span>'+
+   '<span><b>Update cycle</b> '+esc(E.cycle||T.cycle)+'</span>'+
+   '<span><b>Source</b> '+esc(E.srcName||T.srcName)+'</span></div><div class="byline"><b>Prepared by</b> AVIAREPS Korea</div>'+
+   '<div class="hdr-bar">'+'<div class="hb-dl" role="group" aria-label="Download this page"><span class="exp-l">Download</span>'+
+   '<button type="button" class="btn-x" data-x="html" title="Copy formatted content to paste into an email or document">Copy</button><button type="button" class="btn-x" data-x="docx">Word (.docx)</button><button type="button" class="btn-x" data-x="pdf">PDF</button></div>'+'<div class="hb-fin">'+finActionsHtml(true)+'</div></div><div class="fin-slot"></div>'+
+   '<div class="exp-row" role="group" aria-label="View">'+
+   curSw(C.key,true)+
+   '<span class="exp-m" data-trxmsg="'+C.key+'" role="status" aria-live="polite" hidden></span></div></header>';
+ }else{
+  hd='<header class="mast"><div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div>'+
+   '<div class="issue">UPDATED '+esc(T.updated)+'</div></div><h1>'+C.h1+'</h1><p class="sub">'+esc(T.sub)+'</p>'+
+   '<div class="meta"><span><b>항공사</b> '+(C.car==='trn'?'트리니티항공':'대한항공')+'</span><span><b>반영 월</b> '+esc(T.year)+'년 '+esc(mc.m)+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')+'</span>'+
+   '<span><b>갱신</b> '+esc(T.cycle)+'</span>'+
+   '<span><b>원자료</b> '+esc(T.srcName)+'</span></div><div class="byline"><b>작성</b> AVIAREPS Korea</div>'+
+   '<div class="hdr-bar">'+'<div class="hb-dl" role="group" aria-label="이 페이지 저장"><span class="exp-l">다운로드</span>'+
+   '<button type="button" class="btn-x" data-x="html" title="메일·문서에 붙여넣을 수 있게 서식 그대로 복사합니다">복사</button><button type="button" class="btn-x" data-x="docx">Word (.docx)</button><button type="button" class="btn-x" data-x="pdf">PDF</button></div>'+'<div class="hb-fin">'+finActionsHtml(false)+'</div></div><div class="fin-slot"></div>'+
+   '<div class="exp-row" role="group" aria-label="보기">'+
+   curSw(C.key,false)+
+   '<span class="exp-m" data-trxmsg="'+C.key+'" role="status" aria-live="polite" hidden></span></div></header>';
+ }
+ return hd+trFilterBar(T,C)+'<div class="t-cards">'+trCities(T,C)+'</div>'+trNotes(T,C)+
+  (C.en?'<footer><b>Korea Weekly Travel Report</b> · '+C.tab+'<br>This tab is separate from the weekly brief and is updated only when a new zone table is received. The weekly brief\'s existing fuel surcharge cards and layout are unchanged.</footer>'
+  :'<footer><b>Korea Weekly Travel Report</b> · '+C.tab+'<br>이 탭은 주간 브리프와 별개로, 새 구간표를 받을 때만 갱신합니다. 주간 브리프의 기존 유류할증료 카드와 화면 구성은 바뀌지 않습니다.</footer>');
+}
+
+function trendShow(i,root){
+ var inner=root.closest('.trend-inner');if(!inner)return;
+ var key=inner.dataset.cur,T=TS[key],C=CS[key],G=TRGS[key];if(!T||!C||!G)return;
+ var xh=inner.querySelector('.tc-xh'),hd=inner.querySelector('.tc-hd'),tip=inner.querySelector('.trend-tip');
+ var x=G.X(i),rows=[],dots='',multi=G.G.length>1;
+ G.G.forEach(function(g){
+  var v=g.vals[i];if(v==null)return;
+  dots+='<circle cx="'+x+'" cy="'+G.Y(v).toFixed(1)+'" r="6" style="fill:'+trCol(g.k)+';stroke:var(--surface);stroke-width:2"/>';
+  rows.push({g:g,v:v,pv:i>0?g.vals[i-1]:null});
+ });
+ xh.setAttribute('x1',x);xh.setAttribute('x2',x);xh.style.opacity='1';
+ hd.innerHTML=dots;
+ rows.sort(function(a,b){return b.v-a.v;});
+ var lv=trLvT(T,i,C);
+ tip.innerHTML='<div class="tt-h">'+esc(trM(T,i,C))+(lv?' · '+lv:'')+' · '+(C.en?'one-way ':'편도 ')+C.tipUnit+'</div>'+
+  rows.map(function(r){return '<div class="tt-r"><span class="tt-k" style="background:'+trCol(r.g.k)+'"></span>'+(multi?'<span class="tt-n">'+esc(r.g.name)+'</span>':'')+'<b>'+C.fmt(r.v)+'</b><span>'+(r.pv!=null?trD(trPct(r.v,r.pv)):'')+'</span></div>';}).join('');
+ if(!rows.length)tip.innerHTML+='<div class="tt-r"><span>'+(C.en?'No data for this month':'이 달은 자료가 없습니다')+'</span></div>';
+ var pct=x/G.W*100;
+ if(pct>55){tip.style.left='auto';tip.style.right=(100-pct+1.5)+'%';}
+ else{tip.style.right='auto';tip.style.left=(pct+1.5)+'%';}
+ tip.hidden=false;TRSHOWN=true;
+}
+function trendHide(){
+ Array.prototype.forEach.call(document.querySelectorAll('.tc-xh'),function(xh){xh.style.opacity='0';});
+ Array.prototype.forEach.call(document.querySelectorAll('.tc-hd'),function(hd){hd.innerHTML='';});
+ Array.prototype.forEach.call(document.querySelectorAll('.trend-tip'),function(tip){tip.hidden=true;});
+ TRSHOWN=false;
+}
+function trendHit(ev){
+ var t=ev.target;if(!t||!t.closest)return;
+ var hit=t.closest('.tc-hit');
+ if(hit){trendShow(+hit.dataset.i,hit);return;}
+ if(TRSHOWN)trendHide();
+}
+/* ---------- 유류할증료 페이지 저장: HTML · Word · PDF (원 / USD 공통, 도시별 한 쪽씩) ---------- */
+var TRXBUSY=false;
+var TRXL={
+ en:{item:'Item',level:'Fuel level',val:'Fuel surcharge (USD)',mom:'MoM change',notes:'Notes and source',doc:'Fuel Surcharge by City (USD)',
+  nullNote:'"—" means the value is not stated in the source table.',
+  prep:'Preparing {f} file…',copied:'Copied — paste it into an email or document.',copyFail:"Couldn't copy here. Try the Word or PDF download instead.",prepC:'Preparing content to copy…',lbl:{html:'HTML',docx:'Word',pdf:'PDF'},noDL:"Saving files isn't available in this view.",
+  wait:'Waiting for your confirmation to save…',saved:'Saved — ',fail:'Could not create the file. Please try another format.',
+  noWord:'Could not load the Word module. Please check your connection.',noPdf:'Could not load the PDF module. Please check your connection.',
+  err:{declined:'Save cancelled.',rate_limited:'Too many requests — please try again shortly.',too_large:'The file is over 16 MB.',
+   rejected_extension:'This format cannot be saved here.',extension_not_enabled:'Saving this format is turned off in this view.'}},
+ ko:{item:'항목',level:'유류할증료 단계',val:'유류할증료 (원)',mom:'전월 대비 증감',notes:'참고 및 출처',doc:'도시별 유류할증료 (원)',
+  nullNote:'"—"는 원표에 해당 값이 없다는 뜻입니다.',
+  prep:'{f} 파일을 만드는 중…',copied:'복사했습니다 — 메일이나 문서에 붙여넣으세요.',copyFail:'이 화면에서는 복사가 막혀 있습니다. Word나 PDF 다운로드를 이용해 주세요.',prepC:'복사할 내용을 만드는 중…',lbl:{html:'HTML',docx:'Word',pdf:'PDF'},noDL:'이 화면에서는 파일 저장을 쓸 수 없습니다.',
+  wait:'저장 확인 창에서 승인해 주세요…',saved:'저장했습니다 — ',fail:'파일을 만들지 못했습니다. 다른 형식으로 시도해 주세요.',
+  noWord:'Word 변환 모듈을 불러오지 못했습니다. 네트워크를 확인해 주세요.',noPdf:'PDF 변환 모듈을 불러오지 못했습니다. 네트워크를 확인해 주세요.',
+  err:{declined:'저장을 취소하셨습니다.',rate_limited:'저장 요청이 몰렸습니다. 잠시 후 다시 눌러주세요.',too_large:'파일이 16MB를 넘습니다.',
+   rejected_extension:'이 형식은 저장할 수 없습니다.',extension_not_enabled:'이 화면에서는 이 형식 저장이 꺼져 있습니다.'}}};
+function trxMsg(key,kind,text){var m=document.querySelector('#fp-'+key+' [data-trxmsg]');if(!m)return;m.className='exp-m '+kind;m.textContent=text;m.hidden=!text;}
+function trxModel(key){
+ var T=TS[key],C=CS[key];if(!T||!C)return null;
+ var EN=!!C.en,L=TRXL[EN?'en':'ko'],n=T.months.length,E=T.en||{},mc=T.months[n-1];
+ var anyNull=false;
+ var hasLv=T.months.some(function(m){return m.lvl!=null;});
+ if(hasLv)T.months.forEach(function(m){if(m.lvl==null)anyNull=true;});
+ var mn=function(i){return trM(T,i,C);};
+ var M=trRowsModel(T,C),ts=trTitleSub(T,C);
+ M.rows.forEach(function(r){r.vals.forEach(function(v){if(v==null)anyNull=true;});});
+ var rows=M.rows.map(function(r){return {k:r.k,label:M.multi?r.label:L.val,
+  vals:r.vals.map(function(v){return v==null?'—':C.fmt(v);}),
+  vsPrev:r.i>0?trPctTxt(r.pPrev):'—',
+  vsPeak:r.atPk?M.yh:trPctTxt(r.pPeak)+M.pkTag(r)};});
+ var mom=null;
+ if(!M.multi){var s0=M.rows[0].vals;mom=s0.map(function(v,j){return (j>0&&v!=null&&s0[j-1]!=null)?trPctTxt(trPct(v,s0[j-1])):'—';});}
+ var city={title:ts.title,sub:ts.sub,rows:rows,mom:mom,hPrev:M.hPrev,hPeak:M.hPeak,split:rows.length>3};
+ var foot=[];
+ if(EN){if(E.note)foot.push(E.note);foot.push(TRUSDNOTE);}else if(T.note)foot.push(T.note);
+ if(anyNull)foot.push(L.nullNote);
+ var mon=('0'+parseInt(mc.m,10)).slice(-2);
+ var meta=EN?[['Latest month',mn(n-1)+' '+T.year+(mc.lvl!=null?' (Level '+mc.lvl+')':'')],['Applied ROE',Number(mc.roe).toFixed(2)+' KRW/USD'],['Updated',T.updated],['Update cycle',E.cycle||T.cycle],['Source',E.srcName||T.srcName],['Prepared by','AVIAREPS Korea']]
+  :[['반영 월',T.year+'년 '+mc.m+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')],['업데이트',T.updated],['갱신 주기',T.cycle],['원자료',T.srcName],['작성','AVIAREPS Korea']];
+ return {key:key,T:T,C:C,L:L,EN:EN,n:n,cities:[city],H:340,
+  base:(C.car==='trn'?'Trinity_':'KE_')+'Fuel_Surcharge_'+(C.usd?'USD':'KRW')+'_'+T.year+'-'+mon,
+  title:L.doc,months:T.months.map(function(m,i){return mn(i);}),
+  lv:hasLv?T.months.map(function(m){return m.lvl!=null?String(m.lvl):'—';}):null,
+  meta:meta,foot:foot,src:EN?(E.src?E.src[0]+' · '+E.src[1]:''):(T.src?T.src[0]+' · '+T.src[1]:'')};
+}
+function trxPngs(svgs,H,cb,err){
+ var out=[],i=0,ch=Math.round(1560*H/780);
+ (function next(){
+  if(i>=svgs.length){cb(out);return;}
+  var img=new Image();
+  img.onload=function(){try{
+   var c=document.createElement('canvas');c.width=1560;c.height=ch;
+   var x=c.getContext('2d');x.fillStyle='#ffffff';x.fillRect(0,0,1560,ch);x.drawImage(img,0,0,1560,ch);
+   out.push(c.toDataURL('image/png'));i++;next();}catch(e){err();}};
+  img.onerror=function(){err();};
+  img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svgs[i]);
+ })();
+}
+function trxCss(){
+ var F="Arial,Helvetica,'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif",S="Georgia,'Times New Roman','Malgun Gothic','Apple SD Gothic Neo',serif",M="'Courier New',monospace";
+ return '.kx{box-sizing:border-box;color:#12191f;font:14px/1.55 '+F+';background:#fff;max-width:1080px;margin:0 auto}.kx *{box-sizing:border-box}'+
+  '.kx .br{font:600 11px/1 '+M+';letter-spacing:.14em;color:#b3122b;text-transform:uppercase;text-align:center}.kx .ct{font:700 32px/1.2 '+S+';margin:14px 0 6px;text-align:center}'+
+  '.kx .csub{color:#5a6a76;margin:0 0 14px;text-align:center}.kx h2{font:700 17px/1.3 '+S+';margin:0 0 10px}'+
+  '.kx .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:6px 24px;margin:0 0 18px;padding:12px 0;border-top:2px solid #12191f;border-bottom:1px solid #d5dce1;font-size:12.5px}'+
+  '.kx .meta b{display:block;font-size:10.5px;letter-spacing:.08em;color:#6b7a86;font-weight:600}.kx .chart svg,.kx .chart img{width:100%;height:auto;display:block}'+
+  '.kx .tw{overflow-x:auto;margin-top:8px}.kx table{border-collapse:collapse;width:100%;font-size:12.5px;min-width:780px}'+
+  '.kx th,.kx td{padding:7px 9px;border-bottom:1px solid #e3e8ec;text-align:right;white-space:nowrap}.kx th:first-child,.kx td:first-child{text-align:left;white-space:normal}'+
+  '.kx thead th{background:#f2f5f7;color:#3d4c57;font-weight:600}.kx tbody th{font-weight:600}.kx tr.m td,.kx tr.m th{background:#f7f9fa;color:#5a6a76;font-weight:400}'+
+  '.kx td.cur,.kx th.cur{background:#e5eff5!important}.kx .chg{border-left:1px solid #d5dce1}.kx thead th.chg{background:#e9eef2}'+
+  '.kx td{font-family:'+M+'}.kx .fn{font-size:11.5px;color:#5a6a76;margin:10px 0 0}.kx .src{font:11px '+M+';color:#6b7a86;margin-top:14px;white-space:nowrap}'+
+  '.kx.pgx{width:1123px;height:794px;padding:36px 40px;overflow:hidden;max-width:none;margin:0}.kx.pgx table{min-width:0}.kx.pgx .chart img{width:auto;max-width:100%;max-height:var(--ih,420px);margin:0 auto}.kx .ct.sm{font-size:22px;margin:10px 0 14px}'+
+  '.kx .city+.city,.kx .city+.notes{margin-top:34px}';
+}
+function trxCityHtml(P,c,chart,part){
+ var cur=P.n-1,L=P.L;
+ var head='<tr><th>'+xe(L.item)+'</th>'+P.months.map(function(m,i){return '<th'+(i===cur?' class="cur"':'')+'>'+xe(m)+'</th>';}).join('')+'<th class="chg">'+xe(c.hPrev)+'</th><th class="chg">'+xe(c.hPeak)+'</th></tr>';
+ var cells=function(arr){return arr.map(function(v,i){return '<td'+(i===cur?' class="cur"':'')+'>'+xe(v)+'</td>';}).join('');};
+ var body=(P.lv?'<tr class="m"><th>'+xe(L.level)+'</th>'+cells(P.lv)+'<td class="chg"></td><td class="chg"></td></tr>':'')+
+  c.rows.map(function(r){return '<tr><th><span style="display:inline-block;width:12px;height:3px;margin-right:7px;vertical-align:middle;border-radius:2px;background:'+TRP[r.k%7]+'"></span>'+xe(r.label)+'</th>'+cells(r.vals)+'<td class="chg">'+xe(r.vsPrev)+'</td><td class="chg">'+xe(r.vsPeak)+'</td></tr>';}).join('')+
+  (c.mom?'<tr class="m"><th>'+xe(L.mom)+'</th>'+cells(c.mom)+'<td class="chg"></td><td class="chg"></td></tr>':'');
+ var hd='<div class="br">Korea Weekly Travel Report</div><h1 class="ct'+(part==='b'?' sm':'')+'">'+xe(c.title)+'</h1>'+(part==='b'?'':'<p class="csub">'+xe(c.sub)+'</p>');
+ return hd+(part==='b'?'':'<div class="chart">'+chart+'</div>')+(part==='a'?'':'<div class="tw"><table><thead>'+head+'</thead><tbody>'+body+'</tbody></table></div>');
+}
+function trxNotesHtml(P){
+ return '<div class="br">Korea Weekly Travel Report</div><h1 class="ct">'+xe(P.L.notes)+'</h1>'+
+  '<div class="meta">'+P.meta.map(function(m){return '<div><b>'+xe(m[0])+'</b>'+xe(m[1])+'</div>';}).join('')+'</div>'+
+  P.foot.map(function(f){return '<p class="fn">'+xe(f)+'</p>';}).join('')+(P.src?'<div class="src">'+xe(P.src)+'</div>':'');
+}
+function trxHtml(P,svgs){
+ var body=P.cities.map(function(c,i){return '<section class="city">'+trxCityHtml(P,c,svgs[i])+'</section>';}).join('')+'<section class="notes">'+trxNotesHtml(P)+'</section>';
+ return '<!doctype html><html lang="'+(P.EN?'en':'ko')+'"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+xe(P.title)+'</title><style>'+
+  'html,body{margin:0;background:#fff}body{padding:32px 28px}'+trxCss()+'@media print{body{padding:0}@page{size:A4 landscape;margin:12mm}.kx .city,.kx .notes{break-before:page;margin-top:0!important}.kx .city:first-child{break-before:auto}.kx .chart,.kx table{break-inside:avoid}}'+
+  '</style></head><body><main class="kx">'+body+'</main></body></html>';
+}
+function dxCell(txt,w,o){o=o||{};
+ return '<w:tc><w:tcPr><w:tcW w:w="'+w+'" w:type="dxa"/>'+(o.fill?'<w:shd w:val="clear" w:color="auto" w:fill="'+o.fill+'"/>':'')+'<w:vAlign w:val="center"/></w:tcPr>'+
+  '<w:p><w:pPr><w:spacing w:before="40" w:after="40"/>'+(o.right?'<w:jc w:val="right"/>':'')+'</w:pPr>'+
+  (o.key?dxRun('● ',{sz:o.sz||17,color:o.key}):'')+dxRun(txt,{sz:o.sz||17,b:o.b,color:o.color})+'</w:p></w:tc>';}
+function dxCentered(txt,o){return '<w:p><w:pPr><w:spacing w:before="'+(o.before||0)+'" w:after="'+(o.after||60)+'"/>'+(o.pb?'<w:pageBreakBefore/>':'')+'<w:jc w:val="center"/></w:pPr>'+dxRun(txt,o)+'</w:p>';}
+function trxDocx(P,pngs,ok,fail){
+ var TW=15250,c0=3000,cwm=Math.floor((TW-c0-2*1500)/P.n),cur=P.n-1,L=P.L;
+ var bd=['top','left','bottom','right','insideH','insideV'].map(function(s){return '<w:'+s+' w:val="single" w:sz="4" w:space="0" w:color="D5DCE1"/>';}).join('');
+ var body=[];
+ var cx=P.cities[0].rows.length>1?7200000:8200000,cy=Math.round(cx*P.H/780);
+ P.cities.forEach(function(c,ci){
+  var rows=[];
+  rows.push('<w:tr>'+dxCell(L.item,c0,{b:1,fill:'EEF2F5',color:'3D4C57'})+P.months.map(function(m,i){return dxCell(m,cwm,{b:1,right:1,fill:i===cur?'E5EFF5':'EEF2F5',color:'3D4C57'});}).join('')+
+   dxCell(c.hPrev,1500,{b:1,right:1,fill:'E3E9EE',color:'3D4C57',sz:15})+dxCell(c.hPeak,1500,{b:1,right:1,fill:'E3E9EE',color:'3D4C57',sz:15})+'</w:tr>');
+  if(P.lv)rows.push('<w:tr>'+dxCell(L.level,c0,{fill:'F7F9FA',color:'5A6A76'})+P.lv.map(function(v,i){return dxCell(v,cwm,{right:1,fill:i===cur?'E5EFF5':'F7F9FA',color:'5A6A76'});}).join('')+dxCell('',1500,{fill:'F1F4F6'})+dxCell('',1500,{fill:'F1F4F6'})+'</w:tr>');
+  c.rows.forEach(function(r){
+   rows.push('<w:tr>'+dxCell(r.label,c0,{b:1,key:TRP[r.k%7].slice(1).toUpperCase()})+r.vals.map(function(v,i){return dxCell(v,cwm,{right:1,fill:i===cur?'E5EFF5':null});}).join('')+dxCell(r.vsPrev,1500,{right:1,b:1,fill:'F1F4F6'})+dxCell(r.vsPeak,1500,{right:1,b:1,fill:'F1F4F6'})+'</w:tr>');
+  });
+  if(c.mom)rows.push('<w:tr>'+dxCell(L.mom,c0,{fill:'F7F9FA',color:'5A6A76'})+c.mom.map(function(v,i){return dxCell(v,cwm,{right:1,fill:i===cur?'E5EFF5':'F7F9FA',color:'5A6A76'});}).join('')+dxCell('',1500,{fill:'F1F4F6'})+dxCell('',1500,{fill:'F1F4F6'})+'</w:tr>');
+  var tbl='<w:tbl><w:tblPr><w:tblW w:w="'+TW+'" w:type="dxa"/><w:tblBorders>'+bd+'</w:tblBorders><w:tblLayout w:type="fixed"/></w:tblPr><w:tblGrid><w:gridCol w:w="'+c0+'"/>'+
+   P.months.map(function(){return '<w:gridCol w:w="'+cwm+'"/>';}).join('')+'<w:gridCol w:w="1500"/><w:gridCol w:w="1500"/></w:tblGrid>'+rows.join('')+'</w:tbl>';
+  var img='<w:p><w:pPr><w:spacing w:before="60" w:after="100"/><w:jc w:val="center"/></w:pPr><w:r><w:drawing><wp:inline distT="0" distB="0" distL="0" distR="0"><wp:extent cx="'+cx+'" cy="'+cy+'"/>'+
+   '<wp:docPr id="'+(ci+1)+'" name="Chart '+(ci+1)+'" descr="'+xe(c.title)+'"/><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">'+
+   '<pic:pic><pic:nvPicPr><pic:cNvPr id="0" name="chart'+(ci+1)+'.png"/><pic:cNvPicPr/></pic:nvPicPr><pic:blipFill><a:blip r:embed="rIdImg'+(ci+1)+'"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>'+
+   '<pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="'+cx+'" cy="'+cy+'"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr></pic:pic></a:graphicData></a:graphic></wp:inline></w:drawing></w:r></w:p>';
+  body.push(dxCentered('KOREA WEEKLY TRAVEL REPORT',{b:1,sz:16,color:'B3122B',pb:ci>0,after:20}));
+  body.push(dxCentered(c.title,{b:1,sz:48,after:20}));
+  body.push(dxCentered(c.sub,{sz:19,color:'5A6A76',after:60}));
+  body.push(img);
+  if(c.split)body.push(dxCentered(c.title,{b:1,sz:32,pb:true,after:120}));
+  body.push(tbl);
+ });
+ body.push(dxCentered('KOREA WEEKLY TRAVEL REPORT',{b:1,sz:16,color:'B3122B',pb:true,after:20}));
+ body.push(dxCentered(L.notes,{b:1,sz:40,after:120}));
+ P.meta.forEach(function(m){body.push(dxP(dxRun(m[0]+': ',{b:1,sz:18})+dxRun(m[1],{sz:18,color:'3D4C57'}),{after:20}));});
+ P.foot.forEach(function(f,i){body.push(dxP(dxRun(f,{sz:16,color:'5A6A76'}),{before:i?0:140,after:40}));});
+ if(P.src)body.push(dxP(dxRun(P.src,{sz:15,color:'6B7A86'}),{before:80,after:0}));
+ var doc='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+  '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"'+
+  ' xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture"><w:body>'+
+  body.join('')+
+  '<w:sectPr><w:pgSz w:w="16838" w:h="11906" w:orient="landscape"/><w:pgMar w:top="794" w:right="794" w:bottom="794" w:left="794" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr></w:body></w:document>';
+ var zip=new window.JSZip();
+ zip.file('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+  '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/>'+
+  '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>');
+ zip.folder('_rels').file('.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+  '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>');
+ var w=zip.folder('word');
+ w.file('document.xml',doc);
+ w.folder('_rels').file('document.xml.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+  pngs.map(function(p,i){return '<Relationship Id="rIdImg'+(i+1)+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/chart'+(i+1)+'.png"/>';}).join('')+'</Relationships>');
+ var md=w.folder('media');
+ pngs.forEach(function(p,i){md.file('chart'+(i+1)+'.png',p.split(',')[1],{base64:true});});
+ zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}).then(ok,function(){fail();});
+}
+/* 영어(USD): 글자가 살아 있는 벡터 PDF — 도시마다 한 쪽 */
+function trxPdf(P,pngs){
+ var jsPDF=window.jspdf.jsPDF,pdf=new jsPDF({unit:'pt',format:'a4',orientation:'l'});
+ var PW=842,M=36,CW=PW-2*M,L=P.L;
+ function hex(c,f){var r=parseInt(c.slice(1,3),16),g=parseInt(c.slice(3,5),16),b=parseInt(c.slice(5,7),16);if(f)pdf.setFillColor(r,g,b);else pdf.setTextColor(r,g,b);}
+ function brand(y){pdf.setFont('helvetica','bold');pdf.setFontSize(8);hex('#b3122b');pdf.text('KOREA WEEKLY TRAVEL REPORT',PW/2,y,{align:'center'});}
+ P.cities.forEach(function(c,ci){
+  if(ci)pdf.addPage();
+  var y=38;brand(y);y+=28;
+  pdf.setFont('helvetica','bold');pdf.setFontSize(23);hex('#12191f');
+  pdf.splitTextToSize(c.title,CW).forEach(function(l){pdf.text(l,PW/2,y,{align:'center'});y+=27;});
+  pdf.setFont('helvetica','normal');pdf.setFontSize(9.5);hex('#5a6a76');
+  pdf.splitTextToSize(c.sub,CW).forEach(function(l){pdf.text(l,PW/2,y,{align:'center'});y+=13;});
+  y+=4;
+  var wl=118,wc=64,cw=(CW-wl-2*wc)/P.n,rh=22,cur=P.n-1;
+  var th=26+rh*(1+c.rows.length+(c.mom?1:0));
+  var chh=Math.min(CW*P.H/780,310),avail=559-y-10-th,split=false;
+  if(avail<chh){if(avail>=200)chh=avail;else{split=true;chh=Math.min(CW*P.H/780,559-y);}}
+  var chw=chh*780/P.H;
+  pdf.addImage(pngs[ci],'PNG',M+(CW-chw)/2,y,chw,chh,undefined,'FAST');y+=chh+10;
+  if(split){pdf.addPage();y=38;brand(y);y+=26;pdf.setFont('helvetica','bold');pdf.setFontSize(15);hex('#12191f');
+   pdf.splitTextToSize(c.title,CW).forEach(function(l){pdf.text(l,PW/2,y,{align:'center'});y+=19;});y+=8;}
+  function bg(yy,f,h){hex(f,true);pdf.rect(M,yy,CW,h,'F');}
+  function cb(yy,h){hex('#e5eff5',true);pdf.rect(M+wl+cw*cur,yy,cw,h,'F');}
+  function ln(yy){pdf.setDrawColor(227,232,236);pdf.setLineWidth(0.5);pdf.line(M,yy,M+CW,yy);}
+  bg(y,'#eef2f5',26);cb(y,26);hex('#e3e9ee',true);pdf.rect(M+wl+cw*P.n,y,2*wc,26,'F');
+  pdf.setFont('helvetica','bold');pdf.setFontSize(8);hex('#3d4c57');
+  pdf.text(L.item,M+5,y+16);
+  P.months.forEach(function(m,i){pdf.text(m,M+wl+cw*(i+1)-4,y+16,{align:'right'});});
+  pdf.setFontSize(6.8);
+  pdf.text(pdf.splitTextToSize(c.hPrev,wc-6),M+wl+cw*P.n+wc-4,y+10,{align:'right'});
+  pdf.text(pdf.splitTextToSize(c.hPeak,wc-6),M+wl+cw*P.n+2*wc-4,y+10,{align:'right'});
+  y+=26;
+  function row(label,vals,o){
+   o=o||{};if(o.fill)bg(y,o.fill,rh);cb(y,rh);
+   pdf.setFont('helvetica',o.bold?'bold':'normal');pdf.setFontSize(8);hex(o.color||'#12191f');
+   if(o.key){hex(o.key,true);pdf.rect(M+5,y+rh/2-1,9,2.4,'F');hex(o.color||'#12191f');pdf.text(pdf.splitTextToSize(label,wl-20)[0],M+18,y+14);}else pdf.text(label,M+5,y+14);
+   pdf.setFont('helvetica','normal');
+   vals.forEach(function(v,i){pdf.text(v,M+wl+cw*(i+1)-4,y+14,{align:'right'});});
+   hex('#f1f4f6',true);pdf.rect(M+wl+cw*P.n,y,2*wc,rh,'F');
+   if(o.tail){pdf.setFont('helvetica','bold');hex('#12191f');
+    pdf.text(o.tail[0],M+wl+cw*P.n+wc-4,y+14,{align:'right'});pdf.text(o.tail[1],M+wl+cw*P.n+2*wc-4,y+14,{align:'right'});}
+   y+=rh;ln(y);
+  }
+  if(P.lv)row(L.level,P.lv,{fill:'#f7f9fa',color:'#5a6a76'});
+  c.rows.forEach(function(r){row(r.label,r.vals,{key:TRP[r.k%7],bold:true,tail:[r.vsPrev,r.vsPeak]});});
+  if(c.mom)row(L.mom,c.mom,{fill:'#f7f9fa',color:'#5a6a76'});
+ });
+ pdf.addPage();
+ var y=38;brand(y);y+=30;
+ pdf.setFont('helvetica','bold');pdf.setFontSize(20);hex('#12191f');pdf.text(L.notes,PW/2,y,{align:'center'});y+=28;
+ pdf.setFontSize(9);
+ P.meta.forEach(function(m){pdf.setFont('helvetica','bold');hex('#12191f');pdf.text(m[0]+': ',M,y);var w=pdf.getTextWidth(m[0]+': ');pdf.setFont('helvetica','normal');hex('#3d4c57');pdf.text(m[1],M+w,y);y+=14;});
+ y+=8;pdf.setFont('helvetica','normal');pdf.setFontSize(8.5);hex('#5a6a76');
+ P.foot.forEach(function(f){pdf.splitTextToSize(f,CW).forEach(function(l){pdf.text(l,M,y);y+=12;});y+=4;});
+ if(P.src){y+=6;pdf.setFontSize(8);hex('#6b7a86');pdf.text(P.src,M,y);}
+ return pdf.output('blob');
+}
+/* 한국어(원): 한글 글꼴을 PDF에 넣을 수 없어 페이지를 이미지로 만든다 */
+function trxPdfKr(P,pngs,ok,fail){
+ var host=document.createElement('div');host.style.cssText='position:fixed;left:-20000px;top:0;background:#fff;z-index:-1';
+ var pg=[];
+ P.cities.forEach(function(c,i){
+  if(c.split){
+   pg.push('<div class="kx pgx" style="--ih:540px">'+trxCityHtml(P,c,'<img alt="" src="'+pngs[i]+'">','a')+'</div>');
+   pg.push('<div class="kx pgx">'+trxCityHtml(P,c,'','b')+'</div>');
+  }else pg.push('<div class="kx pgx" style="--ih:'+(c.rows.length>1?360:420)+'px">'+trxCityHtml(P,c,'<img alt="" src="'+pngs[i]+'">')+'</div>');
+ });
+ pg.push('<div class="kx pgx">'+trxNotesHtml(P)+'</div>');
+ host.innerHTML='<style>'+trxCss()+'</style>'+pg.join('');
+ document.body.appendChild(host);
+ var pdf=new window.jspdf.jsPDF({unit:'pt',format:'a4',orientation:'l'});
+ var els=Array.prototype.slice.call(host.querySelectorAll('.pgx')),i=0;
+ var bad=function(){if(host.parentNode)host.parentNode.removeChild(host);fail();};
+ (function next(){
+  if(i>=els.length){var blob=pdf.output('blob');host.parentNode.removeChild(host);ok(blob);return;}
+  window.html2canvas(els[i],{scale:2,backgroundColor:'#ffffff',logging:false}).then(function(c){
+   if(i)pdf.addPage();
+   pdf.addImage(c.toDataURL('image/jpeg',0.92),'JPEG',0,0,842,595);
+   i++;next();
+  }).catch(bad);
+ })();
+}
+function trxCopy(doc,ok,no){
+ var m=/<main class="kx">([\s\S]*)<\/main>/.exec(doc);if(!m){no();return;}
+ var box=document.createElement('div');box.setAttribute('aria-hidden','true');
+ box.style.cssText='position:fixed;left:-99999px;top:0;width:1080px;background:#fff';
+ box.innerHTML='<style>'+trxCss()+'</style><main class="kx">'+m[1]+'</main>';
+ document.body.appendChild(box);
+ var done=false,main=box.querySelector('.kx');
+ try{var r=document.createRange();r.selectNodeContents(main);var sel=window.getSelection();sel.removeAllRanges();sel.addRange(r);done=document.execCommand('copy');sel.removeAllRanges();}catch(e){}
+ var html=box.innerHTML,plain=main.innerText||main.textContent||'';
+ document.body.removeChild(box);
+ if(done){ok();return;}
+ if(navigator.clipboard&&window.ClipboardItem){
+  try{navigator.clipboard.write([new window.ClipboardItem({'text/html':new Blob([html],{type:'text/html'}),'text/plain':new Blob([plain],{type:'text/plain'})})]).then(ok,function(){plainCopy();});return;}catch(e){}
+ }
+ plainCopy();
+ function plainCopy(){
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(plain).then(ok,no);}else no();
+ }
+}
+function trExport(key,kind){
+ if(TRXBUSY)return;
+ var C=CS[key];if(!C)return;
+ var L=TRXL[C.en?'en':'ko'];
+ if(!DL&&kind!=='html'){trxMsg(key,'err',L.noDL);return;}
+ var P=trxModel(key);if(!P)return;
+ var svgs=[trendChart(P.T,P.C,true)];P.H=TRPD.H;
+ TRXBUSY=true;trxMsg(key,'ok',kind==='html'?L.prepC:L.prep.replace('{f}',L.lbl[kind]));
+ var fail=function(m){TRXBUSY=false;trxMsg(key,'err',m||L.fail);};
+ var save=function(name,data){
+  trxMsg(key,'ok',L.wait);
+  DL.save({filename:name,data:data}).then(function(){TRXBUSY=false;trxMsg(key,'ok',L.saved+name);})
+  .catch(function(e){fail(L.err[e&&e.code]);});
+ };
+ if(kind==='html'){
+  trxPngs(svgs,P.H,function(pngs){
+   try{
+    var imgs=pngs.map(function(u){return '<img alt="" src="'+u+'" style="width:100%;height:auto;display:block">';});
+    trxCopy(trxHtml(P,imgs),function(){TRXBUSY=false;trxMsg(key,'ok',L.copied);},function(){fail(L.copyFail);});
+   }catch(e){fail(L.copyFail);}
+  },function(){fail(L.copyFail);});
+  return;}
+ trxPngs(svgs,P.H,function(pngs){
+  if(kind==='docx'){
+   loadScript(CDN.jszip,function(){return !!window.JSZip;},function(){
+    try{trxDocx(P,pngs,function(blob){save(P.base+'.docx',blob);},fail);}catch(e){fail();}
+   },function(){fail(L.noWord);});
+  }else if(P.EN){
+   loadScript(CDN.jspdf,function(){return !!(window.jspdf&&window.jspdf.jsPDF);},function(){
+    try{save(P.base+'.pdf',trxPdf(P,pngs));}catch(e){fail();}
+   },function(){fail(L.noPdf);});
+  }else{
+   loadScript(CDN.h2c,function(){return !!window.html2canvas;},function(){
+    loadScript(CDN.jspdf,function(){return !!(window.jspdf&&window.jspdf.jsPDF);},function(){
+     try{trxPdfKr(P,pngs,function(blob){save(P.base+'.pdf',blob);},fail);}catch(e){fail();}
+    },function(){fail(L.noPdf);});
+   },function(){fail(L.noPdf);});
+  }
+ },function(){fail();});
+}
+document.addEventListener('click',function(ev){
+ var b=ev.target.closest&&ev.target.closest('.btn-x');if(!b||!b.dataset.x)return;
+ var pane=b.closest('[id^="fp-"]');if(!pane)return;
+ trExport(pane.id.slice(3),b.dataset.x);
+});
+
+document.addEventListener('click',function(ev){
+ var b=ev.target.closest&&ev.target.closest('.t-filter button');if(!b)return;
+ var fp=b.closest('[id^="fp-"]'),T=fp?TS[fp.id.slice(3)]:null;if(!T)return;
+ if(b.dataset.q==='all'){T.series.forEach(function(s){TRON[s.id]=true;});}
+ else if(b.dataset.q==='acc'){T.series.forEach(function(s){TRON[s.id]=(s.tag==='계정 구간');});}
+ else{
+  var s0=T.series.filter(function(s){return s.id===b.dataset.id;})[0];if(!s0)return;
+  var on=T.series.filter(trOn).length;
+  if(trOn(s0)&&on<=1)return;
+  TRON[s0.id]=!trOn(s0);
+ }
+ trSave();trendHide();
+ Array.prototype.forEach.call(document.querySelectorAll('.t-filter button[data-id]'),function(x){
+  var sr=T.series.filter(function(s){return s.id===x.dataset.id;})[0];if(sr)x.setAttribute('aria-pressed',String(trOn(sr)));});
+ Object.keys(TS).forEach(function(key){
+  var el=document.querySelector('#fp-'+key+' .t-cards');
+  if(el)el.innerHTML=trCities(TS[key],CS[key]);
+ });
+ b.focus();
+});
+document.addEventListener('pointermove',trendHit);
+document.addEventListener('pointerdown',trendHit);
+document.addEventListener('focusin',trendHit);
+document.addEventListener('focusout',function(ev){if(ev.target&&ev.target.classList&&ev.target.classList.contains('tc-hit'))trendHide();});
+
+
+(function(){
+ var tb=document.getElementById('tabs');if(!tb)return;
+ tb.addEventListener('click',function(ev){
+  var b=ev.target.closest('button');if(!b||!b.dataset.tab)return;
+  var w=document.querySelector('.wrap');
+  w.classList.toggle('on-fuel',b.dataset.tab==='fuel');
+  Array.prototype.forEach.call(tb.querySelectorAll('button'),function(x){x.setAttribute('aria-pressed',String(x===b));});
+  trendHide();
+  window.scrollTo({top:0,behavior:'smooth'});
+ });
+})();
+
+function show(i){
+ cur=i;var E=D.editions[i];
+ selInit(E);
+ fuelInit(E);
+ document.getElementById('mast').innerHTML=mast(E);
+ document.getElementById('app').innerHTML=render(E);
+ accBar(E);
+ var pv=document.getElementById('pv');pv.hidden=true;pv.innerHTML='';
+ Array.prototype.forEach.call(document.querySelectorAll('.edsw button'),function(b){
+  b.setAttribute('aria-pressed',String(+b.dataset.i===i));});
+ var edsel=document.getElementById('edsel');
+ if(edsel)edsel.value=String(i);
+ syncPanel();
+}
+document.getElementById('edsw').addEventListener('click',function(ev){
+ var b=ev.target.closest('button'); if(!b)return; show(+b.dataset.i);
+ window.scrollTo({top:0,behavior:'smooth'});});
+document.getElementById('edsw').addEventListener('change',function(ev){
+ if(!ev.target||ev.target.id!=='edsel')return; show(+ev.target.value);
+ window.scrollTo({top:0,behavior:'smooth'});});
+/* ---------- 입력함: ① 파일 올리기 → ② 입력 확인 → ③ 그래프에 반영 ---------- */
+var FIN=[],UPL=[],FINDB=null,FINAS=null,FINSM=null,FINOK=false,FINOPEN=false,FINSIG='',FINREADY=false,FEFF=null,FINBOX=null;
+var CF=null,DELQ=null,FMSG=[],FBUSY=false,FTRN=null;
+var BANDS=['~499','500~999','1,000~1,499','1,500~1,999','2,000~2,999','3,000~3,999','4,000~4,999','5,000~6,499','6,500~9,999','10,000~'];
+var TBANDS=['1군','2군','3군','4군','5군','6군','7군'],TBLAB={'1군':'600 미만','2군':'600~1,199','3군':'1,200~1,799','4군':'1,800~2,399','5군':'2,400~3,999','6군':'4,000~4,999','7군':'5,000 이상'};
+var TPROMPT='첨부 이미지는 트리니티항공(옛 티웨이항공) 한국발 국제선 유류할증료 부과군표(편도, 원)입니다. 1군~7군의 금액과 적용 기간의 월을 읽어 JSON으로만 답하세요. 금액이 \'-\'인 군은 생략하고, 쉼표 없는 숫자로 쓰세요. 형식: {"month":"YYYY-MM","bands":{"1군":0,"2군":0,"3군":0,"4군":0,"5군":0,"7군":0}}';
+var BANDKEY={nyc:'6,500~9,999',sfo:'5,000~6,499',hnl:'4,000~4,999',bkk:'2,000~2,999',ceb:'1,500~1,999',hkg:'1,000~1,499',tyo:'500~999'};
+var CATN={roe:'ROE',table:'구간표',etc:'기타'};
+function finNextMonth(){var d=new Date(),y=d.getFullYear(),m=d.getMonth()+2;if(m>12){m-=12;y++;}return y+'-'+('0'+m).slice(-2);}
+var UF={cat:'auto',month:''},OPENID=null;
+function FT(){return FEFF||D.fuelTab;}
+function FTT(){return FTRN||trnEff();}
+function $f(id){return document.getElementById(id);}
+
+/* 트리니티항공: 구간 금액은 자체 데이터, ROE는 대한항공과 같은 월별 값을 쓴다 */
+var TBK={tg1:'1군',tg2:'2군',tg3:'3군',tg4:'4군',tg5:'5군',tg7:'7군'};
+function trnEff(){
+ if(!D.fuelTabTrn)return null;
+ var F=JSON.parse(JSON.stringify(D.fuelTabTrn)),K=FT().months;
+ function pad(a){while(a.length<F.months.length)a.push(null);}
+ var ap=FIN.filter(function(x){return x&&x.carrier==='trn'&&x.status==='applied'&&/^\d{4}-\d{2}$/.test(x.month||'');}).sort(function(a,b){return a.month<b.month?-1:1;}),last=null;
+ ap.forEach(function(x){
+  var mo=parseInt(x.month.slice(5),10);
+  if(x.month.slice(0,4)!==String(F.year)||!(mo>=1&&mo<=12))return;
+  while(F.months.length<mo)F.months.push({m:(F.months.length+1)+'월',lvl:null,roe:null});
+  var idx=mo-1;
+  F.series.forEach(function(s){pad(s.vals);var v=x.bands&&x.bands[TBK[s.id]];if(v!=null&&isFinite(v))s.vals[idx]=Number(v);});
+  (F.zones||[]).forEach(function(z){pad(z.vals);var v=x.bands&&x.bands[z.k];if(v!=null&&isFinite(v))z.vals[idx]=Number(v);});
+  if(x.appliedAt)last=x.appliedAt;
+ });
+ while(F.months.length<K.length)F.months.push({m:(F.months.length+1)+'월',lvl:null,roe:null});
+ F.months.forEach(function(m,i){m.lvl=null;m.roe=K[i]?K[i].roe:null;});
+ F.series.forEach(function(s){pad(s.vals);});(F.zones||[]).forEach(function(z){pad(z.vals);});
+ if(last){try{var d=new Date(last);F.updated=d.getFullYear()+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+('0'+d.getDate()).slice(-2);}catch(e){}}
+ return F;
+}
+/* 확인 후 '반영'한 입력을 기본 데이터 위에 덧입힌다 */
+function fuelEff(){
+ var F=JSON.parse(JSON.stringify(D.fuelTab));
+ var ap=FIN.filter(function(x){return x&&x.carrier!=='trn'&&x.status==='applied'&&/^\d{4}-\d{2}$/.test(x.month||'');}).sort(function(a,b){return a.month<b.month?-1:1;});
+ var last=null;
+ function pad(a){while(a.length<F.months.length)a.push(null);}
+ ap.forEach(function(x){
+  var mo=parseInt(x.month.slice(5),10);
+  if(x.month.slice(0,4)!==String(F.year)||!(mo>=1&&mo<=12))return;
+  while(F.months.length<mo)F.months.push({m:(F.months.length+1)+'월',lvl:null,roe:null});
+  var idx=mo-1;
+  if(x.roe!=null&&isFinite(x.roe))F.months[idx].roe=Number(x.roe);
+  if(x.level!=null&&x.level!=='')F.months[idx].lvl=Number(x.level);
+  F.series.forEach(function(s){pad(s.vals);var v=x.bands&&x.bands[BANDKEY[s.id]];if(v!=null&&isFinite(v))s.vals[idx]=Number(v);});
+  (F.zones||[]).forEach(function(z){pad(z.vals);var v=x.bands&&x.bands[z.band];if(v!=null&&isFinite(v))z.vals[idx]=Number(v);});
+  if(x.appliedAt)last=x.appliedAt;
+ });
+ F.series.forEach(function(s){pad(s.vals);});(F.zones||[]).forEach(function(z){pad(z.vals);});
+ if(last){try{var d=new Date(last);F.updated=d.getFullYear()+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+('0'+d.getDate()).slice(-2);}catch(e){}}
+ return F;
+}
+function finPend(){return FIN.filter(function(x){return x&&x.status==='confirmed';});}
+function finActionsHtml(en){
+ if(!FINOK)return '';
+ var pend=finPend(),n=pend.length,ap=FIN.filter(function(x){return x&&x.status==='applied';}).sort(function(a,b){return a.month<b.month?-1:1;}),la=ap.length?ap[ap.length-1].month:'';
+ var hint=n?(en?n+' confirmed input(s) not yet on the charts: '+pend.map(function(x){return (x.carrier==='trn'?'TR ':'')+x.month;}).join(', '):'확인된 입력 '+n+'건이 아직 그래프에 반영되지 않았습니다 · '+pend.map(function(x){return (x.carrier==='trn'?'TR ':'')+x.month;}).join(', '))
+  :(en?'Charts are up to date'+(la?' · latest applied '+la:''):'그래프가 최신 입력까지 반영되어 있습니다'+(la?' · 마지막 반영 '+la:''));
+ return '<button type="button" class="upl-btn s" data-fin="toggle" aria-expanded="'+FINOPEN+'">'+(en?'File upload':'파일 업로드')+' ▾</button>'+
+  '<button type="button" class="upl-btn" data-fin="applyall"'+(n?'':' disabled')+'>'+(en?'Apply to charts':'그래프에 반영')+(n?' ('+n+')':'')+'</button><span class="upl-hint">'+esc(hint)+'</span>';
+}
+function finRefreshActions(){
+ Array.prototype.forEach.call(document.querySelectorAll('#fueltab .hb-fin'),function(el){
+  var en=!!el.closest('#fp-usd,#fp-trn-usd');el.innerHTML=finActionsHtml(en);});
+}
+function finMsg(kind,text){FMSG.push({k:kind,t:text});while(FMSG.length>5)FMSG.shift();finBoxRender();}
+function finSz(n){return n>=1048576?(n/1048576).toFixed(1)+'MB':Math.max(1,Math.round(n/1024))+'KB';}
+function finErr(e){
+ var c=e&&e.code;
+ if(c==='too_large')return '파일이 너무 큽니다(최대 20MB).';
+ if(c==='quota_or_state'||c==='quota_exceeded')return '저장 공간이 가득 찼습니다. 오래된 파일을 지운 뒤 다시 시도해 주세요.';
+ if(c==='rate_limited'||c==='resource_exhausted')return '요청이 너무 잦습니다. 잠시 뒤 다시 시도해 주세요.';
+ if(c==='not_granted')return '이 화면에서는 권한이 없습니다(편집 권한이 필요합니다).';
+ return (e&&e.message)||'알 수 없는 오류입니다.';
+}
+function finNum(v){var n=parseFloat(String(v==null?'':v).replace(/[^0-9.]/g,''));return isFinite(n)&&n>0?n:null;}
+
+/* ---------- 화면 ---------- */
+function finBox(){
+ if(!FINBOX){FINBOX=document.createElement('div');FINBOX.id='fin-box';FINBOX.className='fin';FINBOX.setAttribute('role','region');FINBOX.setAttribute('aria-label','유류할증료 파일 업로드');}
+ finBoxRender();return FINBOX;
+}
+function finPlace(key){
+ if(!FINBOX)return;
+ var slot=document.querySelector('#fp-'+key+' .fin-slot');if(slot)slot.appendChild(FINBOX);
+}
+function finMonthsHtml(){
+ var rows=FIN.filter(function(x){return x&&x.month;}).sort(function(a,b){return a.month<b.month?1:-1;});
+ if(!rows.length)return '<div class="fn-empty">아직 확인한 입력이 없습니다. 위에서 파일을 올리고 \'입력 확인\'을 눌러 주세요.</div>';
+ return '<div class="fn-list">'+rows.map(function(x){
+  var nb=x.bands?Object.keys(x.bands).length:0,ap=x.status==='applied';
+  return '<div class="fn-row"><div class="fn-main"><div class="fn-nm">'+esc(x.month)+(x.carrier==='trn'?' · 트리니티항공':'')+'</div><div class="fn-meta">'+
+   (x.carrier==='trn'?'':'<span class="fn-chip'+(x.roe?' ok':' warn')+'">ROE '+(x.roe?esc(Number(x.roe).toFixed(6)):'없음')+'</span>')+
+   '<span class="fn-chip'+(nb?' ok':' warn')+'">'+(x.carrier==='trn'?'부과군표 ':'구간표 ')+(nb?nb+'개 '+(x.carrier==='trn'?'군':'구간'):'없음')+'</span>'+
+   (x.level!=null&&x.level!==''?'<span class="fn-chip">'+esc(x.level)+'단계</span>':'')+
+   '<span class="fn-chip '+(ap?'done':'wait')+'">'+(ap?'그래프에 반영됨':'확인됨 · 미반영')+'</span></div></div>'+
+   '<div class="fn-acts">'+(ap?'<button type="button" class="fn-b s" data-fin="unapply" data-m="'+esc(x.id||x.month)+'">반영 취소</button>':'<button type="button" class="fn-b p" data-fin="apply" data-m="'+esc(x.id||x.month)+'">그래프에 반영</button>')+'</div></div>';
+ }).join('')+'</div>';
+}
+function finCfHtml(d){
+ if(!CF||CF.id!==d.id)return '';
+ var p=(d.parts&&d.parts[0])||null,isImg=d.kind==='image'&&p;
+ var h='<div class="fn-cf"><div class="fn-cfh"><label>적용 월 <input type="month" data-ff="month" value="'+esc(CF.month)+'"></label>';
+ if(isImg&&FINSM)h+='<button type="button" class="fn-b" data-fin="read"'+(CF.busy?' disabled':'')+'>'+(CF.busy?'읽는 중…':'이미지에서 값 읽기')+'</button>';
+ h+='</div><div class="fn-cfb">';
+ if(isImg)h+='<a class="fn-thumb" href="/_blob/'+esc(p.id)+'" target="_blank" rel="noopener"><img alt="" src="/_blob/'+esc(p.id)+'"></a>';
+ h+='<div class="fn-cff">';
+ if(d.cat==='roe'){
+  h+='<label>ROE (KRW/USD, 새로 적용되는 값)<input type="text" inputmode="decimal" data-ff="roe" value="'+esc(CF.roe)+'" placeholder="예: 1342.368471"></label>';
+ }else{
+  if(CF.car==='trn')h+='<div class="fn-note">트리니티항공 부과군표 · 편도 원 · 금액이 \'-\'인 군(6군)은 비워 두세요.</div><div class="fn-bands">'+
+   TBANDS.map(function(b,i){return '<label>'+esc(b)+'<small>'+esc(TBLAB[b])+'</small><input type="text" inputmode="numeric" data-ff="b'+i+'" value="'+esc(CF.bands[b]!=null?CF.bands[b]:'')+'" placeholder="원"></label>';}).join('')+'</div>';
+  else h+='<label>유류할증료 단계 (선택)<input type="text" inputmode="numeric" data-ff="level" value="'+esc(CF.level)+'" placeholder="예: 22" style="max-width:120px"></label><div class="fn-bands">'+
+   BANDS.map(function(b,i){return '<label>'+esc(b)+'<small>마일</small><input type="text" inputmode="numeric" data-ff="b'+i+'" value="'+esc(CF.bands[b]!=null?CF.bands[b]:'')+'" placeholder="원"></label>';}).join('')+'</div>';
+ }
+ h+='</div></div>'+(d.guess?'<div class="fn-note" style="margin-top:10px">AI가 자동으로 읽은 값입니다. 원본과 다르면 고쳐 주세요.</div>':'')+'<div class="fn-cfa"><button type="button" class="fn-b p" data-fin="save">입력 확인 (저장)</button><button type="button" class="fn-b s" data-fin="cancel">취소</button>'+
+  '<span class="fn-note">값이 이미지와 같은지 확인한 뒤 저장하세요. 저장해도 그래프는 바뀌지 않고, \'그래프에 반영\'을 눌러야 바뀝니다.</span></div></div>';
+ return h;
+}
+function finListHtml(){
+ if(!UPL.length)return '<div class="fn-empty">아직 올린 파일이 없습니다.</div>';
+ var rows=UPL.slice().sort(function(a,b){return String(b.createdAt).localeCompare(String(a.createdAt));});
+ return '<div class="fn-list">'+rows.map(function(d){
+  var parts=(d.parts||[]).map(function(p){return '<a href="/_blob/'+esc(p.id)+'" target="_blank" rel="noopener">'+esc(p.label)+'</a> <span class="fn-sz">'+esc(finSz(p.size))+'</span>';}).join(' · ');
+  var can=(d.cat==='roe'||d.cat==='table'),unk=(d.cat==='etc'&&d.unk);
+  return '<div class="fn-row"><div class="fn-main"><div class="fn-nm">'+esc(d.name)+'</div><div class="fn-meta"><span class="fn-chip">'+esc(CATN[d.cat]||'자료')+'</span>'+(d.carrier==='trn'?'<span class="fn-chip">트리니티항공</span>':'')+(d.month?'<span>적용 '+esc(d.month)+'</span>':'')+
+   (d.checked?'<span class="fn-chip done">입력 확인함</span>':'')+'</div><div class="fn-parts">'+parts+'</div>'+finCfHtml(d)+'</div>'+
+   '<div class="fn-acts">'+(unk?'<button type="button" class="fn-b p" data-fin="setcat" data-c="roe" data-id="'+esc(d.id)+'">ROE로 확인</button><button type="button" class="fn-b p" data-fin="setcat" data-c="table" data-id="'+esc(d.id)+'">대한항공 구간표로 확인</button><button type="button" class="fn-b p" data-fin="setcat" data-c="trnt" data-id="'+esc(d.id)+'">트리니티항공 표로 확인</button>':'')+(can&&!(CF&&CF.id===d.id)?'<button type="button" class="fn-b p" data-fin="confirm" data-id="'+esc(d.id)+'">입력 확인</button>':'')+
+   (DELQ===d.id?'<span class="fn-q">삭제할까요?</span><button type="button" class="fn-b d" data-fin="del" data-id="'+esc(d.id)+'">삭제</button><button type="button" class="fn-b s" data-fin="delno">취소</button>'
+    :'<button type="button" class="fn-b s" data-fin="delask" data-id="'+esc(d.id)+'">삭제</button>')+'</div></div>';
+ }).join('')+'</div>';
+}
+function finBoxRender(){
+ var el=FINBOX;if(!el)return;
+ el.hidden=!FINOPEN;
+ if(!FINOPEN){el.innerHTML='';return;}
+ var up=FINAS?'<div class="fn-up"><label>자료 종류<select data-ff="ucat"><option value="auto"'+(UF.cat==='auto'?' selected':'')+'>자동 인식 (권장)</option><option value="roe"'+(UF.cat==='roe'?' selected':'')+'>ROE (항공사 적용환율)</option><option value="table"'+(UF.cat==='table'?' selected':'')+'>대한항공 유류할증료 구간표</option><option value="trnt"'+(UF.cat==='trnt'?' selected':'')+'>트리니티항공 부과군표</option><option value="etc"'+(UF.cat==='etc'?' selected':'')+'>기타 참고자료</option></select></label>'+
+  '<label><span>적용 월 <small>(비우면 자동)</small></span><input type="month" data-ff="umonth" value="'+esc(UF.month)+'"></label>'+
+  '<button type="button" class="fn-b p" data-fin="pick"'+(FBUSY?' disabled':'')+'>'+(FBUSY?'올리는 중…':'파일 선택')+'</button>'+
+  '<button type="button" class="fn-b" data-fin="pastebtn"'+(FBUSY?' disabled':'')+'>캡처 붙여넣기</button>'+
+  '<input type="file" id="fin-file" multiple hidden accept=".jpg,.jpeg,.png,.txt,.docx,.xlsx,.xls,.csv,.pdf,.md,.json,image/jpeg,image/png,text/plain"><span class="fn-fmt">jpg · png · txt · docx · xlsx · csv · pdf</span></div>'+
+  '<div class="fn-hintp">자료 종류와 적용 월을 고르지 않아도 됩니다. 올리면 ROE인지 구간표인지 자동으로 알아보고 값을 채워 줍니다(이미지는 AI가 읽습니다). 캡처한 이미지는 \'캡처 붙여넣기\'를 누르거나, 이 창을 연 상태에서 Ctrl+V(Mac은 ⌘V)로 바로 붙여넣을 수 있습니다.</div>'
+  :'<div class="fn-note">파일 올리기는 이 페이지의 편집 권한이 있는 사용자만 할 수 있습니다.</div>';
+ el.innerHTML='<div class="fn-h"><h3>파일 업로드</h3><button type="button" class="fn-b s" data-fin="close">닫기</button></div>'+
+  '<ol class="fn-steps"><li>파일 올리기</li><li>입력 확인</li><li>그래프에 반영</li></ol>'+
+  '<h4>① 파일 올리기</h4>'+up+
+  '<h4>② 올린 파일 · 입력 확인</h4>'+finListHtml()+
+  '<h4>③ 확인된 입력 · 그래프에 반영</h4>'+finMonthsHtml()+
+  '<div class="fn-msgs" role="status" aria-live="polite">'+FMSG.map(function(m){return '<div class="fn-msg '+m.k+'">'+esc(m.t)+'</div>';}).join('')+'</div>';
+}
+
+/* ---------- 파일 올리기 ---------- */
+function finExt(n){var m=/\.([^.]+)$/.exec(n||'');return m?m[1].toLowerCase():'';}
+function finBase(n){return (n||'').replace(/\.[^.]+$/,'');}
+function finLib(src,test){return new Promise(function(ok,no){loadScript(src,test,ok,function(){no(new Error('변환 도구를 불러오지 못했습니다. 새로고침 후 다시 시도해 주세요.'));});});}
+async function finReadText(file){
+ var buf=await file.arrayBuffer();
+ try{return new TextDecoder('utf-8',{fatal:true}).decode(buf);}
+ catch(e){try{return new TextDecoder('euc-kr',{fatal:true}).decode(buf);}catch(e2){throw new Error('텍스트 인코딩을 읽을 수 없습니다. UTF-8 또는 EUC-KR로 저장해 주세요.');}}
+}
+async function finDocx(file){
+ await finLib('https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js',function(){return typeof mammoth!=='undefined';});
+ var res=await mammoth.convertToHtml({arrayBuffer:await file.arrayBuffer()});
+ var doc=new DOMParser().parseFromString('<body>'+res.value+'</body>','text/html'),out=[];
+ Array.prototype.forEach.call(doc.body.children,function(el){
+  if(el.tagName==='TABLE'){Array.prototype.forEach.call(el.querySelectorAll('tr'),function(tr){out.push(Array.prototype.map.call(tr.children,function(c){return c.textContent.trim().replace(/\s+/g,' ');}).join(' | '));});out.push('');}
+  else{var t=el.textContent.trim();if(t)out.push(t);}
+ });
+ return out.join('\n').trim();
+}
+async function finXlsx(file){
+ await finLib('https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js',function(){return typeof XLSX!=='undefined';});
+ var wb=XLSX.read(await file.arrayBuffer(),{type:'array'}),res=[];
+ wb.SheetNames.forEach(function(sn){var csv=XLSX.utils.sheet_to_csv(wb.Sheets[sn],{blankrows:false}).trim();if(csv)res.push({sheet:sn,csv:csv});});
+ if(!res.length)throw new Error('내용이 있는 시트가 없습니다.');
+ return res;
+}
+async function finDetect(file,kind,text){
+ var nm=file.name||'',h=/roe|환율|exchange/i.test(nm)?'roe':(/유류|fuel|surcharge|구간|할증/i.test(nm)?'table':null);
+ if(!h&&text){if(/IATA|ROE|환율/i.test(text)&&!/마일|구간|대권/.test(text))h='roe';else if(/유류할증료|대권거리|마일|surcharge/i.test(text))h='table';}
+ if(!h&&/트리니티|티웨이|trinity|t.?way/i.test(nm))h='table';
+ var out={cat:h||'etc',carrier:/트리니티|티웨이|trinity|t.?way/i.test(nm)?'trn':'',guess:null,month:'',msg:''};
+ if(!FINSM||(kind!=='image'&&!text))return out;
+ var prompt='첨부 자료가 무엇인지 판별하고 값을 읽어 JSON으로만 답하세요. 1) 항공사 IATA ROE(환율) 변경 공지: {"kind":"roe","month":"YYYY-MM","roe":숫자} — 괄호 안의 현재(Current) 값이 아니라 \'변경 내용\'의 새로 적용되는 KRW per USD 값을 쓰세요. 2) 대한항공 한국발 유류할증료 통보표(편도, 원): {"kind":"table","month":"YYYY-MM","level":단계숫자 또는 null,"bands":{"~499":0,"500~999":0,"1,000~1,499":0,"1,500~1,999":0,"2,000~2,999":0,"3,000~3,999":0,"4,000~4,999":0,"5,000~6,499":0,"6,500~9,999":0,"10,000~":0}} — 열은 대권거리 구간이고 행은 \'현행\'과 \'변경\'이며, \'변경\'(새로 적용) 행의 금액을 쉼표 없는 숫자로 쓰세요. 3) 트리니티항공(옛 티웨이항공) 부과군표(1군~7군, 운항 거리 miles, 편도 원): {"kind":"table","carrier":"trn","month":"YYYY-MM","bands":{"1군":0,"2군":0,"3군":0,"4군":0,"5군":0,"7군":0}} — 금액이 \'-\'인 군은 생략하고 month는 적용 기간의 달입니다. 4) 부과군별 노선(도시) 목록: {"kind":"routes"}. 5) 그 밖의 자료: {"kind":"other"}. month는 새 값이 적용되는 달입니다.';
+ var url=null;
+ try{
+  var o={};
+  if(kind==='image'){url=URL.createObjectURL(file);o.images=await finImgBlob(url);}
+  else prompt+='\n\n[자료 내용]\n'+String(text).slice(0,12000);
+  var r=await FINSM.json(prompt,o);
+  if(r&&typeof r==='object'){
+   if(typeof r.month==='string'&&/^\d{4}-\d{2}$/.test(r.month))out.month=r.month;
+   if(r.kind==='roe'){var n=finNum(r.roe);out.cat='roe';if(n&&n>=500&&n<=5000){out.guess={roe:n};out.msg='ROE 자료로 인식했습니다. 아래 값을 원본과 대조해 확인해 주세요.';}}
+   else if(r.kind==='table'&&r.carrier==='trn'&&r.bands&&typeof r.bands==='object'){
+    var tb={},tc=0;TBANDS.forEach(function(b){var v=finNum(r.bands[b]);if(v){tb[b]=v;tc++;}});
+    out.cat='table';out.carrier='trn';if(tc){out.guess={bands:tb};out.msg='트리니티항공 부과군표로 인식했습니다. 아래 값을 원본과 대조해 확인해 주세요.';}
+   }
+   else if(r.kind==='routes'){out.cat='etc';out.ref=true;out.msg='부과군별 노선 목록으로 인식했습니다. 입력할 금액이 없어 보관만 합니다(도시 목록은 이미 반영되어 있습니다).';}
+   else if(r.kind==='table'&&r.bands&&typeof r.bands==='object'){
+    var bs={},c=0;BANDS.forEach(function(b){var v=finNum(r.bands[b]);if(v){bs[b]=v;c++;}});
+    out.cat='table';if(c){out.guess={bands:bs};var lv=finNum(r.level);if(lv)out.guess.level=lv;out.msg='유류할증료 구간표로 인식했습니다. 아래 값을 원본과 대조해 확인해 주세요.';}
+   }else if(r.kind==='other'&&!h)out.cat='etc';
+  }
+ }catch(e){out.msg=h?'자동 읽기에 실패했습니다('+((e&&e.message)||'오류')+'). '+(h==='roe'?'ROE':'구간표')+'로 보고 값을 직접 입력해 주세요.':'자동 인식에 실패했습니다. 아래에서 종류를 골라 주세요.';}
+ if(url)URL.revokeObjectURL(url);
+ if(out.guess===null&&(out.cat==='roe'||out.cat==='table')&&!out.msg)out.msg='종류는 알아봤지만 값은 읽지 못했습니다. 직접 입력해 주세요.';
+ return out;
+}
+async function finHandle(file){
+ var e=finExt(file.name),parts=[],kind,note='',text='',ref0=false;
+ try{
+  if(e==='jpg'||e==='jpeg'||e==='png'){kind='image';var r=await FINAS.upload(file,{type:e==='png'?'image/png':'image/jpeg'});parts.push({id:r.id,label:file.name,type:r.contentType,size:r.sizeBytes});}
+  else if(e==='pdf'){kind='pdf';var r2=await FINAS.upload(file,{type:'application/pdf'});parts.push({id:r2.id,label:file.name,type:r2.contentType,size:r2.sizeBytes});}
+  else if(e==='txt'||e==='md'||e==='csv'||e==='json'){kind='text';var t=await finReadText(file);text=t;var ty=e==='md'?'text/markdown':e==='csv'?'text/csv':e==='json'?'application/json':'text/plain';var r3=await FINAS.upload(new Blob([t],{type:ty}),{type:ty});parts.push({id:r3.id,label:file.name,type:r3.contentType,size:r3.sizeBytes});}
+  else if(e==='xlsx'||e==='xls'){kind='sheet';var sh=await finXlsx(file);text=sh.map(function(x){return x.csv;}).join('\n');for(var i=0;i<sh.length;i++){var r4=await FINAS.upload(new Blob([sh[i].csv],{type:'text/csv'}),{type:'text/csv'});parts.push({id:r4.id,label:finBase(file.name)+' · '+sh[i].sheet+'.csv',type:r4.contentType,size:r4.sizeBytes});}note=sh.length+'개 시트를 CSV로 변환';}
+  else if(e==='docx'){kind='doc';var dt=await finDocx(file);text=dt;if(!dt)throw new Error('문서에서 글자를 찾지 못했습니다.');var r5=await FINAS.upload(new Blob([dt],{type:'text/plain'}),{type:'text/plain'});parts.push({id:r5.id,label:finBase(file.name)+'.txt',type:r5.contentType,size:r5.sizeBytes});note='글자·표를 텍스트로 변환';}
+  else throw new Error('지원하지 않는 형식입니다: .'+(e||'?'));
+  var cat=UF.cat,month=UF.month||'',guess=null,msg,carrier='';
+  if(cat==='trnt'){cat='table';carrier='trn';}
+  if(cat==='auto'){
+   finMsg('info',file.name+' — 종류를 알아보는 중…');
+   var dr=await finDetect(file,kind,text);cat=dr.cat;guess=dr.guess;carrier=dr.carrier||'';if(!month&&dr.month)month=dr.month;msg=dr.msg;if(dr.ref)ref0=true;
+  }
+  if(!month)month=finNextMonth();
+  var rec={name:file.name,kind:kind,cat:cat,month:month,createdAt:new Date().toISOString(),parts:parts,note:note};
+  if(guess)rec.guess=guess;
+  if(carrier)rec.carrier=carrier;
+  if(cat==='etc'&&UF.cat==='auto'&&!ref0)rec.unk=true;
+  var ref=await FINDB.collection('uploads').add(rec);
+  if((cat==='roe'||cat==='table')&&ref&&ref.id){if(UPL.some(function(x){return x.id===ref.id;}))finOpenCf(ref.id);else OPENID=ref.id;}
+  finMsg('ok',file.name+' 저장 완료'+(note?' ('+note+')':'')+' — '+(msg||(cat==='etc'?'종류를 알아보지 못했습니다. 아래에서 ROE인지 구간표인지 골라 주세요.':'아래에서 \'입력 확인\'을 눌러 주세요.')));
+ }catch(err){
+  for(var k=0;k<parts.length;k++){try{await FINAS.delete(parts[k].id);}catch(x){}}
+  finMsg('err',file.name+' — '+finErr(err));
+ }
+}
+async function finUploadAll(files){
+ if(!FINAS||!FINDB){finMsg('err','저장 기능을 사용할 수 없습니다.');return;}
+ FBUSY=true;finBoxRender();
+ for(var i=0;i<files.length;i++){await finHandle(files[i]);}
+ FBUSY=false;finBoxRender();
+}
+
+/* ---------- 입력 확인 ---------- */
+function finOpenCf(id){
+ var d=UPL.filter(function(x){return x.id===id;})[0];if(!d)return;
+ var month=d.month||UF.month,cur=FIN.filter(function(x){return x&&x.month===month&&x.carrier!=='trn';})[0]||{};
+ var g=d.guess||{},car=d.carrier==='trn'?'trn':'';
+ if(car)cur=FIN.filter(function(x){return x&&x.id==='trn-'+month;})[0]||{};
+ CF={car:car,id:id,month:month,roe:cur.roe!=null&&d.cat==='roe'?String(cur.roe):(d.cat==='roe'&&g.roe?String(g.roe):''),level:cur.level!=null&&d.cat==='table'?String(cur.level):(d.cat==='table'&&g.level?String(g.level):''),bands:d.cat==='table'&&cur.bands?JSON.parse(JSON.stringify(cur.bands)):(d.cat==='table'&&g.bands?JSON.parse(JSON.stringify(g.bands)):{}),busy:false};
+ finBoxRender();
+}
+function finImgBlob(src){return new Promise(function(res,rej){var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=im.naturalWidth;c.height=im.naturalHeight;c.getContext('2d').drawImage(im,0,0);c.toBlob(function(b){b?res(b):rej(new Error('이미지를 읽지 못했습니다.'));},'image/png');}catch(e){rej(e);}};im.onerror=function(){rej(new Error('이미지를 불러오지 못했습니다.'));};im.src=src;});}
+async function finRead(){
+ if(!CF||!FINSM)return;
+ var d=UPL.filter(function(x){return x.id===CF.id;})[0];if(!d||!d.parts||!d.parts[0])return;
+ CF.busy=true;finBoxRender();
+ try{
+  var blob=await finImgBlob('/_blob/'+d.parts[0].id);
+  var prompt=d.carrier==='trn'?TPROMPT:d.cat==='roe'
+   ?'첨부 이미지는 항공사의 IATA ROE 변경 공지입니다. 새로 적용되는 ROE(KRW per USD)와 적용 월을 읽어 JSON으로만 답하세요. 괄호 안의 Current(현재) 값이 아니라 \'변경 내용\'의 새 값을 쓰세요. 형식: {"month":"YYYY-MM","roe":숫자}'
+   :'첨부 이미지는 대한항공 한국발 유류할증료 통보표(편도, 원)입니다. 열은 대권거리 구간이고 행은 \'현행\'과 \'변경\'입니다. \'변경\' 행(새로 적용되는 금액)을 읽어 JSON으로만 답하세요. 쉼표 없는 숫자로, 형식: {"month":"YYYY-MM","bands":{"~499":0,"500~999":0,"1,000~1,499":0,"1,500~1,999":0,"2,000~2,999":0,"3,000~3,999":0,"4,000~4,999":0,"5,000~6,499":0,"6,500~9,999":0,"10,000~":0}}';
+  var r=await FINSM.json(prompt,{images:blob});
+  if(r&&typeof r==='object'){
+   if(typeof r.month==='string'&&/^\d{4}-\d{2}$/.test(r.month))CF.month=r.month;
+   if(d.cat==='roe'){var n=finNum(r.roe);if(n)CF.roe=String(n);}
+   else if(r.bands&&typeof r.bands==='object'){(CF.car==='trn'?TBANDS:BANDS).forEach(function(b){var v=finNum(r.bands[b]);if(v)CF.bands[b]=v;});}
+  }
+  finMsg('info','이미지에서 읽은 값을 채웠습니다. 이미지와 같은지 확인한 뒤 \'입력 확인 (저장)\'을 눌러 주세요.');
+ }catch(e){finMsg('err','값을 읽지 못했습니다 — '+((e&&e.message)||'다시 시도해 주세요')+'. 직접 입력해도 됩니다.');}
+ if(CF)CF.busy=false;finBoxRender();
+}
+async function finSetCat(id,c){
+ try{OPENID=id;await FINDB.collection('uploads').doc(id).update(c==='trnt'?{cat:'table',carrier:'trn'}:{cat:c});}catch(e){OPENID=null;finMsg('err','종류를 바꾸지 못했습니다 — '+finErr(e));}
+}
+async function finSave(){
+ if(!CF)return;
+ var d=UPL.filter(function(x){return x.id===CF.id;})[0];if(!d)return;
+ if(!/^\d{4}-\d{2}$/.test(CF.month)){finMsg('err','적용 월을 고르세요.');return;}
+ var patch={month:CF.month,updatedAt:new Date().toISOString()};
+ if(d.cat==='roe'){
+  var r=finNum(CF.roe);if(!r||r<500||r>5000){finMsg('err','ROE 값을 확인하세요(KRW/USD, 예: 1342.368471).');return;}
+  patch.roe=r;patch.roeSrc=d.id;
+ }else{
+  var bands={},cnt=0;
+  (CF.car==='trn'?TBANDS:BANDS).forEach(function(b){var v=finNum(CF.bands[b]);if(v){bands[b]=v;cnt++;}});
+  if(!cnt){finMsg('err','구간별 금액을 하나 이상 입력하세요.');return;}
+  patch.bands=bands;patch.tableSrc=d.id;
+  if(CF.car==='trn')patch.carrier='trn';else{var lv=finNum(CF.level);patch.level=lv?lv:null;}
+ }
+ try{
+  var ref=FINDB.doc('fuelInputs/'+(CF.car==='trn'?'trn-':'')+CF.month),snap=await ref.get(),cur=(snap&&snap.exists)?(snap.data()||{}):{};
+  var next=Object.assign({},cur,patch);
+  if(d.cat==='table'){next.bands=Object.assign({},cur.bands||{},patch.bands);}
+  next.status='confirmed';delete next.appliedAt;
+  await ref.set(next);
+  await FINDB.collection('uploads').doc(d.id).update({checked:true,checkedAt:new Date().toISOString()});
+  finMsg('ok',CF.month+' '+(d.cat==='roe'?'ROE':(CF.car==='trn'?'트리니티항공 부과군표':'구간표'))+' 입력을 확인했습니다. 아래 \'그래프에 반영\'을 눌러 주세요.');
+  CF=null;finBoxRender();
+ }catch(e){finMsg('err','저장하지 못했습니다 — '+finErr(e));}
+}
+
+/* ---------- 그래프에 반영 ---------- */
+async function finApply(months,on){
+ try{
+  for(var i=0;i<months.length;i++){
+   var ref=FINDB.doc('fuelInputs/'+months[i]);
+   await ref.update(on?{status:'applied',appliedAt:new Date().toISOString()}:{status:'confirmed'});
+  }
+  var lb=months.map(function(m){return String(m).replace(/^trn-/,'트리니티항공 ');}).join(', ');
+  finMsg('ok',on?lb+' 입력을 그래프에 반영했습니다.':lb+' 반영을 취소했습니다.');
+ }catch(e){finMsg('err','반영하지 못했습니다 — '+finErr(e));}
+}
+async function finDelete(id){
+ var d=UPL.filter(function(x){return x.id===id;})[0];DELQ=null;if(!d){finBoxRender();return;}
+ try{
+  for(var i=0;i<(d.parts||[]).length;i++){try{if(FINAS)await FINAS.delete(d.parts[i].id);}catch(x){}}
+  await FINDB.collection('uploads').doc(id).delete();
+  if(CF&&CF.id===id)CF=null;
+  finMsg('ok',d.name+' 삭제했습니다.');
+ }catch(e){finMsg('err','삭제하지 못했습니다 — '+finErr(e));}
+}
+
+/* ---------- 이벤트 ---------- */
+document.addEventListener('click',function(ev){
+ var b=ev.target.closest&&ev.target.closest('[data-fin]');if(!b||b.disabled)return;
+ var a=b.dataset.fin;
+ if(a==='toggle'){FINOPEN=!FINOPEN;finBoxRender();finRefreshActions();if(FINOPEN&&FINBOX)FINBOX.scrollIntoView({block:'nearest',behavior:'smooth'});}
+ else if(a==='close'){FINOPEN=false;finBoxRender();finRefreshActions();}
+ else if(a==='applyall'){finApply(finPend().map(function(x){return x.id||x.month;}),true);}
+ else if(a==='apply'){finApply([b.dataset.m],true);}
+ else if(a==='unapply'){finApply([b.dataset.m],false);}
+ else if(a==='pastebtn'){finPasteBtn();}
+ else if(a==='pick'){var f=$f('fin-file');if(f)f.click();}
+ else if(a==='confirm'){finOpenCf(b.dataset.id);}
+ else if(a==='setcat'){finSetCat(b.dataset.id,b.dataset.c);}
+ else if(a==='cancel'){CF=null;finBoxRender();}
+ else if(a==='read'){finRead();}
+ else if(a==='save'){finSave();}
+ else if(a==='delask'){DELQ=b.dataset.id;finBoxRender();}
+ else if(a==='delno'){DELQ=null;finBoxRender();}
+ else if(a==='del'){finDelete(b.dataset.id);}
+});
+function finStamp(){var d=new Date(),p=function(n){return ('0'+n).slice(-2);};return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes())+p(d.getSeconds());}
+function finPasteFiles(blobs){
+ var st=finStamp(),list=blobs.map(function(b,i){var ext=/jpe?g/.test(b.type)?'jpg':'png';return new File([b],'capture-'+st+(blobs.length>1?'-'+(i+1):'')+'.'+ext,{type:ext==='jpg'?'image/jpeg':'image/png'});});
+ finUploadAll(list);
+}
+async function finPasteBtn(){
+ if(!FINAS||FBUSY)return;
+ try{
+  if(!navigator.clipboard||!navigator.clipboard.read)throw new Error('x');
+  var items=await navigator.clipboard.read(),blobs=[];
+  for(var i=0;i<items.length;i++){var ty=items[i].types.filter(function(t){return /^image\/(png|jpeg)$/.test(t);})[0];if(ty)blobs.push(await items[i].getType(ty));}
+  if(!blobs.length){finMsg('err','클립보드에 이미지가 없습니다. 화면을 캡처(Win: Win+Shift+S, Mac: ⌘+Shift+4)한 뒤 다시 눌러 주세요.');return;}
+  finPasteFiles(blobs);
+ }catch(e){finMsg('err','이 화면에서는 붙여넣기 버튼이 막혀 있습니다. 이 창을 연 상태에서 Ctrl+V(Mac은 ⌘V)를 눌러 붙여넣어 주세요.');}
+}
+document.addEventListener('paste',function(ev){
+ if(!FINOPEN||!FINAS||FBUSY)return;
+ var cd=ev.clipboardData;if(!cd||!cd.items)return;
+ var blobs=[];Array.prototype.forEach.call(cd.items,function(it){if(it.kind==='file'&&/^image\/(png|jpeg)$/.test(it.type)){var f=it.getAsFile();if(f)blobs.push(f);}});
+ if(!blobs.length)return;
+ ev.preventDefault();finPasteFiles(blobs);
+});
+document.addEventListener('input',function(ev){
+ var t=ev.target,k=t&&t.dataset&&t.dataset.ff;if(!k)return;
+ if(k==='ucat')UF.cat=t.value;else if(k==='umonth')UF.month=t.value;
+ else if(CF){
+  if(k==='month')CF.month=t.value;else if(k==='roe')CF.roe=t.value;else if(k==='level')CF.level=t.value;
+  else if(/^b\d+$/.test(k)){var b=(CF.car==='trn'?TBANDS:BANDS)[parseInt(k.slice(1),10)];if(b){var v=finNum(t.value);if(v)CF.bands[b]=v;else delete CF.bands[b];}}
+ }
+});
+document.addEventListener('change',function(ev){
+ var t=ev.target;if(t&&t.id==='fin-file'&&t.files&&t.files.length){finUploadAll(Array.prototype.slice.call(t.files));}
+});
+
+/* ---------- 연결 ---------- */
+var FPANES=['krw','usd','zone','trn-krw','trn-usd','trn-zone'];
+function carBarHtml(car){
+ return '<div class="car-sw" role="group" aria-label="항공사 · Airline">'+[['ke','대한항공','Korean Air'],['trn','트리니티항공','Trinity Air']].map(function(c){
+  return '<button type="button" data-car="'+c[0]+'" aria-pressed="'+(car===c[0])+'"><b>'+c[1]+'</b><small>'+c[2]+'</small></button>';}).join('')+'</div>';
+}
+function finVis(){var v='krw';FPANES.forEach(function(k){var e=document.getElementById('fp-'+k);if(e&&!e.hidden)v=k;});return v;}
+function mountFuel(){
+ var ft=document.getElementById('fueltab');if(!ft)return;
+ var vis=finVis();
+ if(FINBOX&&FINBOX.parentNode)FINBOX.parentNode.removeChild(FINBOX);
+ var y=window.scrollY;
+ FEFF=fuelEff();FTRN=trnEff();
+ var hasT=!!FTRN;if(!hasT&&/^trn-/.test(vis))vis='krw';
+ ft.innerHTML=(hasT?carBarHtml(/^trn-/.test(vis)?'trn':'ke'):'')+FPANES.filter(function(k){return hasT||!/^trn-/.test(k);}).map(function(k){
+  var h=k==='krw'?fuelTabHtml(TRC_KRW):k==='usd'?fuelTabHtml(TRC_USD):k==='zone'?zoneTabHtml():k==='trn-krw'?fuelTabHtml(TRC_TKRW):k==='trn-usd'?fuelTabHtml(TRC_TUSD):zoneTabHtml('trn');
+  return '<div id="fp-'+k+'"'+(k===vis?'':' hidden')+'>'+h+'</div>';}).join('');
+ if(FINOK){finBox();finPlace(vis);}
+ window.scrollTo(0,y);
+}
+function finSnap(){
+ var sig=JSON.stringify(FIN.filter(function(x){return x&&x.status==='applied';}).map(function(x){return [x.id,x.month,x.roe,x.level,x.bands,x.appliedAt];}));
+ if(!FINREADY||sig!==FINSIG){FINSIG=sig;FINREADY=true;mountFuel();}
+ else{finRefreshActions();finBoxRender();}
+}
+(async function finInit(){
+ try{
+  if(!window.claude||typeof claude.use!=='function')return;
+  FINDB=await claude.use('db');if(!FINDB)return;
+  try{FINAS=await claude.use('assets');}catch(e){}
+  try{FINSM=await claude.use('sample');if(FINSM&&FINSM.limits){var lm=await FINSM.limits();if(!lm||!lm.images)FINSM=null;}}catch(e){FINSM=null;}
+  FINOK=true;
+  var got={u:false,f:false};
+  FINDB.collection('uploads').onSnapshot(function(s){UPL=s.docs.map(function(x){var d=x.data()||{};d.id=x.id;return d;});got.u=true;if(OPENID&&UPL.some(function(x){return x.id===OPENID&&(x.cat==='roe'||x.cat==='table');})){var oid=OPENID;OPENID=null;finOpenCf(oid);}if(got.f)finSnap();else finBoxRender();},function(){});
+  FINDB.collection('fuelInputs').onSnapshot(function(s){FIN=s.docs.map(function(x){var d=x.data()||{};d.id=x.id;if(!d.month)d.month=x.id;return d;});got.f=true;finSnap();},function(){got.f=true;finSnap();});
+ }catch(e){}
+})();
+
+(function(){
+ var ft=document.getElementById('fueltab');
+ mountFuel();
+ function showPane(key){
+  FPANES.forEach(function(k){var e=document.getElementById('fp-'+k);if(e)e.hidden=(k!==key);});
+  var car=/^trn-/.test(key)?'trn':'ke';
+  Array.prototype.forEach.call(document.querySelectorAll('.car-sw button'),function(x){x.setAttribute('aria-pressed',String(x.dataset.car===car));});
+  trendHide();finPlace(key);
+ }
+ ft.addEventListener('click',function(ev){
+  var cb=ev.target.closest&&ev.target.closest('.car-sw button');
+  if(cb&&cb.dataset.car){
+   var sub=finVis().replace(/^trn-/,'');
+   var y1=cb.getBoundingClientRect().top;
+   showPane((cb.dataset.car==='trn'?'trn-':'')+sub);
+   var dy1=cb.getBoundingClientRect().top-y1;if(Math.abs(dy1)>1)window.scrollBy(0,dy1);
+   return;
+  }
+  var b=ev.target.closest&&ev.target.closest('.cur-sw button');if(!b||!b.dataset.sub)return;
+  var y0=b.getBoundingClientRect().top,pre=/^trn-/.test(finVis())?'trn-':'',key=pre+b.dataset.sub;
+  showPane(key);
+  var nb=document.querySelector('#fp-'+key+' .cur-sw button[data-sub="'+b.dataset.sub+'"]');
+  if(nb){var dy=nb.getBoundingClientRect().top-y0;if(Math.abs(dy)>1)window.scrollBy(0,dy);nb.focus({preventScroll:true});}
+ });
+})();
+document.getElementById('accf').addEventListener('click',function(ev){
+ var b=ev.target.closest?ev.target.closest('button[data-acc]'):null;if(!b)return;
+ var h=b.dataset.acc,a=null;ACCS.forEach(function(x){if(x.h===h)a=x;});
+ setAcc(a,true);
+});
+document.getElementById('accf').addEventListener('change',function(ev){
+ if(!ev.target||ev.target.id!=='accf-common')return;
+ COMMON=ev.target.checked;try{localStorage.setItem('v2-common',COMMON?'1':'0');}catch(e){}
+ show(cur);
+});
+window.addEventListener('hashchange',function(){var a=accByHash();if(a!==undefined&&a!==ACC)setAcc(a,false);});
+(function(){var a=accByHash();if(a)ACC=a;})();
+show(ORDER[0]);
+})();
+</script>

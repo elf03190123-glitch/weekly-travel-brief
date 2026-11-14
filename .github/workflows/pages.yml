@@ -1,0 +1,42 @@
+name: pages
+# data/ · src/ 가 바뀌면 빌드해서 GitHub Pages 에 올린다. weekly.yml 이 끝날 때도 불린다.
+on:
+  push:
+    branches: [main]
+    paths: ['data/brief-data.json', 'src/**', 'scripts/build.py']
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build (검사 포함)
+        run: python3 -I scripts/build.py
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
