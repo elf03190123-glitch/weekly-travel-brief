@@ -9868,6 +9868,979 @@
      "2026.10.10"
     ]
    }
+  },
+  {
+   "key": "w46",
+   "label": "2026-W46",
+   "sublabel": "NOV 9–15",
+   "issue": {
+    "no": "2026-W46",
+    "range": "NOV 9–15, 2026",
+    "count": 27
+   },
+   "meta": [
+    [
+     "수록",
+     "27건 (11/9 10:00 – 11/16 10:00 KST)"
+    ],
+    [
+     "수집",
+     "scripts/collect.py RSS 15개 경로(트래블데일리·여행신문·트래비·디스커버리뉴스·TTL뉴스·인사이트코리아·이데일리·연합뉴스·뉴시스·세계여행신문 GTN 목록·Rio Times Online·Further Africa) + WebSearch 보강(Aviation Week)"
+    ],
+    [
+     "채택",
+     "후보 273건 + 날짜 없음 15건 중 27건"
+    ],
+    [
+     "제약",
+     "수집이 11/14 이후 시작돼 단기 RSS(디스커버리뉴스·TTL뉴스·인사이트코리아·연합·뉴시스)는 11/13 이후분만 확보 · 연합뉴스 본문 열람 불가 · 관광청 본사 신규 발표 0건"
+    ],
+    [
+     "작성",
+     "AVIAREPS Korea"
+    ]
+   ],
+   "ind": [
+    {
+     "k": "원/달러 환율",
+     "ken": "KRW / USD Exchange Rate",
+     "v": "1,336.2",
+     "u": "KRW",
+     "sub": "2026.11.14 기준 · 시장 중간환율",
+     "suben": "as of 2026.11.14 · market mid-rate",
+     "src": [
+      "exchangerate-api (open.er-api.com)",
+      "2026.11.14",
+      "https://open.er-api.com/v6/latest/USD"
+     ]
+    },
+    {
+     "k": "소비자심리지수 (CCSI)",
+     "ken": "Consumer Sentiment Index (CCSI)",
+     "v": "106.6",
+     "u": "",
+     "sub": "2026년 9월 · 수집 기사에 신규 발표 없어 직전 값 유지",
+     "suben": "September 2026 · no new release in collected feeds, prior value retained",
+     "src": [
+      "한국은행 소비자동향조사 (머니투데이 보도)",
+      "2026.09.23",
+      "https://www.mt.co.kr/economy/2026/09/23/2026092217321423880"
+     ]
+    }
+   ],
+   "fuel": {
+    "month": "2026년 11월",
+    "monthen": "November 2026",
+    "sub": "대한항공(KE)·아시아나항공(OZ) 국제선 편도 유류할증료 · 관광청 계정별 매칭",
+    "suben": "Korean Air (KE) and Asiana (OZ) one-way international fuel surcharge, matched to tourism board accounts",
+    "rows": [
+     {
+      "acc": "하와이",
+      "accen": "Hawaii",
+      "ke": "254,900",
+      "oz": "251,900"
+     },
+     {
+      "acc": "뉴욕",
+      "accen": "New York",
+      "ke": "408,100",
+      "oz": "301,200"
+     },
+     {
+      "acc": "샌프란시스코",
+      "accen": "San Francisco",
+      "ke": "370,100",
+      "oz": "301,200"
+     },
+     {
+      "acc": "라스베가스",
+      "accen": "Las Vegas",
+      "ke": "370,100",
+      "oz": null
+     },
+     {
+      "acc": "스페인",
+      "accen": "Spain",
+      "ke": "370,100",
+      "oz": "301,200"
+     },
+     {
+      "acc": "타히티",
+      "accen": "Tahiti",
+      "ke": null,
+      "oz": null
+     }
+    ],
+    "note": "라스베가스는 아시아나 직항이 없어 대한항공(KE)만 해당합니다. 타히티는 대한항공·아시아나 모두 직항이 없어 해당없음으로 표시했습니다. 대한항공(KE)은 유류할증료 탭의 11월 구간표 값이며, 아시아나항공(OZ)은 11월 표가 아직 반영되지 않아 10월 값을 그대로 두었습니다.",
+    "noteen": "Las Vegas has no Asiana nonstop, so only Korean Air (KE) applies. Tahiti has no nonstop service on either carrier, shown as N/A. Korean Air (KE) figures follow the November zone table in the fuel surcharge tab; Asiana (OZ) figures still reflect the October table because the November table has not yet been loaded.",
+    "src": [
+     "AVIAREPS Korea 유류할증료 집계 (국적사 공지 기준)",
+     "2026.10.19"
+    ]
+   },
+   "board": [
+    {
+     "n": 5,
+     "nm": "뉴욕",
+     "ds": "대한항공 인천–뉴어크 2027년 5월 매일 취항 · 미 관제 장애로 뉴욕행 일시 결항 · 필라델피아 관광청 첫 한국 행사",
+     "hot": true
+    },
+    {
+     "n": 3,
+     "nm": "하와이",
+     "ds": "에어프레미아–톈진항공 인터라인 · Brand USA 홀리데이(아웃리거 와이키키) · 괌 경쟁 기획전 — HTA 신규 0건",
+     "hot": true
+    },
+    {
+     "n": 1,
+     "nm": "샌프란시스코",
+     "ds": "에어프레미아–톈진항공 인터라인(중국발 미주 환승) 외 신규 없음",
+     "cold": true
+    },
+    {
+     "n": 1,
+     "nm": "라스베가스",
+     "ds": "Brand USA 홀리데이 콘텐츠(스트립 새해 불꽃놀이) 외 신규 없음",
+     "cold": true
+    },
+    {
+     "n": 1,
+     "nm": "타히티",
+     "ds": "한진트래블 타히티·쿡제도 NCL 크루즈 12일 출시 — 본사 신규 0건",
+     "cold": true
+    },
+    {
+     "n": 0,
+     "nm": "스페인",
+     "ds": "이번 구간 스페인 직결 신규 0건",
+     "cold": true
+    }
+   ],
+   "items": [
+    {
+     "code": "PE-01",
+     "sec": "s1",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "장거리 전 계정",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "원/달러 환율, 달러 강세에 닷새 만에 반등 — 6.0원 오른 1,336.7원",
+     "kop": "11월 13일 서울 외환시장에서 원/달러 환율이 15시 30분 기준 전날보다 6.0원 오른 1,336.7원에 마감했다. 5거래일 연속 하락하던 흐름이 달러 강세로 멈췄다. 시장 중간환율도 11월 14일 기준 1,336.2원으로 비슷한 수준이다. 10월 중순 1,340원대에서 소폭 내려온 구간이지만 여전히 1,330원대 중반의 원화 약세가 이어지고 있어, 달러로 매입하는 미주·하와이 지상비와 장거리 상품 원가 부담은 크게 줄지 않았다.",
+     "enh": "Won Rebounds Against the Dollar After Five Sessions, Closing 6.0 Won Higher at 1,336.7",
+     "enp": "The won-dollar rate closed at 1,336.7 won at the 3:30 p.m. benchmark on November 13, up 6.0 won from the previous day as dollar strength ended a five-session decline. The market mid-rate stood at a similar 1,336.2 won as of November 14. The rate has eased slightly from the 1,340 range of mid-October, but a weak won in the mid-1,330s means dollar-denominated land costs for the Americas and Hawaii, and long-haul product costs generally, have not eased materially.",
+     "src": [
+      [
+       "연합뉴스",
+       "2026.11.13",
+       "https://www.yna.co.kr/view/AKR20261113137600002",
+       "환율, 달러 강세에 닷새 만에 반등…6.0원 오른 1,336.7원"
+      ]
+     ],
+     "note": "연합뉴스 본문은 열람이 막혀 RSS 제목·발췌와 open.er-api.com 값으로 작성했습니다."
+    },
+    {
+     "code": "PE-02",
+     "sec": "s1",
+     "tags": [
+      [
+       "장거리 전 계정",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "국제유가 2주 연속 하락 — 브렌트 95.41달러, WTI 88.52달러",
+     "kop": "11월 13일(현지시각) 국제유가가 혼조세로 마감하며 주간 기준 2주 연속 하락했다. 브렌트유 선물은 배럴당 95.41달러로 1센트, 서부텍사스산원유(WTI)는 88.52달러로 20센트(0.25%) 내렸다. 미국의 대이란 봉쇄 지속 방침에도 세계 석유 공급 과잉 전망과 미국 내 재고 증가가 가격을 눌렀다. 이란 전쟁이 9개월째 이어지는 가운데 유가는 여전히 배럴당 90달러 안팎의 고점권이어서, 11월 국제선 유류할증료(대한항공 미주 편도 최고 40만8,100원) 부담이 12월 이후 얼마나 내려갈지가 장거리 상품가의 관건이다.",
+     "enh": "Oil Falls for a Second Straight Week — Brent at USD 95.41, WTI at USD 88.52",
+     "enp": "Oil prices closed mixed on November 13 (local time), posting a second consecutive weekly decline. Brent futures slipped 1 cent to USD 95.41 a barrel and WTI fell 20 cents (0.25%) to USD 88.52, as forecasts of a global supply glut and rising US inventories outweighed Washington's plan to maintain its blockade on Iran. With the Iran war in its ninth month, prices remain elevated around USD 90, so the key question for long-haul pricing is how far November's fuel surcharges (up to KRW 408,100 one-way to the Americas on Korean Air) will fall from December.",
+     "src": [
+      [
+       "뉴시스",
+       "2026.11.14",
+       "https://www.newsis.com/view/NISX20261114_0003867945",
+       "국제 유가 변동 없이 마감…2일 동안 상승세 중단"
+      ],
+      [
+       "연합뉴스",
+       "2026.11.14",
+       "https://www.yna.co.kr/view/AKR20261114008200072",
+       "국제유가, 공급 과잉 전망 속 혼조 마감…WTI 0.2%↓"
+      ]
+     ]
+    },
+    {
+     "code": "CS-01",
+     "sec": "s4",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "럭셔리",
+       "mkt"
+      ],
+      [
+       "Consumer / SNS",
+       "fn"
+      ]
+     ],
+     "koh": "비자 결제 데이터 — 한국인 해외여행 지출, 숙박·쇼핑·교통 각 20% 안팎으로 고르게 분산",
+     "kop": "비자(Visa)가 국내외 결제 데이터를 바탕으로 한국인의 프리미엄 여행·소비 흐름을 공개했다. 2024년 한국인 관광객의 해외여행 지출을 분석한 결과 숙박·쇼핑·교통이 각각 전체의 20% 안팎을 차지해 특정 항목에 쏠리지 않고 여정 전체로 소비가 퍼진 것으로 나타났다. 최근 방일 한국인 가운데 프리미엄 카드 소지자의 결제액은 전년 대비 약 75% 늘어 일반 카드보다 3배 빠르게 증가했다. 고소득층 중심의 프리미엄 여행 소비가 커지고 있다는 신호로, 장거리 계정의 고단가 상품 기획 근거가 된다.",
+     "enh": "Visa Payment Data: Korean Overseas Travel Spending Spread Evenly, With Lodging, Shopping and Transport Each Around 20%",
+     "enp": "Visa released payment data on Korean premium travel and spending trends. Its analysis of 2024 overseas travel spending by Korean tourists found lodging, shopping and transport each accounted for around 20% of the total, indicating spend spread across the whole journey rather than concentrated in one category. Recent spending by premium cardholders among Korean visitors to Japan rose about 75% year on year, three times faster than standard cards. The data points to growing premium travel spend among higher-income travellers, supporting high-value product planning for long-haul accounts.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72630",
+       "비자, 프리미엄 여행·소비 트렌드 주목"
+      ]
+     ],
+     "note": "데이터 출처(비자 결제 데이터)는 명시됐으나 표본 규모와 75% 증가의 기간은 기사에 없습니다."
+    },
+    {
+     "code": "CS-02",
+     "sec": "s4",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "Consumer / SNS",
+       "fn"
+      ]
+     ],
+     "koh": "교원투어 4분기 중국 예약 85.3% 급증 — 비중 23.5%로 일본 다음",
+     "kop": "교원투어의 4분기 출발 기준 중국 상품 예약이 전년 동기 대비 85.3% 늘었다. 전체 예약에서 중국 비중은 23.5%로 일본(30.3%)에 이어 두 번째다. 같은 주 레드캡투어는 3분기 여행 부문 매출 101억원(+9.5%), 영업이익 23억원(+65.8%)을 기록해 기업 출장 수요 증가를 확인했다. 연말 무비자 종료를 앞두고 중국이 근거리 수요의 두 번째 축으로 굳어지는 흐름이어서, 장거리 계정은 동계 성수기 예산이 근거리로 분산되는 경쟁 구도를 감안해야 한다.",
+     "enh": "Kyowon Tour's Q4 China Bookings Up 85.3%, Taking a 23.5% Share Behind Japan",
+     "enp": "Kyowon Tour reported fourth-quarter departure bookings for China up 85.3% year on year, with China's share of total bookings at 23.5%, second only to Japan at 30.3%. In the same week Red Cap Tour posted third-quarter travel revenue of KRW 10.1 billion (+9.5%) and operating profit of KRW 2.3 billion (+65.8%) on rising corporate travel. With visa-free entry due to expire at year-end, China is consolidating as the second pillar of short-haul demand, and long-haul accounts should factor in winter-peak budgets being diverted to nearby destinations.",
+     "src": [
+      [
+       "여행신문",
+       "2026.11.13",
+       "https://www.traveltimes.co.kr/news/articleView.html?idxno=500713",
+       "중국 여행 예약 85% 급증했다는 여행사…주목한 여행지는? [주간 여행 산업 동향]"
+      ]
+     ]
+    },
+    {
+     "code": "OB-01",
+     "sec": "s2",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "10월 국제선 여객 907만 명, 10% 증가 — 국내선은 9% 감소로 양극화",
+     "kop": "10월 항공 통계에서 국제선 여객은 907만3,655명으로 전년 동월(824만5,508명)보다 10%, 82만8,147명 늘며 900만 명을 다시 넘었다. 반면 국내선 여객은 258만1,043명으로 전년(283만7,666명) 대비 9% 줄었다. 국내선·국제선을 합친 전체 여객은 1,165만4,698명으로 5.2% 증가했다. 고유가·원화 약세 속에서도 해외여행 수요가 꺾이지 않고 국내 여행 수요를 흡수하고 있다는 의미로, 동계 성수기 국제선 공급 확대의 근거가 된다.",
+     "enh": "October International Passengers Reach 9.07 Million, Up 10%, as Domestic Traffic Falls 9%",
+     "enp": "International air passengers reached 9,073,655 in October, up 10% (828,147) from 8,245,508 a year earlier and again above 9 million. Domestic passengers fell 9% to 2,581,043 from 2,837,666. Total traffic rose 5.2% to 11,654,698. Despite high fuel prices and a weak won, outbound demand is holding up and absorbing domestic travel, supporting expanded international capacity for the winter peak.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72631",
+       "10월 항공 '국제-국내' 수요 양극화 뚜렷"
+      ]
+     ]
+    },
+    {
+     "code": "OB-02",
+     "sec": "s2",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "중국 경쟁",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "한중 무비자 연말 동시 만료 — 연장 발표는 아직",
+     "kop": "한국과 중국이 상대국 국민에게 적용 중인 무비자 입국 제도가 올해 말 나란히 종료된다. 중국은 2024년 11월부터 한국인에게 최대 30일 무비자 체류를 허용해 왔고, 이 한시 조치는 2026년 12월 31일까지다. 무비자 시행 이후 중국 여행 수요와 항공 공급이 크게 늘어 업계는 연장 가능성에 무게를 두지만, 11월 5일 현재 공식 발표는 없다. 연장 여부는 내년 상반기 근거리 수요 배분을 좌우하는 변수로, 장거리 계정의 판촉 타이밍에도 영향을 준다.",
+     "enh": "Korea–China Visa-Free Entry Expires for Both Sides at Year-End, Extension Not Yet Announced",
+     "enp": "The reciprocal visa-free entry schemes between Korea and China are both set to end this year. China has allowed Koreans stays of up to 30 days without a visa since November 2024 under a temporary measure that runs to December 31, 2026. With China travel demand and air capacity up sharply since the waiver, the trade expects an extension, but no official announcement had been made as of November 5. The decision will shape the allocation of short-haul demand in the first half of next year and affects promotional timing for long-haul accounts.",
+     "src": [
+      [
+       "여행신문",
+       "2026.11.11",
+       "https://www.traveltimes.co.kr/news/articleView.html?idxno=500676",
+       "한중 무비자 연말 동시 만료…연장 여부는 ‘아직’"
+      ]
+     ]
+    },
+    {
+     "code": "AL-01",
+     "sec": "s5",
+     "tags": [
+      [
+       "뉴욕",
+       "acc"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "대한항공, 인천–뉴어크 2027년 5월 22일 매일 취항 — B777-300ER 투입",
+     "kop": "대한항공이 2027년 5월 22일부터 인천–미국 뉴어크 노선을 주 7회 매일 운항한다. 인천에서 오후 10시에 출발해 뉴어크 리버티 국제공항에 현지 시각 오후 11시에 도착하고, 복편은 오전 1시 출발해 인천에 다음 날 오전 5시 15분에 닿는다. 기재는 보잉 777-300ER이다. 뉴어크 공항은 맨해튼과 가까워 JFK에 이은 두 번째 뉴욕 관문이 생기는 셈으로, 뉴욕 계정에는 내년 하계 좌석 공급 확대와 심야 출발 스케줄을 활용한 상품 구성 기회가 된다.",
+     "enh": "Korean Air to Launch Daily Incheon–Newark from May 22, 2027 with Boeing 777-300ERs",
+     "enp": "Korean Air will operate Incheon–Newark daily, seven times a week, from May 22, 2027. The flight leaves Incheon at 10 p.m. and arrives at Newark Liberty at 11 p.m. local time; the return departs at 1 a.m. and reaches Incheon at 5:15 a.m. the next day, using a Boeing 777-300ER. Newark's proximity to Manhattan effectively gives the carrier a second New York gateway alongside JFK, opening summer 2027 capacity growth and late-night schedule-based product opportunities for the New York account.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.12",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72672",
+       "대한항공, 인천~뉴어크 내년 5월 취항"
+      ]
+     ]
+    },
+    {
+     "code": "AL-02",
+     "sec": "s5",
+     "tags": [
+      [
+       "뉴욕",
+       "acc"
+      ],
+      [
+       "장거리 전 계정",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "미국 관제 통신장애로 전역 이륙 중단 — 인천발 뉴욕 등 미주행 4편 결항됐다 정상화",
+     "kop": "11월 14일 미국 항공교통관제센터의 통신장애로 미국 전역 공항에서 항공기 이륙이 중단되면서 인천공항 출발 미주행 항공편에도 차질이 생겼다. 오전 9시대 인천을 떠날 예정이던 뉴욕·애틀랜타·보스턴행 대한항공·아시아나항공 4편(각 2편)이 결항 결정됐다가, 미국의 이륙 중단 해제로 취소가 철회돼 운항이 재개됐다. 오후 미주행 항공편의 체크인 보류도 풀렸다. 피해는 반나절로 끝났지만, 동계 성수기 미주 일정에서 미국 내 관제 리스크가 지연·연결편 문제로 이어질 수 있음을 보여 준 사례다.",
+     "enh": "US Air Traffic Control Outage Halts Departures Nationwide; Four Incheon Flights to New York and Other US Cities Briefly Cancelled",
+     "enp": "A communications failure at US air traffic control halted departures at airports across the United States on November 14, disrupting Incheon departures to the US. Four morning flights by Korean Air and Asiana (two each) to New York, Atlanta and Boston were cancelled, then reinstated once the ground stop was lifted, and a hold on check-in for afternoon US flights was also released. The disruption lasted only half a day, but it shows how US air traffic control risk can cascade into delays and missed connections for winter-peak Americas itineraries.",
+     "src": [
+      [
+       "뉴시스",
+       "2026.11.14",
+       "https://www.newsis.com/view/NISX20261114_0003868048",
+       "인천발 미주행 항공편 4편 결항됐다가 취소…美 운항 중단 해제"
+      ],
+      [
+       "연합뉴스",
+       "2026.11.14",
+       "https://www.yna.co.kr/view/AKR20261114026351003",
+       "미국, 항공기 이륙 중단 해제…대한항공·아시아나 결항 취소(종합)"
+      ]
+     ]
+    },
+    {
+     "code": "AL-03",
+     "sec": "s5",
+     "tags": [
+      [
+       "장거리 전 계정",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "아시아나 3분기 매출 1조5,262억원·영업손실 1,790억원 — 통합 준비 비용에 적자 지속",
+     "kop": "아시아나항공의 2026년 3분기 별도 기준 매출은 1조5,262억원으로 전년 동기(1조4,643억원)보다 619억원(4.2%) 늘었다. 영업손실은 1,790억원으로 전년(1,757억원)보다 33억원 확대됐다. 고유가와 안전 투자 확대, 대한항공과의 통합 준비 비용이 수익성을 눌렀다. 반면 환율 하락에 따른 대규모 외화환산이익으로 당기순이익은 1,794억원으로 흑자 전환했다. 12월 17일 통합 FSC 출범을 앞두고 미주·하와이·유럽 노선 재편과 운임 정책이 장거리 계정의 핵심 확인 사항이다.",
+     "enh": "Asiana Posts Q3 Revenue of KRW 1.5262 Trillion and an Operating Loss of KRW 179 Billion as Merger Costs Weigh",
+     "enp": "Asiana Airlines' standalone third-quarter 2026 revenue rose KRW 61.9 billion (4.2%) to KRW 1.5262 trillion from KRW 1.4643 trillion. Its operating loss widened by KRW 3.3 billion to KRW 179.0 billion, weighed down by high fuel prices, higher safety investment and integration costs ahead of the Korean Air merger. A large foreign-exchange translation gain from a lower exchange rate lifted net income into the black at KRW 179.4 billion. With the combined full-service carrier launching on December 17, network and fare changes on Americas, Hawaii and Europe routes are the key watchpoints for long-haul accounts.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.12",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72669",
+       "아시아나, 3분기 1790억원 영업손실"
+      ]
+     ]
+    },
+    {
+     "code": "AL-04",
+     "sec": "s5",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "진에어·에어서울·에어부산 합병 인가 — 내년 3월 17일 통합 LCC 출범",
+     "kop": "국토교통부가 진에어와 에어서울·에어부산의 법인 합병을 항공사업법에 따른 심사를 거쳐 인가했고, 공정거래위원회도 기업결합 신고를 승인했다. 세 회사는 모두 한진 계열로 경쟁제한성이 없는 것으로 추정됐다. 12월 17일 대한항공–아시아나 통합 FSC 출범에 이어 2027년 3월 17일에는 3사 통합 LCC가 출범한다. 국내 항공시장이 대형 FSC 1곳과 대형 LCC 1곳 중심으로 재편되면서 단거리 공급·운임 구조가 바뀌고, 장거리 여행사 좌석 협상력에도 영향을 줄 전망이다.",
+     "enh": "Merger of Jin Air, Air Seoul and Air Busan Approved; Combined LCC to Launch March 17, 2027",
+     "enp": "Korea's Ministry of Land, Infrastructure and Transport approved the corporate merger of Jin Air with Air Seoul and Air Busan after review under the Aviation Business Act, and the Fair Trade Commission cleared the combination. All three are Hanjin group affiliates, so the deal was presumed not to restrict competition. Following the launch of the combined Korean Air–Asiana full-service carrier on December 17, the merged LCC will launch on March 17, 2027. With the market consolidating around one large FSC and one large LCC, short-haul capacity and fare structures will shift, with knock-on effects on agencies' bargaining power for seats.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.12",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72673",
+       "‘진에어-에어서울-에어부산’ 합병 인가"
+      ]
+     ]
+    },
+    {
+     "code": "AL-05",
+     "sec": "s5",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "SAS, 인천–코펜하겐 2027년 하계 매일 운항 — 주 4회→6회→7회",
+     "kop": "스칸디나비아항공(SAS)이 2027년 5월 9일부터 10월 30일까지(코펜하겐 출발 기준) 인천–코펜하겐 직항을 주 7회 매일 운항한다. 2025년 9월 주 4회로 취항한 한국–스칸디나비아 첫 직항으로, 2026년 하계에 주 6회로 늘린 데 이어 다시 증편한다. 인천 출발 SK988편은 매일 밤 11시 30분 제2여객터미널에서 출발한다. 유럽 직항 공급이 늘수록 북유럽과 남유럽 간 하계 수요 경쟁이 커지는 만큼, 스페인 계정은 유럽 내 목적지 선택지 확대를 경쟁 요인으로 볼 필요가 있다.",
+     "enh": "SAS to Fly Incheon–Copenhagen Daily in Summer 2027, Up from Four and Then Six Weekly",
+     "enp": "Scandinavian Airlines (SAS) will operate Incheon–Copenhagen nonstop seven times a week from May 9 to October 30, 2027 (Copenhagen departures). Launched in September 2025 at four weekly flights as the first nonstop between Korea and Scandinavia, the route rose to six weekly in summer 2026. The Incheon departure, SK988, leaves Terminal 2 at 11:30 p.m. daily. As nonstop capacity to Europe grows, competition between Northern and Southern Europe for summer demand intensifies, which the Spain account should treat as a competitive factor.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72647",
+       "SAS, 인천~코펜하겐 내년 하계 매일 운항"
+      ]
+     ]
+    },
+    {
+     "code": "TT-01",
+     "sec": "s3",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "10월 여행사 BSP 5,967억원 — 놀유니버스 58.4% 감소, 클럽로뎀 두 배로 7위",
+     "kop": "10월 국내 주요 여행사의 BSP 항공권 발매액은 5,967억원으로 전월보다 23.7% 늘었지만 전년 동월보다는 7.5% 적었다. 하나투어가 979억원으로 1위를 지켰고 마이리얼트립(627억원), 놀유니버스(468억원), 트립닷컴코리아(455억원)가 뒤를 이었다. 발권 2위권인 놀유니버스는 전년 동월 대비 58.4% 줄어든 반면 트립닷컴코리아는 22.6% 늘었다. 클럽로뎀은 272억원으로 전년(142억원)의 두 배 가까이 늘며 12위에서 7위로 올라섰다. OTA 간 순위 변동이 커 장거리 계정의 공동 마케팅 파트너 선정 시 최신 발권 실적을 반영할 필요가 있다.",
+     "enh": "October Agency BSP Sales at KRW 596.7 Billion; Nol Universe Down 58.4%, Club Rodem Doubles to 7th",
+     "enp": "BSP air ticket sales by Korea's major travel agencies totalled KRW 596.7 billion in October, up 23.7% month on month but down 7.5% year on year. Hana Tour kept first place at KRW 97.9 billion, followed by MyRealTrip (KRW 62.7 billion), Nol Universe (KRW 46.8 billion) and Trip.com Korea (KRW 45.5 billion). Nol Universe fell 58.4% year on year while Trip.com Korea rose 22.6%. Club Rodem nearly doubled to KRW 27.2 billion from KRW 14.2 billion, climbing from 12th to 7th. With rankings shifting sharply among OTAs, long-haul accounts should use current ticketing data when choosing co-marketing partners.",
+     "src": [
+      [
+       "세계여행신문",
+       "2026.11.12",
+       "https://www.gtn.co.kr/home/news/news_view.asp?news_seq=83229",
+       "클럽로뎀 UP 놀유니버스 DOWN, 실적 두배 희비"
+      ]
+     ],
+     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다."
+    },
+    {
+     "code": "TT-02",
+     "sec": "s3",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "중국 경쟁",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "겨울 모객 부진에 여행사 홈쇼핑 급증 — 9월 72.4%·10월 23.9% 증가, 랜드사는 제로마진",
+     "kop": "겨울 성수기 모객이 부진하자 여행사들이 TV 홈쇼핑 방송을 늘리고 있다. 방송 횟수는 9월과 10월 각각 전년 동기 대비 72.4%, 23.9% 증가했다. 10월에는 중국이 동남아를 제치고 홈쇼핑 방송 점유율 1위에 올랐고 11월에도 중국 우위가 예상된다. 대형 여행사가 수천만~억원대 방송·프로모션 비용을 거래 랜드사에 분담시키면서 마진이 제로이거나 마이너스인 상품까지 팔리고 있고, 주말 황금시간대 방송도 실제 예약 전환율은 낮다는 현장 목소리가 나온다. 장거리 계정은 홈쇼핑 공동 프로모션의 비용 구조와 전환율을 따져 볼 시점이다.",
+     "enh": "Agencies Pile into TV Home Shopping as Winter Sales Lag — Broadcasts Up 72.4% in September and 23.9% in October",
+     "enp": "With winter peak sales lagging, Korean agencies are adding TV home shopping broadcasts, which rose 72.4% in September and 23.9% in October year on year. China overtook Southeast Asia as the top destination by broadcast share in October and is expected to stay ahead in November. Large agencies are passing broadcast and promotion costs of tens of millions to hundreds of millions of won to their ground operators, some of which now sell at zero or negative margin, and operators report low booking conversion even from prime weekend slots. Long-haul accounts should weigh the cost structure and conversion rates before joining home shopping promotions.",
+     "src": [
+      [
+       "세계여행신문",
+       "2026.11.12",
+       "https://www.gtn.co.kr/home/news/news_view.asp?news_seq=83238",
+       "제로마진에도 여전히 불타오르는 홈쇼핑"
+      ]
+     ],
+     "note": "GTN 목록에 발행일이 없어 본문에서 11월 12일을 확인했습니다."
+    },
+    {
+     "code": "PL-01",
+     "sec": "s6",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "대한항공·아시아나 GDS 3사 모두 발권 가능 — 토파스·세이버·트래블포트 무한 경쟁",
+     "kop": "대한항공–아시아나 통합을 앞두고 11월 2일부터 토파스, 한진세이버, 트래블포트 등 국내 주요 GDS 3사 모두에서 양대 국적사 항공권 발권이 가능해졌다. 그동안 대한항공은 토파스, 아시아나는 세이버 중심으로 발권이 나뉘어 있었는데 이 구분이 사라지면서 각사가 발권 프로모션을 내걸고 여행사 고객 확보에 나섰다. GDS 선택이 항공사가 아니라 조건 경쟁으로 바뀌는 구조 변화로, 여행사의 발권 비용과 인센티브 구조가 재편될 전망이다. 장거리 계정은 여행사 대상 판촉에서 GDS 인센티브와의 연계를 검토할 수 있다.",
+     "enh": "All Three GDSs Now Ticket Both Korean Air and Asiana — Topas, Sabre and Travelport Enter Open Competition",
+     "enp": "Ahead of the Korean Air–Asiana merger, all three of Korea's major GDSs — Topas, Hanjin Sabre and Travelport — have been able to ticket both national carriers since November 2. Ticketing had previously been split, with Korean Air centred on Topas and Asiana on Sabre; with that divide gone, each GDS is offering ticketing promotions to win agency customers. GDS choice is shifting from carrier alignment to commercial terms, which will reshape agencies' ticketing costs and incentives. Long-haul accounts may consider linking agency promotions to GDS incentives.",
+     "src": [
+      [
+       "여행신문",
+       "2026.11.13",
+       "https://www.traveltimes.co.kr/news/articleView.html?idxno=500700",
+       "발권 장벽 허물어진 GDS 시장…무한 경쟁 시대 진입"
+      ]
+     ]
+    },
+    {
+     "code": "PL-02",
+     "sec": "s6",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "Consumer / SNS",
+       "fn"
+      ]
+     ],
+     "koh": "스카이스캐너, LG 스마트TV 여행 앱 'LG Travel+' 핵심 데이터 파트너로",
+     "kop": "글로벌 여행 앱 스카이스캐너가 LG전자 스마트TV 전용 여행 앱 'LG Travel+'의 핵심 데이터 제공 파트너로 선정됐다. webOS 6.0 이상 LG 스마트TV 사용자는 TV 대화면에서 여행 영상·사진으로 목적지를 탐색하다가 곧바로 스카이스캐너 항공권 가격을 확인하고 예약으로 넘어갈 수 있다. 여행 탐색 접점이 모바일에서 거실 TV로 넓어지는 사례로, 영상 콘텐츠 기반 목적지 노출을 노리는 관광청에는 새로운 광고·콘텐츠 채널이 될 수 있다.",
+     "enh": "Skyscanner Named Core Data Partner for LG's Smart TV Travel App 'LG Travel+'",
+     "enp": "Skyscanner has been selected as the core data partner for LG Electronics' smart TV travel app, LG Travel+. Owners of LG smart TVs running webOS 6.0 or later can browse destinations through travel video and photos on the big screen and move directly to Skyscanner fare information and booking. It extends travel discovery from mobile to the living room TV and could become a new advertising and content channel for tourism boards seeking video-led destination exposure.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72645",
+       "스카이스캐너, ‘LG Travel+’ 연동"
+      ]
+     ]
+    },
+    {
+     "code": "PK-01",
+     "sec": "s9",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "럭셔리",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "모두투어, 2027년 단독 크루즈 전세선 2회로 확대 — 상반기 크루즈 예약 370% 증가",
+     "kop": "모두투어가 올해 6월 창립 이후 첫 단독 크루즈 전세선 '모두의 크루즈'를 운영한 데 이어 2027년에는 5월 17일과 10월 8일 두 차례 전세선을 띄운다. 회사 내부 집계로 올해 상반기 크루즈 상품 예약 건수는 전년 동기 대비 약 370% 늘었다. 선상 공연·프로그램과 기항지 관광을 결합한 패키지형 크루즈로 운항 시기와 노선을 다변화한다는 계획이다. 대형 패키지사가 크루즈를 고단가 상품 축으로 키우고 있어, 크루즈 기항지를 가진 장거리 목적지에는 전세선·공동 상품 제안의 기회가 된다.",
+     "enh": "Mode Tour Expands Exclusive Cruise Charters to Two Sailings in 2027 After 370% Rise in Cruise Bookings",
+     "enp": "After operating its first exclusive cruise charter, Modu's Cruise, in June, Mode Tour will run two charters in 2027, on May 17 and October 8. Internal data show cruise bookings in the first half of this year up about 370% year on year. The company plans to diversify sailing dates and itineraries with package-style cruises combining onboard entertainment and shore excursions. As major package operators build cruises into a high-yield product line, long-haul destinations with cruise ports have an opening to pitch charters and joint products.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.11",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72659",
+       "모두투어, 내년 단독 크루즈 전세선 2회로 확대"
+      ],
+      [
+       "여행신문",
+       "2026.11.12",
+       "https://www.traveltimes.co.kr/news/articleView.html?idxno=500707",
+       "첫 단독 전세선 운항 마치고 내년에는 두 번 띄운다"
+      ]
+     ]
+    },
+    {
+     "code": "PK-02",
+     "sec": "s9",
+     "tags": [
+      [
+       "타히티",
+       "acc"
+      ],
+      [
+       "럭셔리",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "한진트래블, 타히티·쿡제도 크루즈 12일 출시 — 2027년 6월·9월 2회 한정",
+     "kop": "한진트래블이 '타히티·쿡제도 크루즈 여행 12일' 상품을 출시했다. 2027년 6월 7일과 9월 20일 두 차례만 출발하며, 글로벌 프리미엄 선사 노르웨지안 크루즈 라인(NCL)으로 타히티와 쿡제도를 함께 둘러본다. 매일 호텔을 옮길 필요 없이 크루즈로 섬 사이를 이동해 비용을 낮춘 점을 내세웠다. 직항이 없는 타히티는 고단가·소량 출발 상품이 주력인 만큼, 국적 패키지사의 크루즈 결합 상품은 타히티 계정의 럭셔리 수요 확인과 공동 판촉 대상이다.",
+     "enh": "Hanjin Travel Launches 12-Day Tahiti and Cook Islands Cruise, Limited to Two 2027 Departures",
+     "enp": "Hanjin Travel has launched a 12-day Tahiti and Cook Islands cruise with only two departures, on June 7 and September 20, 2027, sailing with premium line Norwegian Cruise Line. The product highlights lower cost by moving between islands by ship rather than changing hotels daily. With no nonstop service to Tahiti, high-value, low-volume departures are the mainstay, making package-operator cruise products a target for luxury demand tracking and joint promotion by the Tahiti account.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.11",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72656",
+       "한진트래블, 타히티·쿡제도 크루즈 12일 여행 출시"
+      ]
+     ],
+     "note": "한진트래블을 Section 07 대상사 한진관광의 브랜드로 보고 편성했습니다. 사명 관계는 사람 확인이 필요합니다."
+    },
+    {
+     "code": "PK-03",
+     "sec": "s9",
+     "tags": [
+      [
+       "시장 전반",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "모두투어, 캄보디아 앙코르 테마 기획전 — 씨엠립 직항 5일, 프리미엄 '모두시그니처' 포함",
+     "kop": "모두투어가 11월부터 이듬해 2월까지 이어지는 캄보디아 건기에 맞춰 '천년의 신비를 품은 앙코르 유적의 도시, 캄보디아' 기획전을 11월 13일 출시했다. 인천 출발 씨엠립 직항 5일 일정을 중심으로 앙코르 유적 관광과 현지 문화 체험, 휴식을 결합했다. 실속형부터 노옵션·마사지 포함 상품, 프리미엄 브랜드 '모두시그니처'까지 등급을 나눴고 노쇼핑 혜택을 내세웠다. 동계 성수기 패키지 수요가 동남아 테마형으로 세분화되는 흐름을 보여 준다.",
+     "enh": "Mode Tour Launches Cambodia Angkor Theme Promotion with Five-Day Siem Reap Nonstop Packages, Including Premium Modu Signature",
+     "enp": "Mode Tour launched a Cambodia Angkor promotion on November 13, timed to the dry season from November to February. Built around five-day packages on nonstop flights from Incheon to Siem Reap, it combines Angkor sightseeing with cultural experiences and rest. Tiers run from value packages to no-option and massage-inclusive products and the premium Modu Signature brand, with a no-shopping guarantee. It shows winter-peak package demand fragmenting into themed Southeast Asia products.",
+     "src": [
+      [
+       "TTL뉴스",
+       "2026.11.13",
+       "http://www.ttlnews.com/news/articleView.html?idxno=3162322",
+       "모두투어, ‘앙코르 유적’ 테마 기획전 출시…캄보디아 여행 수요 공략"
+      ],
+      [
+       "디스커버리뉴스",
+       "2026.11.13",
+       "https://www.discoverynews.kr/news/articleView.html?idxno=1106803",
+       "모두투어, 동계 건기 맞아 캄보디아 앙코르 유적 중심 테마 여행 상품 운영"
+      ]
+     ]
+    },
+    {
+     "code": "CD-01",
+     "sec": "s7",
+     "tags": [
+      [
+       "뉴욕",
+       "acc"
+      ],
+      [
+       "필라델피아 관광청",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "필라델피아 관광청, 한국 첫 공식 행사 — '거쳐 가는 도시 아닌 머무는 도시'로 상품 개발",
+     "kop": "필라델피아 관광청이 11월 9일 서울 시그니엘에서 국내 주요 여행사 대표 등 업계 VIP 약 30명을 초청해 'VIP 디너 리셉션 & 콘서트'를 열었다. 지난 7월 한국사무소를 연 뒤 처음 마련한 공식 행사로 그레그 카렌 청장이 직접 참석했다. 미국 건국 250주년을 맞아 '거쳐 가는 도시가 아니라 머무는 도시'를 내세워 미 동부 상품에 체류 일정을 넣도록 여행업계를 설득했다. 뉴욕과 묶이는 미 동부 일정에서 체류일을 나눠 갖는 경쟁·보완 관계여서, 뉴욕 계정은 동부 연계 상품 구성 변화를 지켜볼 필요가 있다.",
+     "enh": "Philadelphia Tourism Holds First Official Korea Event, Pitching a City to Stay In Rather Than Pass Through",
+     "enp": "Philadelphia's tourism bureau hosted a VIP dinner reception and concert for about 30 trade leaders, including heads of major Korean agencies, at Signiel Seoul on November 9. It was the first official event since the bureau opened a Korea office in July, attended by president Gregg Caren. Marking the 250th anniversary of US independence, it urged the trade to build overnight stays into US East Coast itineraries under the message of a city to stay in rather than pass through. Because Philadelphia shares East Coast itinerary days with New York as both competitor and complement, the New York account should watch for changes in East Coast product design.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72648",
+       "美 동부 히든카드 ‘필라델피아’ 상품 개발 본격화"
+      ]
+     ]
+    },
+    {
+     "code": "CD-02",
+     "sec": "s7",
+     "tags": [
+      [
+       "말레이시아 경쟁",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "말레이시아관광청, 방문의 해 2027년까지 연장 — 1~9월 한국인 36만6,012명",
+     "kop": "말레이시아관광청이 '말레이시아 방문의 해'를 2027년까지 연장하고 한국 시장에서 장기 체류·재방문 수요를 공략한다. 서울사무소는 11월 6일 업계 관계자 약 100명이 참석한 네트워킹 디너에서 전략을 소개했다. 올해 1~9월 말레이시아를 찾은 한국인은 36만6,012명이며, 장기 체류 비자 프로그램 MM2H에는 지금까지 한국인 4,729명이 참여했다. 원격근무·은퇴 수요를 겨냥한 장기 체류 프로그램과 시파단·야생동물·별 관측 등 생태·섬 체험 상품을 늘리고, 랑카위·코타키나발루 외 목적지도 여행사·플랫폼과 함께 알린다는 계획이다.",
+     "enh": "Tourism Malaysia Extends Visit Malaysia Year to 2027; 366,012 Korean Visitors in January–September",
+     "enp": "Tourism Malaysia has extended Visit Malaysia Year through 2027 and is targeting long-stay and repeat demand from Korea, presenting its strategy at a networking dinner for about 100 trade guests in Seoul on November 6. Korean arrivals reached 366,012 in January–September, and 4,729 Koreans have joined the MM2H long-stay programme to date. The board will add long-stay offers aimed at remote workers and retirees, expand eco and island products such as Sipadan diving, wildlife and stargazing, and work with airlines, agencies and online platforms to promote destinations beyond Langkawi and Kota Kinabalu.",
+     "src": [
+      [
+       "여행신문",
+       "2026.11.11",
+       "https://www.traveltimes.co.kr/news/articleView.html?idxno=500689",
+       "더 오래 머물고 다시 찾게…말레이시아, 한국 시장 공략"
+      ]
+     ]
+    },
+    {
+     "code": "CD-03",
+     "sec": "s7",
+     "tags": [
+      [
+       "하와이",
+       "acc"
+      ],
+      [
+       "괌 관광청",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "괌정부관광청, 노랑풍선과 연말·겨울 공동 기획전 — 내년 3월 출발분까지",
+     "kop": "괌정부관광청이 노랑풍선과 협업해 이달부터 2027년 3월까지 출발하는 여행객 대상 공동 프로모션을 진행한다. 연평균 27도 안팎의 기온과 11월~3월의 낮은 습도, 약 4시간 비행 거리를 내세워 겨울 휴양 수요를 겨냥했다. 같은 주 한진트래블 '괌심집중' 기획전과 에어서울–호시노 리조트 리조나레 괌 단독 제휴도 나와 동계 괌 판촉이 집중됐다. 하와이와 같은 미국령 태평양 휴양지로 가족·허니문 수요를 나눠 갖는 만큼, 하와이 계정은 동계 성수기 경쟁 강도를 감안해야 한다.",
+     "enh": "Guam Visitors Bureau Runs Year-End and Winter Joint Promotion with Yellow Balloon Through March Departures",
+     "enp": "The Guam Visitors Bureau is running a joint promotion with Yellow Balloon for departures from this month through March 2027. It targets winter getaway demand with average temperatures around 27°C, low humidity from November to March and a flight time of about four hours. In the same week Hanjin Travel launched a Guam promotion and Air Seoul signed an exclusive tie-up with Hoshino Resorts RISONARE Guam, concentrating winter Guam marketing. As a fellow US Pacific island resort competing for family and honeymoon demand, Guam's push is a factor the Hawaii account should weigh during the winter peak.",
+     "src": [
+      [
+       "인사이트코리아",
+       "2026.11.13",
+       "https://www.insightkorea.co.kr/news/articleView.html?idxno=258845",
+       "노랑풍선, 괌정부관광청과 손잡고 연말·겨울 기획전 전개"
+      ],
+      [
+       "디스커버리뉴스",
+       "2026.11.13",
+       "https://www.discoverynews.kr/news/articleView.html?idxno=1106769",
+       "한진트래블, 동계 시즌 맞이 괌 체류형 여행 기획전 운영.. \"괌심집중\""
+      ]
+     ]
+    },
+    {
+     "code": "CD-04",
+     "sec": "s7",
+     "tags": [
+      [
+       "카자흐스탄 관광공사",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "카자흐스탄 관광공사, 하나투어와 공동 기획전 — 9월 업무협약 후속",
+     "kop": "카자흐스탄 관광공사가 하나투어와 함께 현지 주요 여행 상품을 선보이는 공동 마케팅 기획전을 진행한다. 지난 9월 체결한 업무협약의 후속으로, 두 기관은 12월까지 알마티·골든링·알틴에멜·망기스타우 등 주요 지역의 상품 개발과 홍보를 추진한다. 기획전은 협곡과 설산, 빙하 등 겨울 설경을 내세운 '카자흐스탄 5일' 상품 등으로 구성됐다. 같은 주 아제르바이잔 관광청도 서울 로드쇼를 열어, 중앙아시아·코카서스가 BSP 1위 여행사와 손잡고 신규 중거리 목적지로 한국 시장을 공략하는 흐름이다.",
+     "enh": "Kazakh Tourism Runs Joint Promotion with Hana Tour Following September MOU",
+     "enp": "Kazakh Tourism is running a joint marketing promotion with Hana Tour featuring key Kazakhstan products, following an MOU signed in September. The two will develop and promote products through December covering Almaty, the Golden Ring, Altyn-Emel and Mangystau. The promotion centres on winter scenery — canyons, snow-covered highlands and glaciers — including a five-day Kazakhstan package. With Azerbaijan's tourism board also holding a Seoul roadshow the same week, Central Asia and the Caucasus are courting Korea as new mid-haul destinations in partnership with the country's top BSP agency.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.11",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72660",
+       "‘하나투어-카자흐스탄 관광공사’ 공동 기획전"
+      ]
+     ]
+    },
+    {
+     "code": "CW-01",
+     "sec": "s8",
+     "tags": [
+      [
+       "뉴욕",
+       "acc"
+      ],
+      [
+       "샌프란시스코",
+       "acc"
+      ],
+      [
+       "하와이",
+       "acc"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "에어프레미아, 톈진항공과 첫 인터라인 — 중국발 인천 경유 미주 환승 연결",
+     "kop": "에어프레미아가 중국 톈진항공과 첫 인터라인 협력을 맺고 양사 노선을 연계한 운송 서비스를 시작했다. 톈진항공 승객은 인천을 거쳐 에어프레미아의 미주 노선으로 미국 주요 도시에 갈 수 있고, 에어프레미아는 인천 경유 중국행 환승 수요를 확보한다. 항공권 공동 발권과 수하물 연계가 제공된다. 에어프레미아는 뉴욕(뉴어크)·샌프란시스코·호놀룰루를 운항하는 만큼, 중국발 환승 수요가 늘면 한국발 좌석 재고와 운임에 영향을 줄 수 있어 세 계정 모두 확인 대상이다.",
+     "enh": "Air Premia Signs First Interline with Tianjin Airlines, Linking China to the US via Incheon",
+     "enp": "Air Premia has signed its first interline agreement with China's Tianjin Airlines and begun connecting services across both networks. Tianjin Airlines passengers can now reach major US cities via Incheon on Air Premia's Americas routes, while Air Premia gains transfer traffic to China, with through-ticketing and baggage transfer. Because Air Premia serves New York (Newark), San Francisco and Honolulu, rising China-origin transfer traffic could affect Korea-origin seat inventory and fares, making this a watchpoint for all three accounts.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.10",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72629",
+       "'에어프레미아-톈진항공' 첫 인터라인 협력"
+      ]
+     ]
+    },
+    {
+     "code": "CW-02",
+     "sec": "s8",
+     "tags": [
+      [
+       "뉴욕",
+       "acc"
+      ],
+      [
+       "라스베가스",
+       "acc"
+      ],
+      [
+       "하와이",
+       "acc"
+      ],
+      [
+       "미국 관광청",
+       "mkt"
+      ],
+      [
+       "Consumer / SNS",
+       "fn"
+      ]
+     ],
+     "koh": "Brand USA 홀리데이 시즌 콘텐츠 — 메이시스 퍼레이드 100주년·라스베가스 새해 불꽃놀이·와이키키 산타 카누",
+     "kop": "브랜드 USA(미국관광청)가 연말연시 미국 홀리데이 여행 콘텐츠를 소개했다. 뉴욕에서는 100주년을 맞는 메이시스 추수감사절 퍼레이드와 타임스스퀘어 볼 드롭, 라디오시티 로케츠 크리스마스 스펙태큘러, 할렘 가스펠 홀리데이 셀러브레이션이 열린다. 라스베가스는 새해 전야 '아메리카 파티 2026'으로 스트립 주요 리조트 옥상에서 일제히 불꽃놀이를 펼치고, 하와이 오아후의 아웃리거 와이키키 비치 리조트에서는 산타의 카누 등장 행사와 훌라 공연이 진행된다. 동계 성수기 미주 상품의 시즌 테마 소재로 활용할 수 있다.",
+     "enh": "Brand USA Holiday Season Content — Macy's Parade Centennial, Las Vegas New Year's Fireworks and Santa by Canoe in Waikiki",
+     "enp": "Brand USA has published holiday-season travel content for the US. New York features the 100th Macy's Thanksgiving Day Parade, the Times Square Ball Drop, the Radio City Rockettes Christmas Spectacular and a Harlem gospel holiday celebration. Las Vegas will stage synchronised rooftop fireworks across major Strip resorts for its America's Party 2026 on New Year's Eve, and Outrigger Waikiki Beach Resort on Oahu hosts Santa's arrival by canoe with hula performances. The material can serve as seasonal themes for winter-peak Americas products.",
+     "src": [
+      [
+       "트래블데일리",
+       "2026.11.14",
+       "https://www.traveldaily.co.kr/news/articleView.html?idxno=72676",
+       "[주말판] 연말연시 빛낼 미국 홀리데이 축제"
+      ]
+     ],
+     "note": "후보 단계에서 '축제' 제외 후보로 표시됐으나 Brand USA 발표이자 세 계정 직결 콘텐츠여서 채택했습니다. 샌프란시스코 관련 내용은 기사에 없습니다."
+    },
+    {
+     "code": "AS-01",
+     "sec": "s10",
+     "tags": [
+      [
+       "남미",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "브라질 골항공, 연말 성수기 4만5,000편 운항 — 알래스카항공 마일리지 제휴, JFK 경유 리우 연결",
+     "kop": "브라질 저비용항공사 골(Gol)이 2026년 12월~2027년 1월 성수기에 약 4만5,000편을 운항한다고 Aviation Week 주간 노선 업데이트가 11월 11일 전했다. 전년보다 5,500편 많은 규모다. 골은 알래스카항공의 Atmos Rewards 제휴사가 됐고, 2027년 초부터 마일리지 사용이 가능해지며 뉴욕 JFK를 경유한 리우데자네이루 연결이 계획돼 있다. 한국발 남미 여행은 미주 경유가 주된 경로인 만큼, 북미 항공사와 남미 항공사 간 제휴 확대는 경유 연결성과 일정 설계에 직접 영향을 준다.",
+     "enh": "Gol Plans About 45,000 Flights for the Year-End Peak and Joins Alaska Airlines' Atmos Rewards, with JFK–Rio Connections",
+     "enp": "Brazilian carrier Gol plans about 45,000 flights over the December 2026–January 2027 peak, 5,500 more than a year earlier, according to Aviation Week's weekly routes update on November 11. Gol has become an Atmos Rewards partner of Alaska Airlines, with award redemptions planned from early 2027 and connections planned via New York JFK to Rio de Janeiro. Because Korean travel to South America largely routes through North America, wider North–South American airline partnerships directly affect connectivity and itinerary design.",
+     "src": [
+      [
+       "Aviation Week",
+       "2026.11.11",
+       "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-nov-9-2026",
+       "Routes & Networks Latest: Rolling Daily Updates (W/C Nov. 9, 2026)"
+      ]
+     ],
+     "note": "특정 노선의 운항 개시일·편수·기재는 원 업데이트에 명시되지 않았습니다."
+    },
+    {
+     "code": "AS-02",
+     "sec": "s10",
+     "tags": [
+      [
+       "남미",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "아메리칸항공–제트스마트, 콜롬비아 코드셰어 추진 — 미 교통부 승인 대기",
+     "kop": "아메리칸항공과 남미 저비용항공사 제트스마트(JetSmart)가 콜롬비아 국내선과 콜롬비아–제3국 노선을 대상으로 코드셰어를 추진한다고 Aviation Week 주간 노선 업데이트가 11월 9일 전했다. 시행일은 미국 교통부(DOT) 승인 이후로 정해지지 않았다. 제트스마트는 칠레·아르헨티나·페루·콜롬비아에 거점을 둔 역내 LCC로, 미국 대형 항공사와의 연계가 늘면 미주 경유 남미 일정의 역내 이동 선택지가 넓어진다. 한국발 남미 상품의 지상·역내 구간 원가와 일정 설계에 참고할 변화다.",
+     "enh": "American Airlines and JetSmart Pursue Colombia Codeshare, Pending US DOT Approval",
+     "enp": "American Airlines and South American low-cost carrier JetSmart plan a codeshare covering JetSmart's domestic flights within Colombia and flights between Colombia and third countries, according to Aviation Week's weekly routes update on November 9. No start date has been set pending US Department of Transportation approval. JetSmart is a regional LCC with bases in Chile, Argentina, Peru and Colombia, and closer links with a major US carrier widen intra-regional options on South America itineraries routed via the Americas — relevant to ground and regional cost and itinerary design for Korean-origin products.",
+     "src": [
+      [
+       "Aviation Week",
+       "2026.11.09",
+       "https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-nov-9-2026",
+       "Routes & Networks Latest: Rolling Daily Updates (W/C Nov. 9, 2026)"
+      ]
+     ]
+    },
+    {
+     "code": "AS-03",
+     "sec": "s10",
+     "tags": [
+      [
+       "아프리카",
+       "mkt"
+      ],
+      [
+       "B2B Trade",
+       "fn"
+      ]
+     ],
+     "koh": "유럽 오버투어리즘·미주 고비용에 아프리카 관광 기회 — '저가 아닌 경험의 질로 경쟁해야'",
+     "kop": "Further Africa는 바르셀로나·베네치아·암스테르담 등 유럽 도시의 오버투어리즘과 미주 일부 지역의 높은 여행 비용이 여행자의 목적지 재검토를 이끌고 있어 아프리카에 기회가 열리고 있다고 분석했다. 르완다 고릴라 관광, 남아공의 와인·도시 관광 등이 사례로 제시됐다. 기고는 아프리카가 저가가 아니라 경험의 질과 진정성으로 경쟁해야 하며, 역내 항공 연결 확대·비자 절차 간소화·인프라 투자·인접국 협력이 필요하다고 짚었다. 수치 근거는 없는 분석 기사지만, 한국 여행사들이 비즈니스석 결합 아프리카 다국가 일주 상품을 고단가로 판매하는 흐름과 방향이 맞닿아 있다.",
+     "enh": "Africa's tourism opportunity in a changing global travel market",
+     "enp": "Overtourism in cities such as Barcelona, Venice and Amsterdam and high travel costs in parts of the Americas are prompting travellers to reconsider destinations, opening a window for Africa, Further Africa argues. Rwanda's gorilla tourism and South Africa's wine and urban offer are cited as examples. The piece contends Africa should compete on the quality and authenticity of experiences rather than price, and calls for better regional air links, simpler visas, infrastructure investment and cross-border cooperation. It is an analysis without figures, but it aligns with Korean agencies selling multi-country Africa tours with business-class seating at premium prices.",
+     "src": [
+      [
+       "Further Africa",
+       "2026.11.14",
+       "https://furtherafrica.com/2026/11/14/africas-tourism-opportunity-in-a-changing-global-travel-market/",
+       "Africa’s tourism opportunity in a changing global travel market"
+      ]
+     ],
+     "note": "수치가 없는 분석 기고입니다. 이번 주 Aviation Week 업데이트에서 아프리카 항공 건은 플라이두바이 벵가지 취항 언급(세부 없음) 1건뿐이어서 이 기사로 아프리카를 보완했습니다."
+    }
+   ],
+   "gap": {
+    "h": "이번 호 신규 없음 — 상시 모니터링 대상",
+    "p": "계정 좌석 공급과 직결되지만 11/9–11/16 구간에 신규 발표가 확인되지 않은 소스입니다. 관광청 본사 발표는 WebSearch 1회로 확인했고 신규 건은 없었습니다.",
+    "rows": [
+     [
+      "HAWAII",
+      "하와이안항공 / 알래스카 에어그룹 / HTA 뉴스룸 — 인천–호놀룰루 운항 계획 (알래스카–골 Atmos 제휴 외 신규 없음 · 아웃리거 사이버세일은 단순 할인으로 제외)"
+     ],
+     [
+      "TAHITI",
+      "에어 타히티 누이 / Tahiti Tourisme — 나리타–파페에테 스케줄·기재, 한국 GSA 프로모션 (본사 신규 0건 · 한진트래블 크루즈 상품만 확보)"
+     ],
+     [
+      "SPAIN",
+      "이베리아항공 / 트리니티항공 / Turespaña — 마드리드·바르셀로나 직항, 동계 스케줄 (트리니티 지역 출발·수능 할인은 단순 할인으로 제외 · 신규 0건)"
+     ],
+     [
+      "NY / SF / LAS",
+      "델타 · 유나이티드 · 아메리칸 — 인천발 미주 증편·감편 (대한항공 뉴어크 취항·에어프레미아 인터라인 외 미국 캐리어 신규 0건 · LVCVA·SF Travel·NYC Tourism 보도자료 미확인)"
+     ],
+     [
+      "통합 항공사 출범",
+      "대한항공–아시아나 통합 FSC 12월 17일 · 통합 LCC 2027년 3월 17일 — 미주·하와이·바르셀로나 노선 재편 공지 대기"
+     ]
+    ]
+   },
+   "foot": "이번 호는 2026년 11월 9일 10:00부터 11월 16일 10:00 KST까지를 수집 구간으로 삼았습니다. 직전 발행 호(2026-W42) 이후 W43–W46 공백은 소급하지 않기로 한 결정(2026-11-15)에 따라 이번 호부터 다시 발행합니다. 수집은 V2 scripts/collect.py가 RSS를 직접 받는 방식으로 11월 14일부터 돌기 시작해, 하루치만 보여 주는 디스커버리뉴스·TTL뉴스·인사이트코리아·연합뉴스·뉴시스는 11월 13일 이후분만 확보했고 11월 15일 01시 이후 게재분은 이번 판에 반영되지 않았습니다. 환율은 open.er-api.com 시장 중간환율(11월 14일 1,336.2원)을 썼고, 소비자심리지수는 수집 기사에 한국은행 신규 발표가 없어 9월 값 106.6을 유지했습니다. 유류할증료표는 달이 바뀌어 유류할증료 탭의 11월 대한항공(KE) 값으로 갱신했으며, 아시아나(OZ) 11월 표는 아직 반영되지 않아 10월 값을 이어 썼습니다. Section 05는 BSP 10월 발매 실적(하나투어·마이리얼트립·놀유니버스·트립닷컴코리아·클럽로뎀)으로 BSP 상위사 기준을 충족했고, Section 07은 모두투어 2건과 한진트래블 타히티 크루즈로 편성했습니다. Section 10은 Aviation Week W/C Nov. 9 업데이트에서 남미 2건, Further Africa에서 아프리카 1건을 확보했습니다. 시사점(So-What)은 자동 생성하지 않으며 사람이 확정합니다."
   }
  ],
  "urls": [
@@ -11105,5 +12078,9 @@
     "Monthly notices Jan–Nov 2026 (May excluded) · by ticketing date"
    ]
   }
+ },
+ "tagenx": {
+  "필라델피아 관광청": "Philadelphia Tourism",
+  "카자흐스탄 관광공사": "Kazakh Tourism"
  }
 }
