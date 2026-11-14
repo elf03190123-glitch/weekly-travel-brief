@@ -1,6 +1,7 @@
 name: weekly
-# 매주 월요일 10:00 KST: 수집 → Claude가 선별·작성 → 커밋 → Pages 배포
-# 필요: 저장소 Secret CLAUDE_CODE_OAUTH_TOKEN(Claude 구독, 우선) 또는 ANTHROPIC_API_KEY(API). 선택: 저장소 변수 BRIEF_MODEL (기본 claude-sonnet-5-5)
+# 매주 월요일 10:00 KST: 수집 → Claude(Agent SDK)가 선별·작성 → 커밋 → Pages 배포
+# 필요: 저장소 Secret ANTHROPIC_API_KEY (Max 요금제 월 API 크레딧이 연결된 Console 조직의 키)
+# 선택: 저장소 변수 BRIEF_MODEL (기본 claude-opus-5-5)
 on:
   schedule:
     - cron: '0 1 * * 1'   # 01:00 UTC = 10:00 KST
@@ -9,6 +10,10 @@ on:
       end:
         description: '기간 끝 (KST, 예: 2026-11-16T10:00). 비우면 이번 월요일 10:00'
         required: false
+      smoke:
+        description: '짧은 확인만 (크레딧으로 처리되는지)'
+        type: boolean
+        default: false
 
 concurrency:
   group: repo-write
@@ -16,33 +21,34 @@ concurrency:
 
 permissions:
   contents: write
-  id-token: write
 
 jobs:
   write:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
-    env:
-      HAS_OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}
+    timeout-minutes: 120
     outputs:
       published: ${{ steps.commit.outputs.published }}
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BRIEF_MODEL: ${{ vars.BRIEF_MODEL }}
     steps:
-      - name: Check credentials
-        env:
-          OAUTH: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Check API key
         run: |
-          if [ -n "$OAUTH" ]; then echo "인증: Claude 구독 토큰 (CLAUDE_CODE_OAUTH_TOKEN)"; exit 0; fi
-          if [ -n "$KEY" ]; then echo "인증: API 키 (ANTHROPIC_API_KEY)"; exit 0; fi
-          echo "::error::저장소 Secret CLAUDE_CODE_OAUTH_TOKEN(구독) 또는 ANTHROPIC_API_KEY(API) 가 필요합니다."
-          exit 1
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::저장소 Secret ANTHROPIC_API_KEY 가 없습니다."; exit 1; fi
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install Claude Agent SDK
+        run: python3 -m pip install --quiet claude-agent-sdk
+      - name: Smoke test
+        if: ${{ github.event.inputs.smoke == 'true' }}
+        run: python3 -I scripts/write_edition.py --smoke
       - name: Window
+        if: ${{ github.event.inputs.smoke != 'true' }}
         id: win
         run: |
           export TZ=Asia/Seoul
@@ -52,53 +58,15 @@ jobs:
           LABEL="$(date -d "${START%T*}" +%G-W%V)"
           echo "start=$START" >> "$GITHUB_OUTPUT"; echo "end=$END" >> "$GITHUB_OUTPUT"; echo "label=$LABEL" >> "$GITHUB_OUTPUT"
           echo "기간 $START ~ $END · 라벨 $LABEL"
-      - name: API preflight (API 키를 쓸 때만)
-        if: env.HAS_OAUTH != 'true'
-        env:
-          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          MODEL: ${{ vars.BRIEF_MODEL || 'claude-sonnet-5-5' }}
-        run: |
-          python3 -I - <<'PY'
-          import json, os, sys, urllib.request, urllib.error
-          req = urllib.request.Request('https://api.anthropic.com/v1/messages',
-              data=json.dumps({'model': os.environ['MODEL'], 'max_tokens': 8,
-                               'messages': [{'role': 'user', 'content': 'ping'}]}).encode(),
-              headers={'x-api-key': os.environ['KEY'], 'anthropic-version': '2023-06-01', 'content-type': 'application/json'})
-          try:
-              r = urllib.request.urlopen(req, timeout=60)
-              print('API OK:', r.status, os.environ['MODEL'])
-          except urllib.error.HTTPError as e:
-              body = e.read().decode('utf-8', 'ignore')
-              try:
-                  err = json.loads(body).get('error', {})
-              except Exception:
-                  err = {'message': body[:300]}
-              print(f"::error::API 호출 실패 {e.code} {err.get('type','')}: {err.get('message','')}")
-              sys.exit(1)
-          PY
       - name: Collect + candidates
+        if: ${{ github.event.inputs.smoke != 'true' }}
         run: python3 -I scripts/collect.py --window "${{ steps.win.outputs.start }}" "${{ steps.win.outputs.end }}" --label "${{ steps.win.outputs.label }}"
-      - name: Claude writes the edition
-        uses: anthropics/claude-code-action@v1
-        with:
-          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          anthropic_api_key: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN == '' && secrets.ANTHROPIC_API_KEY || '' }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          prompt: |
-            저장소 루트의 CLAUDE.md 「주간 실행」 절차를 따라 이번 호를 작성하라.
-            - 기간: ${{ steps.win.outputs.start }} ~ ${{ steps.win.outputs.end }} (KST), 라벨: ${{ steps.win.outputs.label }}
-            - 1~2단계(기간 계산, 후보 목록)는 이미 끝났다: runs/${{ steps.win.outputs.label }}/candidates.md, fx.json
-            - 편집 기준은 .claude/skills/korea-weekly-travel-report/SKILL.md 의 2~4단계와 고정 표기를 따른다. 산출물·발행 절은 무시한다.
-            - runs/${{ steps.win.outputs.label }}/edition.json 을 쓰고, python3 -I scripts/add_edition.py 로 오류 0건까지 고친 뒤 python3 -I scripts/build.py 가 통과하는지 확인한다.
-            - runs/${{ steps.win.outputs.label }}/report.md 에 보고를 남긴다.
-            - git commit·push 는 하지 않는다(워크플로가 한다). 개인 메일은 어디에도 쓰지 않는다.
-          claude_args: |
-            --model ${{ vars.BRIEF_MODEL || 'claude-sonnet-5-5' }}
-            --max-turns 200
-            --permission-mode acceptEdits
-            --allowedTools "Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(python3:*),Bash(ls:*),Bash(cat:*),Bash(head:*),Bash(grep:*),Bash(wc:*)"
+      - name: Claude writes the edition (Agent SDK)
+        if: ${{ github.event.inputs.smoke != 'true' }}
+        run: python3 -I scripts/write_edition.py --label "${{ steps.win.outputs.label }}" --start "${{ steps.win.outputs.start }}" --end "${{ steps.win.outputs.end }}"
       - name: Commit
         id: commit
+        if: ${{ always() && github.event.inputs.smoke != 'true' && steps.win.outcome == 'success' }}
         run: |
           git config user.name "weekly-brief-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
