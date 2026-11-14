@@ -6,7 +6,7 @@
 
 - **배포: GitHub Pages** — 공개 저장소 `elf03190123-glitch/weekly-travel-brief`. 공개 범위는 사용자가 알고 정한 것이다.
 - **수집: GitHub Actions** (`.github/workflows/collect.yml`, 6시간마다).
-- **작성: GitHub Actions 안의 Claude** (`.github/workflows/weekly.yml`, 매주 월 10:00 KST). 저장소 Secret `ANTHROPIC_API_KEY`가 있어야 돈다. 모델은 저장소 변수 `BRIEF_MODEL`(없으면 `claude-sonnet-5-5`).
+- **작성: GitHub Actions 안의 Claude** (`.github/workflows/weekly.yml`, 매주 월 10:00 KST). 저장소 Secret `CLAUDE_CODE_OAUTH_TOKEN`(Claude 구독 토큰, `claude setup-token`으로 발급) 또는 `ANTHROPIC_API_KEY`(선불 API 크레딧)가 있어야 돈다. 둘 다 있으면 구독 토큰을 쓴다. 모델은 저장소 변수 `BRIEF_MODEL`(없으면 `claude-sonnet-5-5`).
 - **게재: GitHub Actions** (`.github/workflows/pages.yml`) — `data/`·`src/`가 바뀌어 push되거나 weekly 실행이 끝나면 `build.py`로 빌드해 Pages에 올린다.
 - **아티팩트로 배포하지 않는다.** 미리보기로 만든 V2 아티팩트(https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb)와 V1 아티팩트(9qyt3S…)는 건드리지 않는다. 기존 스킬의 「산출물」「5단계 · 발행」(아티팩트 재발행) 절은 V2에 적용하지 않는다.
 
