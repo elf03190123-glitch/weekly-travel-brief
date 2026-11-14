@@ -79,6 +79,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          show_full_output: true
           prompt: |
             저장소 루트의 CLAUDE.md 「주간 실행」 절차를 따라 이번 호를 작성하라.
             - 기간: ${{ steps.win.outputs.start }} ~ ${{ steps.win.outputs.end }} (KST), 라벨: ${{ steps.win.outputs.label }}
