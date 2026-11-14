@@ -49,6 +49,29 @@ jobs:
           LABEL="$(date -d "${START%T*}" +%G-W%V)"
           echo "start=$START" >> "$GITHUB_OUTPUT"; echo "end=$END" >> "$GITHUB_OUTPUT"; echo "label=$LABEL" >> "$GITHUB_OUTPUT"
           echo "기간 $START ~ $END · 라벨 $LABEL"
+      - name: API preflight (키·모델·잔액 확인)
+        env:
+          KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          MODEL: ${{ vars.BRIEF_MODEL || 'claude-sonnet-5-5' }}
+        run: |
+          python3 -I - <<'PY'
+          import json, os, sys, urllib.request, urllib.error
+          req = urllib.request.Request('https://api.anthropic.com/v1/messages',
+              data=json.dumps({'model': os.environ['MODEL'], 'max_tokens': 8,
+                               'messages': [{'role': 'user', 'content': 'ping'}]}).encode(),
+              headers={'x-api-key': os.environ['KEY'], 'anthropic-version': '2023-06-01', 'content-type': 'application/json'})
+          try:
+              r = urllib.request.urlopen(req, timeout=60)
+              print('API OK:', r.status, os.environ['MODEL'])
+          except urllib.error.HTTPError as e:
+              body = e.read().decode('utf-8', 'ignore')
+              try:
+                  err = json.loads(body).get('error', {})
+              except Exception:
+                  err = {'message': body[:300]}
+              print(f"::error::API 호출 실패 {e.code} {err.get('type','')}: {err.get('message','')}")
+              sys.exit(1)
+          PY
       - name: Collect + candidates
         run: python3 -I scripts/collect.py --window "${{ steps.win.outputs.start }}" "${{ steps.win.outputs.end }}" --label "${{ steps.win.outputs.label }}"
       - name: Claude writes the edition
