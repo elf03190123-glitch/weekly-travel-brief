@@ -549,6 +549,7 @@ button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
 <script>
 (function(){
 var D=JSON.parse(document.getElementById('brief-data').textContent);
+D.editions=D.editions.concat(D.monthly||[]);
 var cur=0;
 
 /* ================= V2 · 고객사별 보고서 (2026-11-15) =================
@@ -606,8 +607,9 @@ function visItems(E){return E.items;}
 function accCount(E,a){var n=0;E.items.forEach(function(i){if(slotOf(E,i,a))n++;});return n;}
 function fuelVis(E){return (E.fuel&&E.fuel.rows)?E.fuel.rows:[];}
 function gapRows(E){return (E.gap&&E.gap.rows)?E.gap.rows:[];}
-function docTK(){return ACC?ACC.full+' 주간 브리프':'한국 아웃바운드 주간 브리프';}
-function docTE(){return ACC?ACC.en+' Weekly Brief':'Korea Outbound Weekly Brief';}
+function isMonthly(){var e=D.editions[cur];return !!(e&&e.kind==='monthly');}
+function docTK(){return (ACC?ACC.full:'한국 아웃바운드')+(isMonthly()?' 월간 브리프':' 주간 브리프');}
+function docTE(){return (ACC?ACC.en:'Korea Outbound')+(isMonthly()?' Monthly Brief':' Weekly Brief');}
 function fBox(E){
  return '<section id="cF"><p class="tagline">'+ACC.full+' · F</p><div class="shead"><h2>시사점·액션</h2><span class="en-h">Implications &amp; Actions</span></div>'+
   (E.note?'<article class="item"><p>'+E.note+'</p></article>':'<p class="accnone">담당자가 확정합니다. 자동으로 작성하지 않습니다.</p>')+'</section>';
@@ -641,22 +643,22 @@ function setAcc(a,push){
 }
 
 /* 판본 순서: 최신 → 과거 (팀 수집본은 맨 뒤). 최신 2개는 버튼, 전체는 날짜 드롭다운 */
-var ORDER=D.editions.map(function(e,i){return i;}).reverse();
-var QUICK=ORDER.slice(0,2);
+var WK=[],MO=[];D.editions.forEach(function(e,i){(e.kind==='monthly'?MO:WK).push(i);});WK.reverse();MO.reverse();
+var ORDER=WK.concat(MO);
+var QUICK=[WK[0]].concat(MO.length?[MO[0]]:[WK[1]]).filter(function(x){return x!=null;});
 function edLabel(e){return e.label+' · '+e.sublabel;}
 document.getElementById('edsw').innerHTML=
  '<div class="ed-quick">'+QUICK.map(function(i){var e=D.editions[i];
    return '<button type="button" data-i="'+i+'" aria-pressed="false"><b>'+e.label+'</b><span>'+e.sublabel+'</span></button>';
   }).join('')+'</div>'+
- '<div class="ed-more"><label for="edsel">지난 호</label>'+
- '<select id="edsel" aria-label="발행 주차 선택">'+ORDER.map(function(i){var e=D.editions[i];
-   return '<option value="'+i+'">'+edLabel(D.editions[i])+'</option>';}).join('')+'</select></div>';
+ '<div class="ed-more"><label for="edsel">지난 호 · 월간</label>'+
+ '<select id="edsel" aria-label="발행 호 선택">'+[['주간 브리프',WK],['월간 브리프',MO]].filter(function(g){return g[1].length;}).map(function(g){return '<optgroup label="'+g[0]+'">'+g[1].map(function(i){return '<option value="'+i+'">'+edLabel(D.editions[i])+'</option>';}).join('')+'</optgroup>';}).join('')+'</select></div>';
 
 function mast(E){
- return '<div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div>'+
+ return '<div class="mast-top"><div class="brandline">'+(E.kind==='monthly'?'Korea Monthly Travel Report':'Korea Weekly Travel Report')+'</div>'+
  '<div class="issue">ISSUE '+E.issue.no+' · '+E.issue.range+'</div></div>'+
  (ACC?'<p class="accview">'+ACC.full+' · '+ACC.en+' · 고객사 기사 '+E.clientCount+'건</p>':'')+
- '<h1>'+(ACC?ACC.full+' 주간 브리프':'한국 아웃바운드 주간 브리프')+'</h1>'+
+ '<h1>'+(ACC?ACC.full:'한국 아웃바운드')+(E.kind==='monthly'?' 월간 브리프':' 주간 브리프')+'</h1>'+
  '<div class="meta">'+E.meta.filter(function(m){return m[0]!=='작성';})
    .map(function(m){return '<span><b>'+m[0]+'</b> '+m[1]+'</span>';}).join('')+'</div>'+
  '<div class="byline"><b>작성</b> AVIAREPS Korea</div>';
@@ -2662,6 +2664,12 @@ function finSnap(){
   if(nb){var dy=nb.getBoundingClientRect().top-y0;if(Math.abs(dy)>1)window.scrollBy(0,dy);nb.focus({preventScroll:true});}
  });
 })();
+function MW(t){return isMonthly()?String(t).replace(/Korea Weekly Travel Report/g,'Korea Monthly Travel Report').replace(/korea-weekly-brief_/g,'korea-monthly-brief_'):t;}
+(function(){var bd=buildDoc,bm=buildMail,bx=buildDocx,fn=fileName;
+ buildDoc=function(E){var r=bd(E);return {title:MW(r.title),body:MW(r.body)};};
+ buildMail=function(E){return MW(bm(E));};
+ buildDocx=function(E){var r=bx(E);return {doc:MW(r.doc),rels:r.rels};};
+ fileName=function(E){return MW(fn(E));};})();
 document.getElementById('accf').addEventListener('click',function(ev){
  var b=ev.target.closest?ev.target.closest('button[data-acc]'):null;if(!b)return;
  var h=b.dataset.acc,a=null;ACCS.forEach(function(x){if(x.h===h)a=x;});
