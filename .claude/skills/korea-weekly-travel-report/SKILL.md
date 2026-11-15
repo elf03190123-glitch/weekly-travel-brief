@@ -5,7 +5,7 @@ description: "지표 입력 시 영문 명칭·설명(ken·suben) 동시 기입 
 
 
 > **V2 저장소 사본 (2026-11-15)**: 개인 메일을 AVIAREPS Korea 로 바꿨다. 발행·산출물·수집 절차는 저장소 루트 CLAUDE.md 가 우선한다(아티팩트 재발행 없음, RSS 는 scripts/collect.py).
-> **고객사 14곳 (2026-11-15)**: 아래 문서는 6개 관광청 계정 기준으로 쓰였지만, 고객사는 관광청 6 · 호텔 6 · 항공 2(Airlink·Azul)로 늘었다. 고객사별 A–F 배치(`cl`)와 워치리스트(`clientNotes`) 규칙은 CLAUDE.md 「고객사별 보고서」를 따른다. Section 10(아프리카·남미)은 Airlink·Azul 고객사를 위한 섹션이다.
+> **고객사 15곳 (2026-11-15)**: 아래 문서는 6개 관광청 계정 기준으로 쓰였지만, 고객사는 관광청 6 · 호텔 6 · 항공 3(American Airlines·Airlink·Azul)으로 늘었다. 고객사별 A–F 배치(`cl`)와 워치리스트(`clientNotes`) 규칙은 CLAUDE.md 「고객사별 보고서」를 따른다. Section 10(아프리카·남미)은 Airlink·Azul 고객사를 위한 섹션이다.
 
 # 한국 아웃바운드 주간 브리프
 
