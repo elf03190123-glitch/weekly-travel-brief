@@ -11,12 +11,13 @@
   - 크레딧이 바닥나면 다음 결제 주기까지 API가 멈춘다. 월 사용액은 `runs/<라벨>/agent-result.json`의 `total_cost_usd`(추정치)로 본다.
   - 수동 실행: Actions → weekly → Run workflow. `smoke`를 켜면 짧은 확인만 한다.
 - **게재: GitHub Actions** (`.github/workflows/pages.yml`) — `data/`·`src/`가 바뀌어 push되거나 weekly 실행이 끝나면 `build.py`로 빌드해 Pages에 올린다.
+- **유류할증료: GitHub Actions** (`.github/workflows/fuel.yml`) — `fuel-inbox/`에 자료가 올라오면 반영하고 배포한다(아래 「유류할증료 월간 갱신」).
 - **아티팩트로 배포하지 않는다.** 미리보기로 만든 V2 아티팩트(https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb)와 V1 아티팩트(9qyt3S…)는 건드리지 않는다. 기존 스킬의 「산출물」「5단계 · 발행」(아티팩트 재발행) 절은 V2에 적용하지 않는다.
 
 ## 개인 정보
 
 - **업로더 개인 메일을 어디에도 넣지 않는다.** 작성자·문의처는 "AVIAREPS Korea"로 쓴다. 스킬이 고정 표기로 메일을 지정해도 이 규칙이 우선한다. `build.py`가 결과물에 개인 메일이 있으면 빌드를 멈춘다.
-- 구독 신청 버튼은 `data/brief-data.json`의 `subscribeTo`(메일 주소)가 있을 때만 나온다. 지금은 비어 있어 숨겨져 있다. 개인 메일은 넣지 않는다.
+- **구독 신청은 받지 않는다 (2026-11-15 EJ 결정).** 리포트 화면·HTML 내보내기·뉴스레터 복사본의 「뉴스레터 신청」 버튼 코드는 지웠다. `subscribeTo` 같은 신청 주소를 다시 넣지 않는다.
 - 커밋 작성자는 GitHub noreply 주소를 쓴다.
 
 ## 파일 구조
@@ -24,7 +25,11 @@
 | 경로 | 내용 | 직접 수정 |
 |---|---|---|
 | `src/template.html` | 화면 코드(V1 + 관광청 필터 + 브라우저 다운로드). 데이터 자리는 `__BRIEF_DATA__` | 화면을 고칠 때만 |
-| `data/brief-data.json` | 전체 데이터: `sections`·`std`·`roster`·`urls`·`bsp`·`fuelTab`·`fuelTabTrn`·`editions`, 추가 영문명 `tagenx`·`outenx`, `subscribeTo` | 스크립트로만 |
+| `data/brief-data.json` | 전체 데이터: `sections`·`std`·`roster`·`urls`·`bsp`·`fuelTab`·`fuelTabTrn`·`editions`, 추가 영문명 `tagenx`·`outenx`, 월간 시사점 `monthlyNotes` | 스크립트로만 |
+| `fuel-inbox/` | 유류할증료 자료 올리는 곳. 파일이 push되면 `fuel.yml`이 처리하고 비운다 | 파일만 올림 |
+| `fuel-sources/<YYYY-MM>/` | 처리한 유류할증료 원본·`report-*.md`·`patch-*.json`. 반영 못 한 것은 `not-applied-*` | 하지 않음 |
+| `scripts/fuel_apply.py` | 유류할증료 패치 JSON → `fuelTab`·`fuelTabTrn` 반영(검사 포함). `--card`는 주간 `fuel` 카드 출력 | |
+| `scripts/update_fuel.py` | Actions에서 `fuel-inbox/` 자료를 Agent SDK로 읽혀 `fuel_apply.py`로 반영 | |
 | `data/inbox/items.jsonl` | 수집 기사 누적(링크 기준 중복 제거) | 하지 않음 |
 | `data/inbox/health.jsonl` | 수집 실행별 소스 상태 | 하지 않음 |
 | `runs/<YYYY-Www>/` | 주차별 작업 폴더: `candidates.md/json`, `fx.json`, `edition.json`, `report.md` | 작업 중 |
@@ -54,7 +59,7 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 5. **판본 JSON**: `runs/<라벨>/edition.json`. 형식은 직전 판본과 같다.
    - `key`, `label`, `sublabel`(예: `NOV 9–15`), `issue {no, range, count}`, `meta`(수록·수집·채택·제약·작성=AVIAREPS Korea), `ind`, `fuel`, `board`, `items`, `gap`, `foot`
    - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 새 발표가 없으면 직전 값 유지.
-   - `fuel`: 새 유류할증료 자료가 없으면 직전 판본 값을 복사. `fuelTab`은 주간 실행에서 건드리지 않는다.
+   - `fuel`: `python3 -I scripts/fuel_apply.py --card` 출력을 그대로 쓴다(유류할증료 탭의 최신 월 기준 — 대한항공은 구간표, 아시아나는 계정별 값). `fuelTab`은 주간 실행에서 건드리지 않는다.
    - `board`: 6개 계정 모두. 수는 그 계정 `acc` 태그 기사 수.
    - 새 매체·태그는 최상위 `"outenx"`·`"tagenx"`에 영문명을 넣는다.
    - **고객사 배치 `cl`** (아래 「고객사별 보고서」): 01–03(s1·s4·s2)이 아닌 기사마다, 관련 고객사와 칸을 `"cl":[{"c":"hawaii","s":"B"}, …]`로 넣는다. 한 기사가 여러 고객사에 들어갈 수 있다. 관련 고객사가 없으면 `cl`을 빼고 내부 전체판에만 둔다.
@@ -107,7 +112,20 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 - `cl`이 없는 예전 판본(W35–W42)은 관광청 `acc` 태그와 섹션으로 칸을 추정해 보여 준다(호텔 고객사는 비어 있다).
 - 전체(내부용)는 기존 10개 섹션 그대로다.
 
+## 유류할증료 월간 갱신 (2026-11-15 EJ 결정)
+
+EJ가 매달 항공사 사이트에서 자료를 내려받거나 캡처해서 올린다. Claude가 값을 찾아 나서지 않는다(스킬 0-B·0-C 원칙 유지).
+
+- **올리는 곳**: GitHub 저장소 `fuel-inbox/` — https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox (끌어다 놓고 Commit changes). 리포트 `유류할증료` 탭의 `파일 업로드` 상자도 이 주소로 안내한다. 저장소가 공개라 올린 파일도 공개된다 — 항공사 공지 같은 공개 자료만.
+- **자료 종류**: 대한항공 구간표(마일 구간별 편도 금액), ROE(적용 환율), 아시아나 유류할증료표(계정별 값), 트리니티항공 부과군표. 형식은 png·jpg·pdf·xlsx·docx·csv·txt.
+- **처리 (`.github/workflows/fuel.yml`, 자동)**: `scripts/update_fuel.py`가 엑셀·워드를 글자로 바꾸고 → Agent SDK가 자료를 읽어 `fuel-inbox/_work/patch.json`을 쓴 뒤 `scripts/fuel_apply.py`로 반영 → 원본·보고를 `fuel-sources/<YYYY-MM>/`로 옮기고 커밋 → Pages 배포. API 크레딧을 쓴다(1회 몇십 센트 수준 예상).
+- **`fuel_apply.py`가 막는 것**: 다른 해 자료(연도 전환은 사람이 정함), 중간 달을 건너뛴 자료, 탭에 없는 구간 키(항공사가 구간 경계를 바꾼 경우), 범위 밖 ROE. 전월 대비 ±60% 넘는 변동·구간 순서 이상·ROE 없음은 '주의'로 보고서에 남긴다.
+- **ROE가 없으면** 그 달 달러 탭 값이 비어 보인다. ROE 자료를 따로 올리면 그 달 칸만 채운다.
+- **주간 카드**: 다음 주간 호의 `fuel` 카드가 `fuel_apply.py --card`로 새 달 값을 따른다. 이미 발행된 호는 소급하지 않는다.
+- **로컬 세션에서 받은 경우**: 채팅으로 자료를 받으면 `fuel-inbox/`에 넣고 push해 같은 워크플로를 태운다. 급하면 직접 patch.json을 써서 `python -I scripts/fuel_apply.py <patch> --dry-run` → 반영 → `build.py` → push.
+- **아직 모름**: 자료를 받는 사이트 주소. 알게 되면 여기 적는다.
+
 ## 아직 정하지 않은 것
 
-- 유류할증료 월간 갱신: Pages에는 업로드 기능이 없다. 자료를 받으면 `data/brief-data.json`의 `fuelTab`을 스킬 「0-C단계」대로 고쳐 push한다(입력 방식은 미정).
-- 구독 신청 받을 주소(`subscribeTo`).
+- 섹션 개편안(`proposals/2026-11-15-section-redesign.md` 수정안 1 — 04 이하 7개 → 6개, 계정 직결 확대): EJ 판단 대기. 정해지기 전에는 지금 10개 섹션 그대로 쓴다.
+- 유류할증료 탭 연도 전환(2027년 1월 자료부터): 탭 구조를 어떻게 이을지 정해야 한다.

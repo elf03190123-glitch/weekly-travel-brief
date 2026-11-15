@@ -19,7 +19,7 @@ MAX_TURNS = int(os.environ.get('BRIEF_MAX_TURNS') or 200)
 
 TOOLS = ['Read', 'Write', 'Edit', 'Glob', 'Grep', 'WebSearch', 'WebFetch',
          'Bash(python3 -I scripts/collect.py:*)', 'Bash(python3 -I scripts/add_edition.py:*)',
-         'Bash(python3 -I scripts/build.py:*)', 'Bash(ls:*)', 'Bash(wc:*)', 'Bash(head:*)']
+         'Bash(python3 -I scripts/build.py:*)', 'Bash(python3 -I scripts/fuel_apply.py --card)', 'Bash(ls:*)', 'Bash(wc:*)', 'Bash(head:*)']
 
 
 def prompt_for(label, start, end):

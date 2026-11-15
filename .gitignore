@@ -4,3 +4,5 @@ __pycache__/
 # 로컬 전용: V1 원본 사본(개인 정보 포함)과 1회성 이관 도구
 src/v1-live.html
 scripts/make_template.py
+# 유류할증료 처리 중 임시 폴더
+fuel-inbox/_work/

@@ -1097,17 +1097,6 @@ function buildDoc(E){
  return {title:title,body:h.join('')};
 }
 
-function subCtaHtml(){
- var subj=LB('Korea Weekly Travel Report 구독 신청','Korea Weekly Travel Report Subscription Request');
- var body=LB('안녕하세요,\n\nKorea Weekly Travel Report를 매주 이메일로 받아보고 싶습니다.\n\n이름:\n소속:\n이메일:',
-  'Hello,\n\nI would like to subscribe to the Korea Weekly Travel Report.\n\nName:\nOrganization:\nEmail:');
- if(!D.subscribeTo)return '';
- var href='mailto:'+D.subscribeTo+'?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(body);
- return '<div class="sub-cta"><p>'+esc(LB('이 리포트를 이메일로 정기 구독하고 싶다면 아래 버튼을 눌러 신청해 주세요.',
-   'Want to receive this report by email each week? Click below to subscribe.'))+'</p>'+
-  '<a class="sub-btn" href="'+href+'">'+esc(LB('뉴스레터 신청','Subscribe to Newsletter'))+'</a></div>';
-}
-
 function docFile(E){
  var d=buildDoc(E);
  return '<!doctype html>\n<html lang="'+(LANG==='en'?'en':'ko')+'">\n<head>\n<meta charset="utf-8">\n'+
@@ -1115,14 +1104,10 @@ function docFile(E){
   'body{margin:0;padding:22px 20px 40px;background:#fff}\n'+DOCCSS+'\n'+
   '.pbar{max-width:900px;margin:0 auto 14px;text-align:right}\n'+
   '.pbar button{font:600 13px/1 inherit;padding:9px 16px;border:1px solid #12191f;background:#12191f;color:#fff;border-radius:2px;cursor:pointer}\n'+
-  '.sub-cta{max-width:900px;margin:26px auto 0;padding:18px 20px;border:1px solid #d3dae0;border-radius:3px;background:#f7f9fb;text-align:center}\n'+
-  '.sub-cta p{margin:0 0 12px;font-size:12.5px;color:#54646f}\n'+
-  '.sub-btn{display:inline-block;font:600 13px/1 Aptos,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;padding:10px 22px;background:#b3122b;color:#fff;text-decoration:none;border-radius:2px}\n'+
-  '.sub-btn:hover{opacity:.88}\n'+
   '@page{size:A4;margin:12mm}\n'+
-  '@media print{body{padding:0}.pbar,.sub-cta{display:none}}\n</style>\n</head>\n<body>\n'+
+  '@media print{body{padding:0}.pbar{display:none}}\n</style>\n</head>\n<body>\n'+
   '<div class="pbar"><button type="button" onclick="window.print()">'+LB('인쇄 / PDF로 저장','Print / Save as PDF')+
-  '</button></div>\n'+d.body+'\n'+subCtaHtml()+'\n</body>\n</html>\n';
+  '</button></div>\n'+d.body+'\n</body>\n</html>\n';
 }
 
 /* ---- 뉴스레터용 인라인 스타일 HTML ---- */
@@ -1220,18 +1205,6 @@ function buildMail(E){
  h.push(mrow(msp('Korea Weekly Travel Report &middot; Issue '+esc(E.issue.no),'font-size:8pt;color:'+CFAINT+';')+
   (fnote?'<br>'+msp(fnote,'font-size:8pt;color:'+CFAINT+';line-height:150%;'):''),
   '10px 0 0 0','border-top:1px solid '+CLINE));
-
- var subSubj=LB('Korea Weekly Travel Report 구독 신청','Korea Weekly Travel Report Subscription Request');
- var subBody=LB('안녕하세요,\n\nKorea Weekly Travel Report를 매주 이메일로 받아보고 싶습니다.\n\n이름:\n소속:\n이메일 주소:',
-  'Hello,\n\nI would like to subscribe to the Korea Weekly Travel Report.\n\nName:\nOrganization:\nEmail address:');
- var subHref='mailto:'+(D.subscribeTo||'')+'?subject='+encodeURIComponent(subSubj)+'&body='+encodeURIComponent(subBody);
- if(D.subscribeTo)h.push(mrow('<table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse">'+
-  '<tr><td bgcolor="'+CBOX+'" style="padding:16px 16px;border:1px solid '+CLINE+';text-align:center">'+
-  msp(esc(LB('이 뉴스레터를 매주 이메일로 받아보고 싶다면 아래 버튼을 눌러 신청해 주세요.',
-   'Want to receive this newsletter by email each week? Click below to subscribe.')),'font-size:9pt;color:'+CMUT+';')+
-  '<br><br><a href="'+subHref+'" style="'+MFB+'display:inline-block;font-size:10.5pt;font-weight:bold;color:#ffffff;background-color:'+CRED+';padding:9px 22px;text-decoration:none;border-radius:2px">'+
-  esc(LB('뉴스레터 신청','Subscribe to Newsletter'))+'</a>'+
-  '</td></tr></table>','18px 0 0 0'));
 
  h.push('</table>');
  return h.join('');
@@ -2426,6 +2399,13 @@ function finBoxRender(){
  var el=FINBOX;if(!el)return;
  el.hidden=!FINOPEN;
  if(!FINOPEN){el.innerHTML='';return;}
+ if(!FINAS){/* GitHub Pages: 업로드 저장소가 없으므로 GitHub 저장소 fuel-inbox/ 로 올린다 (fuel.yml 이 자동 반영) */
+  el.innerHTML='<div class="fn-h"><h3>파일 업로드</h3><button type="button" class="fn-b s" data-fin="close">닫기</button></div>'+
+   '<ol class="fn-steps"><li>GitHub에 올리기</li><li>자동 반영 (5분 안팎)</li><li>새로고침</li></ol>'+
+   '<div class="fn-hintp">매달 받은 유류할증료 자료(대한항공 구간표·ROE·아시아나표·트리니티항공 부과군표)를 캡처 이미지·PDF·엑셀 그대로 올리면 AI가 읽어 이 탭을 갱신합니다. 처리 결과와 원본은 저장소의 fuel-sources/ 폴더에 남습니다.</div>'+
+   '<p style="margin:10px 0 6px"><a class="fn-b p" style="display:inline-block;text-decoration:none" href="https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox" target="_blank" rel="noopener">GitHub에 자료 올리기 ↗</a></p>'+
+   '<div class="fn-note">저장소 관리자 계정으로 로그인해야 올릴 수 있습니다. 저장소가 공개라 올린 파일도 공개됩니다.</div>';
+  return;}
  var up=FINAS?'<div class="fn-up"><label>자료 종류<select data-ff="ucat"><option value="auto"'+(UF.cat==='auto'?' selected':'')+'>자동 인식 (권장)</option><option value="roe"'+(UF.cat==='roe'?' selected':'')+'>ROE (항공사 적용환율)</option><option value="table"'+(UF.cat==='table'?' selected':'')+'>대한항공 유류할증료 구간표</option><option value="trnt"'+(UF.cat==='trnt'?' selected':'')+'>트리니티항공 부과군표</option><option value="etc"'+(UF.cat==='etc'?' selected':'')+'>기타 참고자료</option></select></label>'+
   '<label><span>적용 월 <small>(비우면 자동)</small></span><input type="month" data-ff="umonth" value="'+esc(UF.month)+'"></label>'+
   '<button type="button" class="fn-b p" data-fin="pick"'+(FBUSY?' disabled':'')+'>'+(FBUSY?'올리는 중…':'파일 선택')+'</button>'+

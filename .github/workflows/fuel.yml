@@ -1,0 +1,59 @@
+name: fuel
+# fuel-inbox/ 에 유류할증료 자료(캡처·PDF·엑셀)를 올리면 Claude(Agent SDK)가 읽어 유류할증료 탭을 갱신하고 Pages에 배포한다.
+# 올리는 곳: https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox
+on:
+  push:
+    branches: [main]
+    paths: ['fuel-inbox/**', '!fuel-inbox/README.md']
+  workflow_dispatch:
+
+concurrency:
+  group: repo-write
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    outputs:
+      published: ${{ steps.commit.outputs.published }}
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      BRIEF_MODEL: ${{ vars.BRIEF_MODEL }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install
+        run: python3 -m pip install --quiet claude-agent-sdk openpyxl python-docx
+      - name: Claude reads the files and updates the fuel tab (Agent SDK)
+        run: python3 -I scripts/update_fuel.py
+      - name: Build check
+        run: python3 -I scripts/build.py --check
+      - name: Commit
+        id: commit
+        if: ${{ always() }}
+        run: |
+          git config user.name "weekly-brief-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data fuel-inbox
+          if [ -d fuel-sources ]; then git add -A fuel-sources; fi
+          if git diff --cached --quiet; then echo "published=false" >> "$GITHUB_OUTPUT"; echo "변경 없음"; exit 0; fi
+          git commit -m "fuel: $(TZ=Asia/Seoul date +%Y-%m-%d) 유류할증료 자료 반영"
+          git pull --rebase --autostash
+          git push
+          if git diff --quiet HEAD~1 HEAD -- data/brief-data.json; then echo "published=false" >> "$GITHUB_OUTPUT"; else echo "published=true" >> "$GITHUB_OUTPUT"; fi
+  deploy:
+    needs: update
+    if: ${{ always() && needs.update.outputs.published == 'true' }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
