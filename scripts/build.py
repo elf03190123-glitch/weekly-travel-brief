@@ -84,9 +84,6 @@ for E in eds:
     for m in errs: print(lvl, m)
     if E is latest: problems = len(errs)
 print(f'판본 {len(eds)}개 검사 · 최신 {latest["key"]} 오류 {problems}건')
-for E in D.get('monthly', []):  # 월간은 make_monthly.py 가 주간 기사로 만든다 — 문제는 경고로만 보여 준다
-    for m in check_edition(E): print('WARN(월간)', m)
-print(f"월간 {len(D.get('monthly', []))}개")
 
 if problems:
     sys.exit('최신 판본 오류가 있어 빌드를 멈춥니다.')

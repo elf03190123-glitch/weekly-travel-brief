@@ -64,9 +64,6 @@ jobs:
       - name: Claude writes the edition (Agent SDK)
         if: ${{ github.event.inputs.smoke != 'true' }}
         run: python3 -I scripts/write_edition.py --label "${{ steps.win.outputs.label }}" --start "${{ steps.win.outputs.start }}" --end "${{ steps.win.outputs.end }}"
-      - name: Monthly briefs (주간 기사를 기사 날짜 기준 월별로 다시 묶음)
-        if: ${{ always() && github.event.inputs.smoke != 'true' && steps.win.outcome == 'success' }}
-        run: python3 -I scripts/make_monthly.py && python3 -I scripts/build.py --check
       - name: Commit
         id: commit
         if: ${{ always() && github.event.inputs.smoke != 'true' && steps.win.outcome == 'success' }}

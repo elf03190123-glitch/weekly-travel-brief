@@ -549,7 +549,73 @@ button.upl-btn{cursor:pointer;font-family:var(--ko);line-height:1.2}
 <script>
 (function(){
 var D=JSON.parse(document.getElementById('brief-data').textContent);
-D.editions=D.editions.concat(D.monthly||[]);
+D.editions=D.editions.concat(buildMonthly(D));
+/* ===== 월간 브리프: 저장하지 않고 화면을 열 때 주간 기사로 계산 (2026-11-15) =====
+   기사 날짜(첫 출처) 기준 매달 1일~말일. 같은 기사(첫 출처 URL)는 최근 호의 것. 5건 미만인 달은 만들지 않음.
+   cl 이 없는 예전 주간 기사는 관광청 태그·섹션으로 고객사 칸을 추정. 사람이 쓰는 월간 시사점은 D.monthlyNotes[YYYY-MM][고객사id].so */
+function buildMonthly(D){
+ var CS={s1:1,s4:1,s2:1},OLD={s5:'B',s3:'C',s6:'C',s9:'C',s7:'D',s8:'E',s10:'B'},
+  PFX={s1:'PE',s4:'CS',s2:'OB',s5:'AL',s3:'TT',s6:'PL',s9:'PK',s7:'CD',s8:'CW',s10:'AS'},
+  MON=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'],
+  SO=D.sections.map(function(s){return s.id;}),CL=D.clients||[],NOTES=D.monthlyNotes||{};
+ var weekly=D.editions.filter(function(e){return e.key==='manual';}).concat(D.editions.filter(function(e){return e.key!=='manual'&&e.kind!=='monthly';}));
+ function ad(i){return String(i.src[0][1]);}
+ function mo(i){return ad(i).slice(0,7).replace('.','-');}
+ function derive(i){
+  if(CS[i.sec])return [];
+  var tg=i.tags.map(function(t){return t[0];}),acc={},out=[];
+  i.tags.forEach(function(t){if(t[1]==='acc')acc[t[0]]=1;});
+  var common=tg.indexOf('장거리 전 계정')>=0;
+  CL.forEach(function(c){if(c.acc&&(acc[c.acc]||common))out.push({c:c.id,s:OLD[i.sec]||'C'});});
+  if(i.sec==='s10'){if(tg.indexOf('아프리카')>=0)out.push({c:'airlink',s:'B'});if(tg.indexOf('남미')>=0)out.push({c:'azul',s:'B'});}
+  return out;
+ }
+ var months={};weekly.forEach(function(E){E.items.forEach(function(i){months[mo(i)]=1;});});
+ var res=[];
+ Object.keys(months).sort().forEach(function(m){
+  var y=+m.slice(0,4),mm=+m.slice(5,7),last=new Date(y,mm,0).getDate(),pick={},order=[],srcs=[];
+  weekly.forEach(function(E){
+   var hasCl=E.items.some(function(i){return i.cl&&i.cl.length;}),used=false;
+   E.items.forEach(function(i){
+    if(mo(i)!==m)return;
+    var x=JSON.parse(JSON.stringify(i));
+    if(!hasCl&&!(x.cl&&x.cl.length)){var cl=derive(x);if(cl.length)x.cl=cl;}
+    x.wk=E.label;var u=String(x.src[0][2]);
+    if(!(u in pick))order.push(u);pick[u]=x;used=true;
+   });
+   if(used)srcs.push(E);
+  });
+  var items=order.map(function(u){return pick[u];});
+  if(items.length<5)return;
+  items.sort(function(a,b){var d=(SO.indexOf(a.sec)-SO.indexOf(b.sec));return d||(ad(a)<ad(b)?-1:ad(a)>ad(b)?1:0);});
+  var n={};items.forEach(function(i){var p=PFX[i.sec]||'XX';n[p]=(n[p]||0)+1;i.code=p+'-'+(n[p]<10?'0':'')+n[p];});
+  var lt=srcs[srcs.length-1],ds=items.map(ad).sort();
+  var board=CL.filter(function(c){return c.acc;}).map(function(c){
+   var h=items.filter(function(i){return i.tags.some(function(t){return t[1]==='acc'&&t[0]===c.acc;});});
+   return {n:h.length,nm:c.acc,ds:h.length?h[h.length-1].koh.slice(0,40)+' 등':'이번 달 직접 연결 기사 없음'};
+  }).sort(function(a,b){return b.n-a.n;});
+  board.forEach(function(b,k){if(b.n<=1)b.cold=true;else if(k<3)b.hot=true;});
+  var labels=srcs.map(function(E){return E.label;});
+  var gaps=(D.gaps||[]).filter(function(g){return g.from.slice(0,7)<=m&&m<=g.to.slice(0,7);});
+  var gt=gaps.length?' 주간 발행이 없었던 기간('+gaps.map(function(g){return g.label+' '+g.from.slice(5)+'~'+g.to.slice(5);}).join(', ')+')의 기사는 포함되지 않습니다.':'';
+  var notes={};
+  CL.forEach(function(c){
+   var cnt=items.filter(function(i){return (i.cl||[]).some(function(x){return x.c===c.id;});}).length,nt={},so=((NOTES[m]||{})[c.id]||{}).so;
+   if(so)nt.so=so;
+   if(!cnt)nt.watch=[[c.en.toUpperCase(),c.full+' — 이번 달 주간 브리프에 실린 관련 기사 없음']];
+   if(nt.so||nt.watch)notes[c.id]=nt;
+  });
+  var E={kind:'monthly',key:'m'+m,label:m+' 월간',sublabel:MON[mm-1]+' 1–'+last,
+   issue:{no:m,range:MON[mm-1]+' 1–'+last+', '+y,count:items.length},
+   meta:[['수록',items.length+'건 (기사 날짜 '+ds[0]+'~'+ds[ds.length-1]+')'],['원천','주간 브리프 '+labels.join(' · ')+' 발췌, 중복 제외'],['작성','AVIAREPS Korea']],
+   ind:lt.ind||[],board:board,items:items,gap:lt.gap,clientNotes:notes,
+   foot:'이 월간 브리프는 주간 브리프('+labels.join(' · ')+')에 실린 기사 중 기사 날짜가 '+y+'년 '+mm+'월인 건을 모아 고객사별로 다시 묶은 것입니다. 지표·유류할증료·워치리스트는 이 달의 마지막 주간 호('+lt.label+') 기준입니다.'+gt};
+  if(lt.fuel)E.fuel=lt.fuel;
+  res.push(E);
+ });
+ return res;
+}
+
 var cur=0;
 
 /* ================= V2 · 고객사별 보고서 (2026-11-15) =================
