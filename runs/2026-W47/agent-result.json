@@ -1,0 +1,10 @@
+{
+ "model": "claude-opus-5-5",
+ "subtype": "success",
+ "is_error": false,
+ "stop_reason": "end_turn",
+ "num_turns": 86,
+ "total_cost_usd": 3.864763300000001,
+ "result": "01 정치·경제 2 · 02 소비자 심리 1 · 03 아웃바운드 2 · 04 항공 4 · 05 여행업계 2 · 06 OTA·플랫폼·여행사 4 · 07 패키지·럭셔리 3 · 08 경쟁 목적지 4 · 09 계정 직결·본사 5 · 10 아프리카·남미 3 — 총 30건",
+ "errors": null
+}
