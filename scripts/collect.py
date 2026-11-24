@@ -10,7 +10,7 @@
 결과:
   data/inbox/items.jsonl   누적 기사(링크 기준 중복 제거)
   data/inbox/health.jsonl  실행별 소스 상태
-  runs/<label>/candidates.md / candidates.json / fx.json
+  runs/<label>/candidates.md / candidates.json / fx.json / ccsi.json
 """
 import argparse, datetime as dt, email.utils, html, json, os, re, sys, urllib.request
 
@@ -201,6 +201,36 @@ def fx():
         return {'error': f'{type(e).__name__}: {e}'}
 
 
+BOK_MAIN = 'https://www.bok.or.kr/portal/main/main.do'
+
+
+def ccsi():
+    """한국은행 홈페이지 메인의 최신 「소비자동향조사 결과」 요약에서 CCSI를 읽는다(ECOS는 쓰지 않음)."""
+    try:
+        t = fetch(BOK_MAIN)
+        m = re.search(r'(\d{4})년\s*(\d{1,2})월\s*소비자동향조사\s*결과', t)
+        if not m:
+            return {'error': '메인 페이지에 소비자동향조사 결과 없음', 'src': BOK_MAIN}
+        seg = re.sub(r'\s+', ' ', html.unescape(re.sub(r'<[^>]+>', ' ', t[m.start():m.start() + 3000])))
+        v = re.search(r'CCSI\)?는\s*(\d{1,2})월\s*중\s*([\d.]+)\s*로\s*전월\s*대비\s*([\d.]+)\s*p\s*(상승|하락)', seg)
+        if not v:
+            v0 = re.search(r'CCSI\)?는\s*(\d{1,2})월\s*중\s*([\d.]+)\s*로\s*전월과\s*(동일|같)', seg)
+        d = re.search(r'(20\d\d\.\d\d\.\d\d)', seg)
+        back = t[max(0, m.start() - 2500):m.start()]
+        ids = re.findall(r'B0000501/view\.do\?nttId=(\d+)', back)
+        url = f'https://www.bok.or.kr/portal/bbs/B0000501/view.do?nttId={ids[-1]}&menuNo=201264' if ids else BOK_MAIN
+        out = {'year': int(m.group(1)), 'month': int(m.group(2)), 'released': d.group(1) if d else None, 'src': url}
+        if v:
+            out.update(value=float(v.group(2)), change=float(v.group(3)) * (1 if v.group(4) == '상승' else -1))
+        elif v0:
+            out.update(value=float(v0.group(2)), change=0.0)
+        else:
+            out['error'] = 'CCSI 문구를 읽지 못함'
+        return out
+    except Exception as e:
+        return {'error': f'{type(e).__name__}: {e}', 'src': BOK_MAIN}
+
+
 def window(items, start, end, label):
     s = dt.datetime.fromisoformat(start).replace(tzinfo=KST)
     e = dt.datetime.fromisoformat(end).replace(tzinfo=KST)
@@ -222,10 +252,14 @@ def window(items, start, end, label):
               ensure_ascii=False, indent=1)
     f = fx()
     json.dump(f, open(os.path.join(out, 'fx.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
+    c = ccsi()
+    json.dump(c, open(os.path.join(out, 'ccsi.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
     must = [x for x in sel + undated if x['flags']]
     lines = [f'# {label} 후보 기사', '', f'- 기간: {start} ~ {end} (KST)', f'- 후보 {len(sel)}건 + 날짜 없음 {len(undated)}건 (GTN 목록 등)',
              f'- 누락 금지 키워드 매칭 {len(must)}건 — 채택하지 않더라도 검토 기록을 남길 것',
-             f"- 환율: {f.get('krw', '실패')} ({f.get('updated', f.get('error', ''))})", '']
+             f"- 환율: {f.get('krw', '실패')} ({f.get('updated', f.get('error', ''))})",
+             f"- CCSI(한국은행): " + (f"{c['year']}년 {c['month']}월 {c['value']} (전월 대비 {c['change']:+.1f}p, {c.get('released')} 공표) {c['src']}"
+                                     if 'value' in c else f"실패 — {c.get('error')}"), '']
     by = {}
     for x in sel:
         by.setdefault(x['source'], []).append(x)

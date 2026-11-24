@@ -54,11 +54,11 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 
 1. **기간과 라벨**: 직전 월요일 10:00 ~ 이번 월요일 10:00(KST). 라벨은 기간 시작일의 ISO 주차(`2026-W46`), 판본 key는 `w46`.
 2. **후보 목록**: `python3 -I scripts/collect.py --window <START> <END> --label <라벨>` → `runs/<라벨>/candidates.md`, `fx.json`.
-3. **보강 발견**: 후보에 없는 것만 WebSearch로 찾는다. Section 10(아프리카·남미)은 스킬 「1단계 · C」, 기관·관광청 본사는 「1단계 · B」. 접근 실패는 실패로 기록하고 다른 경로를 반복해서 찾지 않는다. ECOS·bok.or.kr은 호출하지 않는다.
+3. **보강 발견**: 후보에 없는 것만 WebSearch로 찾는다. Section 10(아프리카·남미)은 스킬 「1단계 · C」, 기관·관광청 본사는 「1단계 · B」. 접근 실패는 실패로 기록하고 다른 경로를 반복해서 찾지 않는다. ECOS는 호출하지 않는다(bok.or.kr 메인은 CCSI용으로만 `collect.py`가 읽는다).
 4. **선별·정독·작성**: 스킬 `korea-weekly-travel-report`의 「2단계 · 선별」「3단계 · 정독」「4단계 · 작성」「고정 표기」를 따른다(작성자 표기는 EJ Park). `candidates.md`에서 누락 금지 플래그가 붙은 기사는 채택하지 않더라도 `runs/<라벨>/report.md`에 검토 사유를 남긴다.
 5. **판본 JSON**: `runs/<라벨>/edition.json`. 형식은 직전 판본과 같다.
    - `key`, `label`, `sublabel`(예: `NOV 9–15`), `issue {no, range, count}`, `meta`(수록·수집·채택·제약·작성=EJ Park), `ind`, `fuel`, `board`, `items`, `gap`, `foot`
-   - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 새 발표가 없으면 직전 값 유지. **후보에 CCSI 기사가 없어도 매주 WebSearch로 「<YYYY>년 <M>월 소비자심리지수」(이번 달, 없으면 지난달)를 한 번 확인**하고, 직전 값보다 새 달 발표가 있으면 그 값으로 바꾼다(언론 보도 2곳 이상 수치 일치, 출처는 보도 기사 URL). RSS 제목 키워드만 기다리다 10월분(10/27 발표)을 놓쳐 W46·W47이 9월 값으로 나갔다(2026-11-24 EJ 지적으로 W46=10월 105.4, W47=11월 103.1로 고침). ECOS·bok.or.kr은 계속 호출하지 않는다.
+   - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 **한국은행 원자료 기준** (2026-11-24 EJ 지시): `collect.py`가 한국은행 홈페이지 메인의 최신 「<YYYY>년 <M>월 소비자동향조사 결과」 요약을 읽어 `runs/<라벨>/ccsi.json`(year·month·value·change·released·src=한은 보도자료 URL)에 남긴다. 그 달이 직전 값보다 새 달이면 그 값으로 바꾸고, 출처는 `["한국은행 「<YYYY>년 <M>월 소비자동향조사 결과」", "<공표일>", "<src>"]`. 새 달이 아니면 직전 값 유지. `ccsi.json`이 실패면 WebSearch로 「<YYYY>년 <M>월 소비자심리지수」 보도를 찾아 2곳 이상 수치가 같을 때만 쓰고, 출처를 「한국은행 소비자동향조사 (<매체> 보도)」로 적는다. ECOS는 쓰지 않는다. 경위: RSS 제목 키워드만 기다리다 10월분(10/27 공표)을 놓쳐 W46·W47이 9월 값으로 나갔다 → 11/24 W46=10월 105.4, W47=11월 103.1(한은 보도자료 확인)로 고침. 2026-08-29엔 bok.or.kr 접근이 안 됐지만 11/24 메인·보도자료 페이지는 HTML로 읽혔다.
    - `fuel`: `python3 -I scripts/fuel_apply.py --card` 출력을 그대로 쓴다(유류할증료 탭의 최신 월 기준 — 대한항공은 구간표, 아시아나는 계정별 값). `fuelTab`은 주간 실행에서 건드리지 않는다.
    - `board`: 6개 계정 모두. 수는 그 계정 `acc` 태그 기사 수.
    - 새 매체·태그는 최상위 `"outenx"`·`"tagenx"`에 영문명을 넣는다.

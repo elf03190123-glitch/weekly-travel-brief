@@ -25,11 +25,11 @@ TOOLS = ['Read', 'Write', 'Edit', 'Glob', 'Grep', 'WebSearch', 'WebFetch',
 def prompt_for(label, start, end):
     return f"""저장소 루트의 CLAUDE.md 「주간 실행」 절차를 따라 이번 호를 작성하라.
 - 기간: {start} ~ {end} (KST), 라벨: {label}
-- 1~2단계(기간 계산, 후보 목록)는 이미 끝났다: runs/{label}/candidates.md, runs/{label}/fx.json
+- 1~2단계(기간 계산, 후보 목록)는 이미 끝났다: runs/{label}/candidates.md, runs/{label}/fx.json, runs/{label}/ccsi.json
 - 편집 기준은 .claude/skills/korea-weekly-travel-report/SKILL.md 의 2~4단계와 고정 표기를 따른다. 그 문서의 산출물·발행 절은 무시한다.
 - runs/{label}/edition.json 을 쓰고, python3 -I scripts/add_edition.py runs/{label}/edition.json 으로 오류 0건까지 고친 뒤 python3 -I scripts/build.py 가 통과하는지 확인한다.
 - 고객사별 보고서(CLAUDE.md 「고객사별 보고서」): 01–03이 아닌 기사에 cl 배치, 0건 고객사는 clientNotes 워치리스트. 시사점(so)은 쓰지 않는다.
-- 지표 CCSI: 후보에 없어도 WebSearch로 최신 달 소비자심리지수 발표를 한 번 확인해, 직전 값보다 새 달이면 갱신한다(보도 2곳 이상 일치, 출처는 기사 URL). ECOS·bok.or.kr 호출 금지.
+- 지표 CCSI는 한국은행 원자료 기준: runs/{label}/ccsi.json 의 달이 직전 값보다 새 달이면 그 값·공표일·src(한은 보도자료 URL)로 갱신, 아니면 직전 값 유지. ccsi.json 이 실패면 WebSearch 보도 2곳 이상 일치할 때만 갱신. ECOS 호출 금지(CLAUDE.md 「주간 실행」 5단계 ind).
 - runs/{label}/report.md 에 보고를 남긴다(고객사별 건수와 시사점 초안 포함).
 - git 은 쓰지 않는다(워크플로가 커밋한다). 개인 메일 주소는 어디에도 쓰지 않는다. 작성자 표기는 EJ Park(meta의 ["작성","EJ Park"]).
 - 끝나면 마지막 답으로 섹션별 채택 건수와 총 건수만 한 줄로 쓴다."""

@@ -73,6 +73,8 @@ description: "지표 입력 시 영문 명칭·설명(ken·suben) 동시 기입 
 
 고정 영문 표기: 환율은 `KRW / USD Exchange Rate` + `as of YYYY.MM.DD · market mid-rate`, CCSI는 `Consumer Sentiment Index (CCSI)` + `<Month> <Year> · <변동 설명>` (예: `no new release, prior value retained`, `down for the first time in four months`).
 
+> **V2 저장소(2026-11-24)**: CCSI는 `collect.py`가 한국은행 홈페이지 메인에서 읽어 `ccsi.json`으로 준다(CLAUDE.md 우선). 아래 문장은 V1 기록.
+>
 > **ECOS(ecos.bok.or.kr)와 한국은행 사이트(bok.or.kr)는 호출하지 않는다.** robots.txt 미응답 및 JS 렌더링으로 접근 불가(2026-08-29 확인). 시도 금지.
 
 ## 0-B단계 · 주간 판본의 유류할증료표 (`fuel`) — 2026-09-12 신설, 2026-10 정정
