@@ -58,7 +58,7 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 4. **선별·정독·작성**: 스킬 `korea-weekly-travel-report`의 「2단계 · 선별」「3단계 · 정독」「4단계 · 작성」「고정 표기」를 따른다(작성자 표기는 EJ Park). `candidates.md`에서 누락 금지 플래그가 붙은 기사는 채택하지 않더라도 `runs/<라벨>/report.md`에 검토 사유를 남긴다.
 5. **판본 JSON**: `runs/<라벨>/edition.json`. 형식은 직전 판본과 같다.
    - `key`, `label`, `sublabel`(예: `NOV 9–15`), `issue {no, range, count}`, `meta`(수록·수집·채택·제약·작성=EJ Park), `ind`, `fuel`, `board`, `items`, `gap`, `foot`
-   - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 새 발표가 없으면 직전 값 유지.
+   - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 새 발표가 없으면 직전 값 유지. **후보에 CCSI 기사가 없어도 매주 WebSearch로 「<YYYY>년 <M>월 소비자심리지수」(이번 달, 없으면 지난달)를 한 번 확인**하고, 직전 값보다 새 달 발표가 있으면 그 값으로 바꾼다(언론 보도 2곳 이상 수치 일치, 출처는 보도 기사 URL). RSS 제목 키워드만 기다리다 10월분(10/27 발표)을 놓쳐 W46·W47이 9월 값으로 나갔다(2026-11-24 EJ 지적으로 W46=10월 105.4, W47=11월 103.1로 고침). ECOS·bok.or.kr은 계속 호출하지 않는다.
    - `fuel`: `python3 -I scripts/fuel_apply.py --card` 출력을 그대로 쓴다(유류할증료 탭의 최신 월 기준 — 대한항공은 구간표, 아시아나는 계정별 값). `fuelTab`은 주간 실행에서 건드리지 않는다.
    - `board`: 6개 계정 모두. 수는 그 계정 `acc` 태그 기사 수.
    - 새 매체·태그는 최상위 `"outenx"`·`"tagenx"`에 영문명을 넣는다.

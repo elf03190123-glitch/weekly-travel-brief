@@ -9917,14 +9917,14 @@
     {
      "k": "소비자심리지수 (CCSI)",
      "ken": "Consumer Sentiment Index (CCSI)",
-     "v": "106.6",
+     "v": "105.4",
      "u": "",
-     "sub": "2026년 9월 · 수집 기사에 신규 발표 없어 직전 값 유지",
-     "suben": "September 2026 · no new release in collected feeds, prior value retained",
+     "sub": "2026년 10월 · 전월 대비 1.2p 하락, 한 달 만에 하락 전환",
+     "suben": "October 2026 · down 1.2 points, first decline in a month",
      "src": [
-      "한국은행 소비자동향조사 (머니투데이 보도)",
-      "2026.09.23",
-      "https://www.mt.co.kr/economy/2026/09/23/2026092217321423880"
+      "한국은행 소비자동향조사 (이투데이 보도)",
+      "2026.10.27",
+      "https://www.etoday.co.kr/news/view/2640241"
      ]
     }
    ],
@@ -11378,14 +11378,14 @@
     {
      "k": "소비자심리지수 (CCSI)",
      "ken": "Consumer Sentiment Index (CCSI)",
-     "v": "106.6",
+     "v": "103.1",
      "u": "",
-     "sub": "2026년 9월 · 수집 기사에 신규 발표 없어 직전 값 유지",
-     "suben": "September 2026 · no new release in collected feeds, prior value retained",
+     "sub": "2026년 11월 · 전월 대비 2.3p 하락, 두 달 연속 하락 (11.24 발표)",
+     "suben": "November 2026 · down 2.3 points, second straight monthly decline (released Nov 24)",
      "src": [
-      "한국은행 소비자동향조사 (머니투데이 보도)",
-      "2026.09.23",
-      "https://www.mt.co.kr/economy/2026/09/23/2026092217321423880"
+      "한국은행 소비자동향조사 (파이낸셜뉴스 보도)",
+      "2026.11.24",
+      "https://www.fnnews.com/news/202611231628310144"
      ]
     }
    ],
