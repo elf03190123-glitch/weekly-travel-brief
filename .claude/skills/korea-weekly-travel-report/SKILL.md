@@ -310,7 +310,7 @@ fuelTab: {
 ### 고정 표기
 
 - 상단 브랜드라인 `Korea Weekly Travel Report` — **AVIAREPS 표기 없음**
-- 작성자 `AVIAREPS Korea`
+- 작성자 `EJ Park` (2026-11-24 EJ 지시. 회사 표기가 필요한 곳은 `AVIAREPS Korea`)
 - **트리니티항공 = 티웨이항공의 변경된 사명** (동일 회사)
 - **시사점(So-What)은 자동 생성하지 않는다** — 사람이 확정한다
 

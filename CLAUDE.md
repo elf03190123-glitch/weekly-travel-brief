@@ -16,7 +16,7 @@
 
 ## 개인 정보
 
-- **업로더 개인 메일을 어디에도 넣지 않는다.** 작성자·문의처는 "AVIAREPS Korea"로 쓴다. 스킬이 고정 표기로 메일을 지정해도 이 규칙이 우선한다. `build.py`가 결과물에 개인 메일이 있으면 빌드를 멈춘다.
+- **업로더 개인 메일을 어디에도 넣지 않는다.** 작성자(작성·Prepared by)는 **"EJ Park"**(2026-11-24 EJ 지시 — 이름만, 메일 없이), 문의처·회사 표기는 "AVIAREPS Korea"로 쓴다. 스킬이 고정 표기로 메일을 지정해도 이 규칙이 우선한다. `build.py`가 결과물에 개인 메일이 있으면 빌드를 멈춘다.
 - **구독 신청은 받지 않는다 (2026-11-15 EJ 결정).** 리포트 화면·HTML 내보내기·뉴스레터 복사본의 「뉴스레터 신청」 버튼 코드는 지웠다. `subscribeTo` 같은 신청 주소를 다시 넣지 않는다.
 - 커밋 작성자는 GitHub noreply 주소를 쓴다.
 
@@ -55,9 +55,9 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 1. **기간과 라벨**: 직전 월요일 10:00 ~ 이번 월요일 10:00(KST). 라벨은 기간 시작일의 ISO 주차(`2026-W46`), 판본 key는 `w46`.
 2. **후보 목록**: `python3 -I scripts/collect.py --window <START> <END> --label <라벨>` → `runs/<라벨>/candidates.md`, `fx.json`.
 3. **보강 발견**: 후보에 없는 것만 WebSearch로 찾는다. Section 10(아프리카·남미)은 스킬 「1단계 · C」, 기관·관광청 본사는 「1단계 · B」. 접근 실패는 실패로 기록하고 다른 경로를 반복해서 찾지 않는다. ECOS·bok.or.kr은 호출하지 않는다.
-4. **선별·정독·작성**: 스킬 `korea-weekly-travel-report`의 「2단계 · 선별」「3단계 · 정독」「4단계 · 작성」「고정 표기」를 따른다(작성자 표기는 AVIAREPS Korea). `candidates.md`에서 누락 금지 플래그가 붙은 기사는 채택하지 않더라도 `runs/<라벨>/report.md`에 검토 사유를 남긴다.
+4. **선별·정독·작성**: 스킬 `korea-weekly-travel-report`의 「2단계 · 선별」「3단계 · 정독」「4단계 · 작성」「고정 표기」를 따른다(작성자 표기는 EJ Park). `candidates.md`에서 누락 금지 플래그가 붙은 기사는 채택하지 않더라도 `runs/<라벨>/report.md`에 검토 사유를 남긴다.
 5. **판본 JSON**: `runs/<라벨>/edition.json`. 형식은 직전 판본과 같다.
-   - `key`, `label`, `sublabel`(예: `NOV 9–15`), `issue {no, range, count}`, `meta`(수록·수집·채택·제약·작성=AVIAREPS Korea), `ind`, `fuel`, `board`, `items`, `gap`, `foot`
+   - `key`, `label`, `sublabel`(예: `NOV 9–15`), `issue {no, range, count}`, `meta`(수록·수집·채택·제약·작성=EJ Park), `ind`, `fuel`, `board`, `items`, `gap`, `foot`
    - `ind`: 환율은 `fx.json` 값, `ken`·`suben` 필수. CCSI는 새 발표가 없으면 직전 값 유지.
    - `fuel`: `python3 -I scripts/fuel_apply.py --card` 출력을 그대로 쓴다(유류할증료 탭의 최신 월 기준 — 대한항공은 구간표, 아시아나는 계정별 값). `fuelTab`은 주간 실행에서 건드리지 않는다.
    - `board`: 6개 계정 모두. 수는 그 계정 `acc` 태그 기사 수.

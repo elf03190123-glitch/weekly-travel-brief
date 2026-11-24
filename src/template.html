@@ -607,7 +607,7 @@ function buildMonthly(D){
   });
   var E={kind:'monthly',key:'m'+m,label:m+' 월간',sublabel:MON[mm-1]+' 1–'+last,
    issue:{no:m,range:MON[mm-1]+' 1–'+last+', '+y,count:items.length},
-   meta:[['수록',items.length+'건 (기사 날짜 '+ds[0]+'~'+ds[ds.length-1]+')'],['원천','주간 브리프 '+labels.join(' · ')+' 발췌, 중복 제외'],['작성','AVIAREPS Korea']],
+   meta:[['수록',items.length+'건 (기사 날짜 '+ds[0]+'~'+ds[ds.length-1]+')'],['원천','주간 브리프 '+labels.join(' · ')+' 발췌, 중복 제외'],['작성','EJ Park']],
    ind:lt.ind||[],board:board,items:items,gap:lt.gap,clientNotes:notes,
    foot:'이 월간 브리프는 주간 브리프('+labels.join(' · ')+')에 실린 기사 중 기사 날짜가 '+y+'년 '+mm+'월인 건을 모아 고객사별로 다시 묶은 것입니다. 지표·유류할증료·워치리스트는 이 달의 마지막 주간 호('+lt.label+') 기준입니다.'+gt};
   if(lt.fuel)E.fuel=lt.fuel;
@@ -727,7 +727,7 @@ function mast(E){
  '<h1>'+(ACC?ACC.full:'한국 아웃바운드')+(E.kind==='monthly'?' 월간 브리프':' 주간 브리프')+'</h1>'+
  '<div class="meta">'+E.meta.filter(function(m){return m[0]!=='작성';})
    .map(function(m){return '<span><b>'+m[0]+'</b> '+m[1]+'</span>';}).join('')+'</div>'+
- '<div class="byline"><b>작성</b> AVIAREPS Korea</div>';
+ '<div class="byline"><b>작성</b> EJ Park</div>';
 }
 
 function srcHtml(i,lang){
@@ -1837,7 +1837,7 @@ function zoneTabHtml(car){
  var hd='<header class="mast"><div class="mast-top"><div class="brandline">Korea Weekly Travel Report</div><div class="issue">UPDATED '+esc(F.updated)+'</div></div>'+
   '<h1>'+(TR?'트리니티항공 부과군별 도시표':'KE 대권거리별 도시표')+'</h1><p class="sub">'+(TR?'트리니티항공 부과군(운항 거리 마일 기준)별 취항 도시와 월별 편도 유류할증료(원)입니다. 부과군표를 새로 받을 때만 갱신합니다.':'대한항공 대권거리(마일) 구간별 취항 도시와 월별 편도 유류할증료(원)입니다. 구간표를 새로 받을 때만 갱신합니다.')+'</p>'+
   '<div class="meta"><span><b>반영 월</b> '+esc(F.year)+'년 '+esc(mc.m)+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')+'</span><span><b>기준</b> 한국 출발 · 편도 · 원(KRW)</span><span><b>원자료</b> '+esc(F.srcName)+'</span></div>'+
-  '<div class="byline"><b>작성</b> AVIAREPS Korea</div>'+
+  '<div class="byline"><b>작성</b> EJ Park</div>'+
   '<div class="hdr-bar"><div class="hb-fin nodiv">'+finActionsHtml(false)+'</div></div><div class="fin-slot"></div>'+
   '<div class="exp-row" role="group" aria-label="보기 선택"><span class="exp-l">보기</span>'+curSw('zone',false)+'</div></header>';
  var h=['<div class="t-tblwrap zt-wrap"><table class="t-tbl tr zt"><caption style="position:absolute;left:-9999px">'+(TR?'트리니티항공 부과군별':'대한항공 대권거리 구간별')+' 월별 편도 유류할증료(원)</caption><thead><tr><th scope="col">'+(TR?'부과군 · 거리(마일)':'대권거리(마일)')+'</th>'];
@@ -1871,7 +1871,7 @@ function fuelTabHtml(C){
    '<div class="meta"><span><b>Airline</b> '+(C.car==='trn'?'Trinity Air':'Korean Air')+'</span><span><b>Latest month</b> '+esc(trM(T,n-1,C))+' '+esc(T.year)+(mc.lvl!=null?' (Level '+mc.lvl+')':'')+'</span>'+
    '<span><b>Applied ROE</b> '+Number(mc.roe).toFixed(2)+' KRW/USD</span>'+
    '<span><b>Update cycle</b> '+esc(E.cycle||T.cycle)+'</span>'+
-   '<span><b>Source</b> '+esc(E.srcName||T.srcName)+'</span></div><div class="byline"><b>Prepared by</b> AVIAREPS Korea</div>'+
+   '<span><b>Source</b> '+esc(E.srcName||T.srcName)+'</span></div><div class="byline"><b>Prepared by</b> EJ Park</div>'+
    '<div class="hdr-bar">'+'<div class="hb-dl" role="group" aria-label="Download this page"><span class="exp-l">Download</span>'+
    '<button type="button" class="btn-x" data-x="html" title="Copy formatted content to paste into an email or document">Copy</button><button type="button" class="btn-x" data-x="docx">Word (.docx)</button><button type="button" class="btn-x" data-x="pdf">PDF</button></div>'+'<div class="hb-fin">'+finActionsHtml(true)+'</div></div><div class="fin-slot"></div>'+
    '<div class="exp-row" role="group" aria-label="View">'+
@@ -1882,7 +1882,7 @@ function fuelTabHtml(C){
    '<div class="issue">UPDATED '+esc(T.updated)+'</div></div><h1>'+C.h1+'</h1><p class="sub">'+esc(T.sub)+'</p>'+
    '<div class="meta"><span><b>항공사</b> '+(C.car==='trn'?'트리니티항공':'대한항공')+'</span><span><b>반영 월</b> '+esc(T.year)+'년 '+esc(mc.m)+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')+'</span>'+
    '<span><b>갱신</b> '+esc(T.cycle)+'</span>'+
-   '<span><b>원자료</b> '+esc(T.srcName)+'</span></div><div class="byline"><b>작성</b> AVIAREPS Korea</div>'+
+   '<span><b>원자료</b> '+esc(T.srcName)+'</span></div><div class="byline"><b>작성</b> EJ Park</div>'+
    '<div class="hdr-bar">'+'<div class="hb-dl" role="group" aria-label="이 페이지 저장"><span class="exp-l">다운로드</span>'+
    '<button type="button" class="btn-x" data-x="html" title="메일·문서에 붙여넣을 수 있게 서식 그대로 복사합니다">복사</button><button type="button" class="btn-x" data-x="docx">Word (.docx)</button><button type="button" class="btn-x" data-x="pdf">PDF</button></div>'+'<div class="hb-fin">'+finActionsHtml(false)+'</div></div><div class="fin-slot"></div>'+
    '<div class="exp-row" role="group" aria-label="보기">'+
@@ -1966,8 +1966,8 @@ function trxModel(key){
  if(EN){if(E.note)foot.push(E.note);foot.push(TRUSDNOTE);}else if(T.note)foot.push(T.note);
  if(anyNull)foot.push(L.nullNote);
  var mon=('0'+parseInt(mc.m,10)).slice(-2);
- var meta=EN?[['Latest month',mn(n-1)+' '+T.year+(mc.lvl!=null?' (Level '+mc.lvl+')':'')],['Applied ROE',Number(mc.roe).toFixed(2)+' KRW/USD'],['Updated',T.updated],['Update cycle',E.cycle||T.cycle],['Source',E.srcName||T.srcName],['Prepared by','AVIAREPS Korea']]
-  :[['반영 월',T.year+'년 '+mc.m+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')],['업데이트',T.updated],['갱신 주기',T.cycle],['원자료',T.srcName],['작성','AVIAREPS Korea']];
+ var meta=EN?[['Latest month',mn(n-1)+' '+T.year+(mc.lvl!=null?' (Level '+mc.lvl+')':'')],['Applied ROE',Number(mc.roe).toFixed(2)+' KRW/USD'],['Updated',T.updated],['Update cycle',E.cycle||T.cycle],['Source',E.srcName||T.srcName],['Prepared by','EJ Park']]
+  :[['반영 월',T.year+'년 '+mc.m+(mc.lvl!=null?' ('+mc.lvl+'단계)':'')],['업데이트',T.updated],['갱신 주기',T.cycle],['원자료',T.srcName],['작성','EJ Park']];
  return {key:key,T:T,C:C,L:L,EN:EN,n:n,cities:[city],H:340,
   base:(C.car==='trn'?'Trinity_':'KE_')+'Fuel_Surcharge_'+(C.usd?'USD':'KRW')+'_'+T.year+'-'+mon,
   title:L.doc,months:T.months.map(function(m,i){return mn(i);}),

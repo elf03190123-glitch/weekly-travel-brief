@@ -30,7 +30,7 @@ def prompt_for(label, start, end):
 - runs/{label}/edition.json 을 쓰고, python3 -I scripts/add_edition.py runs/{label}/edition.json 으로 오류 0건까지 고친 뒤 python3 -I scripts/build.py 가 통과하는지 확인한다.
 - 고객사별 보고서(CLAUDE.md 「고객사별 보고서」): 01–03이 아닌 기사에 cl 배치, 0건 고객사는 clientNotes 워치리스트. 시사점(so)은 쓰지 않는다.
 - runs/{label}/report.md 에 보고를 남긴다(고객사별 건수와 시사점 초안 포함).
-- git 은 쓰지 않는다(워크플로가 커밋한다). 개인 메일 주소는 어디에도 쓰지 않는다. 작성자 표기는 AVIAREPS Korea.
+- git 은 쓰지 않는다(워크플로가 커밋한다). 개인 메일 주소는 어디에도 쓰지 않는다. 작성자 표기는 EJ Park(meta의 ["작성","EJ Park"]).
 - 끝나면 마지막 답으로 섹션별 채택 건수와 총 건수만 한 줄로 쓴다."""
 
 
