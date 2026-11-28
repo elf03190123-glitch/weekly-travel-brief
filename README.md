@@ -2,7 +2,7 @@
 
 한국 아웃바운드 여행 시장 주간 브리프. V1 기능(10개 섹션, 한·영 병기, 지표, 계정 스코어보드, 유류할증료 탭, 문서 만들기)에 **고객사별 보고서**(15곳)와 **월간 브리프**를 더했다.
 
-- **게재**: GitHub Pages — https://elf03190123-glitch.github.io/weekly-travel-brief/
+- **게재**: claude.ai 아티팩트 — https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb (비공개, 공유는 Share 메뉴에서). 2026-11-28 GitHub Pages 게재 중단
   - 고객사 보고서 링크: 주소 끝에 `#hawaii`, `#regal-hk`, `#american-airlines` 등 (목록은 [CLAUDE.md](CLAUDE.md) 「화면」)
 - **저장소**: https://github.com/elf03190123-glitch/weekly-travel-brief (공개)
 - **작업 규칙**: [CLAUDE.md](CLAUDE.md)
@@ -20,20 +20,22 @@
 | 워크플로 | 일정 | 하는 일 |
 |---|---|---|
 | `collect` | 6시간마다 | RSS 15개 소스 수집 → `data/inbox/` 커밋 |
-| `weekly` | 월 10:00 KST | 기간 후보 목록 → Claude Agent SDK가 선별·작성(고객사 배치 포함) → 커밋 → Pages 배포. Max 요금제 월 API 크레딧 사용, 1회 약 $2.4 |
-| `fuel` | `fuel-inbox/`에 파일이 올라올 때 | Claude가 유류할증료 자료를 읽어 유류할증료 탭 갱신 → 커밋 → Pages 배포 |
-| `pages` | 데이터·화면 변경 시 | 검사·빌드 후 Pages 배포 |
+| `weekly` | 월 10:00 KST | 기간 후보 목록 → Claude Agent SDK가 선별·작성(고객사 배치 포함) → 커밋 → 빌드 검사. Max 요금제 월 API 크레딧 사용, 1회 약 $2.4 |
+| `fuel` | `fuel-inbox/`에 파일이 올라올 때 | Claude가 유류할증료 자료를 읽어 유류할증료 탭 갱신 → 커밋 → 빌드 검사 |
+| `check` | 데이터·화면 변경 시 | 검사·빌드만(배포 없음) |
+| Orca 「주간 브리프 아티팩트 재발행」 | 매일 13:00 KST, 저장소가 바뀌었을 때만 | 이 PC에서 빌드해 아티팩트 재발행 (`automations/artifact-publish.md`) |
 
 ### 유류할증료 매달 올리기
 
 1. 항공사 사이트에서 그 달 자료를 내려받거나 캡처한다(대한항공 구간표, ROE, 아시아나표, 트리니티항공 부과군표).
 2. https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox 에 끌어다 놓고 **Commit changes**를 누른다. 리포트의 `유류할증료` 탭 → `파일 업로드`에도 같은 링크가 있다.
-3. 몇 분 뒤 탭이 갱신된다. 결과 보고서와 원본은 `fuel-sources/<YYYY-MM>/`에 남는다. 다음 주간 호의 유류할증료 카드도 새 달 값을 따른다.
+3. 몇 분 뒤 저장소의 탭 데이터가 갱신되고, 그날 13:00(Orca) 아티팩트에 반영된다. 결과 보고서와 원본은 `fuel-sources/<YYYY-MM>/`에 남는다. 다음 주간 호의 유류할증료 카드도 새 달 값을 따른다.
 
 저장소가 공개라 올린 파일도 공개된다. GitHub 웹에서 올리면 커밋에 계정 메일이 남을 수 있으니 GitHub 설정 → Emails → **Keep my email addresses private**를 켜 둔다.
 
-## 현재 상태 (2026-11-24)
+## 현재 상태 (2026-11-28)
 
+- **게재처를 아티팩트로 변경** (11/28 EJ 지시) — GitHub Pages 사이트를 내리고 V2 아티팩트(AWgnMf…)를 W47 최신판으로 갱신. Actions의 Pages 배포는 빌드 검사(`check.yml`)로 바꿨고, 재발행은 Orca 자동화(매일 13:00, 변경 있을 때만)가 한다. 첫 자동 재발행은 12/1(월) W48 뒤.
 - **W47(11/16–23) 자동 발행** — 11/23 weekly 실행, 30건, 약 $3.86. 판본 12개(manual, W35–W42, W46, W47), 기사 330건.
 - **작성자 표기 EJ Park** (11/24 EJ 지시) — 전 판본·월간·유류할증료 탭·문서 내보내기(Word·PDF·HTML·뉴스레터)의 「작성/Prepared by」. 회사 표기(문서 머리 줄 · AVIAREPS Korea, 편집 기준 문구)는 그대로.
 - **소비자심리지수 갱신** (11/24) — W47 = 11월 103.1(11/24 발표, -2.3p), W46 = 10월 105.4. W47 출처는 한국은행 보도자료. 앞으로 `collect.py`가 한국은행 홈페이지에서 최신 발표를 읽어 `ccsi.json`으로 넘긴다(실패하면 보도 2곳 대조). GitHub Actions 서버에서 한은 사이트가 열리는지는 12/1 실행에서 확인.

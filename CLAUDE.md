@@ -2,17 +2,31 @@
 
 이 폴더(= GitHub 저장소 `weekly-travel-brief`)에서 작업하는 Claude 세션은 이 문서를 따른다. 사람이 연 세션, Orca 세션, GitHub Actions 안의 Claude 모두 해당한다.
 
-## 배포 (2026-11-15 사용자 결정)
+## 배포 (2026-11-15 결정 · 2026-11-28 게재처 변경)
 
-- **배포: GitHub Pages** — 공개 저장소 `elf03190123-glitch/weekly-travel-brief`. 공개 범위는 사용자가 알고 정한 것이다.
+- **게재: claude.ai 아티팩트** — https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb (「한국 주간 트래블 브리프 V2」, EJ 계정, 비공개 — 공유는 EJ가 Share 메뉴에서). 2026-11-28 EJ 지시로 GitHub Pages 게재를 없애고 이 아티팩트로 옮겼다. **Pages를 다시 켜지 않는다.**
+  - 재발행: 이 PC의 Orca 자동화 「주간 브리프 아티팩트 재발행」(아래 「자동화」)이 저장소를 받아 `build.py` → `dist/index.html`을 이 URL로 발행한다. 사람 세션에서 올릴 때도 같은 순서: `git pull` → `python -I scripts/build.py` → Artifact 도구로 `dist/index.html`을 `url`=위 주소로 발행(`capabilities`·`icon` 생략) → `python -I scripts/artifact_state.py --mark`.
+  - 아티팩트에 저장된 기능 선언(assets·db·downloads·sample)은 그대로 둔다. 화면 코드가 아티팩트 안에서는 `claude.use('downloads')`로 저장하고, 유류할증료 탭의 아티팩트 DB 입력도 읽는다.
+  - V1 아티팩트(9qyt3S…)는 건드리지 않는다. 새 아티팩트를 만들지 않는다(`url` 없이 발행 금지).
+- **저장소**: 공개 저장소 `elf03190123-glitch/weekly-travel-brief` — 수집·작성·유류할증료 처리용으로 계속 쓴다. 공개 범위는 사용자가 알고 정한 것이다.
 - **수집: GitHub Actions** (`.github/workflows/collect.yml`, 6시간마다).
 - **작성: GitHub Actions 안의 Claude Agent SDK** (`.github/workflows/weekly.yml` → `scripts/write_edition.py`, 매주 월 10:00 KST). 저장소 Secret `ANTHROPIC_API_KEY`를 쓴다. 이 키의 Console 조직에 Max 요금제 월 API 크레딧($100)이 연결돼 있다. 모델은 저장소 변수 `BRIEF_MODEL`(없으면 `claude-opus-5-5`).
   - **claude-code-action(=Claude Code)을 쓰지 않는다.** Max 요금제 API 크레딧은 Claude Code에는 적용되지 않아 "Credit balance is too low"로 실패한다(2026-11-15 확인). Agent SDK는 크레딧 대상이다(같은 날 시험 실행 성공).
   - 크레딧이 바닥나면 다음 결제 주기까지 API가 멈춘다. 월 사용액은 `runs/<라벨>/agent-result.json`의 `total_cost_usd`(추정치)로 본다.
   - 수동 실행: Actions → weekly → Run workflow. `smoke`를 켜면 짧은 확인만 한다.
-- **게재: GitHub Actions** (`.github/workflows/pages.yml`) — `data/`·`src/`가 바뀌어 push되거나 weekly 실행이 끝나면 `build.py`로 빌드해 Pages에 올린다.
-- **유류할증료: GitHub Actions** (`.github/workflows/fuel.yml`) — `fuel-inbox/`에 자료가 올라오면 반영하고 배포한다(아래 「유류할증료 월간 갱신」).
-- **아티팩트로 배포하지 않는다.** 미리보기로 만든 V2 아티팩트(https://claude.ai/artifact/AWgnMffftFo9pfrKJvuqbb)와 V1 아티팩트(9qyt3S…)는 건드리지 않는다. 기존 스킬의 「산출물」「5단계 · 발행」(아티팩트 재발행) 절은 V2에 적용하지 않는다.
+- **빌드 검사: GitHub Actions** (`.github/workflows/check.yml`, 예전 `pages.yml`) — `data/`·`src/`가 바뀌어 push되거나 weekly·fuel 실행이 끝나면 `build.py`로 검사만 한다(배포 없음).
+- **유류할증료: GitHub Actions** (`.github/workflows/fuel.yml`) — `fuel-inbox/`에 자료가 올라오면 반영하고 커밋한다(아래 「유류할증료 월간 갱신」). 아티팩트에는 다음 Orca 실행 때 반영된다.
+- 기존 스킬의 「산출물」「5단계 · 발행」 절은 V2에 적용하지 않는다. 발행은 위 아티팩트 재발행 절차만 따른다.
+
+## 자동화
+
+| 자동화 | 어디서 | 일정 | 하는 일 |
+|---|---|---|---|
+| `collect` · `weekly` · `fuel` · `check` | GitHub Actions | 아래 각 절 | 수집·작성·유류할증료 반영·빌드 검사 (저장소에 커밋) |
+| 주간 브리프 아티팩트 재발행 | 이 PC의 Orca (`orca automations list`) | 매일 13:00 KST, 사전 점검 통과 시 | 지침 `automations/artifact-publish.md` |
+
+- **사전 점검** `python -I scripts/artifact_state.py --check`: `git pull` 후 마지막 발행 이후 `data/brief-data.json`·`src/template.html`·`scripts/build.py`가 바뀌었을 때만 실행(0 = 실행). 바뀐 게 없으면 Claude를 부르지 않아 비용이 없다. 발행 기록은 `.artifact-state.json`(저장소 제외). `--status`로 마지막 발행 이후 변경 커밋을 본다.
+- 월요일 10:00 weekly 작성이 1시간 안팎 걸리므로 13:00에 돈다. PC가 꺼져 있으면 다음 날 13:00에 따라잡는다.
 
 ## 개인 정보
 
@@ -37,6 +51,8 @@
 | `scripts/collect.py` | RSS 수집 + 기간 후보 목록 | |
 | `scripts/write_edition.py` | Actions에서 Agent SDK로 주간 실행 3~8단계를 맡기는 스크립트(대화 내용은 로그에 남기지 않음) | |
 | `scripts/add_edition.py` | 판본 JSON을 데이터에 추가하고 검사 | |
+| `scripts/artifact_state.py` | 아티팩트 재발행 필요 여부 확인(`--check`)·기록(`--mark`)·현황(`--status`). 로컬 전용 | |
+| `automations/artifact-publish.md` | Orca 재발행 자동화 지침 | 절차가 바뀔 때 |
 | `scripts/build.py` | 검사 + 개인 메일 검사 + `dist/index.html` 빌드 + 스크립트 문법 검사 | |
 | `scripts/make_template.py` | V1 → V2 1회성 이관 도구. 로컬 전용 원본(`src/v1-live.html`, 저장소 제외)이 있어야 돈다. **다시 실행하지 않는다** | |
 | `.claude/skills/korea-weekly-travel-report/SKILL.md` | 편집 기준(선별·작성 규칙) 사본. 개인 메일은 지운 판 | 기준이 바뀔 때 |
@@ -68,7 +84,7 @@ Python은 `python -I`(Actions에서는 `python3 -I`)로 실행한다.
 6. **추가·검사**: `python3 -I scripts/add_edition.py runs/<라벨>/edition.json` — 오류 0건이 될 때까지 고친다.
 7. **빌드 확인**: `python3 -I scripts/build.py`.
 8. **보고**: `runs/<라벨>/report.md` — 지표 2개 값, 유류할증료 유지/갱신, 섹션별·계정별 건수, 소스별 수집 건수와 실패 소스, 누락 금지 키워드 검토 결과, 사람 확인 필요 항목.
-9. **게시**: Actions에서는 Claude가 끝나면 워크플로가 `data/`·`runs/`를 커밋하고 Pages 배포를 부른다. 로컬 세션에서는 `git add data runs && git commit && git push`로 올리면 pages.yml이 배포한다.
+9. **게시**: Actions에서는 Claude가 끝나면 워크플로가 `data/`·`runs/`를 커밋하고 빌드 검사(check.yml)를 부른다. 로컬 세션에서는 `git add data runs && git commit && git push`. 아티팩트 반영은 Orca 재발행 자동화(13:00)가 하고, 급하면 「배포」의 수동 재발행 순서로 바로 올린다.
 
 ### 작성 규칙 개선 제안 (2026-11-24 EJ)
 
@@ -122,7 +138,7 @@ EJ가 매달 항공사 사이트에서 자료를 내려받거나 캡처해서 �
 
 - **올리는 곳**: GitHub 저장소 `fuel-inbox/` — https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox (끌어다 놓고 Commit changes). 리포트 `유류할증료` 탭의 `파일 업로드` 상자도 이 주소로 안내한다. 저장소가 공개라 올린 파일도 공개된다 — 항공사 공지 같은 공개 자료만.
 - **자료 종류**: 대한항공 구간표(마일 구간별 편도 금액), ROE(적용 환율), 아시아나 유류할증료표(계정별 값), 트리니티항공 부과군표. 형식은 png·jpg·pdf·xlsx·docx·csv·txt.
-- **처리 (`.github/workflows/fuel.yml`, 자동)**: `scripts/update_fuel.py`가 엑셀·워드를 글자로 바꾸고 → Agent SDK가 자료를 읽어 `fuel-inbox/_work/patch.json`을 쓴 뒤 `scripts/fuel_apply.py`로 반영 → 원본·보고를 `fuel-sources/<YYYY-MM>/`로 옮기고 커밋 → Pages 배포. API 크레딧을 쓴다(1회 몇십 센트 수준 예상).
+- **처리 (`.github/workflows/fuel.yml`, 자동)**: `scripts/update_fuel.py`가 엑셀·워드를 글자로 바꾸고 → Agent SDK가 자료를 읽어 `fuel-inbox/_work/patch.json`을 쓴 뒤 `scripts/fuel_apply.py`로 반영 → 원본·보고를 `fuel-sources/<YYYY-MM>/`로 옮기고 커밋 → (Orca가 아티팩트 재발행). API 크레딧을 쓴다(1회 몇십 센트 수준 예상).
 - **`fuel_apply.py`가 막는 것**: 다른 해 자료(연도 전환은 사람이 정함), 중간 달을 건너뛴 자료, 탭에 없는 구간 키(항공사가 구간 경계를 바꾼 경우), 범위 밖 ROE. 전월 대비 ±60% 넘는 변동·구간 순서 이상·ROE 없음은 '주의'로 보고서에 남긴다.
 - **ROE가 없으면** 그 달 달러 탭 값이 비어 보인다. ROE 자료를 따로 올리면 그 달 칸만 채운다.
 - **주간 카드**: 다음 주간 호의 `fuel` 카드가 `fuel_apply.py --card`로 새 달 값을 따른다. 이미 발행된 호는 소급하지 않는다.

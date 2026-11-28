@@ -1,0 +1,25 @@
+name: check
+# data/ · src/ 가 바뀌면 build.py 로 검사·빌드만 한다(배포 없음). weekly·fuel 실행이 끝날 때도 불린다.
+# 게재는 claude.ai 아티팩트 — 이 PC의 Orca 자동화가 저장소를 받아 재발행한다(2026-11-28 결정, GitHub Pages 중단).
+on:
+  push:
+    branches: [main]
+    paths: ['data/brief-data.json', 'src/**', 'scripts/build.py']
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build (검사 포함)
+        run: python3 -I scripts/build.py

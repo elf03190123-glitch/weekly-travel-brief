@@ -1,5 +1,5 @@
 name: weekly
-# 매주 월요일 10:00 KST: 수집 → Claude(Agent SDK)가 선별·작성 → 커밋 → Pages 배포
+# 매주 월요일 10:00 KST: 수집 → Claude(Agent SDK)가 선별·작성 → 커밋 → 빌드 검사 (게재는 Orca가 아티팩트로)
 # 필요: 저장소 Secret ANTHROPIC_API_KEY (Max 요금제 월 API 크레딧이 연결된 Console 조직의 키)
 # 선택: 저장소 변수 BRIEF_MODEL (기본 claude-opus-5-5)
 on:
@@ -76,11 +76,9 @@ jobs:
           git pull --rebase --autostash
           git push
           echo "published=true" >> "$GITHUB_OUTPUT"
-  deploy:
+  check:
     needs: write
     if: needs.write.outputs.published == 'true'
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/pages.yml
+    uses: ./.github/workflows/check.yml

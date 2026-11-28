@@ -1,5 +1,5 @@
 name: fuel
-# fuel-inbox/ 에 유류할증료 자료(캡처·PDF·엑셀)를 올리면 Claude(Agent SDK)가 읽어 유류할증료 탭을 갱신하고 Pages에 배포한다.
+# fuel-inbox/ 에 유류할증료 자료(캡처·PDF·엑셀)를 올리면 Claude(Agent SDK)가 읽어 유류할증료 탭을 갱신한다. 게재는 Orca 자동화가 아티팩트로 재발행한다.
 # 올리는 곳: https://github.com/elf03190123-glitch/weekly-travel-brief/upload/main/fuel-inbox
 on:
   push:
@@ -49,11 +49,9 @@ jobs:
           git pull --rebase --autostash
           git push
           if git diff --quiet HEAD~1 HEAD -- data/brief-data.json; then echo "published=false" >> "$GITHUB_OUTPUT"; else echo "published=true" >> "$GITHUB_OUTPUT"; fi
-  deploy:
+  check:
     needs: update
     if: ${{ always() && needs.update.outputs.published == 'true' }}
     permissions:
       contents: read
-      pages: write
-      id-token: write
-    uses: ./.github/workflows/pages.yml
+    uses: ./.github/workflows/check.yml

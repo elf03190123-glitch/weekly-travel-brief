@@ -6,3 +6,5 @@ src/v1-live.html
 scripts/make_template.py
 # 유류할증료 처리 중 임시 폴더
 fuel-inbox/_work/
+# 아티팩트 마지막 발행 기록(로컬 전용)
+.artifact-state.json
