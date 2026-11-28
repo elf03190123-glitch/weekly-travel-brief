@@ -54,4 +54,4 @@
 - [ ] 12월 유류할증료 자료를 `fuel-inbox/`에 처음 올려 자동 반영 확인. 자료를 받는 사이트 주소를 CLAUDE.md에 적기
 - [ ] 고객사별 시사점(F) 확정 — `clientNotes`(주간)·`monthlyNotes`(월간)
 - [ ] 유류할증료 탭 연도 전환 방식(2027년 1월 자료 전에)
-- [ ] 시험용 저장소 `weekly-brief-collect-test` 삭제 (gh에 삭제 권한 `delete_repo` 승인 필요)
+- [x] 시험용 저장소 `weekly-brief-collect-test` 삭제 (11/28)
